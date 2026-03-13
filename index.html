@@ -8,848 +8,501 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#060606;
+  --bg2:#0c0c0c;
+  --bg3:#111;
+  --line:rgba(255,255,255,0.06);
+  --line2:rgba(255,255,255,0.14);
+  --text:#e2e2e2;
+  --muted:#555;
+  --muted2:#888;
+  --accent:#c8ff00;
+  --accent2:#00cfff;
+  --display:'Bebas Neue',sans-serif;
+  --mono:'DM Mono',monospace;
+  --sans:'Syne',sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden;cursor:none}
 
-  :root {
-    --bg: #080808;
-    --bg2: #0e0e0e;
-    --bg3: #141414;
-    --line: rgba(255,255,255,0.07);
-    --line-bright: rgba(255,255,255,0.18);
-    --text: #e8e8e8;
-    --muted: #666;
-    --accent: #c8ff00;
-    --accent2: #00d4ff;
-    --chrome: linear-gradient(135deg, #aaa 0%, #fff 40%, #888 60%, #ccc 100%);
-    --mono: 'DM Mono', monospace;
-    --display: 'Bebas Neue', sans-serif;
-    --sans: 'Syne', sans-serif;
-  }
+/* ── GRAIN ── */
+#grain{
+  position:fixed;inset:0;z-index:1000;pointer-events:none;
+  opacity:.032;
+}
+#grain canvas{width:100%;height:100%}
 
-  html { scroll-behavior: smooth; }
+/* ── CURSOR ── */
+#cur{position:fixed;z-index:9999;pointer-events:none;top:0;left:0}
+#cur-dot{
+  width:8px;height:8px;background:var(--accent);border-radius:50%;
+  position:absolute;transform:translate(-50%,-50%);
+  transition:width .15s,height .15s,background .15s;
+}
+#cur-ring{
+  width:40px;height:40px;border:1px solid rgba(200,255,0,.35);border-radius:50%;
+  position:absolute;transform:translate(-50%,-50%);
+  transition:width .25s cubic-bezier(.25,.46,.45,.94),height .25s cubic-bezier(.25,.46,.45,.94),border-color .2s;
+}
+body.hovering #cur-dot{width:16px;height:16px;background:var(--accent)}
+body.hovering #cur-ring{width:70px;height:70px;border-color:rgba(200,255,0,.6)}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    overflow-x: hidden;
-    cursor: none;
-  }
+/* ── GRID ── */
+.grid-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+}
 
-  /* ── CUSTOM CURSOR ── */
-  #cursor {
-    position: fixed;
-    width: 10px; height: 10px;
-    background: var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
-    mix-blend-mode: difference;
-  }
-  #cursor-ring {
-    position: fixed;
-    width: 36px; height: 36px;
-    border: 1px solid rgba(200,255,0,0.4);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
-  }
-  body:hover #cursor { opacity: 1; }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.6rem 3rem;
+  transition:background .4s,backdrop-filter .4s;
+}
+nav.scrolled{background:rgba(6,6,6,.92);backdrop-filter:blur(12px)}
+.nav-logo{
+  font-family:var(--display);font-size:1.5rem;letter-spacing:.08em;
+  color:var(--text);text-decoration:none;
+  display:flex;align-items:center;gap:.4rem;
+}
+.nav-logo-dot{
+  width:7px;height:7px;background:var(--accent);border-radius:50%;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;
+  transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;
+  background:var(--accent);transition:width .3s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--bg);background:var(--accent);
+  padding:.5rem 1.2rem;text-decoration:none;
+  transition:opacity .2s;
+}
+.nav-cta:hover{opacity:.8}
 
-  /* ── GRID OVERLAY ── */
-  .grid-bg {
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:0 3rem 5rem;
+  position:relative;z-index:1;overflow:hidden;
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;
+  color:var(--accent);text-transform:uppercase;margin-bottom:1.4rem;
+  opacity:0;transform:translateY(16px);
+  animation:up .7s .2s forwards;
+}
+.hero-title{
+  overflow:hidden;margin-bottom:1rem;
+  opacity:0;animation:up .9s .4s forwards;
+}
+.hero-title-line{
+  display:block;font-family:var(--display);
+  font-size:clamp(5.5rem,14vw,15rem);
+  line-height:.88;letter-spacing:-.01em;
+  background:linear-gradient(135deg,#888 0%,#fff 35%,#aaa 55%,#ddd 75%,#777 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  display:flex;gap:2rem;align-items:center;flex-wrap:wrap;margin-bottom:3.5rem;
+  opacity:0;animation:up .7s .7s forwards;
+}
+.hero-tag{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  color:var(--muted2);text-transform:uppercase;
+}
+.hero-divider{width:32px;height:1px;background:var(--line2)}
+.hero-bottom{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  opacity:0;animation:up .7s .9s forwards;
+}
+.hero-stats{display:flex;gap:3.5rem}
+.hero-stat-num{
+  font-family:var(--display);font-size:2.6rem;color:var(--accent);line-height:1;
+}
+.hero-stat-label{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
+  color:var(--muted);text-transform:uppercase;margin-top:.3rem;
+}
+.hero-scroll-hint{
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+}
+.hero-scroll-line{
+  width:1px;height:64px;
+  background:linear-gradient(to bottom,var(--accent),transparent);
+  animation:scrollline 2.2s ease-in-out infinite;
+}
+@keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.hero-scroll-text{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;
+  color:var(--muted);text-transform:uppercase;writing-mode:vertical-rl;
+}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
-    backdrop-filter: blur(2px);
-  }
-  .nav-logo {
-    font-family: var(--display);
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+/* ── SECTION BASE ── */
+.section{position:relative;z-index:1;padding:6rem 3rem;border-top:1px solid var(--line)}
+.s-label{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.28em;
+  color:var(--accent);text-transform:uppercase;
+  display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;
+}
+.s-label::before{content:'';width:2rem;height:1px;background:var(--accent)}
+.s-head{
+  font-family:var(--display);
+  font-size:clamp(3rem,7vw,7rem);
+  line-height:.92;color:var(--text);
+}
 
-  /* ── SECTIONS ── */
-  section { position: relative; z-index: 1; }
+/* ── ABOUT ── */
+#about .about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start}
+.about-text{font-size:1.05rem;line-height:1.85;color:var(--muted2);margin-bottom:1.4rem}
+.about-text strong{color:var(--text);font-weight:700}
+.pill-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+.pill{
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted2);text-decoration:none;
+  border:1px solid var(--line2);padding:.45rem 1rem;
+  display:inline-flex;align-items:center;gap:.4rem;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.pill:hover{border-color:var(--accent);color:var(--accent);background:rgba(200,255,0,.04)}
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 3rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
+/* ── WORK ── */
+.work-item{
+  border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:3.5rem 1fr auto;
+  gap:2rem;align-items:start;
+  padding:2rem 0;cursor:default;
+  transition:background .2s;
+  position:relative;overflow:hidden;
+}
+.work-item::before{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:1px;background:var(--accent);
+  transition:width .5s cubic-bezier(.25,.46,.45,.94);
+}
+.work-item:hover::before{width:100%}
+.work-item:hover{background:rgba(255,255,255,.012)}
+.work-num{font-family:var(--mono);font-size:.63rem;color:var(--muted);padding-top:.3rem}
+.work-co{font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.work-co a{color:inherit;text-decoration:none;transition:color .2s}
+.work-co a:hover{color:var(--accent)}
+.work-role{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:.8rem}
+.work-desc{font-size:.87rem;line-height:1.75;color:#666;max-width:600px}
+.work-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.9rem}
+.wtag{font-family:var(--mono);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;padding:.22rem .6rem;border:1px solid var(--line);color:#4a4a4a}
+.work-date{font-family:var(--mono);font-size:.63rem;color:var(--muted);white-space:nowrap;padding-top:.3rem}
 
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.3s forwards;
-  }
+/* ── MARQUEE ── */
+#marquee-section{padding:3.5rem 0;border-top:1px solid var(--line);overflow:hidden;z-index:1;position:relative}
+.marquee-label{font-family:var(--mono);font-size:.63rem;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;text-align:center;margin-bottom:2rem}
+.marquee-outer{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,black 8%,black 92%,transparent)}
+.marquee-track{display:flex;gap:2.5rem;width:max-content}
+.marquee-track.playing{animation:scroll 30s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.m-item{font-family:var(--display);font-size:1.05rem;letter-spacing:.12em;color:var(--muted);white-space:nowrap;transition:color .2s;cursor:default}
+.m-item:hover{color:var(--accent)}
+.m-sep{color:var(--line2);font-size:.5rem;align-self:center}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  .hero-name {
-    font-family: var(--display);
-    font-size: clamp(5rem, 13vw, 14rem);
-    line-height: 0.88;
-    letter-spacing: -0.01em;
-    background: var(--chrome);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.8rem;
-    opacity: 0;
-    animation: fadeUp 0.9s 0.5s forwards;
-  }
+/* ── HIGHLIGHTS HORIZONTAL SCROLL ── */
+#highlights{padding:6rem 0;border-top:1px solid var(--line);overflow:hidden;z-index:1;position:relative}
+#highlights .s-label,#highlights .s-head{padding:0 3rem}
+.h-track-wrap{
+  overflow-x:auto;padding:2.5rem 3rem 2.5rem;
+  display:flex;gap:1.5rem;
+  scrollbar-width:none;cursor:grab;
+  -webkit-overflow-scrolling:touch;
+}
+.h-track-wrap::-webkit-scrollbar{display:none}
+.h-track-wrap.grabbing{cursor:grabbing}
+.h-card{
+  flex:0 0 340px;border:1px solid var(--line);padding:2rem;
+  background:var(--bg);
+  transition:border-color .3s,background .3s,transform .3s;
+  position:relative;overflow:hidden;text-decoration:none;display:block;
+}
+.h-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,255,0,.03),transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.h-card:hover::before{opacity:1}
+.h-card:hover{border-color:rgba(200,255,0,.3);background:var(--bg3);transform:translateY(-3px)}
+.h-num{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.15em;margin-bottom:1.2rem}
+.h-title{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.6rem;line-height:1.3}
+.h-desc{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:1.4rem}
+.h-link{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.4rem}
+.h-link::after{content:'↗';font-size:.8rem}
+.h-scroll-hint{
+  display:flex;align-items:center;gap:.8rem;padding:0 3rem;margin-top:1rem;
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;
+}
+.h-scroll-hint-line{width:40px;height:1px;background:var(--line2)}
 
-  .hero-role {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.7s forwards;
-  }
-  .hero-role-tag {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .hero-role-divider {
-    width: 40px; height: 1px;
-    background: var(--line-bright);
-  }
+/* ── FILM ── */
+.film-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.film-card{border:1px solid var(--line);padding:2rem;transition:border-color .3s,background .3s}
+.film-card:hover{border-color:rgba(200,255,0,.2);background:var(--bg3)}
+.film-card a{text-decoration:none;display:block}
+.film-num{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.15em;margin-bottom:1rem}
+.film-title{font-family:var(--display);font-size:2.2rem;letter-spacing:.04em;color:var(--text);margin-bottom:.4rem;line-height:1}
+.film-meta{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem}
+.film-desc{font-size:.86rem;color:#666;line-height:1.7}
 
-  .hero-meta {
-    display: flex;
-    gap: 3rem;
-    align-items: flex-end;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.9s forwards;
-  }
-  .hero-stat { text-align: left; }
-  .hero-stat-num {
-    font-family: var(--display);
-    font-size: 2.2rem;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .hero-stat-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-top: 0.3rem;
-  }
+/* ── STATS ── */
+#stats{background:var(--bg2)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);margin-top:3rem}
+.stat-cell{
+  padding:3rem 2rem;border-right:1px solid var(--line);text-align:center;
+  position:relative;overflow:hidden;
+}
+.stat-cell:last-child{border-right:none}
+.stat-cell::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;background:var(--accent);
+  transition:width .5s cubic-bezier(.25,.46,.45,.94);
+}
+.stat-cell:hover::after{width:60%}
+.stat-num{
+  font-family:var(--display);font-size:clamp(2.8rem,4.5vw,4.5rem);
+  background:linear-gradient(135deg,#888 0%,#fff 40%,#aaa 65%,#ccc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:.5rem;
+}
+.stat-label{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
 
-  .hero-scroll {
-    position: absolute;
-    right: 3rem;
-    bottom: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-    opacity: 0;
-    animation: fadeIn 1s 1.2s forwards;
-  }
-  .hero-scroll span {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    text-transform: uppercase;
-    writing-mode: vertical-rl;
-  }
-  .scroll-line {
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
-    animation: scrollPulse 2s infinite;
-  }
+/* ── CONTACT ── */
+#contact{text-align:center;padding:8rem 3rem}
+.contact-pre{font-family:var(--mono);font-size:.7rem;letter-spacing:.28em;color:var(--muted);text-transform:uppercase;margin-bottom:1.5rem}
+.contact-head{
+  font-family:var(--display);font-size:clamp(5rem,13vw,13rem);line-height:.88;
+  background:linear-gradient(135deg,#888 0%,#fff 40%,#aaa 65%,#ccc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:2.5rem;
+}
+.contact-sub{font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase;margin-bottom:2.5rem}
+.contact-email{
+  display:inline-block;font-family:var(--mono);font-size:1.1rem;color:var(--accent);
+  text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:.2rem;
+  margin-bottom:3.5rem;letter-spacing:.04em;transition:opacity .2s;
+}
+.contact-email:hover{opacity:.65}
+.social-row{display:flex;justify-content:center;flex-wrap:wrap;gap:1.5rem}
+.s-link{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:.35rem;
+  transition:color .2s;
+}
+.s-link::before{content:'↗';font-size:.75rem}
+.s-link:hover{color:var(--accent)}
 
-  /* ── ABOUT ── */
-  #about {
-    padding: 7rem 3rem;
-    border-top: 1px solid var(--line);
-  }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 4rem;
-    max-width: 1300px;
-  }
-  .section-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .section-label::before {
-    content: '';
-    display: block;
-    width: 2rem; height: 1px;
-    background: var(--accent);
-  }
-  .about-heading {
-    font-family: var(--display);
-    font-size: clamp(2.8rem, 5vw, 5rem);
-    line-height: 0.95;
-    color: var(--text);
-    margin-bottom: 0;
-  }
-  .about-body {
-    padding-top: 3rem;
-  }
-  .about-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: #aaa;
-    margin-bottom: 1.5rem;
-  }
-  .about-text strong { color: var(--text); font-weight: 700; }
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--line);padding:1.8rem 3rem;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:1;
+}
+.f-copy,.f-loc{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
 
-  .links-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 2rem;
-  }
-  .pill-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.45rem 1rem;
-    border: 1px solid var(--line-bright);
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
-  }
-  .pill-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(200,255,0,0.04);
-  }
-  .pill-link .arrow { font-size: 0.75rem; }
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.25,.46,.45,.94),transform .8s cubic-bezier(.25,.46,.45,.94)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}
+.reveal-d2{transition-delay:.2s}
+.reveal-d3{transition-delay:.3s}
 
-  /* ── WORK / EXPERIENCE ── */
-  #work {
-    padding: 5rem 3rem;
-    border-top: 1px solid var(--line);
-  }
-  .work-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 4rem;
-  }
-  .section-heading {
-    font-family: var(--display);
-    font-size: clamp(3rem, 6vw, 6rem);
-    line-height: 0.9;
-    color: var(--text);
-  }
+/* ── SCRAMBLE ── */
+.scramble{display:inline-block}
 
-  .work-list { border-top: 1px solid var(--line); }
-  .work-item {
-    border-bottom: 1px solid var(--line);
-    padding: 2rem 0;
-    display: grid;
-    grid-template-columns: 3rem 1fr auto;
-    gap: 1.5rem;
-    align-items: start;
-    transition: background 0.2s;
-    cursor: default;
-  }
-  .work-item:hover { background: rgba(255,255,255,0.015); }
-  .work-num {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    padding-top: 0.3rem;
-  }
-  .work-content {}
-  .work-company {
-    font-family: var(--sans);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-  .work-company a { color: inherit; text-decoration: none; }
-  .work-company a:hover { color: var(--accent); }
-  .work-role {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-    text-transform: uppercase;
-  }
-  .work-desc {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: #777;
-    max-width: 640px;
-  }
-  .work-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 1rem;
-  }
-  .tag {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    border: 1px solid var(--line);
-    color: #555;
-  }
-  .work-date {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--muted);
-    white-space: nowrap;
-    padding-top: 0.3rem;
-  }
-
-  /* ── CLIENTS MARQUEE ── */
-  #clients {
-    padding: 4rem 0;
-    border-top: 1px solid var(--line);
-    overflow: hidden;
-  }
-  .clients-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    color: var(--muted);
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-  .marquee-track {
-    display: flex;
-    gap: 3rem;
-    animation: marquee 25s linear infinite;
-    width: max-content;
-  }
-  .marquee-track:hover { animation-play-state: paused; }
-  .marquee-item {
-    font-family: var(--display);
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    white-space: nowrap;
-    transition: color 0.2s;
-  }
-  .marquee-item:hover { color: var(--accent); }
-  .marquee-dot {
-    color: var(--line-bright);
-    font-size: 0.5rem;
-    align-self: center;
-  }
-
-  /* ── HIGHLIGHTS ── */
-  #highlights {
-    padding: 5rem 3rem;
-    border-top: 1px solid var(--line);
-  }
-  .highlights-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--line);
-    margin-top: 3rem;
-    border: 1px solid var(--line);
-  }
-  .highlight-card {
-    background: var(--bg);
-    padding: 2rem;
-    transition: background 0.2s;
-  }
-  .highlight-card:hover { background: var(--bg3); }
-  .highlight-card a {
-    display: block;
-    text-decoration: none;
-    height: 100%;
-  }
-  .highlight-num {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 1.2rem;
-  }
-  .highlight-title {
-    font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.6rem;
-    line-height: 1.3;
-  }
-  .highlight-desc {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-  }
-  .highlight-link {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .highlight-link::after {
-    content: '↗';
-    font-size: 0.8rem;
-  }
-
-  /* ── FILMS ── */
-  #film {
-    padding: 5rem 3rem;
-    border-top: 1px solid var(--line);
-  }
-  .film-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .film-card {
-    border: 1px solid var(--line);
-    padding: 2rem;
-    transition: border-color 0.2s;
-  }
-  .film-card:hover { border-color: var(--line-bright); }
-  .film-title {
-    font-family: var(--display);
-    font-size: 2rem;
-    letter-spacing: 0.04em;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-  }
-  .film-meta {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .film-desc {
-    font-size: 0.88rem;
-    color: #666;
-    line-height: 1.7;
-  }
-
-  /* ── STATS ── */
-  #stats {
-    padding: 5rem 3rem;
-    border-top: 1px solid var(--line);
-    background: var(--bg2);
-  }
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border: 1px solid var(--line);
-    margin-top: 3rem;
-  }
-  .stat-item {
-    padding: 2.5rem 2rem;
-    border-right: 1px solid var(--line);
-    text-align: center;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-number {
-    font-family: var(--display);
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    background: var(--chrome);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .stat-label {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── CONTACT ── */
-  #contact {
-    padding: 7rem 3rem;
-    border-top: 1px solid var(--line);
-    text-align: center;
-  }
-  .contact-heading {
-    font-family: var(--display);
-    font-size: clamp(4rem, 10vw, 10rem);
-    line-height: 0.9;
-    background: var(--chrome);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 2rem;
-  }
-  .contact-sub {
-    font-family: var(--mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 3rem;
-  }
-  .contact-email {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 1rem;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent);
-    padding-bottom: 0.2rem;
-    margin-bottom: 3rem;
-    letter-spacing: 0.05em;
-    transition: opacity 0.2s;
-  }
-  .contact-email:hover { opacity: 0.7; }
-  .social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-  .social-link {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: color 0.2s;
-  }
-  .social-link:hover { color: var(--accent); }
-  .social-link::before { content: '↗'; font-size: 0.8rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-copy {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .footer-loc {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    #hero, #about, #work, #highlights, #film, #stats, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .highlights-grid { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .film-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-  }
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:1.2rem 1.5rem}
+  .nav-links,.nav-cta{display:none}
+  #hero,.section,#contact{padding-left:1.5rem;padding-right:1.5rem}
+  #about .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .film-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-title-line{font-size:clamp(4rem,18vw,8rem)}
+  footer{flex-direction:column;gap:.5rem;text-align:center}
+}
 </style>
 </head>
 <body>
 
+<!-- GRAIN -->
+<div id="grain"><canvas id="grain-canvas"></canvas></div>
+
+<!-- GRID -->
 <div class="grid-bg"></div>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+
+<!-- CURSOR -->
+<div id="cur">
+  <div id="cur-dot"></div>
+  <div id="cur-ring"></div>
+</div>
 
 <!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">NK<span>.</span></a>
+<nav id="nav">
+  <a href="#hero" class="nav-logo">NK<div class="nav-logo-dot"></div></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#highlights">Campaigns</a></li>
     <li><a href="#film">Film</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="mailto:nivedkrishnathavarayil@gmail.com" class="nav-cta">Hire Me →</a>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-eyebrow">Creative Director · Filmmaker · Strategist — Jersey City / NYC</div>
-  <div class="hero-name">NIVED<br>KRISHNA</div>
-  <div class="hero-role">
-    <span class="hero-role-tag">Social Media Director</span>
-    <div class="hero-role-divider"></div>
-    <span class="hero-role-tag">Brand Strategist</span>
-    <div class="hero-role-divider"></div>
-    <span class="hero-role-tag">Filmmaker</span>
-    <div class="hero-role-divider"></div>
-    <span class="hero-role-tag">Studio Founder</span>
+  <div class="hero-title">
+    <span class="hero-title-line scramble" data-text="NIVED">NIVED</span>
+    <span class="hero-title-line scramble" data-text="KRISHNA">KRISHNA</span>
   </div>
-  <div class="hero-meta">
-    <div class="hero-stat">
-      <div class="hero-stat-num">15+</div>
-      <div class="hero-stat-label">Active Clients</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">50+</div>
-      <div class="hero-stat-label">Brand Campaigns</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">24K+</div>
-      <div class="hero-stat-label">Organic Followers</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">20+</div>
-      <div class="hero-stat-label">Film Projects</div>
-    </div>
+  <div class="hero-sub">
+    <span class="hero-tag">Social Media Director</span>
+    <div class="hero-divider"></div>
+    <span class="hero-tag">Brand Strategist</span>
+    <div class="hero-divider"></div>
+    <span class="hero-tag">Filmmaker</span>
+    <div class="hero-divider"></div>
+    <span class="hero-tag">Studio Founder</span>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
+  <div class="hero-bottom">
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="15" data-suffix="+">15+</div>
+        <div class="hero-stat-label">Active Clients</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="50" data-suffix="+">50+</div>
+        <div class="hero-stat-label">Brand Campaigns</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="24" data-suffix="K+">24K+</div>
+        <div class="hero-stat-label">Organic Followers</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="20" data-suffix="+">20+</div>
+        <div class="hero-stat-label">Film Projects</div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-text">Scroll</span>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section">
   <div class="about-grid">
     <div>
-      <div class="section-label">About</div>
-      <h2 class="about-heading">BUILT<br>DIFFERENT.</h2>
+      <div class="s-label reveal">About</div>
+      <h2 class="s-head reveal reveal-d1">BUILT<br>DIFFERENT.</h2>
     </div>
-    <div class="about-body reveal">
-      <p class="about-text">
-        I'm <strong>Nivedkrishna Thavarayil</strong> — founder of <strong>Thava Studio</strong> and <strong>Nivedkrishna LLC</strong>, a cross-market creative operation spanning NYC, LA, and Bangalore. I build brands, grow social communities from scratch, and make films that hit. NYFA Dean's List 2025.
-      </p>
-      <p class="about-text">
-        My background blends <strong>5+ years of brand strategy and social media direction</strong> with a filmmaker's eye for storytelling. I've run viral campaigns for Sony Pictures, Durex, Netflix India, and Zomato — and built a film review community to <strong>24K+ organic Instagram followers</strong> from nothing.
-      </p>
-      <p class="about-text">
-        Currently running Thava Studio with 15+ active clients across New York, LA, Bangalore, Philadelphia, and Texas — from full social media retainers to web builds to content shoots.
-      </p>
-      <div class="links-row">
-        <a href="https://www.linkedin.com/in/nivedkrishna/" target="_blank" class="pill-link">LinkedIn <span class="arrow">↗</span></a>
-        <a href="https://www.instagram.com/tvedukr_12/" target="_blank" class="pill-link">@tvedukr_12 <span class="arrow">↗</span></a>
-        <a href="https://www.instagram.com/thava.studio" target="_blank" class="pill-link">@thava.studio <span class="arrow">↗</span></a>
-        <a href="https://www.instagram.com/growvior" target="_blank" class="pill-link">@growvior <span class="arrow">↗</span></a>
-        <a href="https://www.imdb.com/name/nm16824024/" target="_blank" class="pill-link">IMDb <span class="arrow">↗</span></a>
-        <a href="https://www.instagram.com/f24foster/" target="_blank" class="pill-link">@f24foster — cinephile <span class="arrow">↗</span></a>
-        <a href="mailto:nivedkrishnathavarayil@gmail.com" class="pill-link">Email <span class="arrow">→</span></a>
+    <div class="reveal reveal-d2">
+      <p class="about-text">I'm <strong>Nivedkrishna Thavarayil</strong> — founder of <strong>Thava Studio</strong> and <strong>Nivedkrishna LLC</strong>, a cross-market creative operation spanning NYC, LA, and Bangalore. I build brands, grow social communities from nothing, and make films that hit.</p>
+      <p class="about-text">My background blends <strong>5+ years of brand strategy and social media direction</strong> with a filmmaker's eye — NYFA Dean's List 2025, 50+ campaigns for Sony Pictures, Durex, Netflix India, Zomato, and a <strong>24K+ organic following</strong> built across platforms with zero ad spend.</p>
+      <p class="about-text">Currently running Thava Studio with <strong>15+ active clients</strong> across New York, LA, Bangalore, Philadelphia, and Texas.</p>
+      <div class="pill-row">
+        <a href="https://www.linkedin.com/in/nivedkrishna/" target="_blank" class="pill">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/tvedukr_12/" target="_blank" class="pill">@tvedukr_12 ↗</a>
+        <a href="https://www.instagram.com/thava.studio" target="_blank" class="pill">@thava.studio ↗</a>
+        <a href="https://www.instagram.com/growvior" target="_blank" class="pill">@growvior ↗</a>
+        <a href="https://www.imdb.com/name/nm16824024/" target="_blank" class="pill">IMDb ↗</a>
+        <a href="https://www.instagram.com/f24foster/" target="_blank" class="pill">@f24foster — cinephile ↗</a>
+        <a href="mailto:nivedkrishnathavarayil@gmail.com" class="pill">Email →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WORK / EXPERIENCE -->
-<section id="work">
-  <div class="work-header reveal">
-    <h2 class="section-heading">WORK<br>HISTORY</h2>
-  </div>
-  <div class="work-list">
+<!-- ══ WORK ══ -->
+<section id="work" class="section">
+  <div class="s-label reveal">Experience</div>
+  <h2 class="s-head reveal reveal-d1">WORK<br>HISTORY</h2>
+  <div style="margin-top:3rem;border-top:1px solid var(--line)">
 
     <div class="work-item reveal">
       <div class="work-num">01</div>
-      <div class="work-content">
-        <div class="work-company">Thava Studio · Nivedkrishna LLC</div>
+      <div>
+        <div class="work-co">Thava Studio · Nivedkrishna LLC</div>
         <div class="work-role">Founder & Creative Director</div>
-        <div class="work-desc">Full-service creative studio across US and India. Running social strategy, content production, web development, and brand identity for 15+ active clients. Clients include RTC Sports Academy, RealtorLevin, YourPrimaryCare, Nadan Kerala Cafe, Royal Jaipore Restaurant, Sterling Voice Coaching, Off Ground BLR, Embliss, Statement Clothing, Kavikara, Just BLR, and more.</div>
-        <div class="work-tags">
-          <span class="tag">Social Strategy</span>
-          <span class="tag">Content Production</span>
-          <span class="tag">Web Dev</span>
-          <span class="tag">Brand Identity</span>
-          <span class="tag">NYC · LA · Bangalore</span>
-        </div>
+        <div class="work-desc">Full-service creative studio across US and India. Social strategy, content production, web development, and brand identity for 15+ active clients — RTC Sports Academy, RealtorLevin, YourPrimaryCare, Nadan Kerala Cafe, Royal Jaipore Restaurant, Sterling Voice Coaching, Off Ground BLR, Embliss, Statement Clothing, Fetchy App, Cora The Borzoi, and more.</div>
+        <div class="work-tags"><span class="wtag">Social Strategy</span><span class="wtag">Content</span><span class="wtag">Web Dev</span><span class="wtag">NYC · LA · Bangalore</span></div>
       </div>
       <div class="work-date">Nov 2025 – Present</div>
     </div>
 
     <div class="work-item reveal">
       <div class="work-num">02</div>
-      <div class="work-content">
-        <div class="work-company">Growvior Software Pvt Ltd</div>
+      <div>
+        <div class="work-co">Growvior Software Pvt Ltd</div>
         <div class="work-role">Co-Founder — Growth & Strategy</div>
-        <div class="work-desc">Co-leading growth for Mockits — an AI-integrated ERP, LMS, and career readiness platform for educational institutes. Driving international pitching, US market outreach, and go-to-market strategy for Indian and international stakeholders.</div>
-        <div class="work-tags">
-          <span class="tag">EdTech</span>
-          <span class="tag">B2B Sales</span>
-          <span class="tag">GTM Strategy</span>
-          <span class="tag">AI</span>
-        </div>
+        <div class="work-desc">Co-leading growth for Mockits — an AI-integrated ERP, LMS, and career readiness platform. Driving international pitching, US market outreach, and go-to-market strategy for Indian and international education stakeholders.</div>
+        <div class="work-tags"><span class="wtag">EdTech</span><span class="wtag">B2B Sales</span><span class="wtag">GTM</span><span class="wtag">AI</span></div>
       </div>
       <div class="work-date">Jul 2025 – Present</div>
     </div>
 
     <div class="work-item reveal">
       <div class="work-num">03</div>
-      <div class="work-content">
-        <div class="work-company">
-          <a href="https://www.instagram.com/wldd.in/" target="_blank">WLDD — Wubba Lubba Dub Dub</a>
-        </div>
+      <div>
+        <div class="work-co"><a href="https://www.instagram.com/wldd.in/" target="_blank">WLDD — Wubba Lubba Dub Dub</a></div>
         <div class="work-role">Creative Strategist</div>
-        <div class="work-desc">Joined during early growth phase (team of 15). Helped grow WLDD's Instagram from 2K → 11K followers in 4 months through meme marketing and viral campaigns. Led 50+ campaigns for Sony Pictures, Durex, Swiggy, OnePlus, Zee5, Netflix India, Zomato, Bingo. Drove the viral Pope's Exorcist campaign — millions of views and national press coverage. WLDD has since grown to 1,000+ and acquired ScoopWhoop.</div>
-        <div class="work-tags">
-          <span class="tag">Viral Campaigns</span>
-          <span class="tag">Meme Marketing</span>
-          <span class="tag">Sony Pictures</span>
-          <span class="tag">Durex</span>
-          <span class="tag">Netflix India</span>
-        </div>
+        <div class="work-desc">Joined early-growth phase (team of 15). Grew Instagram 2K → 11K in 4 months. Led 50+ campaigns for Sony Pictures, Durex, Swiggy, OnePlus, Zee5, Netflix India, Zomato, Prime Video, Bingo. Drove the viral Pope's Exorcist campaign — millions of views, national press. WLDD since grew to 1,000+ and acquired ScoopWhoop.</div>
+        <div class="work-tags"><span class="wtag">Viral Campaigns</span><span class="wtag">Meme Marketing</span><span class="wtag">Sony Pictures</span><span class="wtag">Netflix India</span></div>
       </div>
       <div class="work-date">Jan 2023 – Apr 2024</div>
     </div>
 
     <div class="work-item reveal">
       <div class="work-num">04</div>
-      <div class="work-content">
-        <div class="work-company">
-          <a href="https://www.instagram.com/bricklanecurryhouse/" target="_blank">Brick Lane Curry House · Paratha Junction</a>
-        </div>
+      <div>
+        <div class="work-co"><a href="https://www.instagram.com/bricklanecurryhouse/" target="_blank">Brick Lane Curry House · Paratha Junction</a></div>
         <div class="work-role">Creative Strategist & Social Media Lead</div>
-        <div class="work-desc">Turned Brick Lane's Phaal Curry into a viral NYC content property through barter-based influencer strategy. One reel drove a major spike in reach and footfall. Shaped Paratha Junction's hyperlocal NJ food culture content direction.</div>
-        <div class="work-tags">
-          <span class="tag">Influencer Strategy</span>
-          <span class="tag">Reels</span>
-          <span class="tag">Food & Beverage</span>
-        </div>
+        <div class="work-desc">Turned Brick Lane's Phaal Curry into a viral NYC content property through barter-based influencer strategy. One reel drove a major spike in reach and restaurant footfall. Shaped Paratha Junction's hyperlocal NJ food culture content direction.</div>
+        <div class="work-tags"><span class="wtag">Influencer Strategy</span><span class="wtag">Reels</span><span class="wtag">F&B</span></div>
       </div>
       <div class="work-date">Sep – Nov 2024</div>
     </div>
 
     <div class="work-item reveal">
       <div class="work-num">05</div>
-      <div class="work-content">
-        <div class="work-company">
-          <a href="https://www.instagram.com/cashkaro/" target="_blank">CashKaro.com</a>
-        </div>
+      <div>
+        <div class="work-co"><a href="https://www.instagram.com/cashkaro/" target="_blank">CashKaro.com</a></div>
         <div class="work-role">Video Editor & Social Media</div>
-        <div class="work-desc">Edited YouTube campaigns, brand explainers, and social ads. Managed and curated social content for co-founder Swati Bhargava — lifestyle, BTS, and thought-leadership posts to humanize founder brand.</div>
-        <div class="work-tags">
-          <span class="tag">Video Editing</span>
-          <span class="tag">Premiere Pro</span>
-          <span class="tag">Founder Branding</span>
-        </div>
+        <div class="work-desc">Edited YouTube campaigns, brand explainers, and social ads. Managed and curated social content for co-founder Swati Bhargava — lifestyle, BTS, and thought-leadership content to humanize founder brand.</div>
+        <div class="work-tags"><span class="wtag">Video Editing</span><span class="wtag">Premiere Pro</span><span class="wtag">Founder Branding</span></div>
       </div>
       <div class="work-date">Sep 2022 – Jan 2023</div>
     </div>
 
     <div class="work-item reveal">
       <div class="work-num">06</div>
-      <div class="work-content">
-        <div class="work-company">Screen Reapers · GadgetLearn</div>
+      <div>
+        <div class="work-co">Screen Reapers · GadgetLearn</div>
         <div class="work-role">Co-Founder — Digital Marketing & Web Agency</div>
-        <div class="work-desc">Co-founded a full-service agency — web, SEO, paid social, and content for clients across New York, London, Dubai, and India. Built websites for Leaf N Beyond, EveShark (UK), Kendra Scott, Elyse Ryan, Karishma Mehra, and more.</div>
-        <div class="work-tags">
-          <span class="tag">Web Development</span>
-          <span class="tag">SEO</span>
-          <span class="tag">Meta Ads</span>
-          <span class="tag">Figma</span>
-        </div>
+        <div class="work-desc">Co-founded full-service agency — web, SEO, paid social, and content for clients across New York, London, Dubai, and India. Served Kendra Scott, Elyse Ryan, Leaf N Beyond, EveShark (UK), Karishma Mehra, and more.</div>
+        <div class="work-tags"><span class="wtag">Web Dev</span><span class="wtag">SEO</span><span class="wtag">Meta Ads</span><span class="wtag">Figma</span></div>
       </div>
       <div class="work-date">Jun 2019 – Dec 2023</div>
     </div>
@@ -857,236 +510,346 @@
   </div>
 </section>
 
-<!-- CLIENTS MARQUEE -->
-<section id="clients">
-  <div class="clients-label">Selected Clients & Brands</div>
-  <div style="overflow:hidden;">
-    <div class="marquee-track">
-      <span class="marquee-item">BRICK LANE CURRY HOUSE</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">STERLING VOICE COACHING</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">RTC SPORTS ACADEMY</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">SONY PICTURES</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">DUREX</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">NETFLIX INDIA</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">ZOMATO</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">SWIGGY</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">FETCHY APP</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">INFAMOUS COCONUTS</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">REALTORLEVIN</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">EMBLISS JEWELLERY</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">OFF GROUND BLR</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">CASHKARO</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">PRIME VIDEO</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">ONEPLÜS</span><span class="marquee-dot">·</span>
-      <!-- duplicate for seamless loop -->
-      <span class="marquee-item">BRICK LANE CURRY HOUSE</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">STERLING VOICE COACHING</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">RTC SPORTS ACADEMY</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">SONY PICTURES</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">DUREX</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">NETFLIX INDIA</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">ZOMATO</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">SWIGGY</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">FETCHY APP</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">INFAMOUS COCONUTS</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">REALTORLEVIN</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">EMBLISS JEWELLERY</span><span class="marquee-dot">·</span>
-      <span class="marquee-item">OFF GROUND BLR</span><span class="marquee-dot">·</span>
+<!-- ══ MARQUEE ══ -->
+<div id="marquee-section">
+  <div class="marquee-label">Selected Clients & Brands</div>
+  <div class="marquee-outer">
+    <div class="marquee-track playing">
+      <span class="m-item">BRICK LANE CURRY HOUSE</span><span class="m-sep">·</span>
+      <span class="m-item">STERLING VOICE COACHING</span><span class="m-sep">·</span>
+      <span class="m-item">RTC SPORTS ACADEMY</span><span class="m-sep">·</span>
+      <span class="m-item">SONY PICTURES</span><span class="m-sep">·</span>
+      <span class="m-item">DUREX</span><span class="m-sep">·</span>
+      <span class="m-item">NETFLIX INDIA</span><span class="m-sep">·</span>
+      <span class="m-item">ZOMATO</span><span class="m-sep">·</span>
+      <span class="m-item">SWIGGY</span><span class="m-sep">·</span>
+      <span class="m-item">FETCHY APP</span><span class="m-sep">·</span>
+      <span class="m-item">INFAMOUS COCONUTS</span><span class="m-sep">·</span>
+      <span class="m-item">REALTORLEVIN</span><span class="m-sep">·</span>
+      <span class="m-item">EMBLISS JEWELLERY</span><span class="m-sep">·</span>
+      <span class="m-item">OFF GROUND BLR</span><span class="m-sep">·</span>
+      <span class="m-item">PRIME VIDEO</span><span class="m-sep">·</span>
+      <span class="m-item">ONEPLUS</span><span class="m-sep">·</span>
+      <span class="m-item">CASHKARO</span><span class="m-sep">·</span>
+      <!-- duplicate -->
+      <span class="m-item">BRICK LANE CURRY HOUSE</span><span class="m-sep">·</span>
+      <span class="m-item">STERLING VOICE COACHING</span><span class="m-sep">·</span>
+      <span class="m-item">RTC SPORTS ACADEMY</span><span class="m-sep">·</span>
+      <span class="m-item">SONY PICTURES</span><span class="m-sep">·</span>
+      <span class="m-item">DUREX</span><span class="m-sep">·</span>
+      <span class="m-item">NETFLIX INDIA</span><span class="m-sep">·</span>
+      <span class="m-item">ZOMATO</span><span class="m-sep">·</span>
+      <span class="m-item">SWIGGY</span><span class="m-sep">·</span>
+      <span class="m-item">FETCHY APP</span><span class="m-sep">·</span>
+      <span class="m-item">INFAMOUS COCONUTS</span><span class="m-sep">·</span>
+      <span class="m-item">REALTORLEVIN</span><span class="m-sep">·</span>
+      <span class="m-item">EMBLISS JEWELLERY</span><span class="m-sep">·</span>
+      <span class="m-item">OFF GROUND BLR</span><span class="m-sep">·</span>
+      <span class="m-item">PRIME VIDEO</span><span class="m-sep">·</span>
+      <span class="m-item">ONEPLUS</span><span class="m-sep">·</span>
+      <span class="m-item">CASHKARO</span><span class="m-sep">·</span>
     </div>
   </div>
-</section>
+</div>
 
-<!-- CAMPAIGN HIGHLIGHTS -->
+<!-- ══ HIGHLIGHTS — HORIZONTAL DRAG SCROLL ══ -->
 <section id="highlights">
-  <div class="section-label reveal">Campaign Highlights</div>
-  <div class="highlights-grid">
+  <div class="s-label reveal">Campaign Highlights</div>
+  <h2 class="s-head reveal reveal-d1">PROOF<br>OF WORK</h2>
+  <div class="h-scroll-hint reveal reveal-d2">
+    <div class="h-scroll-hint-line"></div>
+    <span>Drag to explore</span>
+  </div>
+  <div class="h-track-wrap" id="htrack">
 
-    <div class="highlight-card reveal">
-      <a href="https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html" target="_blank">
-        <div class="highlight-num">01 / Campaign</div>
-        <div class="highlight-title">The Pope's Exorcist — Viral Campaign</div>
-        <div class="highlight-desc">Conceptualized and executed for Sony Pictures at WLDD. Achieved millions of views and national press coverage. Featured in Hindustan Times.</div>
-        <div class="highlight-link">Read Coverage</div>
-      </a>
+    <a class="h-card" href="https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html" target="_blank">
+      <div class="h-num">01 / Campaign</div>
+      <div class="h-title">The Pope's Exorcist — Viral Campaign</div>
+      <div class="h-desc">Conceptualized for Sony Pictures at WLDD. Millions of views. Covered by Hindustan Times and Indian Express. One of the biggest viral film campaign moments in India that year.</div>
+      <div class="h-link">Read Coverage</div>
+    </a>
+
+    <a class="h-card" href="https://www.instagram.com/reel/DBWjEWBvpIV/?hl=en" target="_blank">
+      <div class="h-num">02 / Reels</div>
+      <div class="h-title">Brick Lane Phaal Challenge</div>
+      <div class="h-desc">Turned NYC's spiciest curry into a must-do experience. Barter-based influencer strategy, zero budget, drove a major spike in footfall, reach, and profile visits.</div>
+      <div class="h-link">Watch Reel</div>
+    </a>
+
+    <a class="h-card" href="https://www.instagram.com/reel/CseTDD5A2iL/?igsh=dzB2NmpxaWhnZWEy" target="_blank">
+      <div class="h-num">03 / Brand</div>
+      <div class="h-title">Durex India — Viral Social</div>
+      <div class="h-desc">Led creative strategy and direction for one of Durex India's top-performing social campaigns — sharp, culturally tuned, platform-native content that cut through.</div>
+      <div class="h-link">Watch Reel</div>
+    </a>
+
+    <div class="h-card">
+      <div class="h-num">04 / Growth</div>
+      <div class="h-title">Infamous Coconuts — 150 → 2,000+</div>
+      <div class="h-desc">Full Instagram rebrand. Launched new identity that gained 400+ followers in the first 24 hours. Zero ad spend, entirely organic, built through meme and culture campaigns.</div>
+      <div class="h-link" style="cursor:default;pointer-events:none">Organic Growth</div>
     </div>
 
-    <div class="highlight-card reveal">
-      <a href="https://www.instagram.com/reel/DBWjEWBvpIV/?hl=en" target="_blank">
-        <div class="highlight-num">02 / Reels</div>
-        <div class="highlight-title">Brick Lane Phaal Challenge — Viral Reel</div>
-        <div class="highlight-desc">Turned NYC's spiciest curry into a must-do experience. Barter-based influencer strategy drove major spike in reach and restaurant footfall.</div>
-        <div class="highlight-link">Watch Reel</div>
-      </a>
+    <div class="h-card">
+      <div class="h-num">05 / Agency Growth</div>
+      <div class="h-title">WLDD — 2K → 11K in 4 Months</div>
+      <div class="h-desc">Shaped the meme-first identity of one of India's most creative agencies. 5x follower growth in 4 months. WLDD has since grown to 1,000+ people and acquired ScoopWhoop.</div>
+      <div class="h-link" style="cursor:default;pointer-events:none">Growth Record</div>
     </div>
 
-    <div class="highlight-card reveal">
-      <a href="https://www.instagram.com/reel/CseTDD5A2iL/?igsh=dzB2NmpxaWhnZWEy" target="_blank">
-        <div class="highlight-num">03 / Brand</div>
-        <div class="highlight-title">Durex India — Viral Social Campaign</div>
-        <div class="highlight-desc">Led strategy and creative direction for one of Durex India's top-performing social campaigns at WLDD.</div>
-        <div class="highlight-link">Watch Reel</div>
-      </a>
+    <div class="h-card">
+      <div class="h-num">06 / Personal</div>
+      <div class="h-title">@f24foster — Cinephile Community</div>
+      <div class="h-desc">A personal Instagram and Letterboxd community built from pure love of cinema. Reviews, recommendations, indie and arthouse discoveries. Grown entirely organically.</div>
+      <div class="h-link" style="cursor:default;pointer-events:none">Personal Project</div>
     </div>
 
-    <div class="highlight-card reveal">
-      <div>
-        <div class="highlight-num">04 / Growth</div>
-        <div class="highlight-title">Infamous Coconuts — 150 → 2,000+ Followers</div>
-        <div class="highlight-desc">Rebranded the production house's Instagram from scratch. Launched new identity that gained 400+ followers in the first 24 hours, zero ad spend.</div>
-        <div class="highlight-link" style="cursor:default;">Organic Growth</div>
-      </div>
-    </div>
-
-    <div class="highlight-card reveal">
-      <a href="https://www.instagram.com/f24foster/" target="_blank">
-        <div class="highlight-num">05 / Personal Project</div>
-        <div class="highlight-title">@f24foster — Cinephile Passion Page</div>
-        <div class="highlight-desc">A personal Instagram and Letterboxd community built purely for the love of cinema — reviews, recommendations, indie discoveries, and arthouse deep-dives.</div>
-        <div class="highlight-link">Visit Page</div>
-      </a>
-    </div>
-
-    <div class="highlight-card reveal">
-      <div>
-        <div class="highlight-num">06 / Agency</div>
-        <div class="highlight-title">WLDD — 2K → 11K in 4 Months</div>
-        <div class="highlight-desc">Helped shape WLDD's meme-first identity and grew their Instagram 5x in 4 months through reels, pop-culture campaigns, and viral content.</div>
-        <div class="highlight-link" style="cursor:default;">Growth Record</div>
-      </div>
-    </div>
+    <a class="h-card" href="https://www.instagram.com/reel/DJZIX2EsXgX/?hl=en" target="_blank">
+      <div class="h-num">07 / Content</div>
+      <div class="h-title">Brick Lane Reel 2 — NYC Food Content</div>
+      <div class="h-desc">Follow-up high-performing reel for Brick Lane — showcasing on-site iPhone production capability and the ability to turn a location shoot into shareable content fast.</div>
+      <div class="h-link">Watch Reel</div>
+    </a>
 
   </div>
 </section>
 
-<!-- FILM -->
-<section id="film">
-  <div class="section-label reveal">Film Work</div>
-  <h2 class="section-heading reveal">DIRECTOR<br>& WRITER</h2>
+<!-- ══ FILM ══ -->
+<section id="film" class="section">
+  <div class="s-label reveal">Film Work</div>
+  <h2 class="s-head reveal reveal-d1">DIRECTOR<br>& WRITER</h2>
   <div class="film-grid">
 
     <div class="film-card reveal">
+      <div class="film-num">F — 01</div>
       <div class="film-title">THE LAST PIZZA</div>
-      <div class="film-meta">Director · Writer · 7 min · NYC</div>
-      <div class="film-desc">Survival short film shot on NYC rooftops on a $50 budget. Guerrilla production that proves resourcefulness over resources. Screened within NYFA circles.</div>
+      <div class="film-meta">Director · Writer · 7 min · NYC Rooftops · $50</div>
+      <div class="film-desc">Survival short film shot on NYC rooftops on a $50 budget. Guerrilla production that proves resourcefulness over resources. The most NYC film you'll see for what it cost.</div>
     </div>
 
-    <div class="film-card reveal">
+    <div class="film-card reveal reveal-d1">
+      <div class="film-num">F — 02</div>
       <div class="film-title">FRAMES OF SILENCE</div>
       <div class="film-meta">Director · Writer · Psychological Drama · $700</div>
-      <div class="film-desc">Psychological drama exploring power dynamics and control. Produced at $700. Demonstrates narrative ambition and tonal precision.</div>
+      <div class="film-desc">Psychological drama exploring power dynamics and control. Produced at $700. Demonstrates narrative ambition and deliberate tonal precision in a constrained format.</div>
     </div>
 
-    <div class="film-card reveal">
+    <div class="film-card reveal reveal-d2">
+      <div class="film-num">F — 03</div>
       <div class="film-title">ANTHIMA KAHALAM</div>
       <div class="film-meta">In Development · Feature · NYC · A24 Tone</div>
-      <div class="film-desc">Feature film project reimagined in New York City with a Gen Z aesthetic. Tonal references: A24 and Master of None. Currently in development.</div>
+      <div class="film-desc">Feature film reimagined in New York City with a Gen Z aesthetic. Tonal references: A24 and Master of None. Characters: Ayush, Devika, Sreenath, Diego, Kalan, Teju. Currently in active development.</div>
     </div>
 
-    <div class="film-card reveal">
-      <a href="https://www.imdb.com/name/nm16824024/" target="_blank" style="text-decoration:none;display:block;">
+    <div class="film-card reveal reveal-d3">
+      <a href="https://www.imdb.com/name/nm16824024/" target="_blank">
+        <div class="film-num">F — 04</div>
         <div class="film-title">20+ SETS</div>
         <div class="film-meta">Director · DOP · Editor · AC/AD · Sound · Actor</div>
-        <div class="film-desc">Worked on 20+ film sets within NYFA and independent productions. Full end-to-end filmmaking experience across every key role. NYFA Dean's List 2025. View credits on IMDb ↗</div>
+        <div class="film-desc">Full end-to-end filmmaking experience across every key crew role at NYFA and independent productions. Dean's List 2025. All credits on IMDb ↗</div>
       </a>
     </div>
 
   </div>
 </section>
 
-<!-- STATS -->
-<section id="stats">
-  <div class="section-label reveal">By the Numbers</div>
+<!-- ══ STATS ══ -->
+<section id="stats" class="section">
+  <div class="s-label reveal">Numbers</div>
   <div class="stats-grid">
-    <div class="stat-item reveal">
-      <div class="stat-number">50+</div>
+    <div class="stat-cell reveal">
+      <div class="stat-num" data-count="50" data-suffix="+">50+</div>
       <div class="stat-label">Brand Campaigns</div>
     </div>
-    <div class="stat-item reveal">
-      <div class="stat-number">15+</div>
+    <div class="stat-cell reveal reveal-d1">
+      <div class="stat-num" data-count="15" data-suffix="+">15+</div>
       <div class="stat-label">Active Clients</div>
     </div>
-    <div class="stat-item reveal">
-      <div class="stat-number">24K+</div>
+    <div class="stat-cell reveal reveal-d2">
+      <div class="stat-num" data-count="24" data-suffix="K+">24K+</div>
       <div class="stat-label">Organic Followers Built</div>
     </div>
-    <div class="stat-item reveal">
-      <div class="stat-number">5+</div>
+    <div class="stat-cell reveal reveal-d3">
+      <div class="stat-num" data-count="5" data-suffix="+">5+</div>
       <div class="stat-label">Years Experience</div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <section id="contact">
-  <div class="section-label" style="justify-content:center;">Let's Work</div>
-  <div class="contact-heading">LET'S<br>TALK.</div>
-  <div class="contact-sub">Open to full-time, retainer, and creative partnerships</div>
+  <div class="contact-pre">Open to full-time, retainer & creative partnerships</div>
+  <div class="contact-head scramble" data-text="LET'S TALK.">LET'S TALK.</div>
+  <div class="contact-sub">Based in Jersey City, NYC — Available Now</div>
   <a href="mailto:nivedkrishnathavarayil@gmail.com" class="contact-email">nivedkrishnathavarayil@gmail.com</a>
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/nivedkrishna/" target="_blank" class="social-link">LinkedIn</a>
-    <a href="https://www.instagram.com/tvedukr_12/" target="_blank" class="social-link">@tvedukr_12</a>
-    <a href="https://www.instagram.com/thava.studio" target="_blank" class="social-link">@thava.studio</a>
-    <a href="https://www.instagram.com/growvior" target="_blank" class="social-link">@growvior</a>
-    <a href="https://www.imdb.com/name/nm16824024/" target="_blank" class="social-link">IMDb</a>
-    <a href="https://www.instagram.com/f24foster/" target="_blank" class="social-link">@f24foster</a>
-    <a href="tel:+15513442467" class="social-link">+1 (551) 344-2467</a>
+  <div class="social-row">
+    <a href="https://www.linkedin.com/in/nivedkrishna/" target="_blank" class="s-link">LinkedIn</a>
+    <a href="https://www.instagram.com/tvedukr_12/" target="_blank" class="s-link">@tvedukr_12</a>
+    <a href="https://www.instagram.com/thava.studio" target="_blank" class="s-link">@thava.studio</a>
+    <a href="https://www.instagram.com/growvior" target="_blank" class="s-link">@growvior</a>
+    <a href="https://www.imdb.com/name/nm16824024/" target="_blank" class="s-link">IMDb</a>
+    <a href="https://www.instagram.com/f24foster/" target="_blank" class="s-link">@f24foster</a>
+    <a href="tel:+15513442467" class="s-link">+1 (551) 344-2467</a>
   </div>
 </section>
 
 <footer>
-  <span class="footer-copy">© 2026 Nivedkrishna Thavarayil · Thava Studio</span>
-  <span class="footer-loc">Jersey City, NJ · NYC · Bangalore</span>
+  <span class="f-copy">© 2026 Nivedkrishna Thavarayil · Thava Studio</span>
+  <span class="f-loc">Jersey City, NJ · NYC · Bangalore</span>
 </footer>
 
 <script>
-  // Cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-  });
-
-  function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animateRing);
+// ── GRAIN ────────────────────────────────────────────────────────────
+(function(){
+  const c=document.getElementById('grain-canvas');
+  const ctx=c.getContext('2d');
+  let w,h,frame=0;
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  function draw(){
+    frame++;
+    if(frame%2!==0){requestAnimationFrame(draw);return}
+    const img=ctx.createImageData(w,h);
+    const d=img.data;
+    for(let i=0;i<d.length;i+=4){
+      const v=Math.random()*255|0;
+      d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;
+    }
+    ctx.putImageData(img,0,0);
+    requestAnimationFrame(draw);
   }
-  animateRing();
+  draw();
+})();
 
-  document.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      ring.style.width = '60px';
-      ring.style.height = '60px';
-      ring.style.borderColor = 'rgba(200,255,0,0.7)';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '10px';
-      cursor.style.height = '10px';
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-      ring.style.borderColor = 'rgba(200,255,0,0.4)';
-    });
+// ── CURSOR ───────────────────────────────────────────────────────────
+(function(){
+  const dot=document.getElementById('cur-dot');
+  const ring=document.getElementById('cur-ring');
+  let mx=0,my=0,rx=0,ry=0,raf;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';dot.style.top=my+'px';
   });
+  function tick(){
+    rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+    ring.style.left=Math.round(rx)+'px';
+    ring.style.top=Math.round(ry)+'px';
+    requestAnimationFrame(tick);
+  }
+  tick();
+  document.querySelectorAll('a,button,.h-card,.work-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+  });
+})();
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
+// ── NAV SCROLL ───────────────────────────────────────────────────────
+(function(){
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>60);
+  },{passive:true});
+})();
+
+// ── TEXT SCRAMBLE ─────────────────────────────────────────────────────
+(function(){
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
+  function scramble(el,final,duration){
+    let start=null;
+    const len=final.length;
+    function step(ts){
+      if(!start)start=ts;
+      const progress=Math.min((ts-start)/duration,1);
+      const revealCount=Math.floor(progress*len);
+      let out='';
+      for(let i=0;i<len;i++){
+        if(final[i]===' '){out+=' ';continue}
+        if(i<revealCount){out+=final[i]}
+        else{out+=chars[Math.floor(Math.random()*chars.length)]}
       }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      el.textContent=out;
+      if(progress<1)requestAnimationFrame(step);
+      else el.textContent=final;
+    }
+    requestAnimationFrame(step);
+  }
+  // Run hero scrambles immediately
+  document.querySelectorAll('.hero-title .scramble').forEach((el,i)=>{
+    setTimeout(()=>scramble(el,el.dataset.text,900),600+i*200);
+  });
+  // Run contact scramble when in view
+  const contactHead=document.querySelector('#contact .scramble');
+  if(contactHead){
+    let done=false;
+    const obs=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting&&!done){
+        done=true;scramble(contactHead,contactHead.dataset.text,1000);
+      }
+    },{threshold:.3});
+    obs.observe(contactHead);
+  }
+})();
 
-  reveals.forEach(el => observer.observe(el));
+// ── SCROLL REVEAL ────────────────────────────────────────────────────
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(el=>obs.observe(el));
+})();
+
+// ── COUNTER ANIMATION ─────────────────────────────────────────────────
+(function(){
+  function easeOut(t){return 1-(1-t)*(1-t)*(1-t)}
+  function animateCount(el){
+    const target=parseInt(el.dataset.count);
+    const suffix=el.dataset.suffix||'';
+    const duration=1600;
+    let start=null;
+    function step(ts){
+      if(!start)start=ts;
+      const p=Math.min((ts-start)/duration,1);
+      const val=Math.floor(easeOut(p)*target);
+      el.textContent=val+suffix;
+      if(p<1)requestAnimationFrame(step);
+      else el.textContent=target+suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  const counters=document.querySelectorAll('[data-count]');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){animateCount(e.target);obs.unobserve(e.target)}
+    });
+  },{threshold:.5});
+  counters.forEach(el=>obs.observe(el));
+})();
+
+// ── HORIZONTAL DRAG SCROLL ────────────────────────────────────────────
+(function(){
+  const track=document.getElementById('htrack');
+  if(!track)return;
+  let isDown=false,startX,scrollLeft;
+  track.addEventListener('mousedown',e=>{
+    isDown=true;track.classList.add('grabbing');
+    startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;
+  });
+  document.addEventListener('mouseup',()=>{isDown=false;track.classList.remove('grabbing')});
+  track.addEventListener('mousemove',e=>{
+    if(!isDown)return;e.preventDefault();
+    const x=e.pageX-track.offsetLeft;
+    const walk=(x-startX)*1.5;
+    track.scrollLeft=scrollLeft-walk;
+  });
+  // Touch support
+  let touchStart=0,touchScrollStart=0;
+  track.addEventListener('touchstart',e=>{touchStart=e.touches[0].pageX;touchScrollStart=track.scrollLeft},{passive:true});
+  track.addEventListener('touchmove',e=>{
+    const dx=e.touches[0].pageX-touchStart;
+    track.scrollLeft=touchScrollStart-dx;
+  },{passive:true});
+})();
 </script>
 </body>
 </html>
