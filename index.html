@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nivedkrishna — Creative Director & Filmmaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #080808;
+    --bg2: #0e0e0e;
+    --bg3: #141414;
+    --line: rgba(255,255,255,0.07);
+    --line-bright: rgba(255,255,255,0.18);
+    --text: #e8e8e8;
+    --muted: #666;
+    --accent: #c8ff00;
+    --accent2: #00d4ff;
+    --chrome: linear-gradient(135deg, #aaa 0%, #fff 40%, #888 60%, #ccc 100%);
+    --mono: 'DM Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* ── CUSTOM CURSOR ── */
+  #cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+    mix-blend-mode: difference;
+  }
+  #cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid rgba(200,255,0,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+  }
+  body:hover #cursor { opacity: 1; }
+
+  /* ── GRID OVERLAY ── */
+  .grid-bg {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to bottom, rgba(8,8,8,0.95), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-name {
+    font-family: var(--display);
+    font-size: clamp(5rem, 13vw, 14rem);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+  }
+
+  .hero-role {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+  }
+  .hero-role-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .hero-role-divider {
+    width: 40px; height: 1px;
+    background: var(--line-bright);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-end;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+  .hero-stat { text-align: left; }
+  .hero-stat-num {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    right: 3rem;
+    bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+  }
+  .hero-scroll span {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 7rem 3rem;
+    border-top: 1px solid var(--line);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    max-width: 1300px;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+  .about-heading {
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: 0;
+  }
+  .about-body {
+    padding-top: 3rem;
+  }
+  .about-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+  }
+  .about-text strong { color: var(--text); font-weight: 700; }
+
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+  .pill-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--line-bright);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .pill-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,255,0,0.04);
+  }
+  .pill-link .arrow { font-size: 0.75rem; }
+
+  /* ── WORK / EXPERIENCE ── */
+  #work {
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--line);
+  }
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+  .section-heading {
+    font-family: var(--display);
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.9;
+    color: var(--text);
+  }
+
+  .work-list { border-top: 1px solid var(--line); }
+  .work-item {
+    border-bottom: 1px solid var(--line);
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .work-item:hover { background: rgba(255,255,255,0.015); }
+  .work-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    padding-top: 0.3rem;
+  }
+  .work-content {}
+  .work-company {
+    font-family: var(--sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .work-company a { color: inherit; text-decoration: none; }
+  .work-company a:hover { color: var(--accent); }
+  .work-role {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .work-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #777;
+    max-width: 640px;
+  }
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--line);
+    color: #555;
+  }
+  .work-date {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 0.3rem;
+  }
+
+  /* ── CLIENTS MARQUEE ── */
+  #clients {
+    padding: 4rem 0;
+    border-top: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .clients-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 25s linear infinite;
+    width: max-content;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  .marquee-item {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .marquee-item:hover { color: var(--accent); }
+  .marquee-dot {
+    color: var(--line-bright);
+    font-size: 0.5rem;
+    align-self: center;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  #highlights {
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--line);
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin-top: 3rem;
+    border: 1px solid var(--line);
+  }
+  .highlight-card {
+    background: var(--bg);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .highlight-card:hover { background: var(--bg3); }
+  .highlight-card a {
+    display: block;
+    text-decoration: none;
+    height: 100%;
+  }
+  .highlight-num {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.2rem;
+  }
+  .highlight-title {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .highlight-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+  .highlight-link {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .highlight-link::after {
+    content: '↗';
+    font-size: 0.8rem;
+  }
+
+  /* ── FILMS ── */
+  #film {
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--line);
+  }
+  .film-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .film-card {
+    border: 1px solid var(--line);
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .film-card:hover { border-color: var(--line-bright); }
+  .film-title {
+    font-family: var(--display);
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .film-meta {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .film-desc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ── STATS ── */
+  #stats {
+    padding: 5rem 3rem;
+    border-top: 1px solid var(--line);
+    background: var(--bg2);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    margin-top: 3rem;
+  }
+  .stat-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-number {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    padding: 7rem 3rem;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .contact-heading {
+    font-family: var(--display);
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 0.9;
+    background: var(--chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+  }
+  .contact-sub {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+  .contact-email {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 1rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 0.2rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover { opacity: 0.7; }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .social-link {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--accent); }
+  .social-link::before { content: '↗'; font-size: 0.8rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .footer-loc {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero, #about, #work, #highlights, #film, #stats, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .film-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">NK<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#film">Film</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Creative Director · Filmmaker · Strategist — Jersey City / NYC</div>
+  <div class="hero-name">NIVED<br>KRISHNA</div>
+  <div class="hero-role">
+    <span class="hero-role-tag">Social Media Director</span>
+    <div class="hero-role-divider"></div>
+    <span class="hero-role-tag">Brand Strategist</span>
+    <div class="hero-role-divider"></div>
+    <span class="hero-role-tag">Filmmaker</span>
+    <div class="hero-role-divider"></div>
+    <span class="hero-role-tag">Studio Founder</span>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="hero-stat-num">15+</div>
+      <div class="hero-stat-label">Active Clients</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">50+</div>
+      <div class="hero-stat-label">Brand Campaigns</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">24K+</div>
+      <div class="hero-stat-label">Organic Followers</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">20+</div>
+      <div class="hero-stat-label">Film Projects</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">About</div>
+      <h2 class="about-heading">BUILT<br>DIFFERENT.</h2>
+    </div>
+    <div class="about-body reveal">
+      <p class="about-text">
+        I'm <strong>Nivedkrishna Thavarayil</strong> — founder of <strong>Thava Studio</strong> and <strong>Nivedkrishna LLC</strong>, a cross-market creative operation spanning NYC, LA, and Bangalore. I build brands, grow social communities from scratch, and make films that hit. NYFA Dean's List 2025.
+      </p>
+      <p class="about-text">
+        My background blends <strong>5+ years of brand strategy and social media direction</strong> with a filmmaker's eye for storytelling. I've run viral campaigns for Sony Pictures, Durex, Netflix India, and Zomato — and built a film review community to <strong>24K+ organic Instagram followers</strong> from nothing.
+      </p>
+      <p class="about-text">
+        Currently running Thava Studio with 15+ active clients across New York, LA, Bangalore, Philadelphia, and Texas — from full social media retainers to web builds to content shoots.
+      </p>
+      <div class="links-row">
+        <a href="https://www.linkedin.com/in/nivedkrishna/" target="_blank" class="pill-link">LinkedIn <span class="arrow">↗</span></a>
+        <a href="https://www.instagram.com/tvedukr_12/" target="_blank" class="pill-link">@tvedukr_12 <span class="arrow">↗</span></a>
+        <a href="https://www.instagram.com/thava.studio" target="_blank" class="pill-link">@thava.studio <span class="arrow">↗</span></a>
+        <a href="https://www.instagram.com/growvior" target="_blank" class="pill-link">@growvior <span class="arrow">↗</span></a>
+        <a href="https://www.imdb.com/name/nm16824024/" target="_blank" class="pill-link">IMDb <span class="arrow">↗</span></a>
+        <a href="https://www.instagram.com/f24foster/" target="_blank" class="pill-link">@f24foster — cinephile <span class="arrow">↗</span></a>
+        <a href="mailto:nivedkrishnathavarayil@gmail.com" class="pill-link">Email <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / EXPERIENCE -->
+<section id="work">
+  <div class="work-header reveal">
+    <h2 class="section-heading">WORK<br>HISTORY</h2>
+  </div>
+  <div class="work-list">
+
+    <div class="work-item reveal">
+      <div class="work-num">01</div>
+      <div class="work-content">
+        <div class="work-company">Thava Studio · Nivedkrishna LLC</div>
+        <div class="work-role">Founder & Creative Director</div>
+        <div class="work-desc">Full-service creative studio across US and India. Running social strategy, content production, web development, and brand identity for 15+ active clients. Clients include RTC Sports Academy, RealtorLevin, YourPrimaryCare, Nadan Kerala Cafe, Royal Jaipore Restaurant, Sterling Voice Coaching, Off Ground BLR, Embliss, Statement Clothing, Kavikara, Just BLR, and more.</div>
+        <div class="work-tags">
+          <span class="tag">Social Strategy</span>
+          <span class="tag">Content Production</span>
+          <span class="tag">Web Dev</span>
+          <span class="tag">Brand Identity</span>
+          <span class="tag">NYC · LA · Bangalore</span>
+        </div>
+      </div>
+      <div class="work-date">Nov 2025 – Present</div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-num">02</div>
+      <div class="work-content">
+        <div class="work-company">Growvior Software Pvt Ltd</div>
+        <div class="work-role">Co-Founder — Growth & Strategy</div>
+        <div class="work-desc">Co-leading growth for Mockits — an AI-integrated ERP, LMS, and career readiness platform for educational institutes. Driving international pitching, US market outreach, and go-to-market strategy for Indian and international stakeholders.</div>
+        <div class="work-tags">
+          <span class="tag">EdTech</span>
+          <span class="tag">B2B Sales</span>
+          <span class="tag">GTM Strategy</span>
+          <span class="tag">AI</span>
+        </div>
+      </div>
+      <div class="work-date">Jul 2025 – Present</div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-num">03</div>
+      <div class="work-content">
+        <div class="work-company">
+          <a href="https://www.instagram.com/wldd.in/" target="_blank">WLDD — Wubba Lubba Dub Dub</a>
+        </div>
+        <div class="work-role">Creative Strategist</div>
+        <div class="work-desc">Joined during early growth phase (team of 15). Helped grow WLDD's Instagram from 2K → 11K followers in 4 months through meme marketing and viral campaigns. Led 50+ campaigns for Sony Pictures, Durex, Swiggy, OnePlus, Zee5, Netflix India, Zomato, Bingo. Drove the viral Pope's Exorcist campaign — millions of views and national press coverage. WLDD has since grown to 1,000+ and acquired ScoopWhoop.</div>
+        <div class="work-tags">
+          <span class="tag">Viral Campaigns</span>
+          <span class="tag">Meme Marketing</span>
+          <span class="tag">Sony Pictures</span>
+          <span class="tag">Durex</span>
+          <span class="tag">Netflix India</span>
+        </div>
+      </div>
+      <div class="work-date">Jan 2023 – Apr 2024</div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-num">04</div>
+      <div class="work-content">
+        <div class="work-company">
+          <a href="https://www.instagram.com/bricklanecurryhouse/" target="_blank">Brick Lane Curry House · Paratha Junction</a>
+        </div>
+        <div class="work-role">Creative Strategist & Social Media Lead</div>
+        <div class="work-desc">Turned Brick Lane's Phaal Curry into a viral NYC content property through barter-based influencer strategy. One reel drove a major spike in reach and footfall. Shaped Paratha Junction's hyperlocal NJ food culture content direction.</div>
+        <div class="work-tags">
+          <span class="tag">Influencer Strategy</span>
+          <span class="tag">Reels</span>
+          <span class="tag">Food & Beverage</span>
+        </div>
+      </div>
+      <div class="work-date">Sep – Nov 2024</div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-num">05</div>
+      <div class="work-content">
+        <div class="work-company">
+          <a href="https://www.instagram.com/cashkaro/" target="_blank">CashKaro.com</a>
+        </div>
+        <div class="work-role">Video Editor & Social Media</div>
+        <div class="work-desc">Edited YouTube campaigns, brand explainers, and social ads. Managed and curated social content for co-founder Swati Bhargava — lifestyle, BTS, and thought-leadership posts to humanize founder brand.</div>
+        <div class="work-tags">
+          <span class="tag">Video Editing</span>
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">Founder Branding</span>
+        </div>
+      </div>
+      <div class="work-date">Sep 2022 – Jan 2023</div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-num">06</div>
+      <div class="work-content">
+        <div class="work-company">Screen Reapers · GadgetLearn</div>
+        <div class="work-role">Co-Founder — Digital Marketing & Web Agency</div>
+        <div class="work-desc">Co-founded a full-service agency — web, SEO, paid social, and content for clients across New York, London, Dubai, and India. Built websites for Leaf N Beyond, EveShark (UK), Kendra Scott, Elyse Ryan, Karishma Mehra, and more.</div>
+        <div class="work-tags">
+          <span class="tag">Web Development</span>
+          <span class="tag">SEO</span>
+          <span class="tag">Meta Ads</span>
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+      <div class="work-date">Jun 2019 – Dec 2023</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLIENTS MARQUEE -->
+<section id="clients">
+  <div class="clients-label">Selected Clients & Brands</div>
+  <div style="overflow:hidden;">
+    <div class="marquee-track">
+      <span class="marquee-item">BRICK LANE CURRY HOUSE</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">STERLING VOICE COACHING</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">RTC SPORTS ACADEMY</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">SONY PICTURES</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">DUREX</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">NETFLIX INDIA</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">ZOMATO</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">SWIGGY</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">FETCHY APP</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">INFAMOUS COCONUTS</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">REALTORLEVIN</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">EMBLISS JEWELLERY</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">OFF GROUND BLR</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">CASHKARO</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">PRIME VIDEO</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">ONEPLÜS</span><span class="marquee-dot">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">BRICK LANE CURRY HOUSE</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">STERLING VOICE COACHING</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">RTC SPORTS ACADEMY</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">SONY PICTURES</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">DUREX</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">NETFLIX INDIA</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">ZOMATO</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">SWIGGY</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">FETCHY APP</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">INFAMOUS COCONUTS</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">REALTORLEVIN</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">EMBLISS JEWELLERY</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">OFF GROUND BLR</span><span class="marquee-dot">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-label reveal">Campaign Highlights</div>
+  <div class="highlights-grid">
+
+    <div class="highlight-card reveal">
+      <a href="https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html" target="_blank">
+        <div class="highlight-num">01 / Campaign</div>
+        <div class="highlight-title">The Pope's Exorcist — Viral Campaign</div>
+        <div class="highlight-desc">Conceptualized and executed for Sony Pictures at WLDD. Achieved millions of views and national press coverage. Featured in Hindustan Times.</div>
+        <div class="highlight-link">Read Coverage</div>
+      </a>
+    </div>
+
+    <div class="highlight-card reveal">
+      <a href="https://www.instagram.com/reel/DBWjEWBvpIV/?hl=en" target="_blank">
+        <div class="highlight-num">02 / Reels</div>
+        <div class="highlight-title">Brick Lane Phaal Challenge — Viral Reel</div>
+        <div class="highlight-desc">Turned NYC's spiciest curry into a must-do experience. Barter-based influencer strategy drove major spike in reach and restaurant footfall.</div>
+        <div class="highlight-link">Watch Reel</div>
+      </a>
+    </div>
+
+    <div class="highlight-card reveal">
+      <a href="https://www.instagram.com/reel/CseTDD5A2iL/?igsh=dzB2NmpxaWhnZWEy" target="_blank">
+        <div class="highlight-num">03 / Brand</div>
+        <div class="highlight-title">Durex India — Viral Social Campaign</div>
+        <div class="highlight-desc">Led strategy and creative direction for one of Durex India's top-performing social campaigns at WLDD.</div>
+        <div class="highlight-link">Watch Reel</div>
+      </a>
+    </div>
+
+    <div class="highlight-card reveal">
+      <div>
+        <div class="highlight-num">04 / Growth</div>
+        <div class="highlight-title">Infamous Coconuts — 150 → 2,000+ Followers</div>
+        <div class="highlight-desc">Rebranded the production house's Instagram from scratch. Launched new identity that gained 400+ followers in the first 24 hours, zero ad spend.</div>
+        <div class="highlight-link" style="cursor:default;">Organic Growth</div>
+      </div>
+    </div>
+
+    <div class="highlight-card reveal">
+      <a href="https://www.instagram.com/f24foster/" target="_blank">
+        <div class="highlight-num">05 / Personal Project</div>
+        <div class="highlight-title">@f24foster — Cinephile Passion Page</div>
+        <div class="highlight-desc">A personal Instagram and Letterboxd community built purely for the love of cinema — reviews, recommendations, indie discoveries, and arthouse deep-dives.</div>
+        <div class="highlight-link">Visit Page</div>
+      </a>
+    </div>
+
+    <div class="highlight-card reveal">
+      <div>
+        <div class="highlight-num">06 / Agency</div>
+        <div class="highlight-title">WLDD — 2K → 11K in 4 Months</div>
+        <div class="highlight-desc">Helped shape WLDD's meme-first identity and grew their Instagram 5x in 4 months through reels, pop-culture campaigns, and viral content.</div>
+        <div class="highlight-link" style="cursor:default;">Growth Record</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FILM -->
+<section id="film">
+  <div class="section-label reveal">Film Work</div>
+  <h2 class="section-heading reveal">DIRECTOR<br>& WRITER</h2>
+  <div class="film-grid">
+
+    <div class="film-card reveal">
+      <div class="film-title">THE LAST PIZZA</div>
+      <div class="film-meta">Director · Writer · 7 min · NYC</div>
+      <div class="film-desc">Survival short film shot on NYC rooftops on a $50 budget. Guerrilla production that proves resourcefulness over resources. Screened within NYFA circles.</div>
+    </div>
+
+    <div class="film-card reveal">
+      <div class="film-title">FRAMES OF SILENCE</div>
+      <div class="film-meta">Director · Writer · Psychological Drama · $700</div>
+      <div class="film-desc">Psychological drama exploring power dynamics and control. Produced at $700. Demonstrates narrative ambition and tonal precision.</div>
+    </div>
+
+    <div class="film-card reveal">
+      <div class="film-title">ANTHIMA KAHALAM</div>
+      <div class="film-meta">In Development · Feature · NYC · A24 Tone</div>
+      <div class="film-desc">Feature film project reimagined in New York City with a Gen Z aesthetic. Tonal references: A24 and Master of None. Currently in development.</div>
+    </div>
+
+    <div class="film-card reveal">
+      <a href="https://www.imdb.com/name/nm16824024/" target="_blank" style="text-decoration:none;display:block;">
+        <div class="film-title">20+ SETS</div>
+        <div class="film-meta">Director · DOP · Editor · AC/AD · Sound · Actor</div>
+        <div class="film-desc">Worked on 20+ film sets within NYFA and independent productions. Full end-to-end filmmaking experience across every key role. NYFA Dean's List 2025. View credits on IMDb ↗</div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="section-label reveal">By the Numbers</div>
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Brand Campaigns</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Active Clients</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">24K+</div>
+      <div class="stat-label">Organic Followers Built</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center;">Let's Work</div>
+  <div class="contact-heading">LET'S<br>TALK.</div>
+  <div class="contact-sub">Open to full-time, retainer, and creative partnerships</div>
+  <a href="mailto:nivedkrishnathavarayil@gmail.com" class="contact-email">nivedkrishnathavarayil@gmail.com</a>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/nivedkrishna/" target="_blank" class="social-link">LinkedIn</a>
+    <a href="https://www.instagram.com/tvedukr_12/" target="_blank" class="social-link">@tvedukr_12</a>
+    <a href="https://www.instagram.com/thava.studio" target="_blank" class="social-link">@thava.studio</a>
+    <a href="https://www.instagram.com/growvior" target="_blank" class="social-link">@growvior</a>
+    <a href="https://www.imdb.com/name/nm16824024/" target="_blank" class="social-link">IMDb</a>
+    <a href="https://www.instagram.com/f24foster/" target="_blank" class="social-link">@f24foster</a>
+    <a href="tel:+15513442467" class="social-link">+1 (551) 344-2467</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Nivedkrishna Thavarayil · Thava Studio</span>
+  <span class="footer-loc">Jersey City, NJ · NYC · Bangalore</span>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+      ring.style.width = '60px';
+      ring.style.height = '60px';
+      ring.style.borderColor = 'rgba(200,255,0,0.7)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '10px';
+      cursor.style.height = '10px';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+      ring.style.borderColor = 'rgba(200,255,0,0.4)';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
