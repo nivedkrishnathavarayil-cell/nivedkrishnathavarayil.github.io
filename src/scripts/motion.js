@@ -196,7 +196,8 @@ $$('a[href^="http"]').forEach((a) => {
 /* ---------- display headings never run past their column: shrink just enough for the longest word ---------- */
 const fitWords = () => {
   const r = document.createRange();
-  $$('h1.d, h2.d').forEach((h) => {
+  /* never the hero: the name and the opening size and animate themselves */
+  $$('h1.d, h2.d').filter((h) => !h.closest('#name, #stage, #intro, .screen, .frame')).forEach((h) => {
     h.style.fontSize = '';
     const cs = getComputedStyle(h);
     const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
