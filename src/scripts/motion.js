@@ -89,6 +89,15 @@ if (shelf) {
     sp.classList.add('open');
     setTimeout(() => sp.classList.contains('open') && play(sp), 260);
   };
+  const grid = matchMedia('(max-width: 899px)');
+  /* phones: an all-at-once grid; each preview plays while it's on screen */
+  const gio = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!grid.matches) return;
+    const sp = e.target;
+    if (e.isIntersecting) { const v = vidOf(sp); if (v && !reduce) { if (!v.src && v.dataset.src) v.src = v.dataset.src; v.play().then(() => sp.classList.add('playing')).catch(() => {}); } }
+    else stop(sp);
+  }), { threshold: 0.55 });
+  sps.forEach((sp) => gio.observe(sp));
   sps.forEach((sp) => {
     sp.addEventListener('mouseenter', () => {
       if (!fine.matches) return;
@@ -98,7 +107,7 @@ if (shelf) {
     sp.addEventListener('mouseleave', () => clearTimeout(hoverT));
     sp.addEventListener('focus', () => { if (sp.matches(':focus-visible')) open(sp); });
     sp.addEventListener('click', (e) => {
-      if (!sp.classList.contains('open') && !fine.matches) {
+      if (!sp.classList.contains('open') && !fine.matches && !grid.matches) {
         e.preventDefault();
         open(sp, true);
         return;
@@ -107,17 +116,11 @@ if (shelf) {
     });
   });
   new IntersectionObserver((es) => es.forEach((e) => {
+    if (grid.matches) return;
     const sp = $('.sp.open', shelf);
     if (!sp) return;
     if (e.isIntersecting) play(sp); else stop(sp);
   }), { threshold: 0.2 }).observe(shelf);
-}
-
-/* ---------- names on the call sheet: on touch screens the circle follows the middle of the screen ---------- */
-if (!fine.matches) {
-  const io = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('on', e.isIntersecting)),
-    { rootMargin: '-46% 0px -46% 0px' });
-  $$('.wall .bn').forEach((el) => io.observe(el));
 }
 
 /* ---------- fit the record-light wordmark on pages without the main script ---------- */

@@ -15,7 +15,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const intro=$('#intro'),flash=$('#flash'),ghost=$('#ghost'),credit=$('#credit');
 const go=()=>{document.body.classList.remove('lock');document.body.classList.add('go')};
 let AC=null,soundOn=false,proj=null;
-const unlock=()=>{try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();soundOn=true}catch(e){soundOn=false}};
+const unlock=()=>{try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state!=='running')AC.resume();const b=AC.createBuffer(1,1,22050),s0=AC.createBufferSource();s0.buffer=b;s0.connect(AC.destination);s0.start(0);soundOn=true}catch(e){soundOn=false}};
 const noise=sec=>{const n=Math.floor(AC.sampleRate*sec),b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;return b};
 const bus=()=>{if(!AC.__out){const c=AC.createDynamicsCompressor();c.threshold.value=-10;c.ratio.value=6;const g=AC.createGain();g.gain.value=.8;c.connect(g).connect(AC.destination);AC.__out=c}return AC.__out};
 function projector(){if(!soundOn||proj)return;const t=AC.currentTime;
@@ -79,7 +79,7 @@ function runIntro(){
   intro.onclick=e=>{if(e.target.closest('button'))return;tapRoll()};
   snd.onclick=e=>{e.stopPropagation();if(soundOn&&proj){stopProj();soundOn=false;snd.setAttribute('aria-pressed','false');snd.lastChild.textContent='Sound on';return}
     unlock();if(!soundOn)return;snd.setAttribute('aria-pressed','true');snd.lastChild.textContent='Sound off';projector();autoAt=Math.max(autoAt,performance.now()+1400)};
-  $('#skipi').onclick=e=>{e.stopPropagation();end()};
+  if(matchMedia('(hover: none)').matches){const h=$('#hint');h.lastChild.textContent='Tap for sound, or swipe up to start'}
   if(reduce){intro.classList.add('calm','s1','s2','s3');$('#hint').hidden=true;at(2400,end);introRun=1;return}
   const start=()=>{t0=performance.now();autoAt=t0+3200;
     requestAnimationFrame(()=>intro.classList.add('lamp'));
@@ -90,7 +90,7 @@ function runIntro(){
   const begin=()=>fontsIn().then(start);
   if(document.hidden){const v=()=>{if(!document.hidden){document.removeEventListener('visibilitychange',v);begin()}};document.addEventListener('visibilitychange',v)}else begin();
 }
-let seen=false;try{seen=sessionStorage.getItem('nkt-open')==='1'}catch(e){}
+let seen=false;try{const nav=performance.getEntriesByType('navigation')[0];const inside=document.referrer&&new URL(document.referrer).origin===location.origin;seen=(nav&&nav.type==='back_forward')||!!inside}catch(e){}
 if(seen&&!/[?&]opening\b/.test(location.search))go();else runIntro();
 window.replayOpening=()=>{scrollTo({top:0,behavior:'instant'});const n=$('#name');if(n){delete n.dataset.s;n.style.animation='';n.style.opacity='';n.style.fontStretch=''}soundOn=false;const s=$('#snd');s.setAttribute('aria-pressed','false');s.lastChild.textContent='Sound on';setTimeout(runIntro,60)};
 
@@ -158,7 +158,6 @@ $('#also').innerHTML='<b>Also:</b> before any of this, I co-founded Screen Reape
 
 /* circle each number once as it scrolls into view */
 /* circles draw on hover; on touch screens they draw once as they scroll into view */
-if(matchMedia('(hover: none)').matches){const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}}),{rootMargin:'0px 0px -35% 0px'});document.querySelectorAll('.lg .num,.mk,.pr .o').forEach(n=>ro.observe(n))}
 
 /* ---------- films ---------- */
 const LAUREL='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3c1.6 1.2 2.4 2.7 2.4 4.4S13.6 10.6 12 11.8c-1.6-1.2-2.4-2.7-2.4-4.4S10.4 4.2 12 3Zm-6.5 5c2 .2 3.4 1 4.2 2.4s.9 3 .2 4.8c-2-.2-3.4-1-4.2-2.4s-.9-3-.2-4.8Zm13 0c.7 1.8.6 3.4-.2 4.8s-2.2 2.2-4.2 2.4c-.7-1.8-.6-3.4.2-4.8S16.5 8.2 18.5 8ZM12 13.5l1.2 7.5h-2.4L12 13.5Z"/></svg>';

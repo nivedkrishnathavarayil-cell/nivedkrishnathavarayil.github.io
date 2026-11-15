@@ -140,3 +140,52 @@ body[data-page=series] .hd{color:var(--ink)}
 .frame .grain{display:none}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 section[id]{scroll-margin-top:78px}
+
+/* ---------- header: no red dot beside the mark ---------- */
+.live i{display:none}
+@media (max-width:1060px){.live{display:none}}
+
+/* ---------- circles: a client result circles itself when you open it ---------- */
+.lg[open] .num>.sel path{stroke-dashoffset:0}
+
+/* ---------- opening: no Skip, cleaner hint ---------- */
+.ictl{display:none}
+.hint{bottom:max(6vh,28px);font-size:14.5px}
+@media (min-width:700px) and (orientation:landscape){.hint{bottom:max(5vh,24px)}}
+
+/* ---------- hero on phones: name big, everything else quiet ---------- */
+@media (max-width:759px){
+  .hcopy{bottom:max(5svh,22px)}
+  .name{margin-bottom:.22em}
+  .role{font-size:17px;letter-spacing:.005em}
+  .say{font-size:15.5px;line-height:1.45;max-width:34ch;margin:.5em 0 1.3em;opacity:.82}
+  .proof{display:none}
+  .acts .btn{min-height:44px;padding:0 18px;font-size:15px}
+}
+
+/* ---------- series on phones: every card visible at once, like a feed ---------- */
+@media (max-width:899px){
+  .shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;height:auto}
+  .sp,.sp.open{flex:none;height:auto;aspect-ratio:9/16;border-radius:12px}
+  .spt{display:none}
+  .spn,.sp.open .spn{top:10px;left:11px;right:auto;flex-direction:row-reverse;gap:6px;font-size:11px;opacity:.85}
+  .spx,.sp.open .spx{opacity:1;transform:none;width:100%;padding:12px 12px 13px;gap:5px;transition:none}
+  .spx b{font-size:clamp(19px,5.6vw,26px);line-height:.95}
+  .sp:not(.art) .spx b{font-size:clamp(24px,7.4vw,34px)}
+  .spf{font-size:11.5px;line-height:1.3}
+  .spl,.spg{display:none}
+  .sp.art .spm img{filter:none;transform:none}
+  .sp.art::after{opacity:1;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,0) 48%)}
+  .sp:not(.open)::before{opacity:1!important}
+}
+
+/* ---------- phones: tighter wall, titles that fit their cards ---------- */
+@media (max-width:520px){
+  .bw{min-height:0;gap:5px;padding:13px 10px 12px}
+  .bn{font-size:16px}
+  .bk{font-size:12px}
+}
+@media (max-width:899px){
+  .spx b{font-stretch:86%;font-size:clamp(18px,5.4vw,25px);text-wrap:balance;overflow-wrap:normal}
+  .sp:not(.art) .spx b{font-stretch:92%}
+}
