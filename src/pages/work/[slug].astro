@@ -10,6 +10,9 @@ const { i } = Astro.props;
 const c = C[i];
 const next = C[(i + 1) % C.length];
 const url = `${SITE}/work/${c.slug}/`;
+const fmt = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${Math.round(n / 1e3)}K` : `${n}`);
+const ch = c.chart;
+const pct = (v, rows) => `${((v / Math.max(...rows.map((r) => r[1]))) * 100).toFixed(2)}%`;
 const clip = (t, n = 156) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '') + '...');
 const title = `${c.short} case study | Nivedkrishna Thavarayil, Creative Strategist`;
 const description = clip(`${c.title} ${c.stat} ${c.statCap}. ${c.line}`);
@@ -47,7 +50,7 @@ const ld = {
   description={description}
   ogTitle={`${c.short}: ${c.title}`}
   path={`/work/${c.slug}/`}
-  image={`/og/work-${c.slug}.jpg`}
+  image={`/og/work-${c.slug}.jpg?v=2`}
   imageAlt={`${c.short} case study by Nivedkrishna Thavarayil: ${c.stat} ${c.statCap}`}
   type="article"
   jsonld={ld}
@@ -90,6 +93,34 @@ const ld = {
         <section class="cs-sec" aria-labelledby="result">
           <h2 class="cs-h" id="result">What happened</h2>
           <ul class="cs-res">{c.result.map((p) => <li>{p}</li>)}</ul>
+          {ch && (
+            <div class="cs-charts">
+              <figure class="cs-chart cs-cmp">
+                <figcaption class="cs-ch-t">{ch.compare.title}</figcaption>
+                <ul>
+                  {ch.compare.rows.map((r, k) => (
+                    <li class={k ? 'now' : 'was'}>
+                      <span class="lab">{r[0]}<small>{r[2]}</small></span>
+                      <span class="bar"><i style={`--v:${pct(r[1], ch.compare.rows)}`}></i></span>
+                      <b>{fmt(r[1])} views</b>
+                    </li>
+                  ))}
+                </ul>
+              </figure>
+              <figure class="cs-chart cs-dist">
+                <figcaption class="cs-ch-t">{ch.dist.title}<small>{ch.dist.sub}</small></figcaption>
+                <ul>
+                  {ch.dist.rows.map((r) => (
+                    <li>
+                      <span class="lab">{r[0]}</span>
+                      <span class="bar"><i style={`--v:${pct(r[1], ch.dist.rows)}`}></i></span>
+                      <b>{r[1]}<span class="vh"> reels</span></b>
+                    </li>
+                  ))}
+                </ul>
+              </figure>
+            </div>
+          )}
           {c.source && <p class="cs-src">{c.source}</p>}
         </section>
         {c.quote && (
@@ -110,7 +141,7 @@ const ld = {
         )}
         <section class="cs-sec cs-cta" aria-labelledby="next-step">
           <h2 class="cs-h" id="next-step">Want this for your brand?</h2>
-          <p class="acts2"><a class="btn solid2" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="btn" href="/Nivedkrishna-Thavarayil-Resume.pdf" target="_blank" rel="noopener">Download my resume</a></p>
+          <p class="acts2"><a class="btn solid2" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a></p>
         </section>
       </div>
     </article>

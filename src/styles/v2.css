@@ -472,3 +472,27 @@ body[data-page=case] .hd{color:var(--ink)}
 
 /* grid columns never stretch past the screen for a long word */
 .sx-grid>*{min-width:0}
+
+/* ---------- case study charts: one hue for the result, neutral grey for the baseline, every value printed ---------- */
+.cs-charts{display:grid;gap:34px;margin:30px 0 8px}
+.cs-sec>.cs-charts,.cs-sec>.cs-src,.cs-sec>.cs-res{grid-column:-2/-1}
+.cs-charts{max-width:620px}
+.cs-chart{margin:0;--hit:light-dark(#12805f,#36a985);--was:light-dark(#8a8a84,#6c6c66)}
+.cs-ch-t{font-weight:700;font-size:17px;margin:0 0 14px;color:var(--ink)}
+.cs-ch-t small{display:block;font-weight:400;font-size:14px;color:var(--mute);margin-top:3px}
+.cs-chart ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cs-chart .bar{display:block;height:14px}
+.cs-chart .bar i{display:block;height:100%;width:max(var(--v),4px);background:var(--hit);border-radius:0 4px 4px 0}
+.cs-chart b{font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.cs-cmp ul{gap:18px}
+.cs-cmp li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 14px;align-items:center}
+.cs-cmp .lab{grid-column:1/-1;font-size:15px;color:var(--ink)}
+.cs-cmp .lab small{display:block;font-size:13px;color:var(--mute);margin-top:2px}
+.cs-cmp .bar{height:22px}
+.cs-cmp .was .bar i{background:var(--was)}
+.cs-cmp b{font-size:16px}
+.cs-dist li{display:grid;grid-template-columns:7.2em minmax(0,1fr) 2em;gap:12px;align-items:center;font-size:15px}
+.cs-dist .lab{color:var(--mute);white-space:nowrap}
+.cs-dist b{text-align:right;font-size:15px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (forced-colors:active){.cs-chart .bar i{background:CanvasText}.cs-cmp .was .bar i{background:GrayText}}

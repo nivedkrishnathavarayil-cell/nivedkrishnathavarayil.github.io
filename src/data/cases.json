@@ -143,6 +143,111 @@
   "row": "c-fetchy"
  },
  {
+  "slug": "infamous-coconuts",
+  "brand": "Infamous Coconuts",
+  "short": "Infamous Coconuts",
+  "title": "The meme pages became the marketing team.",
+  "line": "Meme pages were already posting the studio's clips. I made them partners, and the reels started travelling.",
+  "stat": "19.2M",
+  "statCap": "views on 76 reels after the relaunch",
+  "statW": "112%",
+  "color": "#1d5c4d",
+  "client": "Infamous Coconuts, a studio in Los Angeles, New York and Mumbai, founded by Abi Varghese, director of Netflix's Brown Nation",
+  "role": "Social strategy, archive and partnerships",
+  "channels": "Instagram, meme page partnerships, earned press",
+  "brief": [
+   "Infamous Coconuts had a back catalogue of work and an Instagram with about 150 followers. Meanwhile, Malayalam meme pages were already using the studio's clips."
+  ],
+  "idea": [
+   "The audience was already there, just on other people's pages. Instead of fighting the meme pages, turn them into credited partners who release new posts with the studio."
+  ],
+  "how": [
+   "Archived the back catalogue and rebuilt the feed around hub, hype and hygiene content.",
+   "Turned the Malayalam meme pages already using the clips into credited partners who released new posts with us.",
+   "Took a collaboration with the meme page It's Malu, about Abi Varghese building his empire, from idea to strategy to post. It is one of the most viral posts on that page."
+  ],
+  "result": [
+   "76 reels after the relaunch drew 19.2 million views.",
+   "A typical reel went from about 5,000 views before the relaunch to about 98,000 after it, roughly twenty times the reach.",
+   "37 reels passed 100,000 views and four passed a million. The biggest reached 3.5 million.",
+   "Instagram followers went from about 150 to 2,400 in the first six weeks, with no paid spend.",
+   "The growth got picked up on Reddit, then by the press: DNA, Outlook India, News24 and Indian Daily Post."
+  ],
+  "lesson": "If people are already sharing your work without asking, you don't have a piracy problem. You have a distribution team.",
+  "quote": [
+   "One of the most resourceful and genuinely talented collaborators I have worked with in recent years.",
+   "Abi Varghese",
+   "Founder, Infamous Coconuts; director of Netflix's Brown Nation"
+  ],
+  "proof": [
+   [
+    "Instagram, @infamouscoconuts",
+    "https://www.instagram.com/infamouscoconuts/reels/"
+   ],
+   [
+    "DNA",
+    "https://www.dnaindia.com/insights/report-how-one-spontaneous-outreach-opened-doors-for-collaborative-filmmaking-3218319"
+   ],
+   [
+    "Outlook India",
+    "https://www.outlookindia.com/hub4business/nivedkrishna-thavarayil-and-the-creative-collaboration-that-went-beyond-conventional-marketing"
+   ],
+   [
+    "News24",
+    "https://news24online.com/information/nivedkrishna-thavarayil-creating-a-quiet-revolution-with-creative-collaborations/903102/"
+   ],
+   [
+    "Indian Daily Post",
+    "https://m.dailyhunt.in/news/india/english/indian+daily+post+idp-epaper-dh166e30f72d604e7baed95079067eb6f9/from+film+marketing+to+creative+development+nivedkrishna+thavarayil+works+for+a+bigger+purpose-newsid-dh166e30f72d604e7baed95079067eb6f9_52edc1109b7811f1bddf3e753200d161"
+   ]
+  ],
+  "row": "c-coconuts",
+  "source": "Source: view counts on @infamouscoconuts Reels on Instagram. A typical reel is the median.",
+  "chart": {
+   "compare": {
+    "title": "A typical reel",
+    "rows": [
+     [
+      "Before the relaunch",
+      5367,
+      "16 reels"
+     ],
+     [
+      "After the relaunch",
+      97800,
+      "76 reels"
+     ]
+    ]
+   },
+   "dist": {
+    "title": "How far each reel went",
+    "sub": "Number of reels in each range, out of 76 after the relaunch",
+    "rows": [
+     [
+      "Under 25K",
+      12
+     ],
+     [
+      "25K to 100K",
+      27
+     ],
+     [
+      "100K to 500K",
+      30
+     ],
+     [
+      "500K to 1M",
+      3
+     ],
+     [
+      "Over 1M",
+      4
+     ]
+    ]
+   }
+  }
+ },
+ {
   "slug": "frangos-world-cup",
   "brand": "Frangos Peri-Peri",
   "short": "Frangos at the World Cup",
@@ -155,10 +260,9 @@
   "client": "Frangos Peri-Peri, New York",
   "role": "Creative and Digital Marketing Strategist",
   "where": "New York",
-  "when": "World Cup 2026, late June to mid-August",
   "channels": "Paid Meta, Instagram, TikTok, a city tourism partnership",
   "brief": [
-   "The World Cup came to New York in 2026 and every restaurant with a screen wanted the same fans. Frangos needed a reason for them to pick peri-peri."
+   "The World Cup came to New York and every restaurant with a screen wanted the same fans. Frangos needed a reason for them to pick peri-peri."
   ],
   "idea": [
    "Make the restaurant part of the tournament instead of a place to watch it: an offer that only exists when a team wins, and a collectible that only exists with an order."
@@ -183,59 +287,5 @@
   "source": "Source: Rosina Ishaq, Frangos Peri-Peri.",
   "proof": [],
   "row": "c-frangos"
- },
- {
-  "slug": "infamous-coconuts",
-  "brand": "Infamous Coconuts",
-  "short": "Infamous Coconuts",
-  "title": "The meme pages became the marketing team.",
-  "line": "Meme pages were already posting the studio's clips. I made them partners.",
-  "stat": "150 to 2,400",
-  "statCap": "Instagram followers in about six weeks",
-  "statW": "78%",
-  "color": "#1d5c4d",
-  "client": "Infamous Coconuts, a studio in Los Angeles, New York and Mumbai, founded by Abi Varghese, director of Netflix's Brown Nation",
-  "role": "Social strategy, archive and partnerships",
-  "channels": "Instagram, meme page partnerships, earned press",
-  "brief": [
-   "Infamous Coconuts had a back catalogue of work and an Instagram with about 150 followers. Meanwhile, Malayalam meme pages were already using the studio's clips."
-  ],
-  "idea": [
-   "The audience was already there, just on other people's pages. Instead of fighting the meme pages, turn them into credited partners who release new posts with the studio."
-  ],
-  "how": [
-   "Archived the back catalogue and rebuilt the feed around hub, hype and hygiene content.",
-   "Turned the Malayalam meme pages already using the clips into credited partners who released new posts with us.",
-   "Took a collaboration with the meme page It's Malu, about Abi Varghese building his empire, from idea to strategy to post. It is one of the most viral posts on that page."
-  ],
-  "result": [
-   "Instagram followers went from 150 to 2,400 in about six weeks, with no paid spend.",
-   "The growth got picked up on Reddit, then by the press: DNA, Outlook India, News24 and Indian Daily Post."
-  ],
-  "lesson": "If people are already sharing your work without asking, you don't have a piracy problem. You have a distribution team.",
-  "quote": [
-   "One of the most resourceful and genuinely talented collaborators I have worked with in recent years.",
-   "Abi Varghese",
-   "Founder, Infamous Coconuts; director of Netflix's Brown Nation"
-  ],
-  "proof": [
-   [
-    "DNA",
-    "https://www.dnaindia.com/insights/report-how-one-spontaneous-outreach-opened-doors-for-collaborative-filmmaking-3218319"
-   ],
-   [
-    "Outlook India",
-    "https://www.outlookindia.com/hub4business/nivedkrishna-thavarayil-and-the-creative-collaboration-that-went-beyond-conventional-marketing"
-   ],
-   [
-    "News24",
-    "https://news24online.com/information/nivedkrishna-thavarayil-creating-a-quiet-revolution-with-creative-collaborations/903102/"
-   ],
-   [
-    "Indian Daily Post",
-    "https://m.dailyhunt.in/news/india/english/indian+daily+post+idp-epaper-dh166e30f72d604e7baed95079067eb6f9/from+film+marketing+to+creative+development+nivedkrishna+thavarayil+works+for+a+bigger+purpose-newsid-dh166e30f72d604e7baed95079067eb6f9_52edc1109b7811f1bddf3e753200d161"
-   ]
-  ],
-  "row": "c-coconuts"
  }
 ]
