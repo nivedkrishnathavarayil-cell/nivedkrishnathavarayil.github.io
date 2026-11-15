@@ -367,8 +367,9 @@ a.laurel{text-decoration:none}a.laurel:hover{border-color:var(--ink)}
 .cr dt{grid-column:1;text-align:right;color:var(--mute);font-size:15px;line-height:1.5;padding-top:.3em}
 .cr dd{grid-column:2;margin:0 0 clamp(28px,5vh,52px);font-weight:600;font-size:clamp(17px,1.55vw,21px);line-height:1.55}
 .cr dd span{display:block}
-.cr .thanks.small{font-size:14px;font-weight:500;color:var(--mute);margin-top:14px}
-.cr .thanks{grid-column:1/-1;text-align:center;margin:clamp(20px,4vh,40px) auto 0;max-width:34ch;font-weight:600;font-size:clamp(18px,1.7vw,23px);line-height:1.45}
+.thanks-box .thanks.small{font-size:14px;font-weight:500;color:var(--mute);margin-top:14px}
+.thanks-box{max-width:920px;margin:0 auto}.qfig{margin:0}
+.thanks-box .thanks{text-align:center;margin:clamp(20px,4vh,40px) auto 0;max-width:34ch;font-weight:600;font-size:clamp(18px,1.7vw,23px);line-height:1.45}
 @media(max-width:640px){.cr{grid-template-columns:minmax(0,1fr)}.cr dt,.cr dd{grid-column:1;text-align:center}.cr dd{margin-top:.2em}}
 @supports (animation-timeline:view()){
 @media all{

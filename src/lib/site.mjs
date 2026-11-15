@@ -95,11 +95,11 @@ export const shelfHTML = (S) =>
     const vid = s.vid
       ? `<video data-src="${s.vid}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>`
       : '';
-    return `<a class="sp${s.poster ? ' art' : ` ${s.cls || ''}`}${i === 0 ? ' open' : ''}" href="/series/${s.slug}/" data-slug="${s.slug}" aria-label="${esc(s.t)}, ${esc(s.fmt)}, ${esc(s.st === 'Streaming' ? 'streaming now on Canvas' : 'coming soon to Canvas')}">
+    return `<a class="sp${s.poster ? ' art' : ` ${s.cls || ''}`}${i === 0 ? ' open' : ''}" href="/series/${s.slug}/" data-slug="${s.slug}">
   <span class="spm" aria-hidden="true">${art}${vid}</span>
   <span class="spn" aria-hidden="true">No. ${n}${s.live ? '<i class="rec"></i>' : ''}</span>
   <span class="spt d" aria-hidden="true">${esc(s.t)}</span>
-  <span class="spx" aria-hidden="true"><b class="d">${esc(s.t)}</b><span class="spf">${esc(s.fmt)}. ${esc(s.city)}.</span><span class="spl">${esc(s.log)}</span><span class="spg">${
+  <span class="spx"><b class="d">${esc(s.t)}</b><span class="spf">${esc(s.fmt)}. ${esc(s.city)}.</span><span class="spl">${esc(s.log)}</span><span class="spg">${
       s.live ? `<span class="mk">Streaming on Canvas${SEL}</span>` : 'Coming soon'
     }<u>Open the series</u></span></span>
 </a>`;
@@ -113,7 +113,7 @@ const inEditHTML = (S) => {
   return `<div class="inedit" aria-labelledby="ie-h">
   <h3 class="d" id="ie-h">In the edit.</h3>
   <p class="iel">${WORDS[L.length] || L.length} more series are in post-production and coming to Canvas. Swipe through.</p>
-  <ul class="ie-rail">${L.map((s) => `<li><a class="iecard ie-${s.slug}" href="/series/${s.slug}/" aria-label="${esc(s.t)}, ${esc(s.fmt)}, in post-production"><span class="ie-art" aria-hidden="true"></span><span class="ie-badge" aria-hidden="true"><i></i>In post</span><span class="ie-body" aria-hidden="true"><b class="d">${esc(s.t)}</b><span>${esc(s.fmt)}. ${esc(s.city)}.</span><span class="ie-tl"><i></i></span></span></a></li>`).join('')}</ul>
+  <ul class="ie-rail">${L.map((s) => `<li><a class="iecard ie-${s.slug}" href="/series/${s.slug}/"><span class="ie-art" aria-hidden="true"></span><span class="ie-badge"><i></i>In post</span><span class="ie-body"><b class="d">${esc(s.t)}</b><span>${esc(s.fmt)}. ${esc(s.city)}.</span><span class="ie-tl"><i></i></span></span></a></li>`).join('')}</ul>
 </div>`;
 };
 
