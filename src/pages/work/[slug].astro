@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import C from '../../data/cases.json';
+import { headerHTML, SEL, SITE, PERSON } from '../../lib/site.mjs';
+
+export function getStaticPaths() {
+  return C.map((c, i) => ({ params: { slug: c.slug }, props: { i } }));
+}
+const { i } = Astro.props;
+const c = C[i];
+const next = C[(i + 1) % C.length];
+const url = `${SITE}/work/${c.slug}/`;
+const clip = (t, n = 156) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '') + '...');
+const title = `${c.short} case study | Nivedkrishna Thavarayil, Creative Strategist`;
+const description = clip(`${c.title} ${c.stat} ${c.statCap}. ${c.line}`);
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: `${c.short}: ${c.title}`,
+      description,
+      url,
+      image: `${SITE}/og/work-${c.slug}.jpg`,
+      author: { '@id': PERSON['@id'] },
+      publisher: { '@id': PERSON['@id'] },
+      about: { '@type': 'Organization', name: c.brand },
+      inLanguage: 'en',
+      datePublished: '2026-11-15',
+      mainEntityOfPage: url,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Nivedkrishna Thavarayil', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Case studies', item: `${SITE}/#cases` },
+        { '@type': 'ListItem', position: 3, name: c.short, item: url },
+      ],
+    },
+    PERSON,
+  ],
+};
+---
+<Base
+  title={title}
+  description={description}
+  ogTitle={`${c.short}: ${c.title}`}
+  path={`/work/${c.slug}/`}
+  image={`/og/work-${c.slug}.jpg`}
+  imageAlt={`${c.short} case study by Nivedkrishna Thavarayil: ${c.stat} ${c.statCap}`}
+  type="article"
+  jsonld={ld}
+  page="case"
+>
+  <Fragment set:html={headerHTML} />
+  <main id="top" class="cs">
+    <article>
+      <header class="wrap cs-head">
+        <a class="sx-back" href="/#cases">All case studies</a>
+        <p class="cs-kick">Case study, {c.brand}</p>
+        <h1 class="d sx-t cs-t">{c.title}</h1>
+        <p class="cs-line">{c.line}</p>
+        <div class="cs-stat" style={`--c:${c.color}`}>
+          <span class="cs-num d" style={`--w:${c.statW}`}>{c.stat}<Fragment set:html={SEL} /></span>
+          <span class="cs-cap">{c.statCap}</span>
+        </div>
+        <dl class="sx-dl cs-dl">
+          <dt>Client</dt><dd>{c.client}</dd>
+          <dt>My role</dt><dd>{c.role}</dd>
+          {c.where && <><dt>Where</dt><dd>{c.where}</dd></>}
+          {c.when && <><dt>When</dt><dd>{c.when}</dd></>}
+          <dt>Channels</dt><dd>{c.channels}</dd>
+        </dl>
+      </header>
+
+      <div class="wrap cs-body">
+        <section class="cs-sec" aria-labelledby="brief">
+          <h2 class="cs-h" id="brief">The brief</h2>
+          <div class="cs-txt">{c.brief.map((p) => <p>{p}</p>)}</div>
+        </section>
+        <section class="cs-sec" aria-labelledby="idea">
+          <h2 class="cs-h" id="idea">The idea</h2>
+          <div class="cs-txt cs-big">{c.idea.map((p) => <p>{p}</p>)}</div>
+        </section>
+        <section class="cs-sec" aria-labelledby="how">
+          <h2 class="cs-h" id="how">How I made it</h2>
+          <ol class="cs-steps">{c.how.map((p) => <li>{p}</li>)}</ol>
+        </section>
+        <section class="cs-sec" aria-labelledby="result">
+          <h2 class="cs-h" id="result">What happened</h2>
+          <ul class="cs-res">{c.result.map((p) => <li>{p}</li>)}</ul>
+          {c.source && <p class="cs-src">{c.source}</p>}
+        </section>
+        {c.quote && (
+          <figure class="cs-quote">
+            <blockquote>{c.quote[0]}</blockquote>
+            <figcaption><b>{c.quote[1]}</b>{c.quote[2]}</figcaption>
+          </figure>
+        )}
+        <section class="cs-sec cs-take" aria-labelledby="take">
+          <h2 class="cs-h" id="take">What I'd tell a brand</h2>
+          <p class="d cs-lesson">{c.lesson}</p>
+        </section>
+        {c.proof.length > 0 && (
+          <section class="cs-sec" aria-labelledby="proof">
+            <h2 class="cs-h" id="proof">Read the coverage</h2>
+            <ul class="cs-proof">{c.proof.map((p) => <li><a href={p[1]}>{p[0]}</a></li>)}</ul>
+          </section>
+        )}
+        <section class="cs-sec cs-cta" aria-labelledby="next-step">
+          <h2 class="cs-h" id="next-step">Want this for your brand?</h2>
+          <p class="acts2"><a class="btn solid2" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="btn" href="/Nivedkrishna-Thavarayil-Resume.pdf" target="_blank" rel="noopener">Download my resume</a></p>
+        </section>
+      </div>
+    </article>
+    <nav class="wrap sx-more cs-more" aria-label="More case studies">
+      <a class="sx-pn" href="/#clients"><span>See every result</span><b class="d">Brands I've grown</b></a>
+      <a class="sx-pn nx" href={`/work/${next.slug}/`} rel="next"><span>Next case study</span><b class="d">{next.short}</b></a>
+    </nav>
+  </main>
+  <footer class="dark endmark sx-end">
+    <p class="wm big" data-fit aria-hidden="true"><span>N<span class="idot">ı</span>vedkrishna</span> <span>Thavarayil</span></p>
+    <div class="wrap endrow"><span>Nivedkrishna Thavarayil, Creative Strategist and Director. New York and Jersey City, 2026.</span><a class="again" href="/#contact">Work with me</a></div>
+  </footer>
+  <script>
+    import '../../scripts/motion.js';
+  </script>
+</Base>

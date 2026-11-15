@@ -22,13 +22,12 @@ if (hd && page !== 'home') {
 const mb = $('#menu'), navEl = $('#nav');
 if (mb && navEl) {
   const links = $$('a', navEl).filter((a) => !a.classList.contains('cta'));
-  const contact = page === 'home' ? '#contact' : '/#contact';
   const sheet = document.createElement('div');
   sheet.className = 'sheet';
   sheet.id = 'sheet';
   sheet.setAttribute('aria-hidden', 'true');
   sheet.innerHTML = `<nav class="sheet-nav" aria-label="Menu">${links.map((a, i) => `<a href="${a.getAttribute('href')}" style="--i:${i}">${a.textContent}</a>`).join('')}</nav>
-<div class="sheet-foot" style="--i:${links.length}"><a class="btn" href="${contact}">Work with me</a><a class="sheet-mail" href="mailto:nivedkrishnathavarayil@gmail.com">nivedkrishnathavarayil@gmail.com</a><p class="sheet-soc"><a href="https://www.linkedin.com/in/nivedkrishna" rel="me">LinkedIn</a><a href="https://www.imdb.com/name/nm16824024/" rel="me">IMDb</a><a href="https://www.instagram.com/tvedukr_12" rel="me">Instagram</a></p></div>`;
+<div class="sheet-foot" style="--i:${links.length}"><a class="btn" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="sheet-mail" href="mailto:nivedkrishnathavarayil@gmail.com">nivedkrishnathavarayil@gmail.com</a><p class="sheet-soc"><a href="https://www.linkedin.com/in/nivedkrishna" rel="me">LinkedIn</a><a href="https://www.imdb.com/name/nm16824024/" rel="me">IMDb</a><a href="https://www.instagram.com/tvedukr_12" rel="me">Instagram</a><a href="/Nivedkrishna-Thavarayil-Resume.pdf" target="_blank" rel="noopener">Resume</a></p></div>`;
   document.body.append(sheet);
   const root = document.documentElement;
   const set = (o) => {
@@ -169,9 +168,9 @@ if (fits.length) {
     el.style.fontSize = '100px';
     const spans = $$(':scope>span', el);
     const block = getComputedStyle(spans[0]).display === 'block';
-    let w;
-    if (block) w = Math.max(...spans.map((s) => s.getBoundingClientRect().width));
-    else { const r = document.createRange(); r.selectNodeContents(el); w = r.getBoundingClientRect().width; }
+    /* measure the text itself, not the box: a block span is always as wide as the screen */
+    const textW = (node) => { const r = document.createRange(); r.selectNodeContents(node); return r.getBoundingClientRect().width; };
+    const w = block ? Math.max(...spans.map(textW)) : textW(el);
     const avail = el.parentElement.clientWidth * 0.92;
     el.style.fontSize = Math.min(100 * (avail / w), 400) + 'px';
   });
@@ -186,3 +185,48 @@ if (sv) {
     if (e.isIntersecting) sv.play().catch(() => {}); else sv.pause();
   }), { threshold: 0.2 }).observe(sv);
 }
+
+/* ---------- proof links (press, clients, films, profiles) open in a new tab, so the site stays where you left it ---------- */
+$$('a[href^="http"]').forEach((a) => {
+  if (a.host === location.host) return;
+  a.target = '_blank';
+  a.rel = (a.rel ? a.rel + ' ' : '') + 'noopener';
+});
+
+/* ---------- display headings never run past their column: shrink just enough for the longest word ---------- */
+const fitWords = () => {
+  const r = document.createRange();
+  $$('h1.d, h2.d').forEach((h) => {
+    h.style.fontSize = '';
+    const cs = getComputedStyle(h);
+    const pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+    let par = h.parentElement;
+    while (par && !par.clientWidth) par = par.parentElement; /* skip display:contents wrappers */
+    const pcs = getComputedStyle(par);
+    const left = h.getBoundingClientRect().left + parseFloat(cs.paddingLeft);
+    /* a grid column can stretch to fit a long word, so the screen (with an even gutter) is the last word */
+    const avail = Math.min(h.clientWidth - pad, par.clientWidth - parseFloat(pcs.paddingLeft) - parseFloat(pcs.paddingRight), document.documentElement.clientWidth - 2 * Math.max(left, 0));
+    if (!(avail > 0)) return;
+    let widest = 0;
+    if (/nowrap|pre/.test(cs.whiteSpace)) { r.selectNodeContents(h); widest = r.getBoundingClientRect().width; } /* one line: the whole line has to fit */
+    const walk = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
+    for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+      const re = /\S+/g;
+      let m;
+      while ((m = re.exec(n.textContent))) {
+        r.setStart(n, m.index);
+        r.setEnd(n, m.index + m[0].length);
+        widest = Math.max(widest, r.getBoundingClientRect().width);
+      }
+    }
+    if (widest > avail) h.style.fontSize = `${Math.floor(parseFloat(cs.fontSize) * (avail / widest) * 0.97 * 10) / 10}px`;
+  });
+};
+let fitW = innerWidth;
+document.fonts.ready.then(fitWords);
+addEventListener('resize', () => {
+  if (innerWidth === fitW) return; /* the phone address bar only changes the height */
+  fitW = innerWidth;
+  clearTimeout(fitWords.t);
+  fitWords.t = setTimeout(fitWords, 120);
+});

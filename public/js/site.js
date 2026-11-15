@@ -15,7 +15,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
    few seconds of waiting pushes it into camera until a flash cuts to the reel. Sound is
    made in the browser and only plays after a tap, a key or the Sound button. */
 const intro=$('#intro'),flash=$('#flash'),ghost=$('#ghost'),credit=$('#credit');
-const go=()=>{document.body.classList.remove('lock');document.body.classList.add('go')};
+const go=()=>{document.body.classList.remove('lock');document.body.classList.add('go');try{history.scrollRestoration='auto'}catch(e){}};
 let AC=null,soundOn=false,proj=null;
 const unlock=()=>{try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state!=='running')AC.resume();const b=AC.createBuffer(1,1,22050),s0=AC.createBufferSource();s0.buffer=b;s0.connect(AC.destination);s0.start(0);soundOn=true}catch(e){soundOn=false}};
 const noise=sec=>{const n=Math.floor(AC.sampleRate*sec),b=AC.createBuffer(1,n,AC.sampleRate),d=b.getChannelData(0);for(let i=0;i<n;i++)d[i]=Math.random()*2-1;return b};
@@ -65,11 +65,11 @@ function runIntro(){
   const fire=()=>{if(fired)return;fired=true;cleanup();stopProj();pop();
     ghost.innerHTML=`<div class="cam"><div class="credit">${credit.innerHTML}</div></div>`;
     ghost.querySelector('.nm').style.transform=nmL.style.transform;
-    flash.className='flash on';intro.hidden=true;go();
+    flash.className='flash on';intro.hidden=true;if(!location.hash)scrollTo({top:0,left:0,behavior:'instant'});go();
     const cv=$('#cine');if(cv){try{cv.currentTime=0;cv.play().catch(()=>{})}catch(e){}}
     requestAnimationFrame(()=>requestAnimationFrame(()=>{flash.classList.add('pop');ghost.classList.add('on')}));
     setTimeout(()=>{flash.className='flash';ghost.className='ghost';ghost.innerHTML=''},2200)};
-  const end=()=>{if(fired)return;fired=true;cleanup();stopProj();intro.classList.add('out');go();setTimeout(()=>{intro.hidden=true;intro.classList.remove('out')},650)};
+  const end=()=>{if(fired)return;fired=true;cleanup();stopProj();intro.classList.add('out');if(!location.hash)scrollTo({top:0,left:0,behavior:'instant'});go();setTimeout(()=>{intro.hidden=true;intro.classList.remove('out')},650)};
   const reelReady=()=>{const v=$('#cine');return !v||v.readyState>=3};
   const tapRoll=()=>{if(rolling||fired)return;unlock();if(soundOn){projector();autoAt=Infinity;at(900,roll)}else roll()};
   const onKey=e=>{if(e.key==='Escape'){end();return}
@@ -93,7 +93,9 @@ function runIntro(){
   if(document.hidden){const v=()=>{if(!document.hidden){document.removeEventListener('visibilitychange',v);begin()}};document.addEventListener('visibilitychange',v)}else begin();
 }
 let seen=false;try{const nav=performance.getEntriesByType('navigation')[0];const inside=document.referrer&&new URL(document.referrer).origin===location.origin;seen=(nav&&nav.type==='back_forward')||(!!inside&&!(nav&&nav.type==='reload'))}catch(e){}
-if(seen&&!/[?&]opening\b/.test(location.search))go();else runIntro();
+/* a fresh visit or a reload always starts at the first frame, not wherever the last visit stopped */
+const toTop=()=>{if(!location.hash){try{history.scrollRestoration='manual'}catch(e){}scrollTo({top:0,left:0,behavior:'instant'})}};
+if(seen&&!/[?&]opening\b/.test(location.search))go();else{toTop();runIntro()}
 window.replayOpening=()=>{scrollTo({top:0,behavior:'instant'});const n=$('#name');if(n){delete n.dataset.s;n.style.animation='';n.style.opacity='';n.style.fontStretch=''}soundOn=false;const s=$('#snd');s.setAttribute('aria-pressed','false');s.lastChild.textContent='Sound on';setTimeout(runIntro,60)};
 
 /* ---------- ledgers: rendered in the HTML so search engines read them ---------- */
