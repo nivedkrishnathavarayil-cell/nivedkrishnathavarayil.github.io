@@ -34,7 +34,8 @@ h3{margin:0}
 .sel{position:absolute;inset:-12px -16px;pointer-events:none;overflow:visible}
 .sel svg{width:100%;height:100%;overflow:visible}
 .sel path{fill:none;stroke:var(--red);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1 2;stroke-dashoffset:1.06;transition:stroke-dashoffset .6s cubic-bezier(.6,.1,.3,1)}
-.on>.sel path,.mk:hover>.sel path,.mk:focus-within>.sel path{stroke-dashoffset:0}
+.on>.sel path,.mk:has(:focus-visible)>.sel path,.mk:focus-visible>.sel path{stroke-dashoffset:0}
+@media (hover:hover) and (pointer:fine){.mk:hover>.sel path{stroke-dashoffset:0}}
 
 /* opening titles: the director credit on an empty projected frame, pushed into camera, then the flash */
 .intro{position:fixed;inset:0;z-index:120;background:#000;color:#fff;overflow:hidden;touch-action:none;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:opacity .6s}
@@ -212,7 +213,8 @@ h3{margin:0}
 .lg .src{font-size:14.5px;color:var(--mute)}
 .lg .src a{color:var(--ink)}
 .lg .num .sel{inset:-22px -30px -16px}
-.lg summary:hover .sel path,.lg summary:focus-visible .sel path,.lg[open] .sel path,.lg .num.on .sel path{stroke-dashoffset:0}
+.lg summary:focus-visible .sel path,.lg[open] .sel path{stroke-dashoffset:0}
+@media (hover:hover) and (pointer:fine){.lg summary:hover .sel path{stroke-dashoffset:0}}
 .legend{position:absolute;right:0;top:-46px;font-size:30px;transform:rotate(-3deg)}
 @media(max-width:760px){.lg summary{grid-template-columns:minmax(0,1fr) 44px}.lg summary>div:nth-child(2){grid-column:1}.lg summary .pm{grid-row:1;grid-column:2;align-self:start}
 .lg .bd{grid-template-columns:minmax(0,1fr)}.lg .bd>div{grid-column:1}.lg .num .sel{inset:-14px -12px -10px}.legend{position:static;display:block;margin:0 0 10px}}
@@ -268,7 +270,8 @@ h3{margin:0}
 .qn{position:relative;background:none;border:0;padding:10px 12px;font:600 15px "Hanken Grotesk",sans-serif;color:var(--mute);cursor:pointer;min-height:44px}
 .qn:hover,.qn[aria-selected=true]{color:var(--ink)}
 .qn .sel{inset:-2px -4px}
-.qn:hover .sel path,.qn[aria-selected=true] .sel path{stroke-dashoffset:0}
+.qn[aria-selected=true] .sel path{stroke-dashoffset:0}
+@media (hover:hover) and (pointer:fine){.qn:hover .sel path{stroke-dashoffset:0}}
 .qarrows{margin-left:auto;display:flex;gap:8px}
 .qarrows button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--rule);background:none;color:var(--ink);font-size:18px;cursor:pointer}
 .qarrows button:hover{border-color:var(--ink)}
@@ -286,7 +289,8 @@ h3{margin:0}
 .pr .dt{color:var(--mute);font-size:15px;white-space:nowrap}
 a.pr:hover .h{text-decoration:underline;text-underline-offset:3px}
 .pr .o .sel{inset:-10px -14px}
-a.pr:hover .o .sel path,a.pr:focus-visible .o .sel path,.pr .o.on .sel path{stroke-dashoffset:0}
+a.pr:focus-visible .o .sel path{stroke-dashoffset:0}
+@media (hover:hover) and (pointer:fine){a.pr:hover .o .sel path{stroke-dashoffset:0}}
 @media(max-width:700px){.pr{grid-template-columns:minmax(0,1fr)}}
 
 /* about */

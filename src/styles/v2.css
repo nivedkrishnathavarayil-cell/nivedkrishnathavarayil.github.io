@@ -43,8 +43,7 @@
 .bn .sel{inset:-11px -13px}
 .bn .sel path{stroke-width:2.4}
 .bk{font-size:13px;color:var(--mute)}
-@media (hover:hover){.bw:hover .bn{color:var(--red)}.bw:hover .bn>.sel path{stroke-dashoffset:0}}
-.wall .bn.on{color:var(--red)}
+@media (hover:hover) and (pointer:fine){.bw:hover .bn{color:var(--red)}.bw:hover .bn>.sel path{stroke-dashoffset:0}}
 @media (max-width:1000px){.wall{grid-template-columns:repeat(4,minmax(0,1fr))}.bw:nth-child(5n){border-right:1px solid var(--rule)}.bw:nth-child(4n){border-right:0}}
 @media (max-width:760px){.wall{grid-template-columns:repeat(3,minmax(0,1fr))}.bw:nth-child(4n){border-right:1px solid var(--rule)}.bw:nth-child(3n){border-right:0}}
 @media (max-width:520px){.wall{grid-template-columns:repeat(2,minmax(0,1fr))}.bw{min-height:92px;padding:14px 12px 12px}.bw:nth-child(3n){border-right:1px solid var(--rule)}.bw:nth-child(2n){border-right:0}}
@@ -202,7 +201,7 @@ html{overflow-x:clip}
 .bwa:focus-visible{outline:2px solid var(--red);outline-offset:-4px}
 .bw:has(.bwa){cursor:pointer}
 .bw:active .bn,.bw:has(.bwa:focus-visible) .bn{color:var(--red)}
-.bw:active .bn>.sel path,.wall .bn.on>.sel path{stroke-dashoffset:0}
+.bw:active .bn>.sel path{stroke-dashoffset:0}
 .lg{scroll-margin-top:84px}
 /* stills open their series */
 .dgrid .still{display:block;overflow:hidden;position:relative}
@@ -246,13 +245,17 @@ html{overflow-x:clip}
     background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:120% 0,0 0;
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   }
-  h2.d,h1.sx-t{background-image:var(--satin-sheen),var(--satin);filter:var(--satin-glow)}
+  h2.d,h1.sx-t{background-image:var(--satin-sheen),var(--satin)}
   /* the clipped paint stops at the box edge, so give descenders (g, p, y) room without moving the layout */
   h2.d{padding:.06em 0 .16em;margin-top:-.06em;margin-bottom:.19em}
   h1.sx-t{padding:.06em 0 .16em;margin-top:-.06em;margin-bottom:-.16em}
   .name>span,.wm.big>span{padding-bottom:.16em;margin-bottom:-.16em}
   .credit .nm .rf>span,.wm.big>span,.wm.big .idot{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 0 16px rgba(255,255,255,.2))}
-  .name>span{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 2px 14px rgba(0,0,0,.35)) drop-shadow(0 0 14px rgba(255,255,255,.16))}
+  /* no filter on the name: a filter on moving text re-rasterises every frame and stutters the scroll.
+     A soft dark pool behind it keeps it readable over the reel instead. */
+  .name>span{background-image:var(--foil-sheen),var(--foil)}
+  .name{position:relative;isolation:isolate}
+  .name::before{content:"";position:absolute;inset:-14% -6% -18%;z-index:-1;pointer-events:none;background:radial-gradient(58% 60% at 38% 55%,rgba(0,0,0,.32),transparent 72%)}
   /* light crosses the title as it racks into focus, the name every so often, everything else once */
   .intro.s3 .credit .nm .rf>span{animation:sheen 2.4s cubic-bezier(.4,.1,.2,1) .2s both}
   .intro.s3 .credit .nm .rf>span+span{animation-delay:.32s}

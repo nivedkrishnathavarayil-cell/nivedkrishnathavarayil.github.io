@@ -98,9 +98,9 @@ window.replayOpening=()=>{scrollTo({top:0,behavior:'instant'});const n=$('#name'
 
 /* ---------- ledgers: rendered in the HTML so search engines read them ---------- */
 
-/* a brand on the wall opens its row in the client work; a tapped name stays circled */
+/* a brand on the wall opens its row in the client work */
 const openRow=(hash,smooth)=>{const el=hash&&hash.length>1&&document.getElementById(hash.slice(1));if(!el)return false;if(el.tagName==='DETAILS')el.open=true;el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'});el.classList.remove('hit');void el.offsetWidth;el.classList.add('hit');setTimeout(()=>el.classList.remove('hit'),2200);return true};
-document.addEventListener('click',e=>{const bw=e.target.closest('.bw');if(bw)bw.querySelector('.bn').classList.add('on');const a=e.target.closest('a[href^="#c-"]');if(a&&openRow(a.getAttribute('href'),true)){e.preventDefault();history.replaceState(null,'',a.getAttribute('href'))}});
+document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#c-"]');if(a&&openRow(a.getAttribute('href'),true)){e.preventDefault();history.replaceState(null,'',a.getAttribute('href'))}});
 if(/^#c-/.test(location.hash))requestAnimationFrame(()=>openRow(location.hash,false));
 /* iOS only shows pressed states once a touch listener exists */
 document.addEventListener('touchstart',()=>{},{passive:true});
