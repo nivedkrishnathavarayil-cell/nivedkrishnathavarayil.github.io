@@ -27,7 +27,7 @@ if (mb && navEl) {
   sheet.id = 'sheet';
   sheet.setAttribute('aria-hidden', 'true');
   sheet.innerHTML = `<nav class="sheet-nav" aria-label="Menu">${links.map((a, i) => `<a href="${a.getAttribute('href')}" style="--i:${i}">${a.textContent}</a>`).join('')}</nav>
-<div class="sheet-foot" style="--i:${links.length}"><a class="btn" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="sheet-mail" href="mailto:nivedkrishnathavarayil@gmail.com">nivedkrishnathavarayil@gmail.com</a><p class="sheet-soc"><a href="https://www.linkedin.com/in/nivedkrishna" rel="me">LinkedIn</a><a href="https://www.imdb.com/name/nm16824024/" rel="me">IMDb</a><a href="https://www.instagram.com/tvedukr_12" rel="me">Instagram</a></p></div>`;
+<div class="sheet-foot" style="--i:${links.length}"><a class="btn" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="sheet-mail" href="mailto:nivedkrishnathavarayil@gmail.com">nivedkrishnathavarayil@gmail.com</a><p class="sheet-soc"><a href="https://www.linkedin.com/in/nivedkrishna" rel="me">LinkedIn</a><a href="https://www.imdb.com/name/nm16824024/" rel="me">IMDb</a><a href="https://www.instagram.com/tvedukr_12" rel="me">Instagram</a><a href="/Nivedkrishna-Thavarayil-Resume.pdf" target="_blank" rel="noopener">Resume</a></p></div>`;
   document.body.append(sheet);
   const root = document.documentElement;
   const set = (o) => {
@@ -231,3 +231,31 @@ addEventListener('resize', () => {
   clearTimeout(fitWords.t);
   fitWords.t = setTimeout(fitWords, 120);
 });
+
+/* ---------- films play here: a link with data-yt opens a full-screen player instead of leaving for YouTube ---------- */
+const ytLinks = $$('a[data-yt]');
+if (ytLinks.length && typeof HTMLDialogElement === 'function') {
+  const dlg = document.createElement('dialog');
+  dlg.className = 'ytbox';
+  dlg.setAttribute('aria-label', 'Film player');
+  dlg.innerHTML = '<div class="ytbox-in"><button class="ytbox-x" type="button">Close</button><div class="ytbox-frame"></div><p class="ytbox-t"></p></div>';
+  document.body.append(dlg);
+  const frame = dlg.querySelector('.ytbox-frame');
+  const title = dlg.querySelector('.ytbox-t');
+  dlg.addEventListener('close', () => { frame.replaceChildren(); document.documentElement.classList.remove('yt-open'); });
+  dlg.querySelector('.ytbox-x').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.classList.contains('ytbox-in')) dlg.close(); });
+  ytLinks.forEach((a) => a.addEventListener('click', (e) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    e.preventDefault();
+    const f = document.createElement('iframe');
+    f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(a.dataset.yt)}?autoplay=1&rel=0&playsinline=1`;
+    f.title = a.dataset.title || 'Film';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    frame.replaceChildren(f);
+    title.textContent = a.dataset.title || '';
+    document.documentElement.classList.add('yt-open');
+    dlg.showModal();
+  }));
+}
