@@ -1,6 +1,8 @@
 {
 const $=s=>document.querySelector(s);
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* Reduce Motion (an iPhone accessibility setting) no longer swaps the site for a still version:
+   everything still plays, and only the opening's push-in and camera weave are toned down. */
+const reduce=false,calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LOOP='M14,58 C8,26 62,8 112,9 C164,10 196,28 193,54 C190,80 140,94 92,92 C40,90 6,76 9,52 C11,38 34,22 70,15';
 const WIDE='M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13';
 const SELW=`<span class="sel"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="${WIDE}"/></svg></span>`;
@@ -47,13 +49,13 @@ function runIntro(){
   by.style.cssText=nmL.style.cssText=credit.style.cssText='';
   const T=[],at=(ms,f)=>T.push(setTimeout(f,ms));
   let P=0,target=0,rolling=false,fired=false,rollT=0,rollFrom=0,rollDur=0,t0=0,lastW=0,raf=0,autoAt=0,ty=0,tb=0;
-  const z=()=>{const creep=Math.min(1,(performance.now()-t0)/3400)*.06;return (creep+P)*290};
+  const z=()=>{const creep=Math.min(1,(performance.now()-t0)/3400)*.06;return (creep+P)*(calm?70:290)};
   const paint=now=>{const Z=z();
     nmL.style.transform=`translateZ(${Z}px)`;
     by.style.transform=`translateZ(${Z*.62}px) translateY(${-P*26}px)`;
     const dof=Math.max(0,P-.4)*9;nmL.style.filter=dof>.05?`blur(${dof.toFixed(2)}px)`:'';
     by.style.opacity=Math.max(0,1-P*1.6);
-    if(now-lastW>41){lastW=now;credit.style.transform=`translate(${((Math.random()-.5)*.9).toFixed(2)}px,${((Math.random()-.5)*.7).toFixed(2)}px)`}};
+    if(!calm&&now-lastW>41){lastW=now;credit.style.transform=`translate(${((Math.random()-.5)*.9).toFixed(2)}px,${((Math.random()-.5)*.7).toFixed(2)}px)`}};
   const loop=now=>{
     if(rolling){const k=Math.min(1,(now-rollT)/rollDur);P=rollFrom+(1-rollFrom)*k*k*k;paint(now);if(k>=1){fire();return}}
     else{P+=(target-P)*.16;paint(now);if(P>.5)roll();else if(now>=autoAt&&(reelReady()||now>=autoAt+2200))roll()}
@@ -90,7 +92,7 @@ function runIntro(){
   const begin=()=>fontsIn().then(start);
   if(document.hidden){const v=()=>{if(!document.hidden){document.removeEventListener('visibilitychange',v);begin()}};document.addEventListener('visibilitychange',v)}else begin();
 }
-let seen=false;try{const nav=performance.getEntriesByType('navigation')[0];const inside=document.referrer&&new URL(document.referrer).origin===location.origin;seen=(nav&&nav.type==='back_forward')||!!inside}catch(e){}
+let seen=false;try{const nav=performance.getEntriesByType('navigation')[0];const inside=document.referrer&&new URL(document.referrer).origin===location.origin;seen=(nav&&nav.type==='back_forward')||(!!inside&&!(nav&&nav.type==='reload'))}catch(e){}
 if(seen&&!/[?&]opening\b/.test(location.search))go();else runIntro();
 window.replayOpening=()=>{scrollTo({top:0,behavior:'instant'});const n=$('#name');if(n){delete n.dataset.s;n.style.animation='';n.style.opacity='';n.style.fontStretch=''}soundOn=false;const s=$('#snd');s.setAttribute('aria-pressed','false');s.lastChild.textContent='Sound on';setTimeout(runIntro,60)};
 
@@ -125,38 +127,43 @@ const S=[
 ];
 /* series: the shelf is rendered at build time; each spine links to its own page */
 /* ---------- ledgers ---------- */
-const row=r=>`<details class="lg"><summary><div><span class="d num" style="--w:${r.w||'110%'}">${esc(r.n)}${SELW}</span><span class="cap">${esc(r.cap)}</span></div><div><h3>${esc(r.t)}</h3><p class="who">${esc(r.who)}</p></div><span class="pm" aria-hidden="true"></span></summary><div class="bd"><div>${r.p.map(x=>`<p>${esc(x)}</p>`).join('')}${r.src?`<p class="src">${esc(r.src)}${r.links?': '+r.links.map(l=>`<a href="${l[1]}">${esc(l[0])}</a>`).join(', '):''}</p>`:''}</div></div></details>`;
+const row=r=>`<details class="lg" id="${r.id}"><summary><div><span class="d num" style="--w:${r.w||'110%'}">${esc(r.n)}${SELW}</span><span class="cap">${esc(r.cap)}</span></div><div><h3>${esc(r.t)}</h3><p class="who">${esc(r.who)}</p></div><span class="pm" aria-hidden="true"></span></summary><div class="bd"><div>${r.p.map(x=>`<p>${esc(x)}</p>`).join('')}${r.src?`<p class="src">${esc(r.src)}${r.links?': '+r.links.map(l=>`<a href="${l[1]}">${esc(l[0])}</a>`).join(', '):''}</p>`:''}</div></div></details>`;
 
 
 
 const R=[
-{n:"1.5M",cap:"views on one phaal reel",w:"118%",t:"Brick Lane Curry House, New York",who:"Creative Strategist and Social Media Lead",
+{id:"c-bricklane",n:"1.5M",cap:"views on one phaal reel",w:"118%",t:"Brick Lane Curry House, New York",who:"Creative Strategist and Social Media Lead",
  p:["Brick Lane is famous for its phaal, the curry Adam Richman took on in Man v. Food. I turned that challenge into a recurring New York content property with a zero-budget creator strategy, and one phaal reel passed 1.5 million views.","I pitched more than ten food creators myself and brought in Priya's Plates as our guest. Her attempt, posted as a collaboration, passed 57,000 views with nearly 300 shares."],src:"Source: Satinder Sharma, chef and owner, and Brick Lane Curry House on Instagram"},
-{n:"50 cups",cap:"given away with orders over $35, so at least $1,750 in orders",w:"84%",t:"Frangos Peri-Peri, New York",who:"Creative and Digital Marketing Strategist, World Cup 2026",
+{id:"c-frangos",n:"50 cups",cap:"given away with orders over $35, so at least $1,750 in orders",w:"84%",t:"Frangos Peri-Peri, New York",who:"Creative and Digital Marketing Strategist, World Cup 2026",
  p:["For the World Cup I put Frangos into NYC Tourism + Conventions' Five Borough Winners Special. When Portugal beat Uzbekistan 5-0, a five-wings-and-free-lemonade offer went out under the line \"Like it. Claim it.\" and about 26 people claimed it.","A paid Meta campaign, geotargeted around Avenue B, offered an official borough World Cup cup with any order over $35. All 50 cups went.","I filmed more than a dozen dishes on my own Sony, made 30+ reels and posts from late June to mid-August, and restarted a TikTok that had sat untouched for two years with 18 posts. Captions carried the phrases people actually search."],src:"Source: Rosina Ishaq, Frangos Peri-Peri"},
-{n:"FOX 5",cap:"credentialed to film behind the scenes",w:"110%",t:"Michael Samen, mentalist, New York",who:"Shoot, edit and strategy, April to July 2026",
+{id:"c-samen",n:"FOX 5",cap:"credentialed to film behind the scenes",w:"110%",t:"Michael Samen, mentalist, New York",who:"Shoot, edit and strategy, April to July 2026",
  p:["From mid-April to the end of July I went out with Michael, shot his reels, edited them with music and posted them across Instagram, TikTok, YouTube Shorts, Threads and Facebook. Some of the strategy we built together.","On June 2 I was credentialed to film behind the scenes when he appeared on FOX 5's Talking with Natasha. His long-form YouTube video I took from idea to strategy to the shoot and the edit. NY Weekly wrote about the work in July."],
  src:"Watch and read",links:[["The long-form video on YouTube","https://youtu.be/2oX-n4hvm-8"],["the FOX 5 segment","https://www.fox5ny.com/video/fmc-mosotx1eyqd1xlaf"],["NY Weekly","https://nyweekly.com/business/behind-the-mentalist-how-a-nyc-video-producer-is-building-michael-samens-brand-from-the-streets-to-fox-5/"]]},
-{n:"30,000+",cap:"views on eight videos in about two weeks",w:"92%",t:"Sapphire Banquet NY",who:"TikTok and YouTube launch, May 2026",
+{id:"c-sapphire",n:"30,000+",cap:"views on eight videos in about two weeks",w:"92%",t:"Sapphire Banquet NY",who:"TikTok and YouTube launch, May 2026",
  p:["I launched Sapphire's TikTok and YouTube. Within about two weeks eight videos had passed 30,000 views between them: a TikTok reveal of the hall passed 7,000, and a tour with Eshal passed 8,000.","I also designed the guest-of-honor posters for Hina Khawaja Bayat and Harbhajan Mann."],src:"Source: Muhammad Asim Ikram, Sapphire Banquet NY"},
-{n:"7,500+",cap:"views on one boosted mandi post, then customers walked in holding it up",w:"100%",t:"Hyderabad Peri Peri, Sips and Semkeh, Brooklyn",who:"Social Media Manager and Content Strategist, March to May 2026",
+{id:"c-samsha",n:"7,500+",cap:"views on one boosted mandi post, then customers walked in holding it up",w:"100%",t:"Hyderabad Peri Peri, Sips and Semkeh, Brooklyn",who:"Social Media Manager and Content Strategist, March to May 2026",
  p:["Three restaurants, three voices: a polished, premium page for Sips, Lebanese street food for Semkeh, and close, raw kitchen footage of biryani, mandi and goat tahari for Hyderabad Peri Peri.","When the owners asked what to boost, I picked a seven-slide post on our goat mandi over a reel. It drew more than 7,500 views and 70 new followers, and ten to fifteen customers came in holding the post up on their phones to order it. The head chef asked what I had posted, because suddenly everyone wanted mandi.","Across about ten weeks I put out 112 posts, the reels passed 45,000 views, and Hyderabad Peri Peri's views rose 139 percent from March to April."],src:"Source: Faisal Shahzad, co-owner of Sam & Sha Inc."},
-{n:"616,000",cap:"views on one YouTube Short",w:"104%",t:"Fetchy, an AI memory app in Los Angeles",who:"Content strategy, scripts, direction and edit",
+{id:"c-fetchy",n:"616,000",cap:"views on one YouTube Short",w:"104%",t:"Fetchy, an AI memory app in Los Angeles",who:"Content strategy, scripts, direction and edit",
  p:["Fetchy's Shorts were averaging 600 to 1,000 views. I built a hub, hype and hygiene content plan across Instagram, TikTok and YouTube, wrote the scripts, directed the founder's phone shoots shot by shot, edited, picked the audio and posted. Shorts settled above 2,000 views each, and one passed 616,000."],src:"Source: Nina Duong, co-founder and CEO of Fetchy"},
-{n:"150 to 2,400",cap:"Instagram followers in about six weeks, no paid spend",w:"78%",t:"Infamous Coconuts, a studio in Los Angeles, New York and Mumbai",who:"Founded by Abi Varghese, director of Netflix's Brown Nation",
+{id:"c-coconuts",n:"150 to 2,400",cap:"Instagram followers in about six weeks, no paid spend",w:"78%",t:"Infamous Coconuts, a studio in Los Angeles, New York and Mumbai",who:"Founded by Abi Varghese, director of Netflix's Brown Nation",
  p:["I archived their back catalogue, rebuilt the feed around hub, hype and hygiene content, and turned the Malayalam meme pages already using their clips into credited partners who released new posts with us. The growth got picked up on Reddit, then by the press.","The collaboration post with the meme page It's Malu, about Abi Varghese building his empire, I took from idea to strategy to post. It is one of the most viral posts on the page."],src:"Covered by",links:[["DNA","https://www.dnaindia.com/insights/report-how-one-spontaneous-outreach-opened-doors-for-collaborative-filmmaking-3218319"],["Outlook India","https://www.outlookindia.com/hub4business/nivedkrishna-thavarayil-and-the-creative-collaboration-that-went-beyond-conventional-marketing"],["News24","https://news24online.com/information/nivedkrishna-thavarayil-creating-a-quiet-revolution-with-creative-collaborations/903102/"],["Indian Daily Post","https://m.dailyhunt.in/news/india/english/indian+daily+post+idp-epaper-dh166e30f72d604e7baed95079067eb6f9/from+film+marketing+to+creative+development+nivedkrishna+thavarayil+works+for+a+bigger+purpose-newsid-dh166e30f72d604e7baed95079067eb6f9_52edc1109b7811f1bddf3e753200d161"]]},
-{n:"4",cap:"Sony Pictures releases on one retainer",w:"150%",t:"WLDD and Sony Pictures India, Bangalore",who:"Creative Strategist, founding team",
+{id:"c-sony",n:"4",cap:"Sony Pictures releases on one retainer",w:"150%",t:"WLDD and Sony Pictures India, Bangalore",who:"Creative Strategist, founding team",
  p:["I pitched and closed Sony Pictures as WLDD's first international client. For The Pope's Exorcist we staged a possession in a packed cinema as the trailer played. The clip went viral across India in April 2023 and was covered by News18, India Today, Hindustan Times and The Indian Express.","The relationship grew to cover 65, Spider-Man: Across the Spider-Verse and Insidious: The Red Door."],src:"Covered by",links:[["Hindustan Times","https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html"],["India Today","https://www.indiatoday.in/trending-news/story/woman-acts-possessed-while-trailer-of-the-popes-exorcist-plays-in-movie-theatre-video-is-viral-2357066-2023-04-07"],["The Indian Express","https://indianexpress.com/article/trending/trending-in-india/possessed-woman-growls-at-moviegoers-as-the-popes-exorcist-trailer-plays-in-theatre-8545834/"],["News18","https://www.news18.com/buzz/the-popes-exorcist-trailer-brings-horror-to-life-as-possessed-woman-jumps-out-in-theatre-7496905.html"],["LatestLY","https://www.latestly.com/socially/social-viral/the-popes-exorcist-trailer-combined-with-possessed-woman-turns-theatre-into-horror-hall-watch-video-5047593.html"],["my article on why it worked","https://www.linkedin.com/pulse/what-popes-exorcist-campaign-taught-me-virality-why-most-thavarayil-io7me"]]},
-{n:"75,000+",cap:"views on one creator collaboration",w:"100%",t:"Jaipore Royal and NH44 Indian, New York",who:"Plan, shoot, edit and design",
+{id:"c-jaipore",n:"75,000+",cap:"views on one creator collaboration",w:"100%",t:"Jaipore Royal and NH44 Indian, New York",who:"Plan, shoot, edit and design",
  p:["For Cross Culture Food's restaurants I planned, shot, edited and designed everything. Jaipore's guests live on Facebook, so that's where the effort went: followers grew from about 1,500 to 2,700. NH44's guests live on Instagram, so I built food creator collaborations there. I also redesigned NH44's logo, now painted on the restaurant wall."],src:"Source: Roshan Balan, owner of Jaipore Royal"},
-{n:"53",cap:"team jackets, made in Mumbai, worn in Philadelphia",w:"150%",t:"LR Legacy Group, Levin Reji at eXp Realty",who:"Brand, merchandise and listing reels",
+{id:"c-lr",n:"53",cap:"team jackets, made in Mumbai, worn in Philadelphia",w:"150%",t:"LR Legacy Group, Levin Reji at eXp Realty",who:"Brand, merchandise and listing reels",
  p:["Levin's marketing was one sponsor graphic. I built his brand and logo, then put it where his referrals come from: closing gifts in his clients' homes and custom jackets for his cricket team. About 200 branded pieces, sourced in India and delivered to Philadelphia, plus the reel for his first listing."],src:"Source: Levin Reji, owner of LR Legacy Group"},
-{n:"2K to 11K",cap:"followers for WLDD in four months",w:"86%",t:"WLDD, Bangalore",who:"50+ campaigns for Netflix India, Prime Video, Zomato and more",
+{id:"c-wldd",n:"2K to 11K",cap:"followers for WLDD in four months",w:"86%",t:"WLDD, Bangalore",who:"50+ campaigns for Netflix India, Prime Video, Zomato and more",
  p:["As part of WLDD's first fifteen people I worked on more than 50 organic and creator-led campaigns for Netflix India, Prime Video, ZEE5, Zomato, Swiggy, Durex, Xiaomi, OnePlus, Bingo! Mad Angles, Veera Browser and a few dating apps, while growing the agency's own Instagram.","Film and OTT work went well beyond Sony: ZEE5's Taj: Divided by Blood, Tu Jhoothi Main Makkaar, and Kannada cinema, including PR and marketing support around Yash and KGF: Chapter 2."],src:"Source: my own records from WLDD, January 2023 to April 2024"}];
 $('#res').insertAdjacentHTML('beforeend',R.map(row).join(''));
 $('#also').innerHTML='<b>Also:</b> before any of this, I co-founded Screen Reapers at university, a digital marketing and web agency for brands in India and abroad, jewelry and fashion included. Since then: a TikTok and YouTube launch plan for Cora the Borzoi, a go-to-market plan for Kavikara, web and social for RealtorLevin and YourPrimaryCare, and a documentary-style shoot for AS IF Magazine.';
 
-/* circle each number once as it scrolls into view */
+/* a brand on the wall opens its row in the client work; a tapped name stays circled */
+const openRow=(hash,smooth)=>{const el=hash&&hash.length>1&&document.getElementById(hash.slice(1));if(!el)return false;if(el.tagName==='DETAILS')el.open=true;el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'});return true};
+document.addEventListener('click',e=>{const bw=e.target.closest('.bw');if(bw)bw.querySelector('.bn').classList.add('on');const a=e.target.closest('a[href^="#c-"]');if(a&&openRow(a.getAttribute('href'),true)){e.preventDefault();history.replaceState(null,'',a.getAttribute('href'))}});
+if(/^#c-/.test(location.hash))requestAnimationFrame(()=>openRow(location.hash,false));
+/* iOS only shows pressed states once a touch listener exists */
+document.addEventListener('touchstart',()=>{},{passive:true});
 /* circles draw on hover; on touch screens they draw once as they scroll into view */
 
 /* ---------- films ---------- */
@@ -289,11 +296,18 @@ const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const ss=(a,b,x)=>{const t=cl((x-a)/(b-a));return t*t*(3-2*t)};
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 const L=(a,b,t)=>a+(b-a)*t;
-let ticking=false;
+let ticking=false,lastP=-1,force=true;
+const E={pin:$('#pin'),hc:$('#hcopy'),nowc:$('#nowc'),shade:$('#shade'),cc:$('#capc'),r1:$('#rt1'),r2:$('#rt2'),tbl:$('#tbl'),fv:$('#feedv'),tw:$('#two')};
+let pinH=E.pin.clientHeight,DKY=[];
+/* where the black rooms sit, measured once and again only when the page changes size, so scrolling never forces a layout */
+const measure=()=>{pinH=E.pin.clientHeight;DKY=DK.map(el=>{const b=el.getBoundingClientRect();return [b.top+scrollY,b.bottom+scrollY]});force=true};
 function upd(){ticking=false;
-  const W=innerWidth,Hh=$('#pin').clientHeight,mob=W<760;
+  const W=innerWidth,Hh=pinH,mob=W<760;
   const r=stage.getBoundingClientRect(),tot=stage.offsetHeight-Hh;
   const p=reduce?0:cl(-r.top/tot);
+  const past=r.bottom<70;hd.classList.toggle('ink',past||p>.7);hd.classList.toggle('pill',past);
+  const y=scrollY+34;hd.classList.toggle('ondark',past&&DKY.some(d=>d[0]<=y&&d[1]>=y));
+  if(p===lastP&&!force)return;lastP=p;force=false;
   const A={x:0,y:0,w:W,h:Hh};
   const cw=mob?W*.94:Math.min(W*.84,1500),C={w:cw,h:cw/2.39};C.x=(W-C.w)/2;C.y=mob?Hh*.38:(Hh-C.h)/2-Hh*.03;
   let bh=mob?Math.min(Hh*.5,W*.62*16/9):Math.min(Hh*.76,700);const B={h:bh,w:bh*9/16};
@@ -305,24 +319,24 @@ function upd(){ticking=false;
   frame.style.transform=`translate3d(${R.x}px,${R.y}px,0)`;frame.style.width=R.w+'px';frame.style.height=R.h+'px';
   frame.style.borderRadius=L(0,26,ss(.5,.9,p))+'px';
   frame.style.boxShadow=p>.5?`0 40px 80px -30px rgba(0,0,0,${.55*ss(.5,.9,p)})`:'none';
-  const hc=$('#hcopy'),k=cl(p/.16);hc.style.opacity=1-k;hc.style.transform=`translateY(${-k*40}px)`;hc.style.visibility=k>=1?'hidden':'visible';
-  $('#nowc').style.opacity=.85*(1-k);
-  $('#shade').style.opacity=1-ss(.06,.28,p);
-  const cc=$('#capc');cc.style.opacity=ss(.27,.35,p)*(1-ss(.5,.58,p));cc.style.left=C.x+'px';cc.style.top=(C.y+C.h+16)+'px';
-  const r1=$('#rt1');r1.style.opacity=cc.style.opacity;r1.style.left=(C.x+12)+'px';r1.style.top=(C.y+12)+'px';
-  const r2=$('#rt2');r2.style.opacity=ss(.82,.92,p);r2.style.left=(B.x+12)+'px';r2.style.top=(B.y+12)+'px';
-  $('#tbl').style.opacity=ss(.55,.8,p);
-  $('#feedv').style.opacity=ss(.62,.82,p);{const w=p>.5;if(w!==feedWant){feedWant=w;syncFeed()}}
-  const tw=$('#two');tw.style.opacity=ss(.8,.93,p);tw.style.pointerEvents=p>.85?'auto':'none';
+  const k=cl(p/.16);E.hc.style.opacity=1-k;E.hc.style.transform=`translate3d(0,${-k*40}px,0)`;E.hc.style.visibility=k>=1?'hidden':'visible';
+  E.nowc.style.opacity=.85*(1-k);
+  E.shade.style.opacity=1-ss(.06,.28,p);
+  const co=ss(.27,.35,p)*(1-ss(.5,.58,p));E.cc.style.opacity=co;E.cc.style.left=C.x+'px';E.cc.style.top=(C.y+C.h+16)+'px';
+  E.r1.style.opacity=co;E.r1.style.left=(C.x+12)+'px';E.r1.style.top=(C.y+12)+'px';
+  E.r2.style.opacity=ss(.82,.92,p);E.r2.style.left=(B.x+12)+'px';E.r2.style.top=(B.y+12)+'px';
+  E.tbl.style.opacity=ss(.55,.8,p);
+  E.fv.style.opacity=ss(.62,.82,p);{const w=p>.5;if(w!==feedWant){feedWant=w;syncFeed()}}
+  const tw=E.tw;tw.style.opacity=ss(.8,.93,p);tw.style.pointerEvents=p>.85?'auto':'none';
   if(mob){tw.style.left='5vw';tw.style.right='5vw';tw.style.top='86px';tw.style.width='auto';tw.style.transform='none'}
   else{tw.style.left='max(5vw,24px)';tw.style.top='50%';tw.style.width=Math.min(B.x-W*.1,560)+'px';tw.style.transform='translateY(-50%)'}
-  const past=r.bottom<70;hd.classList.toggle('ink',past||p>.7);hd.classList.toggle('pill',past);
-  hd.classList.toggle('ondark',past&&DK.some(el=>{const b=el.getBoundingClientRect();return b.top<=34&&b.bottom>=34}));
 }
 const nm=$('#name');const DK=[...document.querySelectorAll('.dark')];
 function fitT(){document.querySelectorAll('.card .ttl').forEach(el=>{el.style.fontSize='';let f=parseFloat(getComputedStyle(el).fontSize),n=0;while(el.scrollWidth>el.clientWidth+1&&n<30){f*=.94;el.style.fontSize=f+'px';n++}})}
 function fit(){fitT();const an=nm.style.animation,st=nm.style.fontStretch;nm.style.animation='none';nm.style.fontSize='100px';nm.style.fontStretch=innerWidth<760?'112%':'140%';const w=Math.max(...[...nm.children].map(c=>c.getBoundingClientRect().width));const avail=$('#hcopy').clientWidth*(innerWidth<760?.98:.9);nm.style.fontSize=Math.min(100*avail/w,190)+'px';nm.style.fontStretch=st;nm.style.animation=an}
-(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>{fit();upd()});addEventListener('resize',fit);
 const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(upd)}};
-addEventListener('scroll',req,{passive:true});addEventListener('resize',req);upd();
+const remeasure=()=>{measure();req()};
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>{fit();remeasure()});addEventListener('resize',()=>{fit();remeasure()});
+if(window.ResizeObserver)new ResizeObserver(remeasure).observe(document.body);addEventListener('load',remeasure);
+addEventListener('scroll',req,{passive:true});measure();upd();
 }

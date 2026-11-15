@@ -9,7 +9,7 @@
 @view-transition { navigation: auto; }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .32s; }
 ::view-transition-group(*) { animation-duration: .55s; animation-timing-function: cubic-bezier(.2,.75,.15,1); }
-@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+
 
 /* ---------- opening: sound cue ---------- */
 .hint{color:#c9c9c2;letter-spacing:.01em}
@@ -17,7 +17,7 @@
 .hint .eq i{display:block;width:2px;height:100%;background:#ff4438;border-radius:1px;transform-origin:50% 100%;animation:eqb .8s ease-in-out infinite alternate}
 .hint .eq i:nth-child(2){animation-delay:-.27s}.hint .eq i:nth-child(3){animation-delay:-.53s}
 @keyframes eqb{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
-@media (prefers-reduced-motion: reduce){.hint .eq i{animation:none;transform:scaleY(.6)}}
+
 
 /* ---------- header: collapses into a floating pill once the reel is behind you ---------- */
 .hd{margin:0 auto;max-width:100%;transition:background .3s,color .3s,box-shadow .3s,top .55s cubic-bezier(.2,.75,.15,1),max-width .6s cubic-bezier(.2,.75,.15,1),border-radius .55s cubic-bezier(.2,.75,.15,1),padding .55s cubic-bezier(.2,.75,.15,1)}
@@ -37,7 +37,7 @@
 /* ---------- names on the call sheet ---------- */
 .brands{padding-top:clamp(36px,6vw,80px)}
 .wall{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1.5px solid var(--ink)}
-.bw{display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:clamp(104px,9vw,128px);padding:18px 18px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
+.bw{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:clamp(104px,9vw,128px);padding:18px 18px 14px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
 .bw:nth-child(5n){border-right:0}
 .bn{position:relative;align-self:flex-start;font-family:Anybody,"Arial Narrow",sans-serif;font-weight:800;font-size:clamp(17px,1.5vw,23px);font-stretch:90%;line-height:1.02;transition:color .35s}
 .bn .sel{inset:-11px -13px}
@@ -93,7 +93,7 @@
   .spx{width:100%;padding:20px 18px 18px}
   .spl{-webkit-line-clamp:5}
 }
-@media (prefers-reduced-motion:reduce){.sp,.sp *,.sp::after{transition:none!important}}
+
 
 /* ---------- series pages ---------- */
 body[data-page=series] .hd{color:var(--ink)}
@@ -138,7 +138,7 @@ body[data-page=series] .hd{color:var(--ink)}
 
 /* smoothness: the reel plays clean, with no film grain blended over it every frame */
 .frame .grain{display:none}
-@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html{scroll-behavior:smooth}
 section[id]{scroll-margin-top:78px}
 
 /* ---------- header: no red dot beside the mark ---------- */
@@ -196,3 +196,80 @@ section[id]{scroll-margin-top:78px}
 /* ---------- narrow phones: nothing pokes past the screen edge ---------- */
 html{overflow-x:clip}
 @media (max-width:420px){.mail .sel{inset:-16px -6px}}
+
+/* the wall is pressable: a brand opens its client row; the name circles on press and stays circled */
+.bwa{position:absolute;inset:0;z-index:1;border-radius:2px}
+.bwa:focus-visible{outline:2px solid var(--red);outline-offset:-4px}
+.bw:has(.bwa){cursor:pointer}
+.bw:active .bn,.bw:has(.bwa:focus-visible) .bn{color:var(--red)}
+.bw:active .bn>.sel path,.wall .bn.on>.sel path{stroke-dashoffset:0}
+.lg{scroll-margin-top:84px}
+/* stills open their series */
+.dgrid .still{display:block;overflow:hidden;position:relative}
+.dgrid .still img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}
+@media (hover:hover){.dgrid .still:hover img{transform:scale(1.035)}}
+.dgrid .still:active img{transform:scale(.985);filter:brightness(.85)}
+
+/* ---------- phones: Face Value leads, the five in post become a short list ---------- */
+.inedit{display:none}
+@media (max-width:899px){
+  .shelf>.sp:not(.art){display:none}
+  .shelf>.sp:first-child{grid-column:1/-1;aspect-ratio:4/5}
+  .shelf>.sp:first-child .spx b{font-size:clamp(30px,9vw,44px)}
+  .shelf>.sp:first-child .spl{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13.5px;line-height:1.4;opacity:.9;max-width:36ch}
+  .inedit{display:block;margin-top:clamp(36px,9vw,56px)}
+  .inedit h3{font-size:clamp(28px,8vw,40px);margin:0 0 .25em}
+  .iel{color:var(--mute);margin:0 0 18px;font-size:15.5px;line-height:1.45;max-width:34ch}
+  .inedit ul{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+  .inedit li{border-bottom:1px solid var(--rule)}
+  .inedit a{display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:14px;padding:13px 2px;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent;transition:background .25s}
+  .inedit a:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+  .iec{position:relative;display:block;width:38px;aspect-ratio:9/13;border-radius:6px;overflow:hidden}
+  .spn{text-shadow:0 1px 6px rgba(0,0,0,.55)}
+  .iec::before{transform:scale(1)}
+  .iet{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .iet b{font-size:clamp(19px,5.4vw,24px);line-height:1;font-stretch:92%}
+  .iet span{font-size:12.5px;color:var(--mute)}
+  .ies{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;letter-spacing:.02em;color:var(--mute);white-space:nowrap}
+  .ies i{width:7px;height:7px;border-radius:50%;background:var(--red);animation:iepulse 2.4s ease-in-out infinite}
+}
+@media (min-width:600px) and (max-width:899px){.shelf>.sp:first-child{aspect-ratio:16/9}}
+@keyframes iepulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ---------- chrome: display type in steel on white, polished silver on black ----------
+   The gradient repeats every line (1lh), so each line catches the light the same way.
+   A glint crosses each headline once as it arrives; the name on the reel glints now and then. */
+:root{
+  --steel:linear-gradient(180deg,#4a4e55 0%,#191b1e 26%,#202226 52%,#7d838b 60%,#33363b 68%,#141517 92%);
+  --silver:linear-gradient(180deg,#ffffff 0%,#eef0f2 30%,#e4e7ea 52%,#a1a7af 58%,#f4f5f7 66%,#cfd3d8 90%);
+  --glint:linear-gradient(105deg,transparent 0 44%,rgba(255,255,255,.78) 50%,transparent 56% 100%);
+  --chrome:var(--steel);
+  --lift:drop-shadow(0 1px 0 #fff) drop-shadow(0 2px 2px rgba(0,0,0,.14));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--chrome:var(--silver);--lift:drop-shadow(0 -1px 0 rgba(0,0,0,.5)) drop-shadow(0 6px 14px rgba(0,0,0,.55))}}
+:root[data-theme=dark]{--chrome:var(--silver);--lift:drop-shadow(0 -1px 0 rgba(0,0,0,.5)) drop-shadow(0 6px 14px rgba(0,0,0,.55))}
+.dark,.hcopy,.sp,.credit,.ghost{--chrome:var(--silver);--lift:drop-shadow(0 -1px 0 rgba(0,0,0,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+@supports ((-webkit-background-clip:text) or (background-clip:text)) and (height:1lh){
+  h2.d,h3.d,h1.d,.lg .num,.stmt-t:not(.split),.stmt-t .w,.sp.art .spx b,.iet b,.credit .nm .rf>span,.wm.big>span,.wm.big .idot,.sx-pn b{
+    background-image:var(--glint),var(--chrome);
+    background-size:300% 100%,100% 1lh;
+    background-position:100% 0,0 0;
+    background-repeat:no-repeat,repeat-y;
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  h2.d,h1.sx-t,.lg .num,.inedit h3{filter:var(--lift)}
+  .stmt-t .w{background-image:var(--chrome);background-size:100% 1lh}
+  .name>span{
+    background-image:var(--glint),var(--silver);
+    background-size:300% 100%,100% 1lh;background-position:100% 0,0 0;background-repeat:no-repeat,repeat-y;
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.35));
+    animation:glint 7s cubic-bezier(.35,.1,.25,1) 1.2s infinite;
+  }
+  .name>span+span{animation-delay:1.32s}
+  .glint{animation:glintOnce 1.6s cubic-bezier(.35,.1,.25,1) .1s both}
+}
+@keyframes glintOnce{from{background-position:100% 0,0 0}to{background-position:0% 0,0 0}}
+@keyframes glint{0%,72%{background-position:100% 0,0 0}100%{background-position:0% 0,0 0}}
+@media (forced-colors:active){h2.d,h3.d,h1.d,.lg .num,.stmt-t .w,.sp.art .spx b,.iet b,.name>span,.credit .nm .rf>span,.wm.big>span,.wm.big .idot,.sx-pn b{background:none!important;-webkit-text-fill-color:currentColor!important;filter:none!important}}

@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const $ = (q, r = document) => r.querySelector(q);
 const $$ = (q, r = document) => [...r.querySelectorAll(q)];
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce = false; /* Reduce Motion keeps the reading animations; only the opening push-in is toned down (site.js) */
 const fine = matchMedia('(hover: hover) and (pointer: fine)');
 const page = document.body.dataset.page;
 
@@ -23,6 +23,14 @@ if (hd && page !== 'home') {
     mb.textContent = o ? 'Close' : 'Menu';
   });
 }
+
+/* ---------- chrome headlines: a glint crosses each one once as it arrives ---------- */
+const gio2 = new IntersectionObserver((es) => es.forEach((e) => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('glint');
+  gio2.unobserve(e.target);
+}), { threshold: 0.6 });
+$$('h2.d, h1.sx-t, .lg .num, .inedit h3').forEach((el) => gio2.observe(el));
 
 /* ---------- statement: the line reads itself as you scroll ---------- */
 const stmt = $('#stmt');

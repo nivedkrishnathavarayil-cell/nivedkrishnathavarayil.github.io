@@ -36,29 +36,29 @@ export const statementHTML = `
 
 /* ---------- 2. names on the call sheet ---------- */
 export const BRANDS = [
-  ['Canvas', 'Streaming app'],
-  ['Sony Pictures India', 'Film releases'],
-  ['Netflix India', 'Streaming'],
-  ['Prime Video', 'Streaming'],
-  ['Zee5', 'Streaming'],
-  ['Zomato', 'Food delivery'],
-  ['Swiggy', 'Food delivery'],
-  ['Durex', 'Consumer brand'],
-  ['Xiaomi', 'Tech'],
-  ['OnePlus', 'Tech'],
-  ['Infamous Coconuts', 'Film studio'],
-  ['Fetchy', 'AI app'],
-  ['Frangos Peri-Peri', 'Restaurant'],
-  ['Michael Samen', 'Mentalist'],
-  ['Brick Lane Curry House', 'Restaurant'],
-  ['Sapphire Banquet NY', 'Banquet hall'],
-  ['Jaipore Royal', 'Restaurant'],
-  ['NH44 Indian', 'Restaurant'],
+  ['Canvas', 'Streaming app', '#series'],
+  ['Sony Pictures India', 'Film releases', '#c-sony'],
+  ['Netflix India', 'Streaming', '#c-wldd'],
+  ['Prime Video', 'Streaming', '#c-wldd'],
+  ['Zee5', 'Streaming', '#c-wldd'],
+  ['Zomato', 'Food delivery', '#c-wldd'],
+  ['Swiggy', 'Food delivery', '#c-wldd'],
+  ['Durex', 'Consumer brand', '#c-wldd'],
+  ['Xiaomi', 'Tech', '#c-wldd'],
+  ['OnePlus', 'Tech', '#c-wldd'],
+  ['Infamous Coconuts', 'Film studio', '#c-coconuts'],
+  ['Fetchy', 'AI app', '#c-fetchy'],
+  ['Frangos Peri-Peri', 'Restaurant', '#c-frangos'],
+  ['Michael Samen', 'Mentalist', '#c-samen'],
+  ['Brick Lane Curry House', 'Restaurant', '#c-bricklane'],
+  ['Sapphire Banquet NY', 'Banquet hall', '#c-sapphire'],
+  ['Jaipore Royal', 'Restaurant', '#c-jaipore'],
+  ['NH44 Indian', 'Restaurant', '#c-jaipore'],
   ['Paratha Junction', 'Restaurant'],
-  ['LR Legacy Group', 'Real estate'],
-  ['Cora the Borzoi', 'Pet influencer'],
-  ['Kavikara', 'Wedding platform'],
-  ['AS IF Magazine', 'Fashion magazine'],
+  ['LR Legacy Group', 'Real estate', '#c-lr'],
+  ['Cora the Borzoi', 'Pet influencer', '#also'],
+  ['Kavikara', 'Wedding platform', '#also'],
+  ['AS IF Magazine', 'Fashion magazine', '#also'],
   ['Ophelia Model Management', 'Model agency'],
   ['RTC Sports Academy', 'Sports academy'],
 ];
@@ -69,7 +69,7 @@ export const brandsHTML = `
     <h2 class="d" id="brands-h">Brands I've worked with.</h2>
     <p class="lede">Studios, streamers, restaurants and founders, in New York and India. On a film set, this list would be the call sheet.</p>
     <ul class="wall">${BRANDS.map(
-      ([n, k]) => `<li class="bw"><span class="bn">${esc(n)}${SELW}</span><span class="bk">${esc(k)}</span></li>`
+      ([n, k, h]) => `<li class="bw">${h ? `<a class="bwa" href="${h}" aria-label="${esc(n)}: see the work"></a>` : ''}<span class="bn">${esc(n)}${SELW}</span><span class="bk">${esc(k)}</span></li>`
     ).join('')}</ul>
   </div>
 </section>`;
@@ -92,7 +92,19 @@ export const shelfHTML = (S) =>
       s.live ? `<span class="mk">Streaming on Canvas${SEL}</span>` : 'Coming soon'
     }<u>Open the series</u></span></span>
 </a>`;
-  }).join('')}</div>`;
+  }).join('')}</div>${inEditHTML(S)}`;
+
+/* phones: the series still in post sit in a short list instead of five tall title cards */
+const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const inEditHTML = (S) => {
+  const L = S.filter((s) => !s.poster);
+  if (!L.length) return '';
+  return `<div class="inedit" aria-labelledby="ie-h">
+  <h3 class="d" id="ie-h">In the edit.</h3>
+  <p class="iel">${WORDS[L.length] || L.length} more series are in post-production and coming to Canvas.</p>
+  <ul>${L.map((s) => `<li><a href="/series/${s.slug}/"><span class="iec ${s.cls || ''}" aria-hidden="true"></span><span class="iet"><b class="d">${esc(s.t)}</b><span>${esc(s.fmt)}. ${esc(s.city)}.</span></span><span class="ies"><i aria-hidden="true"></i>In post</span></a></li>`).join('')}</ul>
+</div>`;
+};
 
 /* ---------- schema ---------- */
 const eps = (fmt) => {
