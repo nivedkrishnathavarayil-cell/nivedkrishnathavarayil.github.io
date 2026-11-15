@@ -12,7 +12,7 @@
    "Nivedkrishna T"
   ],
   "jobTitle": "Creative Strategist and Director",
-  "description": "Creative Strategist and Director in New York. Paid and organic social campaigns, brand and influencer marketing, and 12 micro-dramas and short docuseries directed for Canvas.",
+  "description": "Creative Strategist and Director in New York. Paid and organic social, short-form video, AI video production, brand and influencer marketing, and 12 micro-dramas and short docuseries directed for Canvas.",
   "url": "https://nivedkrishnathavarayil.com/",
   "image": "https://nivedkrishnathavarayil.com/og/home.jpg",
   "worksFor": {
@@ -53,7 +53,15 @@
    "Film direction",
    "Screenwriting",
    "Documentary",
-   "AI video production"
+   "AI video production",
+   "Video direction",
+   "Videography",
+   "Social media strategy",
+   "Generative AI",
+   "AI filmmaking",
+   "Hybrid filmmaking",
+   "Claude Code",
+   "AI agents"
   ],
   "award": [
    "Winner, First Time Filmmaker Sessions Vol. 3 (The Last Pizza)",
@@ -70,6 +78,56 @@
    "https://www.instagram.com/thava.studio",
    "https://boldjourney.com/meet-nivedkrishna-thavarayil/",
    "https://www.deziart.co/dezine/nived-krishna-strategic-filmmaker-career"
+  ],
+  "hasOccupation": [
+   {
+    "@type": "Occupation",
+    "name": "Creative Strategist",
+    "occupationLocation": [
+     {
+      "@type": "City",
+      "name": "New York"
+     }
+    ]
+   },
+   {
+    "@type": "Occupation",
+    "name": "Video Director",
+    "occupationLocation": [
+     {
+      "@type": "City",
+      "name": "New York"
+     }
+    ]
+   },
+   {
+    "@type": "Occupation",
+    "name": "AI Video Producer",
+    "occupationLocation": [
+     {
+      "@type": "City",
+      "name": "New York"
+     }
+    ]
+   }
+  ],
+  "workLocation": [
+   {
+    "@type": "Place",
+    "name": "New York City"
+   },
+   {
+    "@type": "Place",
+    "name": "New Jersey"
+   },
+   {
+    "@type": "Place",
+    "name": "Los Angeles"
+   },
+   {
+    "@type": "Place",
+    "name": "San Francisco"
+   }
   ]
  },
  "LOOP": "M14,58 C8,26 62,8 112,9 C164,10 196,28 193,54 C190,80 140,94 92,92 C40,90 6,76 9,52 C11,38 34,22 70,15",
