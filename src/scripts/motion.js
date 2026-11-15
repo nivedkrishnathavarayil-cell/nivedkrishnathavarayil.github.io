@@ -24,13 +24,13 @@ if (hd && page !== 'home') {
   });
 }
 
-/* ---------- chrome headlines: a glint crosses each one once as it arrives ---------- */
+/* ---------- headlines: light crosses each one once as it arrives ---------- */
 const gio2 = new IntersectionObserver((es) => es.forEach((e) => {
   if (!e.isIntersecting) return;
   e.target.classList.add('glint');
   gio2.unobserve(e.target);
 }), { threshold: 0.6 });
-$$('h2.d, h1.sx-t, .lg .num, .inedit h3').forEach((el) => gio2.observe(el));
+$$('h2.d, h1.sx-t, .wm.big').forEach((el) => gio2.observe(el));
 
 /* ---------- statement: the line reads itself as you scroll ---------- */
 const stmt = $('#stmt');

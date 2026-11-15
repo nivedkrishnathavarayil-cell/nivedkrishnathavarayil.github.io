@@ -236,40 +236,53 @@ html{overflow-x:clip}
 @media (min-width:600px) and (max-width:899px){.shelf>.sp:first-child{aspect-ratio:16/9}}
 @keyframes iepulse{0%,100%{opacity:1}50%{opacity:.25}}
 
-/* ---------- chrome: display type in steel on white, polished silver on black ----------
-   The gradient repeats every line (1lh), so each line catches the light the same way.
-   A glint crosses each headline once as it arrives; the name on the reel glints now and then. */
+/* ---------- metal: used sparingly, like foil on a luxury box ----------
+   Silver foil only on the signature moments: the "Directed by" title, the name on the reel and the
+   closing wordmark. Section headlines get a satin finish you barely notice until light crosses it once
+   as the headline arrives. No outlines, no stripes, nothing on body copy, numbers or card titles. */
 :root{
-  --steel:linear-gradient(180deg,#4a4e55 0%,#191b1e 26%,#202226 52%,#7d838b 60%,#33363b 68%,#141517 92%);
-  --silver:linear-gradient(180deg,#ffffff 0%,#eef0f2 30%,#e4e7ea 52%,#a1a7af 58%,#f4f5f7 66%,#cfd3d8 90%);
-  --glint:linear-gradient(105deg,transparent 0 44%,rgba(255,255,255,.78) 50%,transparent 56% 100%);
-  --chrome:var(--steel);
-  --lift:drop-shadow(0 1px 0 #fff) drop-shadow(0 2px 2px rgba(0,0,0,.14));
+  --foil:linear-gradient(118deg,#ffffff 0%,#f6f7f8 28%,#c9ced4 46%,#eef0f2 58%,#ffffff 72%,#dfe2e6 100%);
+  --foil-sheen:linear-gradient(118deg,transparent 0 42%,rgba(255,255,255,.95) 50%,transparent 58% 100%);
+  --satin:linear-gradient(118deg,#161616 0%,#161616 34%,#3a3e44 50%,#161616 66%,#161616 100%);
+  --satin-sheen:linear-gradient(118deg,transparent 0 40%,rgba(255,255,255,.4) 50%,transparent 60% 100%);
+  --satin-glow:none;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--chrome:var(--silver);--lift:drop-shadow(0 -1px 0 rgba(0,0,0,.5)) drop-shadow(0 6px 14px rgba(0,0,0,.55))}}
-:root[data-theme=dark]{--chrome:var(--silver);--lift:drop-shadow(0 -1px 0 rgba(0,0,0,.5)) drop-shadow(0 6px 14px rgba(0,0,0,.55))}
-.dark,.hcopy,.sp,.credit,.ghost{--chrome:var(--silver);--lift:drop-shadow(0 -1px 0 rgba(0,0,0,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.5))}
-@supports ((-webkit-background-clip:text) or (background-clip:text)) and (height:1lh){
-  h2.d,h3.d,h1.d,.lg .num,.stmt-t:not(.split),.stmt-t .w,.sp.art .spx b,.iet b,.credit .nm .rf>span,.wm.big>span,.wm.big .idot,.sx-pn b{
-    background-image:var(--glint),var(--chrome);
-    background-size:300% 100%,100% 1lh;
-    background-position:100% 0,0 0;
-    background-repeat:no-repeat,repeat-y;
-    -webkit-background-clip:text;background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
-  h2.d,h1.sx-t,.lg .num,.inedit h3{filter:var(--lift)}
-  .stmt-t .w{background-image:var(--chrome);background-size:100% 1lh}
-  .name>span{
-    background-image:var(--glint),var(--silver);
-    background-size:300% 100%,100% 1lh;background-position:100% 0,0 0;background-repeat:no-repeat,repeat-y;
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --satin:linear-gradient(118deg,#f2f2ee 0%,#f2f2ee 34%,#c6cace 50%,#f2f2ee 66%,#f2f2ee 100%);
+  --satin-sheen:var(--foil-sheen);--satin-glow:drop-shadow(0 0 16px rgba(255,255,255,.07))}}
+:root[data-theme=dark],.dark{
+  --satin:linear-gradient(118deg,#f2f2ee 0%,#f2f2ee 34%,#c6cace 50%,#f2f2ee 66%,#f2f2ee 100%);
+  --satin-sheen:var(--foil-sheen);--satin-glow:drop-shadow(0 0 16px rgba(255,255,255,.07))}
+@supports (-webkit-background-clip:text) or (background-clip:text){
+  h2.d,h1.sx-t,.name>span,.credit .nm .rf>span,.wm.big>span,.wm.big .idot{
+    background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:120% 0,0 0;
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 2px 10px rgba(0,0,0,.35));
-    animation:glint 7s cubic-bezier(.35,.1,.25,1) 1.2s infinite;
   }
-  .name>span+span{animation-delay:1.32s}
-  .glint{animation:glintOnce 1.6s cubic-bezier(.35,.1,.25,1) .1s both}
+  h2.d,h1.sx-t{background-image:var(--satin-sheen),var(--satin);filter:var(--satin-glow)}
+  /* the clipped paint stops at the box edge, so give descenders (g, p, y) room without moving the layout */
+  h2.d{padding:.06em 0 .16em;margin-top:-.06em;margin-bottom:.19em}
+  h1.sx-t{padding:.06em 0 .16em;margin-top:-.06em;margin-bottom:-.16em}
+  .name>span,.wm.big>span{padding-bottom:.16em;margin-bottom:-.16em}
+  .credit .nm .rf>span,.wm.big>span,.wm.big .idot{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 0 14px rgba(255,255,255,.14))}
+  .name>span{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 2px 14px rgba(0,0,0,.35)) drop-shadow(0 0 12px rgba(255,255,255,.1))}
+  /* light crosses the title as it racks into focus, the name every so often, everything else once */
+  .intro.s3 .credit .nm .rf>span{animation:sheen 2.4s cubic-bezier(.4,.1,.2,1) .2s both}
+  .intro.s3 .credit .nm .rf>span+span{animation-delay:.32s}
+  body.go .name>span{animation:sheenLoop 11s cubic-bezier(.4,.1,.2,1) .9s infinite}
+  body.go .name>span+span{animation-delay:1.02s}
+  .glint,.wm.big.glint>span,.wm.big.glint .idot{animation:sheen 2.2s cubic-bezier(.4,.1,.2,1) .1s both}
 }
-@keyframes glintOnce{from{background-position:100% 0,0 0}to{background-position:0% 0,0 0}}
-@keyframes glint{0%,72%{background-position:100% 0,0 0}100%{background-position:0% 0,0 0}}
-@media (forced-colors:active){h2.d,h3.d,h1.d,.lg .num,.stmt-t .w,.sp.art .spx b,.iet b,.name>span,.credit .nm .rf>span,.wm.big>span,.wm.big .idot,.sx-pn b{background:none!important;-webkit-text-fill-color:currentColor!important;filter:none!important}}
+@keyframes sheen{from{background-position:120% 0,0 0}to{background-position:-20% 0,0 0}}
+@keyframes sheenLoop{0%{background-position:120% 0,0 0}22%,100%{background-position:-20% 0,0 0}}
+@media (forced-colors:active){h2.d,h1.sx-t,.name>span,.credit .nm .rf>span,.wm.big>span,.wm.big .idot{background:none!important;-webkit-text-fill-color:currentColor!important;filter:none!important}}
+
+/* ---------- touch and finish: crisp type, quiet taps, buttons that answer the finger ---------- */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button,summary,.bw{-webkit-tap-highlight-color:transparent}
+::selection{background:#ff4438;color:#fff;-webkit-text-fill-color:#fff}
+.btn,.menu,.qarrows button,.lg .pm{transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .3s,color .3s,border-color .3s}
+.btn:active,.menu:active,.qarrows button:active{transform:scale(.96)}
+@media (hover:hover){.btn:not(.solid):hover{background:color-mix(in srgb,currentColor 12%,transparent)}.btn.solid:hover{background:#ececec}}
+.sp,.still,.pr,.lg summary{touch-action:manipulation}
+.sp:active{transform:scale(.985)}
+.sp{transition:transform .35s cubic-bezier(.2,.8,.2,1),flex-grow .7s cubic-bezier(.2,.75,.15,1),height .65s cubic-bezier(.2,.75,.15,1)}
