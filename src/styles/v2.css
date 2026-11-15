@@ -360,3 +360,8 @@ a,button,summary,.bw{-webkit-tap-highlight-color:transparent}
 .ie-what-the-food .ie-tl{background:rgba(0,0,0,.18)}
 
 .sx-by a{color:inherit;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:1px}
+
+/* where a brand lands: the row or line lights up once so the eye finds it */
+.also{scroll-margin-top:96px}
+.hit{animation:hit 2.2s cubic-bezier(.3,.6,.3,1)}
+@keyframes hit{0%,25%{background-color:color-mix(in srgb,#ff4438 12%,transparent)}100%{background-color:transparent}}

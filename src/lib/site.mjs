@@ -54,13 +54,13 @@ export const BRANDS = [
   ['Sapphire Banquet NY', 'Banquet hall', '#c-sapphire'],
   ['Jaipore Royal', 'Restaurant', '#c-jaipore'],
   ['NH44 Indian', 'Restaurant', '#c-jaipore'],
-  ['Paratha Junction', 'Restaurant'],
+  ['Paratha Junction', 'Restaurant', '#also'],
   ['LR Legacy Group', 'Real estate', '#c-lr'],
   ['Cora the Borzoi', 'Pet influencer', '#also'],
   ['Kavikara', 'Wedding platform', '#also'],
   ['AS IF Magazine', 'Fashion magazine', '#also'],
-  ['Ophelia Model Management', 'Model agency'],
-  ['RTC Sports Academy', 'Sports academy'],
+  ['Ophelia Model Management', 'Model agency', '#also'],
+  ['RTC Sports Academy', 'Sports academy', '#also'],
 ];
 
 export const brandsHTML = `
