@@ -189,3 +189,10 @@ section[id]{scroll-margin-top:78px}
   .spx b{font-stretch:86%;font-size:clamp(18px,5.4vw,25px);text-wrap:balance;overflow-wrap:normal}
   .sp:not(.art) .spx b{font-stretch:92%}
 }
+
+/* ---------- foldables and small tablets: three cards across ---------- */
+@media (min-width:600px) and (max-width:899px){.shelf{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- narrow phones: nothing pokes past the screen edge ---------- */
+html{overflow-x:clip}
+@media (max-width:420px){.mail .sel{inset:-16px -6px}}

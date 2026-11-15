@@ -66,7 +66,8 @@ export const BRANDS = [
 export const brandsHTML = `
 <section class="band brands" id="brands" aria-labelledby="brands-h">
   <div class="wrap">
-    <h2 class="d" id="brands-h">Names on the call sheet.</h2>
+    <h2 class="d" id="brands-h">Brands I've worked with.</h2>
+    <p class="lede">Studios, streamers, restaurants and founders, in New York and India. On a film set, this list would be the call sheet.</p>
     <ul class="wall">${BRANDS.map(
       ([n, k]) => `<li class="bw"><span class="bn">${esc(n)}${SELW}</span><span class="bk">${esc(k)}</span></li>`
     ).join('')}</ul>
@@ -116,7 +117,7 @@ export const seriesLD = (s, i) => ({
               '@type': 'VideoObject',
               name: `${s.t} trailer`,
               description: s.log,
-              thumbnailUrl: SITE + (s.poster || '/og.jpg'),
+              thumbnailUrl: SITE + (s.poster || '/og/home.jpg'),
               contentUrl: SITE + s.vid,
               uploadDate: '2026-10-10',
             },
@@ -142,7 +143,15 @@ export const seriesLD = (s, i) => ({
 export const homeLD = (S) => ({
   '@context': 'https://schema.org',
   '@graph': [
-    PERSON,
+    { ...PERSON, subjectOf: C.press },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${SITE}/#profile`,
+      url: `${SITE}/`,
+      name: 'Nivedkrishna Thavarayil, Creative Strategist and Director, New York',
+      mainEntity: { '@id': `${SITE}/#person` },
+      dateModified: new Date().toISOString().slice(0, 10),
+    },
     { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, publisher: { '@id': `${SITE}/#person` } },
     {
       '@type': 'ItemList',

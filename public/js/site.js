@@ -273,7 +273,8 @@ const CUES=[[0,"Face Value","Streaming on Canvas. A makeup artist's road to New 
 [7.833,"Taser Fight Championship","A thriller shot inside a real fight night in Baltimore. Directed by Nivedkrishna Thavarayil."],
 [13.125,"Dear NYC","A five-episode New York romance with Ruhani Sharma. Written and directed by Nivedkrishna Thavarayil."],
 [19,"Red Flags","A short-form series on love and lies in New York, starring creator Robert Maxwell. Directed by Nivedkrishna Thavarayil."],
-[22.5,"Demo Day","Ten episodes shot at Harvard in four days. Directed by Nivedkrishna Thavarayil."]];
+[22.5,"Demo Day","Ten episodes shot at Harvard in four days. Directed by Nivedkrishna Thavarayil."],
+[28.667,"Chicks in Finance","Money, explained by the women who know it. Directed by Nivedkrishna Thavarayil."]];
 const cine=$('#cine');let cueI=-1;
 cine.addEventListener('timeupdate',()=>{const t=cine.currentTime;let i=0;CUES.forEach((c,k)=>{if(t>=c[0])i=k});if(i!==cueI){cueI=i;$('#nowt').textContent=CUES[i][1];$('#capt').textContent=CUES[i][1];$('#capc').lastChild.textContent=CUES[i][2]}});
 /* only decode the hero films while they're on screen, so the rest of the page scrolls smoothly */
@@ -306,7 +307,6 @@ function upd(){ticking=false;
   frame.style.boxShadow=p>.5?`0 40px 80px -30px rgba(0,0,0,${.55*ss(.5,.9,p)})`:'none';
   const hc=$('#hcopy'),k=cl(p/.16);hc.style.opacity=1-k;hc.style.transform=`translateY(${-k*40}px)`;hc.style.visibility=k>=1?'hidden':'visible';
   $('#nowc').style.opacity=.85*(1-k);
-  if(p>0||nm.dataset.s){nm.dataset.s=1;nm.style.animation='none';nm.style.opacity=1;nm.style.fontStretch=L(mob?112:140,62,k)+'%'}
   $('#shade').style.opacity=1-ss(.06,.28,p);
   const cc=$('#capc');cc.style.opacity=ss(.27,.35,p)*(1-ss(.5,.58,p));cc.style.left=C.x+'px';cc.style.top=(C.y+C.h+16)+'px';
   const r1=$('#rt1');r1.style.opacity=cc.style.opacity;r1.style.left=(C.x+12)+'px';r1.style.top=(C.y+12)+'px';

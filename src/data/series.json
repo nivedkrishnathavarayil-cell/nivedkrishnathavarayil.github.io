@@ -78,6 +78,17 @@
   "slug": "the-red-carpet-show"
  },
  {
+  "t": "Chicks in Finance",
+  "fmt": "Finance series",
+  "role": "Director",
+  "city": "New York",
+  "st": "Coming soon",
+  "log": "Money, explained with Columbia professor May Ling and creator Khushi Jain, who has more than 460,000 followers.",
+  "slug": "chicks-in-finance",
+  "vid": "/media/chicks_card.mp4",
+  "poster": "/media/chicks_card.jpg"
+ },
+ {
   "t": "Young Founders",
   "fmt": "Docuseries",
   "role": "Director",
@@ -127,15 +138,5 @@
   "cls": "c-food",
   "log": "A food documentary series for Canvas, featuring New York restaurants I had marketed.",
   "slug": "what-the-food"
- },
- {
-  "t": "Chicks in Finance",
-  "fmt": "Finance series",
-  "role": "Director",
-  "city": "New York",
-  "st": "Coming soon",
-  "cls": "c-fin",
-  "log": "Money, explained with Columbia professor May Ling and creator Khushi Jain, who has more than 460,000 followers.",
-  "slug": "chicks-in-finance"
  }
 ]

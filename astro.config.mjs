@@ -7,5 +7,5 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   compressHTML: true,
-  integrations: [sitemap({ filter: (p) => !p.includes('/404') })],
+  integrations: [sitemap({ filter: (p) => !p.includes('/404'), lastmod: new Date() })],
 });
