@@ -1,5 +1,3 @@
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,21 +9,6 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(hover: hover) and (pointer: fine)');
 const page = document.body.dataset.page;
 
-/* ---------- smooth scroll ---------- */
-let lenis = null;
-if (!reduce) {
-  lenis = new Lenis({ lerp: 0.105, wheelMultiplier: 1, anchors: { offset: -64 }, autoRaf: false });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((t) => lenis.raf(t * 1000));
-  gsap.ticker.lagSmoothing(0);
-  /* the opening locks the page; hold the scroller until it hands off */
-  const sync = () => (document.body.classList.contains('lock') ? lenis.stop() : lenis.start());
-  new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-  sync();
-  const replay = window.replayOpening;
-  if (replay) window.replayOpening = () => { lenis.scrollTo(0, { immediate: true, force: true }); replay(); };
-  window.__lenis = lenis;
-}
 
 /* ---------- header: floating pill on pages without the reel ---------- */
 const hd = $('#hd');
@@ -100,7 +83,7 @@ if (shelf) {
       let shift = 0;
       if (prev && prev.compareDocumentPosition(sp) & Node.DOCUMENT_POSITION_FOLLOWING) shift = prev.offsetHeight - sp.offsetHeight;
       const y = sp.getBoundingClientRect().top + scrollY - shift - 84;
-      lenis ? lenis.scrollTo(y, { duration: 0.75 }) : scrollTo({ top: y, behavior: 'smooth' });
+      scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
     }
     sps.forEach((x) => { if (x !== sp) { x.classList.remove('open'); stop(x); } });
     sp.classList.add('open');

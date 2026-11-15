@@ -117,10 +117,10 @@ h3{margin:0}
 .grain{position:absolute;inset:-50%;pointer-events:none;opacity:.1;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(4) infinite}
 @keyframes grain{25%{transform:translate(3%,-2%)}50%{transform:translate(-2%,3%)}75%{transform:translate(2%,2%)}}
 .hcopy{position:absolute;left:max(5vw,18px);right:max(5vw,18px);bottom:max(7vh,28px);color:#fff}
-.name{font-size:min(8.6vw,150px);white-space:nowrap;font-stretch:140%;margin:0 0 .16em;opacity:0}
+.name{font-size:min(8.6vw,150px);white-space:nowrap;font-stretch:140%;margin:0 0 .16em}
 .name span{display:block;width:max-content}
-body.go .name{animation:open 1.6s cubic-bezier(.2,.7,.1,1) both}
-@keyframes open{from{font-stretch:50%;opacity:0}to{font-stretch:var(--ns,140%);opacity:1}}
+
+
 @media(max-width:759px){.name{--ns:112%;font-stretch:112%}}
 .role{font-size:clamp(19px,2vw,26px);font-weight:600;margin:0}
 .say{font-size:clamp(16px,1.4vw,19px);max-width:48ch;opacity:.88;margin:.4em 0 1.2em}

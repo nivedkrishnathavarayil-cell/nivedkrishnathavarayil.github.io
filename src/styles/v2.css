@@ -135,3 +135,8 @@ body[data-page=series] .hd{color:var(--ink)}
   .sx-by{margin-bottom:1.3em}
 }
 .snd[hidden]{display:none!important}
+
+/* smoothness: the reel plays clean, with no film grain blended over it every frame */
+.frame .grain{display:none}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+section[id]{scroll-margin-top:78px}
