@@ -1,0 +1,71 @@
+{
+ "icon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Cg transform='translate%289 20.5%29 scale%28.2421%29'%3E%3Cpath fill='%23fff' d='M83.71%2C64.32 L110.76%2C100 L137.11%2C100 L96.43%2C46.33 L129.20%2C0 L103.48%2C0 L72%2C44.51 L72%2C0 L54%2C0 L54%2C64.71 L21%2C0 L0%2C0 L0%2C100 L18%2C100 L18%2C35.29 L51%2C100 L72%2C100 L72%2C80.87ZM159%2C100 L159%2C0 L141%2C0 L141%2C100Z'/%3E%3Crect x='110' y='0' width='80' height='18' fill='%23ff4438'/%3E%3C/g%3E%3C/svg%3E",
+ "person": {
+  "@type": "Person",
+  "@id": "https://nivedkrishnathavarayil.com/#person",
+  "name": "Nivedkrishna Thavarayil",
+  "alternateName": [
+   "Nived Thavarayil",
+   "Nived Krishna Thavarayil",
+   "Nived"
+  ],
+  "jobTitle": "Creative Strategist and Director",
+  "description": "New York Director and Creative Strategist. Creative Director and Marketing Strategist at Canvas, where he directed 12 vertical series.",
+  "url": "https://nivedkrishnathavarayil.com/",
+  "image": "https://nivedkrishnathavarayil.com/og.jpg",
+  "worksFor": {
+   "@type": "Organization",
+   "name": "Canvas",
+   "url": "https://www.canvasott.com"
+  },
+  "founder": {
+   "@type": "Organization",
+   "name": "Thava Studio",
+   "sameAs": "https://www.instagram.com/thava.studio"
+  },
+  "alumniOf": [
+   {
+    "@type": "CollegeOrUniversity",
+    "name": "New York Film Academy"
+   },
+   {
+    "@type": "CollegeOrUniversity",
+    "name": "Christ University, Bangalore"
+   }
+  ],
+  "homeLocation": {
+   "@type": "Place",
+   "name": "New York City"
+  },
+  "knowsAbout": [
+   "Film direction",
+   "Screenwriting",
+   "Creative strategy",
+   "Paid social advertising",
+   "Performance creative",
+   "Content marketing",
+   "Social commerce",
+   "Vertical series",
+   "Microdrama",
+   "Documentary"
+  ],
+  "award": [
+   "Winner, First Time Filmmaker Sessions Vol. 3 (The Last Pizza)",
+   "Winner, First Time Filmmaker Sessions Vol. 5 (The Last Pizza)",
+   "Dean's List, New York Film Academy, 2025"
+  ],
+  "sameAs": [
+   "https://www.linkedin.com/in/nivedkrishna",
+   "https://www.imdb.com/name/nm16824024/",
+   "https://www.imdb.com/name/nm17070237/",
+   "https://www.instagram.com/tvedukr_12",
+   "https://www.youtube.com/@nivedkrishnathavarayil5851",
+   "https://www.behance.net/tvedukr_12",
+   "https://www.instagram.com/thava.studio",
+   "https://boldjourney.com/meet-nivedkrishna-thavarayil/",
+   "https://www.deziart.co/dezine/nived-krishna-strategic-filmmaker-career"
+  ]
+ },
+ "LOOP": "M14,58 C8,26 62,8 112,9 C164,10 196,28 193,54 C190,80 140,94 92,92 C40,90 6,76 9,52 C11,38 34,22 70,15",
+ "WIDE": "M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"
+}

@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import S from '../../data/series.json';
+import { headerHTML, seriesLD, SEL } from '../../lib/site.mjs';
+
+export function getStaticPaths() {
+  return S.map((s, i) => ({ params: { slug: s.slug }, props: { i } }));
+}
+const { i } = Astro.props;
+const s = S[i];
+const prev = S[(i - 1 + S.length) % S.length];
+const next = S[(i + 1) % S.length];
+const kind = s.fmt.split(',')[0];
+const clip = (t, n = 156) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '') + '...');
+const title = `${s.t} | ${kind} directed by Nivedkrishna Thavarayil`;
+const description = clip(`${s.t}: ${s.log}`);
+const no = String(i + 1).padStart(2, '0');
+const image = `/og/${s.slug}.jpg`;
+---
+<Base
+  title={title}
+  description={description}
+  ogTitle={`${s.t}, directed by Nivedkrishna Thavarayil`}
+  path={`/series/${s.slug}/`}
+  image={image}
+  imageAlt={`${s.t}, a ${kind.toLowerCase()} directed by Nivedkrishna Thavarayil for Canvas`}
+  type="video.tv_show"
+  jsonld={seriesLD(s, i)}
+  page="series"
+  preload={s.poster ? [{ href: s.poster, as: 'image' }] : []}
+>
+  <Fragment set:html={headerHTML} />
+  <main id="top" class="sx">
+    <div class="wrap sx-grid">
+      <div class="sx-copy">
+        <a class="sx-back" href="/#series">All twelve series</a>
+        <p class="sx-no">No. {no} of {S.length}</p>
+        <h1 class="d sx-t">{s.t}</h1>
+        <p class="sx-by">{s.role.startsWith('Writer') ? 'Written and directed' : 'Directed'} by Nivedkrishna Thavarayil</p>
+        <p class="sx-log">{s.log}</p>
+        {s.note && <p class="sx-note">{s.note}</p>}
+        <dl class="sx-dl">
+          <dt>Format</dt><dd>{s.fmt}</dd>
+          <dt>My role</dt><dd>{s.role}</dd>
+          {s.city && <><dt>Shot in</dt><dd>{s.city}</dd></>}
+          <dt>For</dt><dd>Canvas by Bombay Canvas</dd>
+          <dt>Status</dt><dd>{s.live ? <span class="mk sx-live">Streaming now<Fragment set:html={SEL} /></span> : 'Coming soon'}</dd>
+        </dl>
+        {s.cr && <p class="sx-cr">{s.cr}</p>}
+        {s.link && <a class="btn solid sx-cta" href={s.link[1]}>{s.link[0]}</a>}
+      </div>
+      <div class={`sx-media${s.poster ? '' : ` card ${s.cls || ''}`}`} style={`view-transition-name:m-${s.slug}`}>
+        {s.vid ? (
+          <video src={s.vid} poster={s.poster} autoplay muted loop playsinline disablepictureinpicture preload="auto" aria-label={`Trailer for ${s.t}`}></video>
+        ) : s.poster ? (
+          <img src={s.poster} alt={`${s.t} key art`} width="540" height="960">
+        ) : (
+          <span class="ttl" aria-hidden="true">{s.t}</span>
+        )}
+      </div>
+    </div>
+    <nav class="wrap sx-more" aria-label="More series">
+      <a class="sx-pn" href={`/series/${prev.slug}/`} rel="prev"><span>Previous</span><b class="d">{prev.t}</b></a>
+      <a class="sx-pn nx" href={`/series/${next.slug}/`} rel="next"><span>Next</span><b class="d">{next.t}</b></a>
+    </nav>
+  </main>
+  <footer class="dark endmark sx-end">
+    <p class="wm big" data-fit aria-hidden="true"><span>N<span class="idot">ı</span>vedkrishna</span> <span>Thavarayil</span></p>
+    <div class="wrap endrow"><span>Nivedkrishna Thavarayil, New York and Jersey City, 2026</span><a class="again" href="/#contact">Work with me</a></div>
+  </footer>
+  <script>
+    import '../../scripts/motion.js';
+  </script>
+</Base>

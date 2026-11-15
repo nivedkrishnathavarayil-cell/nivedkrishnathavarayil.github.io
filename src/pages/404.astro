@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { headerHTML } from '../lib/site.mjs';
+---
+<Base title="Page not found | Nivedkrishna Thavarayil" description="This page doesn't exist. The work is one click away." path="/404/" page="series">
+  <Fragment set:html={headerHTML} />
+  <main class="sx" id="top">
+    <div class="wrap">
+      <p class="sx-no">404</p>
+      <h1 class="d sx-t">This scene was cut.</h1>
+      <p class="sx-log">The page you wanted didn't make the final edit. Everything that did is on the home page.</p>
+      <a class="btn solid sx-cta" href="/">Back to the work</a>
+    </div>
+  </main>
+  <script>
+    import '../scripts/motion.js';
+  </script>
+</Base>

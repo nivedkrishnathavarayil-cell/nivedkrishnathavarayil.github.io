@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import S from '../data/series.json';
+import { homeBody, statementHTML, brandsHTML, shelfHTML, homeLD } from '../lib/site.mjs';
+
+const html = homeBody
+  .replace('<!--STATEMENT-->', statementHTML + brandsHTML)
+  .replace('<!--SHELF-->', shelfHTML(S));
+---
+<Base
+  title="Nivedkrishna Thavarayil | Creative Strategist and Director, New York"
+  description="Nivedkrishna Thavarayil is a Creative Strategist and Director in New York: organic and paid campaigns, brand and influencer marketing, viral film launches for Sony Pictures and Netflix India, and 12 vertical series directed for Canvas."
+  ogTitle="Nivedkrishna Thavarayil | Creative Strategist and Director"
+  type="profile"
+  path="/"
+  jsonld={homeLD(S)}
+  bodyClass="lock"
+  page="home"
+  preload={[
+    { href: '/media/reel_v8_poster.jpg', as: 'image' },
+  ]}
+>
+  <Fragment set:html={html} />
+  <script is:inline src="/js/site.js"></script>
+  <script>
+    import '../scripts/motion.js';
+  </script>
+</Base>

@@ -1,0 +1,73 @@
+---
+import '../styles/site.css';
+import '../styles/v2.css';
+import { SITE, ICON, NAME } from '../lib/site.mjs';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  imageAlt?: string;
+  type?: string;
+  ogTitle?: string;
+  jsonld?: object;
+  bodyClass?: string;
+  page?: string;
+  preload?: { href: string; as: string; media?: string; type?: string }[];
+}
+const {
+  title,
+  description,
+  path = '/',
+  image = '/og.jpg',
+  imageAlt = 'Nivedkrishna Thavarayil, Creative Strategist and Director in New York',
+  type = 'website',
+  ogTitle,
+  jsonld,
+  bodyClass = '',
+  page = 'home',
+  preload = [],
+} = Astro.props;
+const url = new URL(path, SITE).href;
+const img = image.startsWith('http') ? image : SITE + image;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="author" content={NAME}>
+<meta name="google-site-verification" content="PVtZGZ9TQyMleiU3RMMq4JE7ZLJzl3e_Qgc9T5sONpk">
+<meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href={url}>
+<link rel="icon" href={ICON}>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="sitemap" href="/sitemap-index.xml">
+<meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121314" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content={NAME}>
+<meta property="og:type" content={type}>
+<meta property="og:title" content={ogTitle || title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={url}>
+<meta property="og:image" content={img}>
+<meta property="og:image:alt" content={imageAlt}>
+<meta property="og:locale" content="en_US">
+{type === 'profile' && <meta property="profile:first_name" content="Nivedkrishna">}
+{type === 'profile' && <meta property="profile:last_name" content="Thavarayil">}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={ogTitle || title}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={img}>
+<link rel="preload" href="/fonts/anybody.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+{preload.map((p) => <link rel="preload" href={p.href} as={p.as} media={p.media} type={p.type} fetchpriority="high">)}
+{jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+</head>
+<body class={bodyClass} data-page={page}>
+<slot />
+</body>
+</html>

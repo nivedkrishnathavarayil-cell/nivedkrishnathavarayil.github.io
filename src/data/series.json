@@ -1,0 +1,141 @@
+[
+ {
+  "t": "Face Value",
+  "fmt": "Micro-documentary, 4 episodes",
+  "role": "Director, co-creative director and line producer",
+  "city": "New York",
+  "st": "Streaming",
+  "live": 1,
+  "vid": "/media/facevalue_card.mp4",
+  "poster": "/media/facevalue_card.jpg",
+  "log": "Story, a New York makeup artist, rebuilds her life after a life-altering accident and makes it to New York Fashion Week. A series about resilience, ambition, inclusion and faith.",
+  "note": "Every episode runs under two minutes, a format new to Canvas. I planned pre-production with Directure AI to keep costs low, shot at New York Fashion Week and led post with the editors.",
+  "cr": "Produced by Abhinav Singla. Creative directors Nivedkrishna Thavarayil and Kamya Mehra. Written by Kamya Mehra. Director of photography Kais Vasaya. Edit and grade by Harsh.",
+  "link": [
+   "Watch on Canvas",
+   "https://www.canvasott.com/video/cmw1t94ey00kxs60ek9qkz9gt"
+  ],
+  "slug": "face-value"
+ },
+ {
+  "t": "Red Flags",
+  "fmt": "Romance series",
+  "role": "Director",
+  "city": "New York",
+  "st": "Coming soon",
+  "vid": "/media/redflags_card.mp4",
+  "poster": "/media/redflags_card.jpg",
+  "log": "A short-form series on love and lies in New York, starring creator Robert Maxwell, who has more than a million followers on TikTok.",
+  "note": "The trailer premiered to live audiences in San Francisco and Los Angeles in October, and I recut it for launch from what those rooms told us.",
+  "slug": "red-flags"
+ },
+ {
+  "t": "Taser Fight Championship",
+  "fmt": "Thriller, 4 episodes",
+  "role": "Director",
+  "city": "Baltimore",
+  "st": "Coming soon",
+  "vid": "/media/tfc_card.mp4",
+  "poster": "/media/tfc_card.jpg",
+  "log": "A fictional thriller set inside a real Taser Fight Championship night. Real fighters play themselves, and a masked man in the crowd writes the story.",
+  "note": "Shot inside a live event in Baltimore, with real fighters. The real championship agreed to co-post the series on its own Instagram.",
+  "slug": "taser-fight-championship"
+ },
+ {
+  "t": "Dear NYC",
+  "fmt": "Romance, 5 episodes",
+  "role": "Writer and director",
+  "city": "New York",
+  "st": "Coming soon",
+  "vid": "/media/dearnyc_card.mp4",
+  "poster": "/media/dearnyc_card.jpg",
+  "log": "A New York romance in five short episodes, made with actress and creator Ruhani Sharma.",
+  "note": "Shot in a day across Manhattan, the subway and the Brooklyn Bridge.",
+  "slug": "dear-nyc"
+ },
+ {
+  "t": "Demo Day",
+  "fmt": "Startup series, 10 episodes",
+  "role": "Director",
+  "city": "Harvard, Boston",
+  "st": "Coming soon",
+  "vid": "/media/demoday_card.mp4",
+  "poster": "/media/demoday_card.jpg",
+  "log": "Two roommate founders build an AI filmmaking app and pitch it at Harvard. The real Harvard pitch became the finale.",
+  "note": "Ten episodes shot guerrilla style at Harvard in four days, each one written the night before around what we had already shot.",
+  "cr": "Produced by Abhinav Singla, who also stars. Director of photography Kais Vasaya.",
+  "slug": "demo-day"
+ },
+ {
+  "t": "The Red Carpet Show",
+  "fmt": "Interview series",
+  "role": "Director",
+  "city": "New York",
+  "st": "Coming soon",
+  "vid": "/media/redcarpet_card.mp4",
+  "poster": "/media/redcarpet_card.jpg",
+  "log": "Creators and founders answer one question in 90 seconds on a red carpet, with creator Ilias Anwar.",
+  "slug": "the-red-carpet-show"
+ },
+ {
+  "t": "Young Founders",
+  "fmt": "Docuseries",
+  "role": "Director",
+  "city": "San Francisco",
+  "st": "Coming soon",
+  "cls": "c-sf",
+  "log": "A docuseries about the craziest set of guys building in San Francisco.",
+  "slug": "young-founders"
+ },
+ {
+  "t": "Hacker Room",
+  "fmt": "Docuseries",
+  "role": "Director",
+  "city": "San Francisco",
+  "st": "Coming soon",
+  "cls": "c-hack",
+  "log": "Founders building side by side inside a San Francisco hacker house.",
+  "slug": "hacker-room"
+ },
+ {
+  "t": "LA Artists",
+  "fmt": "Docuseries",
+  "role": "Director",
+  "city": "Los Angeles",
+  "st": "Coming soon",
+  "cls": "c-la",
+  "log": "Artists in Los Angeles on the work and the city that shaped it.",
+  "slug": "la-artists"
+ },
+ {
+  "t": "Immigrant Dreams",
+  "fmt": "Documentary series",
+  "role": "Director",
+  "city": "New York",
+  "st": "Coming soon",
+  "cls": "c-imm",
+  "log": "Immigrants who built their lives in America, in their own words.",
+  "note": "Episodes include a Brooklyn story and Jaipore Royal in Brewster over Onam, a restaurant I had already marketed.",
+  "slug": "immigrant-dreams"
+ },
+ {
+  "t": "What the Food",
+  "fmt": "Food docuseries",
+  "role": "Director",
+  "city": "New York",
+  "st": "Coming soon",
+  "cls": "c-food",
+  "log": "A food documentary series for Canvas, featuring New York restaurants I had marketed.",
+  "slug": "what-the-food"
+ },
+ {
+  "t": "Chicks in Finance",
+  "fmt": "Finance series",
+  "role": "Director",
+  "city": "New York",
+  "st": "Coming soon",
+  "cls": "c-fin",
+  "log": "Money, explained with Columbia professor May Ling and creator Khushi Jain, who has more than 460,000 followers.",
+  "slug": "chicks-in-finance"
+ }
+]
