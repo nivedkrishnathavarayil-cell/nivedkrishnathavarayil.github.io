@@ -16,12 +16,43 @@ if (hd && page !== 'home') {
   const upd = () => hd.classList.toggle('pill', scrollY > 30);
   addEventListener('scroll', upd, { passive: true });
   upd();
-  const nav = $('#nav'), mb = $('#menu');
-  mb?.addEventListener('click', () => {
-    const o = nav.classList.toggle('open');
-    mb.setAttribute('aria-expanded', o);
+}
+
+/* ---------- menu: a full-screen sheet on phones and tablets, the same on every page ---------- */
+const mb = $('#menu'), navEl = $('#nav');
+if (mb && navEl) {
+  const links = $$('a', navEl).filter((a) => !a.classList.contains('cta'));
+  const contact = page === 'home' ? '#contact' : '/#contact';
+  const sheet = document.createElement('div');
+  sheet.className = 'sheet';
+  sheet.id = 'sheet';
+  sheet.setAttribute('aria-hidden', 'true');
+  sheet.innerHTML = `<nav class="sheet-nav" aria-label="Menu">${links.map((a, i) => `<a href="${a.getAttribute('href')}" style="--i:${i}">${a.textContent}</a>`).join('')}</nav>
+<div class="sheet-foot" style="--i:${links.length}"><a class="btn" href="${contact}">Work with me</a><a class="sheet-mail" href="mailto:nivedkrishnathavarayil@gmail.com">nivedkrishnathavarayil@gmail.com</a><p class="sheet-soc"><a href="https://www.linkedin.com/in/nivedkrishna" rel="me">LinkedIn</a><a href="https://www.imdb.com/name/nm16824024/" rel="me">IMDb</a><a href="https://www.instagram.com/tvedukr_12" rel="me">Instagram</a></p></div>`;
+  document.body.append(sheet);
+  const root = document.documentElement;
+  const set = (o) => {
+    root.classList.toggle('menu-open', o);
+    sheet.setAttribute('aria-hidden', String(!o));
+    mb.setAttribute('aria-expanded', String(o));
     mb.textContent = o ? 'Close' : 'Menu';
-  });
+  };
+  mb.addEventListener('click', () => set(!root.classList.contains('menu-open')));
+  sheet.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && root.classList.contains('menu-open')) { set(false); mb.focus(); } });
+  matchMedia('(min-width: 1061px)').addEventListener('change', (e) => { if (e.matches) set(false); });
+}
+
+/* ---------- phones: the press list shows six, the rest one tap away ---------- */
+const pl = $('#pl');
+if (pl && pl.children.length > 7) {
+  const more = document.createElement('button');
+  more.className = 'more';
+  more.type = 'button';
+  more.textContent = `Show all ${pl.children.length} articles`;
+  pl.classList.add('clamp');
+  pl.after(more);
+  more.addEventListener('click', () => { pl.classList.remove('clamp'); more.remove(); });
 }
 
 /* ---------- headlines: light crosses each one once as it arrives ---------- */

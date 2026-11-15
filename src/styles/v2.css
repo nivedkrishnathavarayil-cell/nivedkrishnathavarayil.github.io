@@ -217,23 +217,11 @@ html{overflow-x:clip}
   .shelf>.sp:first-child{grid-column:1/-1;aspect-ratio:4/5}
   .shelf>.sp:first-child .spx b{font-size:clamp(30px,9vw,44px)}
   .shelf>.sp:first-child .spl{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13.5px;line-height:1.4;opacity:.9;max-width:36ch}
-  .inedit{display:block;margin-top:clamp(36px,9vw,56px)}
+  .inedit{display:block;margin-top:clamp(40px,10vw,60px)}
   .inedit h3{font-size:clamp(28px,8vw,40px);margin:0 0 .25em}
   .iel{color:var(--mute);margin:0 0 18px;font-size:15.5px;line-height:1.45;max-width:34ch}
-  .inedit ul{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
-  .inedit li{border-bottom:1px solid var(--rule)}
-  .inedit a{display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:14px;padding:13px 2px;text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent;transition:background .25s}
-  .inedit a:active{background:color-mix(in srgb,var(--ink) 6%,transparent)}
-  .iec{position:relative;display:block;width:38px;aspect-ratio:9/13;border-radius:6px;overflow:hidden}
-  .spn{text-shadow:0 1px 6px rgba(0,0,0,.55)}
-  .iec::before{transform:scale(1)}
-  .iet{display:flex;flex-direction:column;gap:3px;min-width:0}
-  .iet b{font-size:clamp(19px,5.4vw,24px);line-height:1;font-stretch:92%}
-  .iet span{font-size:12.5px;color:var(--mute)}
-  .ies{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;letter-spacing:.02em;color:var(--mute);white-space:nowrap}
-  .ies i{width:7px;height:7px;border-radius:50%;background:var(--red);animation:iepulse 2.4s ease-in-out infinite}
 }
-@media (min-width:600px) and (max-width:899px){.shelf>.sp:first-child{aspect-ratio:16/9}}
+@media (min-width:600px) and (max-width:899px){.shelf>.sp:first-child{aspect-ratio:16/9}.ie-rail{grid-auto-columns:40%}}
 @keyframes iepulse{0%,100%{opacity:1}50%{opacity:.25}}
 
 /* ---------- metal: used sparingly, like foil on a luxury box ----------
@@ -241,18 +229,18 @@ html{overflow-x:clip}
    closing wordmark. Section headlines get a satin finish you barely notice until light crosses it once
    as the headline arrives. No outlines, no stripes, nothing on body copy, numbers or card titles. */
 :root{
-  --foil:linear-gradient(118deg,#ffffff 0%,#f6f7f8 28%,#c9ced4 46%,#eef0f2 58%,#ffffff 72%,#dfe2e6 100%);
+  --foil:linear-gradient(118deg,#ffffff 0%,#f6f7f8 28%,#bac0c7 46%,#eef0f2 58%,#ffffff 72%,#dfe2e6 100%);
   --foil-sheen:linear-gradient(118deg,transparent 0 42%,rgba(255,255,255,.95) 50%,transparent 58% 100%);
-  --satin:linear-gradient(118deg,#161616 0%,#161616 34%,#3a3e44 50%,#161616 66%,#161616 100%);
-  --satin-sheen:linear-gradient(118deg,transparent 0 40%,rgba(255,255,255,.4) 50%,transparent 60% 100%);
+  --satin:linear-gradient(118deg,#161616 0%,#161616 34%,#4a4f57 50%,#161616 66%,#161616 100%);
+  --satin-sheen:linear-gradient(118deg,transparent 0 40%,rgba(255,255,255,.5) 50%,transparent 60% 100%);
   --satin-glow:none;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
-  --satin:linear-gradient(118deg,#f2f2ee 0%,#f2f2ee 34%,#c6cace 50%,#f2f2ee 66%,#f2f2ee 100%);
-  --satin-sheen:var(--foil-sheen);--satin-glow:drop-shadow(0 0 16px rgba(255,255,255,.07))}}
+  --satin:linear-gradient(118deg,#f2f2ee 0%,#f2f2ee 34%,#b5bac1 50%,#f2f2ee 66%,#f2f2ee 100%);
+  --satin-sheen:var(--foil-sheen);--satin-glow:drop-shadow(0 0 18px rgba(255,255,255,.1))}}
 :root[data-theme=dark],.dark{
-  --satin:linear-gradient(118deg,#f2f2ee 0%,#f2f2ee 34%,#c6cace 50%,#f2f2ee 66%,#f2f2ee 100%);
-  --satin-sheen:var(--foil-sheen);--satin-glow:drop-shadow(0 0 16px rgba(255,255,255,.07))}
+  --satin:linear-gradient(118deg,#f2f2ee 0%,#f2f2ee 34%,#b5bac1 50%,#f2f2ee 66%,#f2f2ee 100%);
+  --satin-sheen:var(--foil-sheen);--satin-glow:drop-shadow(0 0 18px rgba(255,255,255,.1))}
 @supports (-webkit-background-clip:text) or (background-clip:text){
   h2.d,h1.sx-t,.name>span,.credit .nm .rf>span,.wm.big>span,.wm.big .idot{
     background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:120% 0,0 0;
@@ -263,8 +251,8 @@ html{overflow-x:clip}
   h2.d{padding:.06em 0 .16em;margin-top:-.06em;margin-bottom:.19em}
   h1.sx-t{padding:.06em 0 .16em;margin-top:-.06em;margin-bottom:-.16em}
   .name>span,.wm.big>span{padding-bottom:.16em;margin-bottom:-.16em}
-  .credit .nm .rf>span,.wm.big>span,.wm.big .idot{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 0 14px rgba(255,255,255,.14))}
-  .name>span{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 2px 14px rgba(0,0,0,.35)) drop-shadow(0 0 12px rgba(255,255,255,.1))}
+  .credit .nm .rf>span,.wm.big>span,.wm.big .idot{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 0 16px rgba(255,255,255,.2))}
+  .name>span{background-image:var(--foil-sheen),var(--foil);filter:drop-shadow(0 2px 14px rgba(0,0,0,.35)) drop-shadow(0 0 14px rgba(255,255,255,.16))}
   /* light crosses the title as it racks into focus, the name every so often, everything else once */
   .intro.s3 .credit .nm .rf>span{animation:sheen 2.4s cubic-bezier(.4,.1,.2,1) .2s both}
   .intro.s3 .credit .nm .rf>span+span{animation-delay:.32s}
@@ -286,3 +274,89 @@ a,button,summary,.bw{-webkit-tap-highlight-color:transparent}
 .sp,.still,.pr,.lg summary{touch-action:manipulation}
 .sp:active{transform:scale(.985)}
 .sp{transition:transform .35s cubic-bezier(.2,.8,.2,1),flex-grow .7s cubic-bezier(.2,.75,.15,1),height .65s cubic-bezier(.2,.75,.15,1)}
+
+/* ---------- header button and menu sheet (phones and tablets) ---------- */
+.hcta{display:none}
+@media (max-width:1060px){
+  .hcta{display:inline-flex;align-items:center;margin-left:auto;min-height:40px;padding:0 15px;border-radius:999px;font:600 14.5px/1 "Hanken Grotesk",system-ui,sans-serif;text-decoration:none;white-space:nowrap;background:#fff;color:#000;transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .3s,color .3s}
+  .hd.ink .hcta{background:var(--ink);color:var(--table)}
+  .hd.ondark .hcta{background:#fff;color:#000}
+  .hcta:active{transform:scale(.96)}
+  .hcta+.menu{margin-left:8px}
+}
+@media (max-width:359px){.hcta{padding:0 12px;font-size:13.5px}.menu{padding:0 13px}}
+.sheet{position:fixed;inset:0;z-index:39;display:flex;flex-direction:column;justify-content:space-between;gap:28px;overflow-y:auto;overscroll-behavior:contain;
+  padding:calc(env(safe-area-inset-top) + 92px) max(6vw,22px) calc(env(safe-area-inset-bottom) + 28px);
+  background:var(--table);color:var(--ink);visibility:hidden;opacity:0;transition:opacity .3s ease,visibility 0s linear .3s}
+.menu-open .sheet{visibility:visible;opacity:1;transition:opacity .3s ease}
+.menu-open,.menu-open body{overflow:hidden}
+.menu-open .hd{color:var(--ink)!important;background:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+.menu-open .hd .nkt .bar{fill:var(--red)}
+.menu-open .hcta{visibility:hidden}
+.sheet-nav{display:flex;flex-direction:column;border-top:1.5px solid var(--ink)}
+.sheet-nav a,.sheet-foot{opacity:0;transform:translate3d(0,14px,0);transition:opacity .4s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1)}
+.menu-open .sheet-nav a,.menu-open .sheet-foot{opacity:1;transform:none;transition-delay:calc(var(--i) * 40ms + 60ms)}
+.sheet-nav a{font-family:Anybody,"Arial Narrow",sans-serif;font-weight:800;font-stretch:112%;font-size:clamp(32px,9.6vw,50px);line-height:1;letter-spacing:-.01em;text-decoration:none;padding:.3em 0;border-bottom:1px solid var(--rule)}
+.sheet-nav a:active{color:var(--red)}
+.sheet-foot{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.sheet-foot .btn{width:100%;justify-content:center;min-height:54px;font-size:17px;background:var(--ink);color:var(--table);border-color:var(--ink)}
+.sheet-mail{font-weight:600;font-size:16px;text-underline-offset:4px}
+.sheet-soc{display:flex;gap:20px;margin:0;font-size:15px}
+.sheet-soc a{color:var(--mute);text-decoration:none}
+@media (min-width:1061px){.sheet{display:none}}
+
+/* ---------- phones: credits read as short paragraphs, not a long scroll ---------- */
+@media (max-width:640px){
+  .cr dd{display:flex;flex-wrap:wrap;justify-content:center;gap:0 .9em;margin-bottom:26px;font-size:16.5px;line-height:1.6}
+  .cr dd span{display:inline}
+  .rollwrap{padding-top:64px}
+  .lead{margin-bottom:48px}
+}
+
+/* ---------- phones: six press pieces, then a button for the rest ---------- */
+.more{display:none}
+@media (max-width:760px){
+  .press.clamp>.pr:nth-child(n+7){display:none}
+  .more{display:flex;justify-content:center;align-items:center;width:100%;min-height:52px;margin-top:18px;border:1.5px solid var(--ink);border-radius:999px;background:none;color:var(--ink);font:600 16px "Hanken Grotesk",system-ui,sans-serif;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .more:active{transform:scale(.97)}
+}
+
+/* ---------- in the edit: five title cards you swipe through, each one alive ----------
+   No posters yet, so each card carries its own light: fog over San Francisco, a terminal glow,
+   an LA sunset, gold rings for Immigrant Dreams, a hot plate for What the Food. The light drifts
+   slowly and a playhead scrubs along the bottom, because these are still being cut. */
+.ie-rail{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:74%;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
+  margin:0 calc(-1 * max(4vw,16px));padding:2px max(4vw,16px) 6px;scroll-padding:0 max(4vw,16px);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ie-rail::-webkit-scrollbar{display:none}
+.ie-rail li{scroll-snap-align:start}
+.iecard{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:4/5;border-radius:20px;overflow:hidden;padding:14px 16px 16px;
+  color:#fff;text-decoration:none;-webkit-tap-highlight-color:transparent;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 18px 40px -24px rgba(0,0,0,.55);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.iecard:active{transform:scale(.97)}
+.ie-art{position:absolute;inset:-18%;z-index:-2;animation:iedrift 16s ease-in-out infinite alternate;will-change:transform}
+.iecard::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes iedrift{from{transform:translate3d(-3%,-2%,0) scale(1)}to{transform:translate3d(3%,2%,0) scale(1.06)}}
+.ie-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:999px;font:600 11.5px/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.02em;
+  background:rgba(0,0,0,.28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff}
+.ie-badge i{width:7px;height:7px;border-radius:50%;background:#ff4438;box-shadow:0 0 8px #ff4438;animation:iepulse 2.4s ease-in-out infinite}
+.ie-body{display:flex;flex-direction:column;gap:6px}
+.ie-body b{font-size:clamp(28px,8.4vw,40px);line-height:.92;font-stretch:96%;letter-spacing:-.01em;text-wrap:balance}
+.ie-body>span:not(.ie-tl){font-size:12.5px;opacity:.85}
+.ie-tl{position:relative;display:block;height:2px;margin-top:10px;border-radius:2px;background:rgba(255,255,255,.28);overflow:hidden}
+.ie-tl i{position:absolute;top:0;bottom:0;left:0;width:34%;background:currentColor;border-radius:2px;animation:iescrub 5.5s cubic-bezier(.45,0,.2,1) infinite alternate}
+@keyframes iescrub{from{transform:translateX(-100%)}to{transform:translateX(300%)}}
+.ie-young-founders{color:#fff}
+.ie-young-founders .ie-art{background:radial-gradient(70% 45% at 25% 18%,rgba(255,255,255,.75),transparent 70%),radial-gradient(60% 40% at 85% 75%,#e04a32 0%,transparent 70%),linear-gradient(165deg,#d9dddd 0%,#a3abad 42%,#4f585b 100%)}
+.ie-hacker-room{color:#7cf2a4;background:#06100b}
+.ie-hacker-room .ie-art{background:repeating-linear-gradient(0deg,rgba(124,242,164,.08) 0 1px,transparent 1px 4px),radial-gradient(70% 55% at 72% 28%,rgba(124,242,164,.42),transparent 70%),radial-gradient(60% 50% at 10% 90%,rgba(40,120,90,.5),transparent 70%),#06100b}
+.ie-hacker-room .ie-body b::after{content:"";display:inline-block;width:.42em;height:.78em;margin-left:.08em;vertical-align:-.04em;background:currentColor;animation:iecaret 1.05s steps(1) infinite}
+@keyframes iecaret{50%{opacity:0}}
+.ie-la-artists .ie-art{background:radial-gradient(circle at 50% 44%,#ffe6ad 0 15%,rgba(255,230,173,.35) 16%,transparent 30%),linear-gradient(180deg,#f7c67e 0%,#ef8b5a 36%,#c9476a 64%,#3a1d49 100%)}
+.ie-immigrant-dreams{color:#e8c875}
+.ie-immigrant-dreams .ie-art{background:radial-gradient(circle at 50% 36%,rgba(232,200,117,.32) 0,transparent 42%),repeating-radial-gradient(circle at 50% 36%,transparent 0 21px,rgba(232,200,117,.22) 21px 22px),linear-gradient(170deg,#1f2f57 0%,#121c36 100%)}
+.ie-what-the-food{color:#141414}
+.ie-what-the-food .ie-art{background:radial-gradient(65% 45% at 30% 72%,#e0522a 0%,transparent 70%),radial-gradient(55% 40% at 78% 18%,#fff2c2 0%,transparent 70%),linear-gradient(160deg,#f2b33c 0%,#e19a22 100%)}
+.ie-what-the-food .ie-badge{background:rgba(255,255,255,.35);color:#141414}
+.ie-what-the-food .ie-tl{background:rgba(0,0,0,.18)}
+
+.sx-by a{color:inherit;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:1px}

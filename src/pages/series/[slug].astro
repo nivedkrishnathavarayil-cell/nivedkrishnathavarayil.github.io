@@ -36,7 +36,7 @@ const image = `/og/${s.slug}.jpg`;
         <a class="sx-back" href="/#series">All twelve series</a>
         <p class="sx-no">No. {no} of {S.length}</p>
         <h1 class="d sx-t">{s.t}</h1>
-        <p class="sx-by">{s.role.startsWith('Writer') ? 'Written and directed' : 'Directed'} by Nivedkrishna Thavarayil</p>
+        <p class="sx-by">{s.role.startsWith('Writer') ? 'Written and directed' : 'Directed'} by <a href="/" rel="author">Nivedkrishna Thavarayil</a></p>
         <p class="sx-log">{s.log}</p>
         {s.note && <p class="sx-note">{s.note}</p>}
         <dl class="sx-dl">

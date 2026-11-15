@@ -101,8 +101,8 @@ const inEditHTML = (S) => {
   if (!L.length) return '';
   return `<div class="inedit" aria-labelledby="ie-h">
   <h3 class="d" id="ie-h">In the edit.</h3>
-  <p class="iel">${WORDS[L.length] || L.length} more series are in post-production and coming to Canvas.</p>
-  <ul>${L.map((s) => `<li><a href="/series/${s.slug}/"><span class="iec ${s.cls || ''}" aria-hidden="true"></span><span class="iet"><b class="d">${esc(s.t)}</b><span>${esc(s.fmt)}. ${esc(s.city)}.</span></span><span class="ies"><i aria-hidden="true"></i>In post</span></a></li>`).join('')}</ul>
+  <p class="iel">${WORDS[L.length] || L.length} more series are in post-production and coming to Canvas. Swipe through.</p>
+  <ul class="ie-rail">${L.map((s) => `<li><a class="iecard ie-${s.slug}" href="/series/${s.slug}/" aria-label="${esc(s.t)}, ${esc(s.fmt)}, in post-production"><span class="ie-art" aria-hidden="true"></span><span class="ie-badge" aria-hidden="true"><i></i>In post</span><span class="ie-body" aria-hidden="true"><b class="d">${esc(s.t)}</b><span>${esc(s.fmt)}. ${esc(s.city)}.</span><span class="ie-tl"><i></i></span></span></a></li>`).join('')}</ul>
 </div>`;
 };
 
@@ -173,9 +173,42 @@ export const homeLD = (S) => ({
     {
       '@type': 'Movie',
       name: 'The Last Pizza',
+      description: 'On his last delivery of the night, a pizza guy gets trapped on a freezing Manhattan rooftop with a dying phone and nothing but the order.',
+      genre: 'Survival thriller',
       director: { '@id': `${SITE}/#person` },
       author: { '@id': `${SITE}/#person` },
       dateCreated: '2024',
+      image: `${SITE}/media/lastpizza_239.jpg`,
+      sameAs: 'https://www.imdb.com/title/tt35961624/',
+    },
+    {
+      '@type': 'Movie',
+      name: 'Frames of Silence',
+      description: "An aspiring actress is pulled into a celebrated director's games, where art and mentorship blur into manipulation.",
+      genre: 'Psychological drama',
+      director: { '@id': `${SITE}/#person` },
+      author: { '@id': `${SITE}/#person` },
+      dateCreated: '2025',
+      sameAs: ['https://www.imdb.com/title/tt43522685/', 'https://youtu.be/w4IGrik_Qho'],
+    },
+    {
+      '@type': 'Movie',
+      name: 'Unspoken Distance',
+      genre: 'Drama',
+      director: { '@id': `${SITE}/#person` },
+      author: { '@id': `${SITE}/#person` },
+      dateCreated: '2024',
+      sameAs: 'https://www.imdb.com/title/tt35963429/',
+    },
+    {
+      '@type': 'Movie',
+      name: 'Love Is Stronger Than Hate',
+      genre: 'Drama',
+      dateCreated: '2025',
+      director: { '@type': 'Person', name: 'Yoey Garfield' },
+      contributor: { '@id': `${SITE}/#person` },
+      image: `${SITE}/media/listh_still.jpg`,
+      sameAs: 'https://www.imdb.com/title/tt38273553/',
     },
   ],
 });
