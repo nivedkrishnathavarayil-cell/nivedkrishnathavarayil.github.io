@@ -522,3 +522,35 @@ html.yt-open{overflow:hidden}
 .ytbox-t{margin:16px 0 0;font-weight:600;font-size:16px;color:#fff}
 .ytbox-x{position:absolute;top:max(14px,env(safe-area-inset-top));right:16px;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid #ffffff55;background:#ffffff14;color:#fff;font:inherit;font-weight:600;cursor:pointer}
 .ytbox-x:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+
+/* ---------- the work library: case studies, takes and behind-the-scenes pieces ---------- */
+.cs-next{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin:24px 0 0}
+.cs-latest{margin:0;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-weight:600}
+.cs-latest span{font-size:14px;color:var(--mute);font-weight:500}
+.cs-latest a{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.cscard.take{background:radial-gradient(90% 60% at 20% 0%,rgba(255,255,255,.08),transparent 60%),#18181a;box-shadow:inset 6px 0 0 var(--c)}
+.cscard-h{font-size:clamp(24px,2.1vw,32px);line-height:1;font-stretch:96%;text-wrap:balance}
+.cscard.take .cscard-t{font-family:"Hanken Grotesk",system-ui,sans-serif;font-weight:500;font-size:15px;line-height:1.35;opacity:.85}
+.lib-f{display:flex;flex-wrap:wrap;gap:8px;margin:clamp(26px,5vh,44px) 0 18px}
+.lib-f button{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+.lib-f button span{opacity:.6;margin-left:4px;font-variant-numeric:tabular-nums}
+.lib-f button[aria-pressed="true"]{background:var(--ink);color:var(--table)}
+.lib-f button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.lib-grid{list-style:none;margin:0 0 clamp(50px,9vh,100px);padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.lib-grid li[hidden]{display:none}
+.lib .cs-head{padding-bottom:0}
+.lib-wrap{max-width:1080px}
+@media (max-width:599px){.lib-grid .cscard{min-height:300px}}
+/* a take: one readable column */
+.post-by{margin:1.4em 0 0;font-size:15px;color:var(--mute)}
+.post-by a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.post-body{max-width:1080px;padding-top:clamp(26px,5vh,48px);padding-bottom:clamp(20px,4vh,40px)}
+.post-body p{font-size:clamp(18px,1.45vw,20px);line-height:1.65;margin:0 0 1.15em}
+.post-body p a{text-decoration:underline;text-underline-offset:3px}
+.post-h{font-family:Anybody,"Arial Narrow",sans-serif;font-weight:800;font-stretch:100%;font-size:clamp(24px,2.4vw,32px);line-height:1.08;margin:1.7em 0 .6em;text-wrap:balance}
+.post-q{margin:1.6em 0;padding:0 0 0 22px;border-left:4px solid var(--red);font-size:clamp(24px,2.6vw,34px);line-height:1.15;font-stretch:100%;text-wrap:balance}
+.post-rel{max-width:1080px;padding-top:10px}
+.post-body>*{max-width:680px}
+.post-rel .cs-h{margin-bottom:14px}
+.post-rel .cscard{max-width:340px;min-height:340px}
+.post-cta{max-width:1080px;margin:0 auto}

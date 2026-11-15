@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import P from '../../data/posts.json';
+import C from '../../data/cases.json';
+import { headerHTML, SITE, PERSON } from '../../lib/site.mjs';
+
+/* takes and behind-the-scenes pieces share /work/<slug>/ with the case studies */
+export function getStaticPaths() {
+  return P.map((p) => ({ params: { post: p.slug }, props: { p } }));
+}
+const { p } = Astro.props;
+const url = `${SITE}/work/${p.slug}/`;
+const FORMAT = { take: 'Take', bts: 'Behind the scenes' };
+const rel = C.find((c) => c.slug === p.related);
+const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/* body text may carry [label](https://link) */
+const md = (t) => esc(t).replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2">$1</a>');
+const plain = (t) => t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+const first = plain(p.body.find((b) => b[0] === 'p')[1]);
+const description = `${p.title.replace(/\.$/, '')}: ${p.dek.replace(/\.$/, '')}. ${first}`.slice(0, 155).replace(/\s+\S*$/, '') + '...';
+const words = p.body.reduce((n, b) => n + plain(b[1]).split(/\s+/).length, 0);
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline: `${p.title.replace(/\.$/, '')} ${p.dek}`,
+      description,
+      url,
+      image: `${SITE}/og/work-${p.slug}.jpg`,
+      datePublished: p.date,
+      wordCount: words,
+      articleSection: FORMAT[p.format],
+      keywords: [p.topic, 'creative strategy', 'viral marketing'],
+      author: { '@id': PERSON['@id'] },
+      publisher: { '@id': PERSON['@id'] },
+      mainEntityOfPage: url,
+      ...(p.origin ? { sameAs: p.origin[1] } : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Work', item: `${SITE}/work/` },
+        { '@type': 'ListItem', position: 3, name: p.short, item: url },
+      ],
+    },
+    PERSON,
+  ],
+};
+---
+<Base
+  title={`${p.title.replace(/\.$/, '')} | Nivedkrishna Thavarayil`}
+  description={description}
+  ogTitle={`${p.title} ${p.dek}`}
+  path={`/work/${p.slug}/`}
+  image={`/og/work-${p.slug}.jpg`}
+  imageAlt={`${p.title} ${p.dek} A take by Nivedkrishna Thavarayil`}
+  type="article"
+  jsonld={ld}
+  page="case"
+>
+  <Fragment set:html={headerHTML} />
+  <main id="top" class="cs post">
+    <article>
+      <header class="wrap cs-head">
+        <a class="sx-back" href="/work/">All work</a>
+        <p class="cs-kick">{FORMAT[p.format]}, {p.topic}</p>
+        <h1 class="d sx-t cs-t">{p.title}</h1>
+        <p class="cs-line">{p.dek}</p>
+        <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>}</p>
+      </header>
+      <div class="wrap post-body">
+        {p.body.map(([t, v]) =>
+          t === 'h2' ? <h2 class="post-h">{v}</h2> :
+          t === 'quote' ? <blockquote class="post-q d">{v}</blockquote> :
+          <p set:html={md(v)} />
+        )}
+      </div>
+      {rel && (
+        <aside class="wrap post-rel" aria-labelledby="rel-h">
+          <h2 class="cs-h" id="rel-h">The campaign behind this</h2>
+          <a class="cscard" href={`/work/${rel.slug}/`} style={`--c:${rel.color}`}>
+            <span class="cscard-b">{rel.brand}</span>
+            <span class="cscard-mid"><span class="cscard-n d">{rel.stat}</span><span class="cscard-c">{rel.statCap}</span></span>
+            <span class="cscard-t">{rel.title}</span>
+            <span class="cscard-go">Read the case study</span>
+          </a>
+        </aside>
+      )}
+      <section class="wrap cs-sec cs-cta post-cta" aria-labelledby="next-step">
+        <h2 class="cs-h" id="next-step">Want this thinking on your brand?</h2>
+        <p class="acts2"><a class="btn solid2" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="btn" href="/Nivedkrishna-Thavarayil-Resume.pdf" target="_blank" rel="noopener">Download my resume</a></p>
+      </section>
+    </article>
+    <nav class="wrap sx-more cs-more" aria-label="More work">
+      <a class="sx-pn" href="/work/"><span>Everything in one place</span><b class="d">All work</b></a>
+      {rel && <a class="sx-pn nx" href={`/work/${rel.slug}/`}><span>Case study</span><b class="d">{rel.short}</b></a>}
+    </nav>
+  </main>
+  <footer class="dark endmark sx-end">
+    <p class="wm big" data-fit aria-hidden="true"><span>N<span class="idot">ı</span>vedkrishna</span> <span>Thavarayil</span></p>
+    <div class="wrap endrow"><span>Nivedkrishna Thavarayil, Creative Strategist and Director. New York and Jersey City, 2026.</span><a class="again" href="/#contact">Work with me</a></div>
+  </footer>
+  <script>
+    import '../../scripts/motion.js';
+  </script>
+</Base>
