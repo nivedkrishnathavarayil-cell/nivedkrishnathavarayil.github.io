@@ -232,29 +232,36 @@ addEventListener('resize', () => {
   fitWords.t = setTimeout(fitWords, 120);
 });
 
-/* ---------- films play here: a link with data-yt opens a full-screen player instead of leaving for YouTube ---------- */
-const ytLinks = $$('a[data-yt]');
+/* ---------- films and reels play here: a link with data-yt (YouTube) or data-ig (an Instagram reel) opens a full-screen player instead of leaving the site ---------- */
+const ytLinks = $$('a[data-yt], a[data-ig]');
 if (ytLinks.length && typeof HTMLDialogElement === 'function') {
   const dlg = document.createElement('dialog');
   dlg.className = 'ytbox';
-  dlg.setAttribute('aria-label', 'Film player');
-  dlg.innerHTML = '<div class="ytbox-in"><button class="ytbox-x" type="button">Close</button><div class="ytbox-frame"></div><p class="ytbox-t"></p></div>';
+  dlg.setAttribute('aria-label', 'Video player');
+  dlg.innerHTML = '<div class="ytbox-in"><button class="ytbox-x" type="button">Close</button><div class="ytbox-frame"></div><p class="ytbox-t"><span></span><a class="ytbox-o" target="_blank" rel="noopener"></a></p></div>';
   document.body.append(dlg);
   const frame = dlg.querySelector('.ytbox-frame');
-  const title = dlg.querySelector('.ytbox-t');
+  const title = dlg.querySelector('.ytbox-t span');
+  const out = dlg.querySelector('.ytbox-o');
   dlg.addEventListener('close', () => { frame.replaceChildren(); document.documentElement.classList.remove('yt-open'); });
   dlg.querySelector('.ytbox-x').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', (e) => { if (e.target === dlg || e.target.classList.contains('ytbox-in')) dlg.close(); });
   ytLinks.forEach((a) => a.addEventListener('click', (e) => {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
     e.preventDefault();
+    const ig = a.dataset.ig;
     const f = document.createElement('iframe');
-    f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(a.dataset.yt)}?autoplay=1&rel=0&playsinline=1`;
-    f.title = a.dataset.label || a.dataset.title || 'Film';
+    f.src = ig
+      ? `https://www.instagram.com/reel/${encodeURIComponent(ig)}/embed/`
+      : `https://www.youtube-nocookie.com/embed/${encodeURIComponent(a.dataset.yt)}?autoplay=1&rel=0&playsinline=1`;
+    f.title = a.dataset.label || a.dataset.title || 'Video';
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
     frame.replaceChildren(f);
+    dlg.classList.toggle('v', !!ig || 'v' in a.dataset);
     title.textContent = a.dataset.title || '';
+    out.href = a.href;
+    out.textContent = ig ? 'Open on Instagram' : 'Open on YouTube';
     document.documentElement.classList.add('yt-open');
     dlg.showModal();
   }));

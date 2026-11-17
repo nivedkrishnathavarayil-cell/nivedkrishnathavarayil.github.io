@@ -85,6 +85,23 @@ const ld = {
       </header>
 
       <div class="wrap cs-body">
+        {c.reels && (
+          <section class="cs-sec cs-watch" aria-labelledby="watch">
+            <h2 class="cs-h" id="watch">{c.reelsH || 'Watch the reels'}</h2>
+            <ul class="cs-reels" style={`--n:${Math.min(c.reels.length, 4)}`}>
+              {c.reels.map((r) => (
+                <li>
+                  <a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from the ${c.short} case study by Nivedkrishna Thavarayil`}>
+                    <img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" />
+                    <span class="reel-v"><b class="d">{r.v}</b> views</span>
+                    <span class="vh">Play the reel</span>
+                  </a>
+                  <p class="reel-t">{r.t}<span>{r.by}</span></p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
         <section class="cs-sec" aria-labelledby="brief">
           <h2 class="cs-h" id="brief">The brief</h2>
           <div class="cs-txt">{c.brief.map((p) => <p set:html={md(p)} />)}</div>
@@ -95,7 +112,7 @@ const ld = {
         </section>
         <section class="cs-sec" aria-labelledby="how">
           <h2 class="cs-h" id="how">How I made it</h2>
-          <ol class="cs-steps">{c.how.map((p) => <li set:html={md(p)} />)}</ol>
+          <ol class="cs-steps">{c.how.map((p) => <li><span set:html={md(p)} /></li>)}</ol>
         </section>
         <section class="cs-sec" aria-labelledby="result">
           <h2 class="cs-h" id="result">What happened</h2>
@@ -148,7 +165,7 @@ const ld = {
         )}
         {reads.length > 0 && (
           <section class="cs-sec" aria-labelledby="reads">
-            <h2 class="cs-h" id="reads">{reads.length > 1 ? 'Read more about it' : 'Read the take'}</h2>
+            <h2 class="cs-h" id="reads">{reads.length > 1 ? 'Read more about it' : reads[0].format === 'bts' ? 'Read the story' : 'Read the take'}</h2>
             <ul class="cs-proof cs-reads">{reads.map((p) => <li><a href={`/work/${p.slug}/`}>{p.title.replace(/\.$/, '')}</a></li>)}</ul>
           </section>
         )}

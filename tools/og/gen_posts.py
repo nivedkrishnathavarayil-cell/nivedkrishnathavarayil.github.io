@@ -20,13 +20,13 @@ html,body{{margin:0;width:1600px;height:900px;overflow:hidden}}p{{margin:0}}
 body{{position:relative;color:#fff;font-family:"Hanken Grotesk";background:radial-gradient(90% 70% at 18% 0%,rgba(255,255,255,.2),transparent 60%),radial-gradient(80% 80% at 100% 100%,rgba(0,0,0,.5),transparent 70%),#b4321b}}
 body::after{{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;background-image:{NOISE}}}
 .k{{position:absolute;left:96px;top:92px;font-size:34px;font-weight:600;opacity:.9}}
-.n{{position:absolute;left:84px;top:178px;font-family:Anybody;font-weight:850;font-stretch:88%;font-size:410px;line-height:.86;letter-spacing:-.01em}}
+.n{{position:absolute;left:84px;top:178px;font-family:Anybody;font-weight:850;font-stretch:84%;font-size:360px;line-height:.86;letter-spacing:-.01em}}
 .n svg{{position:absolute;left:-4%;top:-10%;width:108%;height:118%;overflow:visible}}
 .n path{{fill:none;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke;opacity:.95}}
 .c{{position:absolute;left:96px;bottom:150px;font-size:44px;font-weight:600;line-height:1.2;max-width:24ch}}
 .f{{position:absolute;left:96px;right:96px;bottom:70px;padding-top:22px;border-top:2px solid rgba(255,255,255,.3);font-size:26px;font-weight:600;opacity:.85;display:flex;justify-content:space-between}}
 </style></head><body><p class=k>Brick Lane Curry House, New York</p>
-<p class=n>1.5M<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"/></svg></p>
+<p class=n>1.47M<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"/></svg></p>
 <p class=c>views on one phaal reel. Zero dollars on paid creators.</p>
 <p class=f><span>Nivedkrishna Thavarayil</span><span>The phaal, as a format</span></p></body></html>'''
 open('format-cover.html','w').write(cover)
@@ -60,6 +60,29 @@ open('mix-cover.html','w').write(mixcover)
 MIX=('<div class=st2><style>'+mixcss(22,150,14,34,15,34,6)+
      '.st2{position:absolute;inset:0;padding:48px 34px;display:flex;flex-direction:column;justify-content:center;background:'+GREEN+'}</style>'
      '<div class=mix>'+bars()+'</div></div>')
+# 1c) designed cover for the WLDD story: 15 people on one floor to about 300
+PURPLE='radial-gradient(90% 70% at 18% 0%,rgba(255,255,255,.18),transparent 60%),radial-gradient(80% 80% at 100% 100%,rgba(0,0,0,.5),transparent 70%),#4b2a7a'
+CIRC='<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"/></svg>'
+wldd=('<!doctype html><html><head><meta charset=utf-8><style>'+FONTS+
+ 'html,body{margin:0;width:1600px;height:900px;overflow:hidden}p{margin:0}'
+ 'body{position:relative;color:#fff;font-family:"Hanken Grotesk";background:'+PURPLE+'}'
+ 'body::after{content:"";position:absolute;inset:0;opacity:.14;mix-blend-mode:overlay;background-image:'+NOISE+'}'
+ '.k{position:absolute;left:96px;top:92px;font-size:34px;font-weight:600;opacity:.9}'
+ '.cols{position:absolute;left:96px;right:96px;top:200px;display:grid;grid-template-columns:auto 1fr;gap:150px;align-items:start}'
+ '.n{position:relative;display:inline-block;font-family:Anybody;font-weight:850;font-stretch:88%;font-size:330px;line-height:.86}'
+ '.n svg{position:absolute;left:-6%;top:-12%;width:112%;height:124%;overflow:visible}.n path{fill:none;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}'
+ '.c{margin-top:34px;font-size:38px;font-weight:600;line-height:1.2;max-width:15ch}'
+ '.f{position:absolute;left:96px;right:96px;bottom:70px;padding-top:22px;border-top:2px solid rgba(255,255,255,.3);font-size:26px;font-weight:600;opacity:.85;display:flex;justify-content:space-between}'
+ '</style></head><body><p class=k>WLDD, Bangalore</p><div class=cols>'
+ '<div><p class=n>15</p><p class=c>people on one floor, 2023</p></div>'
+ '<div><p class=n>300'+CIRC+'</p><p class=c>people in three cities, 2026</p></div></div>'
+ '<p class=f><span>Nivedkrishna Thavarayil</span><span>From one floor to ScoopWhoop</span></p></body></html>')
+open('wldd-cover.html','w').write(wldd)
+WL=('<div class=st3><style>.st3{position:absolute;inset:0;padding:54px 46px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:'+PURPLE+'}'
+    '.st3 i{font-style:normal;font-size:19px;opacity:.8;margin-bottom:6px}.st3 b{position:relative;align-self:flex-start;font-family:Anybody;font-weight:850;font-stretch:88%;font-size:120px;line-height:.86}'
+    '.st3 b svg{position:absolute;left:-7%;top:-14%;width:114%;height:128%;overflow:visible}.st3 b path{fill:none;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}'
+    '.st3 span{font-size:23px;font-weight:600;line-height:1.25;margin-bottom:18px}</style>'
+    '<i>WLDD, Bangalore</i><b>15</b><span>people on one floor, 2023</span><b>300'+CIRC+'</b><span>people in three cities, 2026</span></div>')
 # 2) share previews: text on the left, the cover photo on the right
 base='''<!doctype html><html><head><meta charset=utf-8><style>%(fonts)s
 html,body{margin:0;width:1200px;height:630px;background:#121212;color:#fff;overflow:hidden}
@@ -72,16 +95,16 @@ h1{font-family:Anybody;font-weight:850;font-stretch:100%%;font-size:%(fs)spx;lin
 .r{position:relative;overflow:hidden}
 .r img{width:100%%;height:100%%;object-fit:cover;object-position:%(pos)s;display:block}
 .st{position:absolute;inset:0;padding:56px 44px;display:flex;flex-direction:column;justify-content:center;gap:18px;background:radial-gradient(90%% 70%% at 18%% 0%%,rgba(255,255,255,.2),transparent 60%%),radial-gradient(80%% 80%% at 100%% 100%%,rgba(0,0,0,.5),transparent 70%%),#b4321b}
-.st b{position:relative;display:inline-block;align-self:flex-start;font-family:Anybody;font-weight:850;font-stretch:88%%;font-size:150px;line-height:.86}
+.st b{position:relative;display:inline-block;align-self:flex-start;font-family:Anybody;font-weight:850;font-stretch:84%%;font-size:128px;line-height:.86}
 .st b svg{position:absolute;left:-6%%;top:-14%%;width:112%%;height:128%%;overflow:visible}.st b path{fill:none;stroke:#fff;stroke-width:3;vector-effect:non-scaling-stroke}
 .st span{font-size:26px;font-weight:600;line-height:1.25}.st i{font-style:normal;font-size:19px;opacity:.8}
 </style></head><body><div class=l><div>%(logo)s</div><div><p class=k>%(kick)s</p><h1>%(t)s</h1><p class=d>%(dek)s</p></div><p class=by>Nivedkrishna Thavarayil, Creative Strategist and Director, New York</p></div><div class=r>%(art)s</div></body></html>'''
-STAT='<div class=st><i>Brick Lane Curry House</i><b>1.5M<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"/></svg></b><span>views on one phaal reel. Zero dollars on paid creators.</span></div>'
+STAT='<div class=st><i>Brick Lane Curry House</i><b>1.47M<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"/></svg></b><span>views on one phaal reel. Zero dollars on paid creators.</span></div>'
 POS={'why-i-broke-the-180-degree-rule':'36% 50%','how-we-plan-a-micro-drama-in-a-day':'38% 50%','ten-episodes-at-harvard-in-under-four-days':'40% 50%','what-the-popes-exorcist-taught-me-about-virality':'0% 50%','the-only-sales-strategy-i-have-ever-used':'100% 50%','your-product-needs-a-format-not-an-ad':'18% 50%'}
 for p in P:
     t=p['title']; n=len(t); fs=64 if n<=34 else 56 if n<=46 else 50
     img=p['cover']['src'].split('/')[-1]
-    open(f'og-{p["slug"]}.html','w').write(base%{'fonts':FONTS,'rw':(560 if p['slug']=='the-only-sales-strategy-i-have-ever-used' else 470),'c':p['color'],'fs':fs,'logo':logo(84),'kick':html.escape(FMT[p['format']]+', '+p['topic']),'t':html.escape(t).replace('-','\u2011'),'dek':html.escape(p['dek']),'art':(STAT if p['slug']=='your-product-needs-a-format-not-an-ad' else MIX if p['slug']=='hub-hype-and-hygiene' else f'<img src="{img}">'),'pos':POS.get(p['slug'],'50% 50%')})
+    open(f'og-{p["slug"]}.html','w').write(base%{'fonts':FONTS,'rw':(560 if p['slug']=='the-only-sales-strategy-i-have-ever-used' else 470),'c':p['color'],'fs':fs,'logo':logo(84),'kick':html.escape(FMT[p['format']]+', '+p['topic']),'t':html.escape(t).replace('-','\u2011'),'dek':html.escape(p['dek']),'art':(STAT if p['slug']=='your-product-needs-a-format-not-an-ad' else WL if p['slug']=='fifteen-people-on-one-floor' else MIX if p['slug']=='hub-hype-and-hygiene' else f'<img src="{img}">'),'pos':POS.get(p['slug'],'50% 50%')})
 async def main():
     async with async_playwright() as pw:
         b=await pw.chromium.launch(executable_path='/usr/bin/google-chrome')
@@ -91,6 +114,8 @@ async def main():
         await pg.screenshot(path='format-not-an-ad.jpg',type='jpeg',quality=88)
         await pg.goto('file://'+W+'/mix-cover.html'); await pg.evaluate('document.fonts.ready'); await pg.wait_for_timeout(200)
         await pg.screenshot(path=REPO+'public/media/posts/hub-hype-hygiene.jpg',type='jpeg',quality=88)
+        await pg.goto('file://'+W+'/wldd-cover.html'); await pg.evaluate('document.fonts.ready'); await pg.wait_for_timeout(200)
+        await pg.screenshot(path=REPO+'public/media/posts/wldd-one-floor.jpg',type='jpeg',quality=88)
         await pg.set_viewport_size({'width':1200,'height':630})
         for p in P:
             await pg.goto(f'file://{W}/og-{p["slug"]}.html'); await pg.evaluate('document.fonts.ready'); await pg.wait_for_timeout(150)
