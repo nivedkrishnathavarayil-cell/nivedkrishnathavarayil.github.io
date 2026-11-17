@@ -85,7 +85,7 @@ const ld = {
           t === 'h2' ? <h2 class="post-h">{v}</h2> :
           t === 'quote' ? <blockquote class="post-q d">{v}</blockquote> :
           t === 'ul' ? <ul class="post-ul">{v.map((li) => <li set:html={md(li)} />)}</ul> :
-          t === 'reels' ? <ul class="cs-reels post-reels" style={`--n:${Math.min(v.length, 4)}`}>{v.map((r) => <li><a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from ${p.short} by Nivedkrishna Thavarayil`}><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /><span class="reel-v"><b class="d">{r.v}</b> views</span><span class="vh">Play the reel</span></a><p class="reel-t">{r.t}<span>{r.by}</span></p></li>)}</ul> :
+          t === 'reels' ? <ul class="cs-reels post-reels" style={`--n:${Math.min(v.length, 4)}`}>{v.map((r) => <li><a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from ${p.short} by Nivedkrishna Thavarayil`}><picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture><span class="reel-v"><b class="d">{r.v}</b> views</span><span class="vh">Play the reel</span></a><p class="reel-t">{r.t}<span>{r.by}</span></p></li>)}</ul> :
           t === 'yt' ? <p class="post-yt"><a class="watch" href={`https://www.youtube.com/watch?v=${v[0]}`} data-yt={v[0]} data-title={v[1]} data-label={v[2]}>{v[3]}</a></p> :
           <p set:html={md(v)} />
         )}

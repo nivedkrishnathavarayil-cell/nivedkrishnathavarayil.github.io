@@ -92,7 +92,7 @@ const ld = {
               {c.reels.map((r) => (
                 <li>
                   <a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from the ${c.short} case study by Nivedkrishna Thavarayil`}>
-                    <img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" />
+                    <picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture>
                     <span class="reel-v"><b class="d">{r.v}</b> views</span>
                     <span class="vh">Play the reel</span>
                   </a>
