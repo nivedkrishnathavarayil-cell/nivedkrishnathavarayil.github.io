@@ -15,7 +15,7 @@ const rel = C.find((c) => c.slug === p.related);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 /* body text may carry [label](https://link) */
 const md = (t) => esc(t).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
-const plain = (t) => (Array.isArray(t) ? t.join(' ') : t).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+const plain = (t) => (Array.isArray(t) ? t.join(' ') : String(t)).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 const first = plain(p.body.find((b) => b[0] === 'p')[1]);
 const ogImg = `/og/work-${p.slug}.jpg?v=3`;
 const share = (id, label, compact = false) => shareHTML(url, `${p.title.replace(/\.$/, '')}. ${p.dek}`, { id, label, compact });
@@ -85,6 +85,7 @@ const ld = {
           t === 'h2' ? <h2 class="post-h">{v}</h2> :
           t === 'quote' ? <blockquote class="post-q d">{v}</blockquote> :
           t === 'ul' ? <ul class="post-ul">{v.map((li) => <li set:html={md(li)} />)}</ul> :
+          t === 'yt' ? <p class="post-yt"><a class="watch" href={`https://www.youtube.com/watch?v=${v[0]}`} data-yt={v[0]} data-title={v[1]} data-label={v[2]}>{v[3]}</a></p> :
           <p set:html={md(v)} />
         )}
       </div>

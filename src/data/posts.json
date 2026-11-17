@@ -147,6 +147,95 @@
   }
  },
  {
+  "slug": "why-i-broke-the-180-degree-rule",
+  "format": "bts",
+  "topic": "Film",
+  "title": "Why I broke the 180-degree rule.",
+  "dek": "One cell, one light, and a camera that switches sides when the power does.",
+  "short": "Breaking the 180",
+  "date": "2026-11-17",
+  "dateLabel": "November 17, 2026",
+  "origin": null,
+  "color": "#22302b",
+  "related": null,
+  "cover": {
+   "src": "/media/posts/the-offer.jpg",
+   "w": 1280,
+   "h": 720,
+   "pos": "62% 50%",
+   "alt": "The Offer, an interrogation scene directed by Nivedkrishna Thavarayil: an agent in black leans across a table toward a seated prisoner under a single overhead light, with Dillon Cain and Nathan Flores",
+   "cap": "The Offer (Agent X). With Dillon Cain and Nathan Flores. Director of photography Yoey Garfield."
+  },
+  "body": [
+   [
+    "p",
+    "At the New York Film Academy, the production workshop is where you get a real studio, a crew and a dolly, and one scene to prove you can run a set. I built a prison cell."
+   ],
+   [
+    "p",
+    "The scene is The Offer. An agent visits a prisoner serving a life sentence and makes him an offer. The film around it was never shot, so here's the subtext: the offer is a second chance, if the prisoner signs his life over and works for the agent as a hitman. He'd be paid. He might die in the field. Either way, he'd be out."
+   ],
+   [
+    "yt",
+    [
+     "GSIja5IH9eo",
+     "The Offer",
+     "The Offer (Agent X), an interrogation scene directed by Nivedkrishna Thavarayil, with Dillon Cain and Nathan Flores",
+     "Watch the scene, 3 min"
+    ]
+   ],
+   [
+    "h2",
+    "One cell, one light"
+   ],
+   [
+    "p",
+    "We built the set inside the studio to look like a cell: one room, one table, lit from a single light above, with another light picking out the actors' heads. Faces fall in and out of shadow every time someone leans in. We laid dolly track on both sides of the table, so the camera could move with whoever held the power."
+   ],
+   [
+    "p",
+    "Yoey Garfield shot it on a RED Komodo. Dillon Cain and Nathan Flores played the two men."
+   ],
+   [
+    "h2",
+    "The power is in the blocking"
+   ],
+   [
+    "p",
+    "At the start, the agent stands and leans over the table while the prisoner sits. He's the one asking, so he's the one dominating. The prisoner keeps saying no. He's already rotting in there for life, so what could the agent possibly do for him?"
+   ],
+   [
+    "p",
+    "The agent slides a granola bar across the table. By the midpoint the prisoner takes it and eats it. That's the first crack: he's starting to see that this offer is the only second chance he'll ever get."
+   ],
+   [
+    "h2",
+    "Why I crossed the line"
+   ],
+   [
+    "p",
+    "Film school teaches the 180-degree rule early. Draw an imaginary line between two characters and keep the camera on one side of it, so the audience never loses track of who's where. Cross it, and the cut feels wrong."
+   ],
+   [
+    "p",
+    "That's exactly why I crossed it. For most of the scene the camera stays on one side of the line, while the agent is in control. The moment the prisoner is convinced, the power flips, and so does the camera. You should feel something change before anyone says it out loud."
+   ],
+   [
+    "p",
+    "Nobody in my class understood the choice, and my professors didn't agree with it either. I shot it anyway. The rule exists to keep the audience settled, and at that moment I wanted them unsettled."
+   ],
+   [
+    "quote",
+    "The camera crosses the line at the exact moment he does."
+   ],
+   [
+    "p",
+    "Crew: assistant director Yi Chan (Ethan), gaffer Yamira, grip Nicolas, sound Cito, first AC Jeff, second AC Ramon. More of my films are in the [short films section](/#films)."
+   ]
+  ],
+  "read": "2 min read"
+ },
+ {
   "slug": "hub-hype-and-hygiene",
   "format": "take",
   "topic": "Strategy",

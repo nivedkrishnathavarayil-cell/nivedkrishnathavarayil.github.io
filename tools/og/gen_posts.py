@@ -77,11 +77,11 @@ h1{font-family:Anybody;font-weight:850;font-stretch:100%%;font-size:%(fs)spx;lin
 .st span{font-size:26px;font-weight:600;line-height:1.25}.st i{font-style:normal;font-size:19px;opacity:.8}
 </style></head><body><div class=l><div>%(logo)s</div><div><p class=k>%(kick)s</p><h1>%(t)s</h1><p class=d>%(dek)s</p></div><p class=by>Nivedkrishna Thavarayil, Creative Strategist and Director, New York</p></div><div class=r>%(art)s</div></body></html>'''
 STAT='<div class=st><i>Brick Lane Curry House</i><b>1.5M<svg viewBox="0 0 200 100" preserveAspectRatio="none"><path d="M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13"/></svg></b><span>views on one phaal reel. Zero dollars on paid creators.</span></div>'
-POS={'how-we-plan-a-micro-drama-in-a-day':'38% 50%','ten-episodes-at-harvard-in-under-four-days':'40% 50%','what-the-popes-exorcist-taught-me-about-virality':'0% 50%','the-only-sales-strategy-i-have-ever-used':'100% 50%','your-product-needs-a-format-not-an-ad':'18% 50%'}
+POS={'why-i-broke-the-180-degree-rule':'36% 50%','how-we-plan-a-micro-drama-in-a-day':'38% 50%','ten-episodes-at-harvard-in-under-four-days':'40% 50%','what-the-popes-exorcist-taught-me-about-virality':'0% 50%','the-only-sales-strategy-i-have-ever-used':'100% 50%','your-product-needs-a-format-not-an-ad':'18% 50%'}
 for p in P:
     t=p['title']; n=len(t); fs=64 if n<=34 else 56 if n<=46 else 50
     img=p['cover']['src'].split('/')[-1]
-    open(f'og-{p["slug"]}.html','w').write(base%{'fonts':FONTS,'rw':(560 if p['slug']=='the-only-sales-strategy-i-have-ever-used' else 470),'c':p['color'],'fs':fs,'logo':logo(84),'kick':html.escape(FMT[p['format']]+', '+p['topic']),'t':html.escape(t),'dek':html.escape(p['dek']),'art':(STAT if p['slug']=='your-product-needs-a-format-not-an-ad' else MIX if p['slug']=='hub-hype-and-hygiene' else f'<img src="{img}">'),'pos':POS.get(p['slug'],'50% 50%')})
+    open(f'og-{p["slug"]}.html','w').write(base%{'fonts':FONTS,'rw':(560 if p['slug']=='the-only-sales-strategy-i-have-ever-used' else 470),'c':p['color'],'fs':fs,'logo':logo(84),'kick':html.escape(FMT[p['format']]+', '+p['topic']),'t':html.escape(t).replace('-','\u2011'),'dek':html.escape(p['dek']),'art':(STAT if p['slug']=='your-product-needs-a-format-not-an-ad' else MIX if p['slug']=='hub-hype-and-hygiene' else f'<img src="{img}">'),'pos':POS.get(p['slug'],'50% 50%')})
 async def main():
     async with async_playwright() as pw:
         b=await pw.chromium.launch(executable_path='/usr/bin/google-chrome')
