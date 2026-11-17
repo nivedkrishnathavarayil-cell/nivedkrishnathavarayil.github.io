@@ -259,3 +259,20 @@ if (ytLinks.length && typeof HTMLDialogElement === 'function') {
     dlg.showModal();
   }));
 }
+
+/* share bar: the native sheet where the phone has one (Instagram, Messages, AirDrop), plus copy link */
+document.querySelectorAll('.share-native').forEach((li) => { if (navigator.share) li.hidden = false; });
+document.addEventListener('click', async (e) => {
+  const nb = e.target.closest('[data-share-url]');
+  if (nb) {
+    try { await navigator.share({ title: nb.dataset.shareTitle, url: nb.dataset.shareUrl }); } catch (_) { /* closed */ }
+    return;
+  }
+  const cb = e.target.closest('[data-copy]');
+  if (!cb) return;
+  const ok = cb.closest('.share')?.querySelector('.share-ok');
+  try { await navigator.clipboard.writeText(cb.dataset.copy); if (ok) ok.textContent = 'Link copied.'; }
+  catch (_) { if (ok) ok.textContent = cb.dataset.copy; }
+  clearTimeout(cb._t);
+  cb._t = setTimeout(() => { if (ok) ok.textContent = ''; }, 2600);
+});

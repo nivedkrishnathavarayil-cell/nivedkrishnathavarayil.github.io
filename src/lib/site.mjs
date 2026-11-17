@@ -37,7 +37,7 @@ export const statementHTML = `
 /* ---------- 2. names on the call sheet ---------- */
 export const BRANDS = [
   ['Canvas', 'Streaming app', '#series'],
-  ['Sony Pictures India', 'Film releases', '#c-sony'],
+  ['Sony Pictures India', 'Film releases', '/work/the-popes-exorcist/'],
   ['Netflix India', 'Streaming', '#c-wldd'],
   ['Prime Video', 'Streaming', '#c-wldd'],
   ['Zee5', 'Streaming', '#c-wldd'],
@@ -46,11 +46,11 @@ export const BRANDS = [
   ['Durex', 'Consumer brand', '#c-wldd'],
   ['Xiaomi', 'Tech', '#c-wldd'],
   ['OnePlus', 'Tech', '#c-wldd'],
-  ['Infamous Coconuts', 'Film studio', '#c-coconuts'],
-  ['Fetchy', 'AI app', '#c-fetchy'],
-  ['Frangos Peri-Peri', 'Restaurant', '#c-frangos'],
+  ['Infamous Coconuts', 'Film studio', '/work/infamous-coconuts/'],
+  ['Fetchy', 'AI app', '/work/fetchy/'],
+  ['Frangos Peri-Peri', 'Restaurant', '/work/frangos-world-cup/'],
   ['Michael Samen', 'Mentalist', '#c-samen'],
-  ['Brick Lane Curry House', 'Restaurant', '#c-bricklane'],
+  ['Brick Lane Curry House', 'Restaurant', '/work/brick-lane-phaal/'],
   ['Sapphire Banquet NY', 'Banquet hall', '#c-sapphire'],
   ['Jaipore Royal', 'Restaurant', '#c-jaipore'],
   ['NH44 Indian', 'Restaurant', '#c-jaipore'],
@@ -228,3 +228,23 @@ export const homeLD = (S) => ({
     },
   ],
 });
+
+/* ---------- share bar: every case study and article can be passed on ---------- */
+export const shareHTML = (url, title, { label = 'Share this', id = 'share', compact = false } = {}) => {
+  const u = encodeURIComponent(url);
+  const t = encodeURIComponent(title);
+  const both = encodeURIComponent(`${title} ${url}`);
+  const nets = [
+    ['LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${u}`],
+    ['Facebook', `https://www.facebook.com/sharer/sharer.php?u=${u}`],
+    ['Threads', `https://www.threads.net/intent/post?text=${both}`],
+    ['X', `https://x.com/intent/post?text=${t}&url=${u}`],
+    ['WhatsApp', `https://wa.me/?text=${both}`],
+    ['Email', `mailto:?subject=${t}&body=${both}`],
+  ].filter(([n]) => !compact || n === 'LinkedIn');
+  return `<div class="share${compact ? ' share-c' : ''}" role="group" aria-labelledby="${id}-l"><p class="share-l" id="${id}-l">${esc(label)}</p><ul class="share-list">`
+    + `<li class="share-native" hidden><button type="button" class="share-b solid" data-share-url="${esc(url)}" data-share-title="${esc(title)}" data-goatcounter-click="share-native">Share</button></li>`
+    + nets.map(([n, h]) => `<li><a class="share-b" href="${esc(h)}" target="_blank" rel="noopener" data-goatcounter-click="share-${n.toLowerCase()}" aria-label="Share on ${n}">${n}</a></li>`).join('')
+    + `<li><button type="button" class="share-b" data-copy="${esc(url)}" data-goatcounter-click="share-copy">Copy link</button></li>`
+    + `</ul><p class="share-ok" aria-live="polite"></p></div>`;
+};

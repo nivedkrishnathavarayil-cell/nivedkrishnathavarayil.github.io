@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import C from '../../data/cases.json';
-import { headerHTML, SEL, SITE, PERSON } from '../../lib/site.mjs';
+import P from '../../data/posts.json';
+import { headerHTML, SEL, SITE, PERSON, shareHTML } from '../../lib/site.mjs';
 
 export function getStaticPaths() {
   return C.map((c, i) => ({ params: { slug: c.slug }, props: { i } }));
@@ -10,6 +11,10 @@ const { i } = Astro.props;
 const c = C[i];
 const next = C[(i + 1) % C.length];
 const url = `${SITE}/work/${c.slug}/`;
+const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
+const reads = P.filter((p) => p.related === c.slug && !c.proof.some((x) => x[1].includes(p.slug)));
+const share = (id, label, compact = false) => shareHTML(url, `${c.title} A case study by Nivedkrishna Thavarayil`, { id, label, compact });
 const fmt = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${Math.round(n / 1e3)}K` : `${n}`);
 const ch = c.chart;
 const pct = (v, rows) => `${((v / Math.max(...rows.map((r) => r[1]))) * 100).toFixed(2)}%`;
@@ -75,24 +80,25 @@ const ld = {
           {c.when && <><dt>When</dt><dd>{c.when}</dd></>}
           <dt>Channels</dt><dd>{c.channels}</dd>
         </dl>
+        <Fragment set:html={share('share-top', 'Share', true)} />
       </header>
 
       <div class="wrap cs-body">
         <section class="cs-sec" aria-labelledby="brief">
           <h2 class="cs-h" id="brief">The brief</h2>
-          <div class="cs-txt">{c.brief.map((p) => <p>{p}</p>)}</div>
+          <div class="cs-txt">{c.brief.map((p) => <p set:html={md(p)} />)}</div>
         </section>
         <section class="cs-sec" aria-labelledby="idea">
           <h2 class="cs-h" id="idea">The idea</h2>
-          <div class="cs-txt cs-big">{c.idea.map((p) => <p>{p}</p>)}</div>
+          <div class="cs-txt cs-big">{c.idea.map((p) => <p set:html={md(p)} />)}</div>
         </section>
         <section class="cs-sec" aria-labelledby="how">
           <h2 class="cs-h" id="how">How I made it</h2>
-          <ol class="cs-steps">{c.how.map((p) => <li>{p}</li>)}</ol>
+          <ol class="cs-steps">{c.how.map((p) => <li set:html={md(p)} />)}</ol>
         </section>
         <section class="cs-sec" aria-labelledby="result">
           <h2 class="cs-h" id="result">What happened</h2>
-          <ul class="cs-res">{c.result.map((p) => <li>{p}</li>)}</ul>
+          <ul class="cs-res">{c.result.map((p) => <li set:html={md(p)} />)}</ul>
           {ch && (
             <div class="cs-charts">
               <figure class="cs-chart cs-cmp">
@@ -139,6 +145,15 @@ const ld = {
             <ul class="cs-proof">{c.proof.map((p) => <li><a href={p[1]}>{p[0]}</a></li>)}</ul>
           </section>
         )}
+        {reads.length > 0 && (
+          <section class="cs-sec" aria-labelledby="reads">
+            <h2 class="cs-h" id="reads">Read the take</h2>
+            <ul class="cs-proof cs-reads">{reads.map((p) => <li><a href={`/work/${p.slug}/`}>{p.title.replace(/\.$/, '')}</a></li>)}</ul>
+          </section>
+        )}
+        <div class="cs-sec cs-share">
+          <Fragment set:html={share('share-end', 'Liked it? Pass it on.')} />
+        </div>
         <section class="cs-sec cs-cta" aria-labelledby="next-step">
           <h2 class="cs-h" id="next-step">Want this for your brand?</h2>
           <p class="acts2"><a class="btn solid2" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="btn" href="/Nivedkrishna-Thavarayil-Resume.pdf" target="_blank" rel="noopener">Download my resume</a></p>
@@ -146,7 +161,7 @@ const ld = {
       </div>
     </article>
     <nav class="wrap sx-more cs-more" aria-label="More case studies">
-      <a class="sx-pn" href="/#clients"><span>See every result</span><b class="d">Brands I've grown</b></a>
+      <a class="sx-pn" href="/work/"><span>Case studies, takes and stories</span><b class="d">All work</b></a>
       <a class="sx-pn nx" href={`/work/${next.slug}/`} rel="next"><span>Next case study</span><b class="d">{next.short}</b></a>
     </nav>
   </main>

@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import P from '../../data/posts.json';
 import C from '../../data/cases.json';
-import { headerHTML, SITE, PERSON } from '../../lib/site.mjs';
+import { headerHTML, SITE, PERSON, shareHTML } from '../../lib/site.mjs';
 
 /* takes and behind-the-scenes pieces share /work/<slug>/ with the case studies */
 export function getStaticPaths() {
@@ -14,9 +14,11 @@ const FORMAT = { take: 'Take', bts: 'Behind the scenes' };
 const rel = C.find((c) => c.slug === p.related);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 /* body text may carry [label](https://link) */
-const md = (t) => esc(t).replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2">$1</a>');
-const plain = (t) => t.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+const md = (t) => esc(t).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
+const plain = (t) => (Array.isArray(t) ? t.join(' ') : t).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 const first = plain(p.body.find((b) => b[0] === 'p')[1]);
+const ogImg = `/og/work-${p.slug}.jpg?v=3`;
+const share = (id, label, compact = false) => shareHTML(url, `${p.title.replace(/\.$/, '')}. ${p.dek}`, { id, label, compact });
 const description = `${p.title.replace(/\.$/, '')}: ${p.dek.replace(/\.$/, '')}. ${first}`.slice(0, 155).replace(/\s+\S*$/, '') + '...';
 const words = p.body.reduce((n, b) => n + plain(b[1]).split(/\s+/).length, 0);
 const ld = {
@@ -28,11 +30,11 @@ const ld = {
       headline: `${p.title.replace(/\.$/, '')} ${p.dek}`,
       description,
       url,
-      image: `${SITE}/og/work-${p.slug}.jpg`,
+      image: `${SITE}${ogImg}`,
       datePublished: p.date,
       wordCount: words,
       articleSection: FORMAT[p.format],
-      keywords: [p.topic, 'creative strategy', 'viral marketing'],
+      keywords: [p.topic, 'creative strategy', 'Nivedkrishna Thavarayil', p.format === 'bts' ? 'behind the scenes' : 'marketing'],
       author: { '@id': PERSON['@id'] },
       publisher: { '@id': PERSON['@id'] },
       mainEntityOfPage: url,
@@ -55,8 +57,8 @@ const ld = {
   description={description}
   ogTitle={`${p.title} ${p.dek}`}
   path={`/work/${p.slug}/`}
-  image={`/og/work-${p.slug}.jpg`}
-  imageAlt={`${p.title} ${p.dek} A take by Nivedkrishna Thavarayil`}
+  image={ogImg}
+  imageAlt={`${p.title} ${p.dek} ${FORMAT[p.format]} by Nivedkrishna Thavarayil`}
   type="article"
   jsonld={ld}
   page="case"
@@ -70,13 +72,25 @@ const ld = {
         <h1 class="d sx-t cs-t">{p.title}</h1>
         <p class="cs-line">{p.dek}</p>
         <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>}</p>
+        <Fragment set:html={share('share-top', 'Share', true)} />
       </header>
+      {p.cover && (
+        <figure class="wrap post-cover">
+          <img src={p.cover.src} width={p.cover.w} height={p.cover.h} alt={p.cover.alt} fetchpriority="high" decoding="async" style={`max-width:${p.cover.w}px`} />
+          {p.cover.cap && <figcaption set:html={md(p.cover.cap)} />}
+        </figure>
+      )}
       <div class="wrap post-body">
         {p.body.map(([t, v]) =>
           t === 'h2' ? <h2 class="post-h">{v}</h2> :
           t === 'quote' ? <blockquote class="post-q d">{v}</blockquote> :
+          t === 'ul' ? <ul class="post-ul">{v.map((li) => <li set:html={md(li)} />)}</ul> :
           <p set:html={md(v)} />
         )}
+      </div>
+      <div class="wrap post-end">
+        <Fragment set:html={share('share-end', 'Liked it? Pass it on.')} />
+        {p.origin && <p class="post-talk"><a href={p.origin[1]}>Join the conversation on LinkedIn</a></p>}
       </div>
       {rel && (
         <aside class="wrap post-rel" aria-labelledby="rel-h">
