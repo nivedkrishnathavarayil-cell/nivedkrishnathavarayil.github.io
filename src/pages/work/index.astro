@@ -9,7 +9,7 @@ const FORMAT = { case: 'Case study', take: 'Take', bts: 'Behind the scenes' };
 const PLURAL = { case: 'Case studies', take: 'Takes', bts: 'Behind the scenes' };
 const items = [
   ...C.map((c) => ({ kind: 'case', slug: c.slug, color: c.color, label: c.brand, stat: c.stat, cap: c.statCap, title: c.title, go: 'Read the case study', name: c.short })),
-  ...[...P].sort((a, b) => b.date.localeCompare(a.date)).map((p) => ({ kind: p.format, slug: p.slug, color: p.color, label: `${FORMAT[p.format]}, ${p.topic}`, title: p.title, dek: p.dek, img: p.cover && p.cover.card !== false && p.cover.src, pos: p.cover && p.cover.pos, go: `Read the ${p.format === 'take' ? 'take' : 'story'}, ${p.read.replace(' read', '')}`, name: p.short })),
+  ...[...P].sort((a, b) => b.date.localeCompare(a.date)).map((p) => ({ kind: p.format, slug: p.slug, color: p.color, label: `${FORMAT[p.format]}, ${p.topic}`, title: p.title, dek: p.dek, img: p.cover && p.cover.card !== false && p.cover.src, pos: p.cover && p.cover.pos, imgAlt: p.cover && p.cover.alt, go: `Read the ${p.format === 'take' ? 'take' : 'story'}, ${p.read.replace(' read', '')}`, name: p.short })),
 ];
 const kinds = ['case', 'take', 'bts'].filter((k) => items.some((it) => it.kind === k));
 const url = `${SITE}/work/`;
@@ -58,7 +58,7 @@ const ld = {
         {items.map((it) => (
           <li data-kind={it.kind}>
             <a class={`cscard${it.kind === 'case' ? '' : ' take'}${it.img ? ' has-img' : ''}`} href={`/work/${it.slug}/`} style={`--c:${it.color}`}>
-              {it.img && <span class="cscard-img" aria-hidden="true"><img src={it.img} alt="" loading="lazy" decoding="async" style={it.pos ? `object-position:${it.pos}` : undefined} /></span>}
+              {it.img && <span class="cscard-img" aria-hidden="true"><img src={it.img} alt={it.imgAlt || ''} loading="lazy" decoding="async" style={it.pos ? `object-position:${it.pos}` : undefined} /></span>}
               <span class="cscard-b">{it.label}</span>
               {it.kind === 'case'
                 ? <span class="cscard-mid"><span class="cscard-n d">{it.stat}</span><span class="cscard-c">{it.cap}</span></span>

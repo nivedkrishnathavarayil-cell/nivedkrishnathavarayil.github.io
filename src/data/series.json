@@ -125,8 +125,8 @@
   "city": "New York",
   "st": "Coming soon",
   "cls": "c-imm",
-  "log": "Immigrants who built their lives in America, in their own words.",
-  "note": "Episodes include a Brooklyn story and Jaipore Royal in Brewster over Onam, a restaurant I had already marketed.",
+  "log": "Immigrants who made it big in America, in their own words.",
+  "note": "Anyone who moved to America and built something big, in New York, Los Angeles, San Francisco or anywhere else: restaurant founders, business owners, real estate. Episodes so far include a Brooklyn story and Jaipore Royal in Brewster over Onam.",
   "slug": "immigrant-dreams"
  },
  {
@@ -136,7 +136,8 @@
   "city": "New York",
   "st": "Coming soon",
   "cls": "c-food",
-  "log": "A food documentary series for Canvas, featuring New York restaurants I had marketed.",
-  "slug": "what-the-food"
+  "log": "One dish you can only find in New York, from a different restaurant every episode, in under two minutes.",
+  "slug": "what-the-food",
+  "note": "Every episode is a single one-of-a-kind dish from a New York restaurant. Some are places I marketed through Thava Studio; others came to me later."
  }
 ]

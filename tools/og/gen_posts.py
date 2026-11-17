@@ -30,6 +30,36 @@ body::after{{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:ove
 <p class=c>views on one phaal reel. Zero dollars on paid creators.</p>
 <p class=f><span>Nivedkrishna Thavarayil</span><span>The phaal, as a format</span></p></body></html>'''
 open('format-cover.html','w').write(cover)
+# 1b) designed cover for the hub, hype and hygiene take
+def bars():
+    rows=[('Hub','about half to 60%',50,60),('Hype','around 30%',30,30),('Hygiene','10 to 20%',10,20)]
+    out=''
+    for name,lab,lo,hi in rows:
+        ext=f'<u style="left:{lo/60*100:.2f}%;width:{(hi-lo)/60*100:.2f}%"></u>' if hi>lo else ''
+        out+=f'<div class=row><div class=lab><b>{name}</b><span>{lab}</span></div><div class=track><i style="width:{lo/60*100:.2f}%"></i>{ext}</div></div>'
+    return out
+def mixcss(g,lw,gap,fs,ss,h,r):
+    return ('.mix{display:flex;flex-direction:column;gap:%dpx}.row{display:grid;grid-template-columns:%dpx 1fr;align-items:center;gap:%dpx}'
+            '.lab b{display:block;font-family:Anybody;font-weight:850;font-size:%dpx;line-height:1}.lab span{display:block;font-size:%dpx;font-weight:600;opacity:.82;margin-top:6px}'
+            '.track{position:relative;height:%dpx;background:rgba(255,255,255,.12);border-radius:%dpx}.track i{position:absolute;left:0;top:0;bottom:0;background:#f4f1e6;border-radius:%dpx}'
+            '.track u{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,rgba(244,241,230,.75) 0 6px,rgba(244,241,230,.25) 6px 12px);border-radius:0 %dpx %dpx 0}') % (g,lw,gap,fs,ss,h,r,r,r,r)
+GREEN='radial-gradient(90% 70% at 18% 0%,rgba(255,255,255,.16),transparent 60%),radial-gradient(80% 80% at 100% 100%,rgba(0,0,0,.45),transparent 70%),#2c5e4a'
+mixcover=('<!doctype html><html><head><meta charset=utf-8><style>'+FONTS+
+ 'html,body{margin:0;width:1600px;height:900px;overflow:hidden}p{margin:0}'
+ 'body{position:relative;color:#fff;font-family:"Hanken Grotesk";background:'+GREEN+'}'
+ 'body::after{content:"";position:absolute;inset:0;opacity:.14;mix-blend-mode:overlay;background-image:'+NOISE+'}'
+ '.k{position:absolute;left:96px;top:92px;font-size:34px;font-weight:600;opacity:.9}'
+ '.t{position:absolute;left:92px;top:146px;font-family:Anybody;font-weight:850;font-stretch:92%;font-size:120px;line-height:.9}'
+ '.mixwrap{position:absolute;left:96px;right:96px;top:330px}'
+ '.f{position:absolute;left:96px;right:96px;bottom:70px;padding-top:22px;border-top:2px solid rgba(255,255,255,.3);font-size:26px;font-weight:600;opacity:.85;display:flex;justify-content:space-between}'
+ +mixcss(34,360,36,72,28,64,10)+
+ '</style></head><body><p class=k>The posting mix</p><p class=t>Hub, hype, hygiene.</p>'
+ '<div class=mixwrap><div class=mix>'+bars()+'</div></div>'
+ '<p class=f><span>Nivedkrishna Thavarayil</span><span>Share of posts on an account</span></p></body></html>')
+open('mix-cover.html','w').write(mixcover)
+MIX=('<div class=st2><style>'+mixcss(22,150,14,34,15,34,6)+
+     '.st2{position:absolute;inset:0;padding:48px 34px;display:flex;flex-direction:column;justify-content:center;background:'+GREEN+'}</style>'
+     '<div class=mix>'+bars()+'</div></div>')
 # 2) share previews: text on the left, the cover photo on the right
 base='''<!doctype html><html><head><meta charset=utf-8><style>%(fonts)s
 html,body{margin:0;width:1200px;height:630px;background:#121212;color:#fff;overflow:hidden}
@@ -51,7 +81,7 @@ POS={'how-we-plan-a-micro-drama-in-a-day':'38% 50%','ten-episodes-at-harvard-in-
 for p in P:
     t=p['title']; n=len(t); fs=64 if n<=34 else 56 if n<=46 else 50
     img=p['cover']['src'].split('/')[-1]
-    open(f'og-{p["slug"]}.html','w').write(base%{'fonts':FONTS,'rw':(560 if p['slug']=='the-only-sales-strategy-i-have-ever-used' else 470),'c':p['color'],'fs':fs,'logo':logo(84),'kick':html.escape(FMT[p['format']]+', '+p['topic']),'t':html.escape(t),'dek':html.escape(p['dek']),'art':(STAT if p['slug']=='your-product-needs-a-format-not-an-ad' else f'<img src="{img}">'),'pos':POS.get(p['slug'],'50% 50%')})
+    open(f'og-{p["slug"]}.html','w').write(base%{'fonts':FONTS,'rw':(560 if p['slug']=='the-only-sales-strategy-i-have-ever-used' else 470),'c':p['color'],'fs':fs,'logo':logo(84),'kick':html.escape(FMT[p['format']]+', '+p['topic']),'t':html.escape(t),'dek':html.escape(p['dek']),'art':(STAT if p['slug']=='your-product-needs-a-format-not-an-ad' else MIX if p['slug']=='hub-hype-and-hygiene' else f'<img src="{img}">'),'pos':POS.get(p['slug'],'50% 50%')})
 async def main():
     async with async_playwright() as pw:
         b=await pw.chromium.launch(executable_path='/usr/bin/google-chrome')
@@ -59,6 +89,8 @@ async def main():
         await pg.goto('file://'+W+'/format-cover.html'); await pg.evaluate('document.fonts.ready'); await pg.wait_for_timeout(200)
         await pg.screenshot(path=REPO+'public/media/posts/format-not-an-ad.jpg',type='jpeg',quality=88)
         await pg.screenshot(path='format-not-an-ad.jpg',type='jpeg',quality=88)
+        await pg.goto('file://'+W+'/mix-cover.html'); await pg.evaluate('document.fonts.ready'); await pg.wait_for_timeout(200)
+        await pg.screenshot(path=REPO+'public/media/posts/hub-hype-hygiene.jpg',type='jpeg',quality=88)
         await pg.set_viewport_size({'width':1200,'height':630})
         for p in P:
             await pg.goto(f'file://{W}/og-{p["slug"]}.html'); await pg.evaluate('document.fonts.ready'); await pg.wait_for_timeout(150)

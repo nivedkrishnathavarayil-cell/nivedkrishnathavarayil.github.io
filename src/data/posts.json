@@ -141,10 +141,110 @@
    "src": "/media/posts/popes-exorcist.jpg",
    "w": 1200,
    "h": 675,
-   "alt": "Split-screen still from the Pope's Exorcist cinema stunt: a possessed woman crawls down the aisle while the trailer plays",
+   "alt": "Split-screen still from the Pope's Exorcist cinema stunt by Nivedkrishna Thavarayil at WLDD: a possessed woman crawls down the aisle while the trailer plays",
    "cap": "The cinema stunt, as covered by [LatestLY](https://www.latestly.com/socially/social-viral/the-popes-exorcist-trailer-combined-with-possessed-woman-turns-theatre-into-horror-hall-watch-video-5047593.html).",
    "pos": "0% 50%"
   }
+ },
+ {
+  "slug": "hub-hype-and-hygiene",
+  "format": "take",
+  "topic": "Strategy",
+  "title": "Hub, hype and hygiene.",
+  "dek": "The posting mix behind every brand I've run.",
+  "short": "Hub, hype and hygiene",
+  "date": "2026-11-17",
+  "dateLabel": "November 17, 2026",
+  "origin": null,
+  "color": "#2c5e4a",
+  "related": "fetchy",
+  "cover": {
+   "src": "/media/posts/hub-hype-hygiene.jpg",
+   "w": 1600,
+   "h": 900,
+   "card": false,
+   "alt": "Hub, hype and hygiene, the content mix used by Nivedkrishna Thavarayil: hub about half to 60% of posts, hype around 30%, hygiene 10 to 20%",
+   "cap": "The mix I start every account with. It moves with the brand."
+  },
+  "body": [
+   [
+    "p",
+    "Every brand I've run gets the same posting plan, from film and FMCG campaigns at WLDD in Bangalore to cafes in New York. I call it hub, hype and hygiene."
+   ],
+   [
+    "p",
+    "I didn't invent the shape. Google's YouTube playbook for brands split content into hero, hub and hygiene, later renamed [hero, hub and help](https://thinkwithgoogle.com/marketing-strategies/video/build-a-content-plan). What I changed is the third H. Hero content is the big tentpole moment, and most brands I work with can't afford one every month. Trends, though, show up every week for free. So my third H is hype."
+   ],
+   [
+    "h2",
+    "Hub: what you do, in your own world"
+   ],
+   [
+    "p",
+    "Hub is the everyday posting: what the brand makes, what happens inside it, and the people who run it. For a cafe that's the menu, the space and the regulars. For a gym it's the workouts. It also covers anything shot in the brand's own surroundings, so a skit where the waiter plays a character is still hub, because it lives where the brand lives."
+   ],
+   [
+    "h2",
+    "Hygiene: why you exist"
+   ],
+   [
+    "p",
+    "Hygiene keeps the mission visible. If a restaurant's promise is authentic Indian food, or authentic halal food, hygiene posts explain it: where the flavours come from, how a dish is made, what makes it the real thing. They're often simple, information-first posts or a talking head, and they're the posts people check before they decide to trust you."
+   ],
+   [
+    "h2",
+    "Hype: the trend, moved into your world"
+   ],
+   [
+    "p",
+    "Hype is whatever is trending that week, a sound, a pop culture moment, a dance, rebuilt inside the brand's own setting. It's the fastest way to reach people who don't follow you yet."
+   ],
+   [
+    "h2",
+    "The mix"
+   ],
+   [
+    "ul",
+    [
+     "Hub: about half to 60% of posts",
+     "Hype: around 30%",
+     "Hygiene: 10 to 20%, depending on the brand"
+    ]
+   ],
+   [
+    "p",
+    "The mix matters more than any single post. Post only hype and you run out of trends, and the audience forgets what you sell. I've seen a pet food brand whose page is all office trends, so people think it's an office company. Post only hub and nobody new finds you. Post only hygiene and it reads like a brochure. With a mix, you can post every day without the page getting saturated."
+   ],
+   [
+    "h2",
+    "Where I've used it"
+   ],
+   [
+    "p",
+    "Everywhere: film and OTT launches, FMCG, food and retail pages at WLDD, influencer pages and PR for actors, and through Thava Studio in America, cafes, restaurants and real estate. Three of the case studies show it working:"
+   ],
+   [
+    "ul",
+    [
+     "[Fetchy](/work/fetchy/): the plan took YouTube Shorts from 600 to 1,000 views each to above 2,000, and one Short passed 616,000.",
+     "[Infamous Coconuts](/work/infamous-coconuts/): we rebuilt the feed around hub, hype and hygiene, and the typical reel went from about 5,000 views to 98,000.",
+     "[Thank You Durex](/work/thank-you-durex/): memes as hooks, with skits and trends built around the product. One reel passed 20.9 million views."
+    ]
+   ],
+   [
+    "h2",
+    "What the research says"
+   ],
+   [
+    "p",
+    "Two studies back up why hype stays at about 30% and not 100%. A 2023 study in the Journal of Research in Interactive Marketing found that brand memes build the relationship when they're easy to get, feel new and fit the brand, and that sarcasm works against them ([read the study](https://emerald.com/insight/content/doi/10.1108/JRIM-01-2023-0029/full/html)). Another, in the Journal of Consumer Marketing, found that meme posts read as funnier and earn more likes and shares, but lower engagement on cause-related campaigns ([read the study](https://www.emerald.com/jcm/article/doi/10.1108/JCM-09-2024-7221/1253616/Brand-posts-with-memes-on-social-media-perceived)). Humour travels, but it has to fit the brand and the moment."
+   ],
+   [
+    "quote",
+    "If you post one kind of thing every day, the page gets saturated. Mix the three and you can keep posting."
+   ]
+  ],
+  "read": "3 min read"
  },
  {
   "slug": "how-we-plan-a-micro-drama-in-a-day",
@@ -165,7 +265,7 @@
    "src": "/media/posts/micro-drama-in-a-day.jpg",
    "w": 1280,
    "h": 720,
-   "alt": "Close-up of an actress on a phone call in warm light, from the Canvas series Demo Day",
+   "alt": "Close-up of an actress on a phone call in warm light, from Demo Day, a Canvas series directed by Nivedkrishna Thavarayil, produced by Abhinav Singla, shot by Kais Vasaya",
    "cap": "Still from [Demo Day](/series/demo-day/), a 10-episode Canvas series shot at Harvard in under four days."
   },
   "body": [
@@ -310,7 +410,7 @@
    "src": "/media/posts/demo-day-harvard.jpg",
    "w": 960,
    "h": 402,
-   "alt": "Night still from Demo Day: an actress leans on a bridge railing with city lights behind her",
+   "alt": "Night still from Demo Day, directed by Nivedkrishna Thavarayil: an actress leans on a bridge railing with city lights behind her",
    "cap": "Still from [Demo Day](/series/demo-day/). Director of photography Kais Vasaya."
   },
   "body": [
@@ -388,7 +488,7 @@
    "src": "/media/posts/growvior.jpg",
    "w": 1080,
    "h": 607,
-   "alt": "Growvior services graphic listing custom software, creative media and branding, website development and mobile apps",
+   "alt": "Growvior services graphic: custom software, creative media and branding, website development and mobile apps, from the company co-founded by Nivedkrishna Thavarayil and Agrajh Ak",
    "cap": "Growvior, the software company I co-founded with Agrajh Ak.",
    "card": false
   },
@@ -524,7 +624,7 @@
    "src": "/media/posts/format-not-an-ad.jpg",
    "w": 1600,
    "h": 900,
-   "alt": "Typographic cover: 1.5M views on one phaal reel, with zero paid creators",
+   "alt": "Brick Lane Curry House case by Nivedkrishna Thavarayil: 1.5M views on one phaal reel, with zero paid creators",
    "cap": "From the [Brick Lane Curry House case study](/work/brick-lane-phaal/).",
    "card": false
   },

@@ -13,7 +13,8 @@ const next = C[(i + 1) % C.length];
 const url = `${SITE}/work/${c.slug}/`;
 const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
-const reads = P.filter((p) => p.related === c.slug && !c.proof.some((x) => x[1].includes(p.slug)));
+const mentions = (p) => JSON.stringify(p.body).includes(`/work/${c.slug}/`);
+const reads = P.filter((p) => (p.related === c.slug || mentions(p)) && !c.proof.some((x) => x[1].includes(p.slug)));
 const share = (id, label, compact = false) => shareHTML(url, `${c.title} A case study by Nivedkrishna Thavarayil`, { id, label, compact });
 const fmt = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${Math.round(n / 1e3)}K` : `${n}`);
 const ch = c.chart;
@@ -141,13 +142,13 @@ const ld = {
         </section>
         {c.proof.length > 0 && (
           <section class="cs-sec" aria-labelledby="proof">
-            <h2 class="cs-h" id="proof">Read the coverage</h2>
+            <h2 class="cs-h" id="proof">{c.proofH || 'Read the coverage'}</h2>
             <ul class="cs-proof">{c.proof.map((p) => <li><a href={p[1]}>{p[0]}</a></li>)}</ul>
           </section>
         )}
         {reads.length > 0 && (
           <section class="cs-sec" aria-labelledby="reads">
-            <h2 class="cs-h" id="reads">Read the take</h2>
+            <h2 class="cs-h" id="reads">{reads.length > 1 ? 'Read more about it' : 'Read the take'}</h2>
             <ul class="cs-proof cs-reads">{reads.map((p) => <li><a href={`/work/${p.slug}/`}>{p.title.replace(/\.$/, '')}</a></li>)}</ul>
           </section>
         )}

@@ -43,7 +43,7 @@ export const BRANDS = [
   ['Zee5', 'Streaming', '#c-wldd'],
   ['Zomato', 'Food delivery', '#c-wldd'],
   ['Swiggy', 'Food delivery', '#c-wldd'],
-  ['Durex', 'Consumer brand', '#c-wldd'],
+  ['Durex', 'Consumer brand', '/work/thank-you-durex/'],
   ['Xiaomi', 'Tech', '#c-wldd'],
   ['OnePlus', 'Tech', '#c-wldd'],
   ['Infamous Coconuts', 'Film studio', '/work/infamous-coconuts/'],
@@ -74,13 +74,30 @@ export const brandsHTML = `
   </div>
 </section>`;
 
-/* ---------- case studies: the five campaigns told start to finish ---------- */
+
+/* who's in it: credits used in image descriptions (only names already public on the site) */
+export const SERIES_CREDITS = {
+  'face-value': 'with creative directors Nivedkrishna Thavarayil and Kamya Mehra, shot by Kais Vasaya',
+  'demo-day': 'produced by and starring Abhinav Singla, shot by Kais Vasaya',
+  'dear-nyc': 'with Ruhani Sharma',
+  'red-flags': 'with creator Robert Maxwell',
+  'taser-fight-championship': 'shot at a live fight event in Baltimore',
+};
+const kindOf = (fmt) => String(fmt || 'series').split(',')[0].trim().toLowerCase();
+const aOrAn = (w) => (/^[aeiou]/i.test(w) ? 'an' : 'a');
+export const seriesAlt = (s) => {
+  const k = kindOf(s.fmt);
+  const credit = SERIES_CREDITS[s.slug] ? `, ${SERIES_CREDITS[s.slug]}` : '';
+  return `${s.t}, ${aOrAn(k)} ${k} directed by Nivedkrishna Thavarayil for Canvas${credit}`;
+};
+
+/* ---------- case studies: every campaign told start to finish ---------- */
 import CASES from '../data/cases.json';
 import POSTS from '../data/posts.json';
 export const casesHTML = `
 <section class="band cases" id="cases" aria-labelledby="cases-h">
   <div class="wrap">
-    <h2 class="d" id="cases-h">Five campaigns, start to finish.</h2>
+    <h2 class="d" id="cases-h">Six campaigns, start to finish.</h2>
     <p class="lede">The brief, the idea, how it was made and what it did. Open any one for the whole story.</p>
     <ul class="cs-rail">${CASES.map((c) => `<li><a class="cscard" href="/work/${c.slug}/" style="--c:${c.color}"><span class="cscard-b">${esc(c.brand)}</span><span class="cscard-mid"><span class="cscard-n d">${esc(c.stat)}</span><span class="cscard-c">${esc(c.statCap)}</span></span><span class="cscard-t">${esc(c.title)}</span><span class="cscard-go">Read the case study</span></a></li>`).join('')}</ul>
     <div class="cs-next"><a class="btn" href="/work/">See all work</a>${(() => {
@@ -95,7 +112,7 @@ export const shelfHTML = (S) =>
   `<div class="shelf" id="shelf">${S.map((s, i) => {
     const n = String(i + 1).padStart(2, '0');
     const art = s.poster
-      ? `<img src="${s.poster}" alt="" loading="lazy" decoding="async" width="540" height="960">`
+      ? `<img src="${s.poster}" alt="${esc(seriesAlt(s))}" loading="lazy" decoding="async" width="540" height="960">`
       : '';
     const vid = s.vid
       ? `<video data-src="${s.vid}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>`

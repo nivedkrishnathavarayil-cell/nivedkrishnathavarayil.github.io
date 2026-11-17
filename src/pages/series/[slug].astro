@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import S from '../../data/series.json';
-import { headerHTML, seriesLD, SEL } from '../../lib/site.mjs';
+import { headerHTML, seriesLD, SEL, seriesAlt } from '../../lib/site.mjs';
 
 export function getStaticPaths() {
   return S.map((s, i) => ({ params: { slug: s.slug }, props: { i } }));
@@ -23,7 +23,7 @@ const image = `/og/${s.slug}.jpg`;
   ogTitle={`${s.t}, directed by Nivedkrishna Thavarayil`}
   path={`/series/${s.slug}/`}
   image={image}
-  imageAlt={`${s.t}, a ${kind.toLowerCase()} directed by Nivedkrishna Thavarayil for Canvas`}
+  imageAlt={seriesAlt(s)}
   type="video.tv_show"
   jsonld={seriesLD(s, i)}
   page="series"
@@ -51,7 +51,7 @@ const image = `/og/${s.slug}.jpg`;
       </div>
       <div class={`sx-media${s.poster ? '' : ` card ${s.cls || ''}`}`} style={`view-transition-name:m-${s.slug}`}>
         {s.vid ? (
-          <video src={s.vid} poster={s.poster} autoplay muted loop playsinline disablepictureinpicture preload="auto" aria-label={`Trailer for ${s.t}`}></video>
+          <video src={s.vid} poster={s.poster} autoplay muted loop playsinline disablepictureinpicture preload="auto" aria-label={`Trailer for ${seriesAlt(s)}`}></video>
         ) : s.poster ? (
           <img src={s.poster} alt={`${s.t} key art`} width="540" height="960">
         ) : (

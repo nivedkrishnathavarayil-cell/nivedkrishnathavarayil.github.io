@@ -250,7 +250,7 @@ if (ytLinks.length && typeof HTMLDialogElement === 'function') {
     e.preventDefault();
     const f = document.createElement('iframe');
     f.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(a.dataset.yt)}?autoplay=1&rel=0&playsinline=1`;
-    f.title = a.dataset.title || 'Film';
+    f.title = a.dataset.label || a.dataset.title || 'Film';
     f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     f.allowFullscreen = true;
     frame.replaceChildren(f);
