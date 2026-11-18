@@ -232,6 +232,33 @@ addEventListener('resize', () => {
   fitWords.t = setTimeout(fitWords, 120);
 });
 
+/* ---------- about: the story opens one tapped word at a time; with no script, everything is open ---------- */
+const bio = $('#bio');
+if (bio) {
+  const btns = $$('.rv-b', bio);
+  const count = $('#rvn'), all = $('#rvall'), reset = $('#rvreset');
+  const open = (b, on) => {
+    b.setAttribute('aria-expanded', String(on));
+    const c = document.getElementById(b.getAttribute('aria-controls'));
+    c.classList.toggle('on', on);
+    c.inert = !on;
+  };
+  const sync = () => {
+    const n = btns.filter((b) => b.getAttribute('aria-expanded') === 'true').length;
+    if (count) count.textContent = n;
+    if (all) all.hidden = n === btns.length;
+    if (reset) reset.hidden = n === 0;
+    bio.classList.toggle('done', n === btns.length);
+  };
+  btns.forEach((b) => open(b, false));
+  bio.classList.add('rv-live');
+  const ctl = $('#rvctl'); if (ctl) ctl.hidden = false;
+  btns.forEach((b) => b.addEventListener('click', () => { open(b, b.getAttribute('aria-expanded') !== 'true'); sync(); }));
+  all && all.addEventListener('click', () => { btns.forEach((b) => open(b, true)); sync(); });
+  reset && reset.addEventListener('click', () => { btns.forEach((b) => open(b, false)); sync(); bio.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); });
+  sync();
+}
+
 /* ---------- films and reels play here: a link with data-yt (YouTube) or data-ig (an Instagram reel) opens a full-screen player instead of leaving the site ---------- */
 const ytLinks = $$('a[data-yt], a[data-ig]');
 if (ytLinks.length && typeof HTMLDialogElement === 'function') {

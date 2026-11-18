@@ -1,0 +1,185 @@
+---
+import Base from '../layouts/Base.astro';
+import { headerHTML, SITE, PERSON } from '../lib/site.mjs';
+
+const url = `${SITE}/about/`;
+const CAL = 'https://calendly.com/nivedkrishnathavarayil/30min';
+
+/* The bio reads like a conversation: each {{word|...}} is a button that opens the next part of the story.
+   Text after the bar is what it reveals, and it can hold more buttons. [label](url) makes a link. No em dashes. */
+const BIO = [
+  "Hi, I'm {{Nived|, short for Nivedkrishna Thavarayil, which is a lot of name for one guy. I'm a director and creative strategist in {{New York|. Technically I live across the river in Jersey City, which New Yorkers keep telling me doesn't count. My family is from {{Kerala|, on India's southwest coast, from a town called Thalassery that takes its biryani very seriously. I was born in Thrissur, went to school in Delhi and grew up for real in Bangalore, so my accent is a road trip.}}}}}}",
+  "I started making videos in {{2011|, with a YouTube channel and a serious {{Zach King| problem. If you've seen a guy walk into a phone screen, that's him. I tried it in my bedroom. Many times. Smosh, Nigahiga and PewDiePie filled out the syllabus.}} I wrote, shot, edited and posted everything myself: short films with school friends, lyric videos, fan trailers for TV shows (a couple went viral) and software tutorials. In ninth grade the channel paid for my {{first phone|. It survived all of high school, which is more than I can say for my haircut.}}}}",
+  "In twelfth grade I started {{a company|. Screen Reapers made websites, posters, SEO, blogs and video edits for clients in India and abroad, starting with family friends who were too polite to say no. I'd taught myself web development building sites for my school, and the agency helped get me into {{Christ University| in Bangalore, for a BBA Honours in Marketing and Advertising. I finished with an 8.28 CGPA and kept the agency running on the side.}}}}",
+  "Then I found {{the job|. After college I joined CashKaro as a video editing apprentice. Two and a half months in, I watched our brand strategist at work and thought: that's it, I want to decide what gets made and why. So I went to {{WLDD|, a meme marketing agency in Bangalore, as a junior brand strategist. [I was one of the first fifteen people in the office](/work/fifteen-people-on-one-floor/), and two months later I was a creative strategist on campaigns for {{Netflix India, Prime Video and Sony Pictures|. I brought in Sony Pictures as the agency's first international client and put [a possessed woman in a movie theater](/work/the-popes-exorcist/) for The Pope's Exorcist. It made national news. I worked on [Thank You Durex](/work/thank-you-durex/), where one reel passed 20.9 million views, and I ran [WLDD's own Instagram](/work/wldd-instagram/) to almost five times the reach. More than 50 campaigns in all, a few of them for dating apps we'll keep between us.}}}}}}",
+  "All of that taught me one thing: {{a film works for two reasons|. It's made well, and people hear about it. Miss either and it flops. I'd spent years on the second half, so I quit and moved to New York to learn {{the first half| at the New York Film Academy. Twenty-plus short films and a spot on the Dean's List later, I'd made [Frames of Silence](https://www.youtube.com/watch?v=w4IGrik_Qho), [The Last Pizza](https://www.youtube.com/watch?v=3YfriOGVA4w) (a thriller for $50), [Unspoken Distance](https://www.youtube.com/watch?v=EcSJKrXuJfM), [Before We Leave](https://www.youtube.com/watch?v=vTM1-v4kuSQ) and an interrogation scene, [Agent X](https://www.youtube.com/watch?v=GSIja5IH9eo), where I {{broke the 180-degree rule| on purpose, [over my professors' objections](/work/why-i-broke-the-180-degree-rule/). I also shot [Love Is Stronger Than Hate](https://www.youtube.com/watch?v=VQRsfpHgC38) as director of photography, and it won Best Costume Design at the Follow Your Heart Film Festival.}}}}}}",
+  "These days I run {{Thava Studio|, my creative studio for restaurants, founders and brands in New York. We turned [the hottest curry in town into a show](/work/brick-lane-phaal/), relaunched a comedy studio to [19 million views](/work/infamous-coconuts/), ran [the World Cup for a peri-peri chicken spot](/work/frangos-world-cup/) and followed [a mentalist from the streets to FOX 5](https://nyweekly.com/business/behind-the-mentalist-how-a-nyc-video-producer-is-building-michael-samens-brand-from-the-streets-to-fox-5/).}}",
+  "I'm also Creative Director at {{Canvas|, Bombay Canvas's streaming app for short series. I've directed 12+ series there, including [Face Value](/series/face-value/) at New York Fashion Week, [Taser Fight Championship](/series/taser-fight-championship/), [Red Flags](/series/red-flags/), [Dear NYC](/series/dear-nyc/) and [Demo Day](/series/demo-day/), shot at Harvard. Every episode is under two minutes and built on hooks, so I direct them and then I {{market them|. I lead the post-production and marketing team: editors, VFX, composers, colorists and designers. We plan shoots in [Directure AI](https://directureai.com), and I've wired Claude Code agents into Premiere Pro, Higgsfield and ElevenLabs, so the boring parts of the edit mostly do themselves.}}}}",
+  "And I co-founded {{a software company|. Growvior Software makes Mockits, an AI-powered learning platform for schools in New York and India, and [Bhaksh](https://bhaksh.com), a food app launching in Bangalore. We also [closed a $10,000 client](/work/the-only-sales-strategy-i-have-ever-used/) with the only sales strategy I've ever used.}}",
+  "Off the clock, I {{watch too many films|. I review them on [Letterboxd](https://letterboxd.com/nivedkrishna/) and run [@f24foster](https://www.instagram.com/f24foster/), a community of 7,000+ film lovers who argue about movies like it's a sport. I shoot street photography around New York, I think in memes, and I'll always pick {{the comedy|. Funny is the hardest thing to direct and the best thing to get right, which explains the YouTube channel, the memes and this page.}}}}",
+  "If you made it this far, {{let's make something|. I'm in New York and always up for a call. [Book 30 minutes](https://calendly.com/nivedkrishnathavarayil/30min), [say hi on LinkedIn](https://www.linkedin.com/in/nivedkrishna) or [grab my resume](/Nivedkrishna-Thavarayil-Resume.pdf).}}",
+];
+
+const esc = (x) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|mailto:|\/)[^)\s]*)\)/g, (m, t, h) => `<a href="${h}"${/^https?:/.test(h) ? ' rel="noopener"' : ''}>${t}</a>`);
+let n = 0;
+const parse = (s) => {
+  let i = 0;
+  const run = (inner) => {
+    let out = '';
+    while (i < s.length) {
+      if (s.startsWith('{{', i)) {
+        i += 2;
+        const bar = s.indexOf('|', i);
+        const label = s.slice(i, bar);
+        i = bar + 1;
+        const id = `rv${++n}`;
+        const body = run(true);
+        out += `<span class="rv"><button type="button" class="rv-b" aria-expanded="false" aria-controls="${id}">${esc(label)}</button><span class="rv-c" id="${id}">${body}</span></span>`;
+      } else if (inner && s.startsWith('}}', i)) {
+        i += 2;
+        return out;
+      } else {
+        let j = i;
+        while (j < s.length && !s.startsWith('{{', j) && !(inner && s.startsWith('}}', j))) j++;
+        out += md(s.slice(i, j));
+        i = j;
+      }
+    }
+    return out;
+  };
+  return run(false);
+};
+const bio = BIO.map(parse);
+const total = n;
+const plain = BIO.map((b) => b.replace(/\{\{([^|]*)\|/g, '$1').replace(/\}\}/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1'));
+
+const PRESS = [
+  ['Outlook India', 'https://www.outlookindia.com/hub4business/nivedkrishna-thavarayil-and-the-creative-collaboration-that-went-beyond-conventional-marketing'],
+  ['NY Weekly', 'https://nyweekly.com/business/behind-the-mentalist-how-a-nyc-video-producer-is-building-michael-samens-brand-from-the-streets-to-fox-5/'],
+  ['DNA', 'https://www.dnaindia.com/insights/report-how-one-spontaneous-outreach-opened-doors-for-collaborative-filmmaking-3218319'],
+  ['News24', 'https://news24online.com/information/nivedkrishna-thavarayil-creating-a-quiet-revolution-with-creative-collaborations/903102/'],
+  ['Bold Journey', 'https://boldjourney.com/meet-nivedkrishna-thavarayil/'],
+  ['Dezine', 'https://www.deziart.co/dezine/nived-krishna-strategic-filmmaker-career'],
+  ['Indian Daily Post', 'https://m.dailyhunt.in/news/india/english/indian+daily+post+idp-epaper-dh166e30f72d604e7baed95079067eb6f9/from+film+marketing+to+creative+development+nivedkrishna+thavarayil+works+for+a+bigger+purpose-newsid-dh166e30f72d604e7baed95079067eb6f9_52edc1109b7811f1bddf3e753200d161'],
+  ['Hindustan Times', 'https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html'],
+  ['India Today', 'https://www.indiatoday.in/trending-news/story/woman-acts-possessed-while-trailer-of-the-popes-exorcist-plays-in-movie-theatre-video-is-viral-2357066-2023-04-07'],
+  ['The Indian Express', 'https://indianexpress.com/article/trending/trending-in-india/possessed-woman-growls-at-moviegoers-as-the-popes-exorcist-trailer-plays-in-theatre-8545834/'],
+  ['News18', 'https://www.news18.com/buzz/the-popes-exorcist-trailer-brings-horror-to-life-as-possessed-woman-jumps-out-in-theatre-7496905.html'],
+  ['LatestLY', 'https://www.latestly.com/socially/social-viral/the-popes-exorcist-trailer-combined-with-possessed-woman-turns-theatre-into-horror-hall-watch-video-5047593.html'],
+];
+const PROFILES = [
+  ['LinkedIn', 'https://www.linkedin.com/in/nivedkrishna'],
+  ['IMDb', 'https://www.imdb.com/name/nm16824024/'],
+  ['Instagram', 'https://www.instagram.com/tvedukr_12'],
+  ['Letterboxd', 'https://letterboxd.com/nivedkrishna/'],
+  ['@f24foster', 'https://www.instagram.com/f24foster/'],
+  ['Face Value on Canvas', 'https://www.canvasott.com/video/cmw1t94ey00kxs60ek9qkz9gt'],
+];
+const WORK = [
+  ['Case studies', '/#cases'],
+  ['Everything I write', '/work/'],
+  ['Series', '/#series'],
+  ['Films', '/#films'],
+  ['Work with me', '/work-with-me/'],
+  ['Resume', '/Nivedkrishna-Thavarayil-Resume.pdf'],
+];
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['AboutPage', 'ProfilePage'],
+      '@id': `${url}#page`,
+      url,
+      name: 'About Nivedkrishna Thavarayil',
+      description: plain.join(' ').slice(0, 300),
+      mainEntity: { '@id': `${SITE}/#person` },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: `${SITE}/media/about/nived-on-set-1000.jpg`,
+        caption: 'Nivedkrishna Thavarayil on set, earpiece in and walkie-talkie on',
+      },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: 'About', item: url },
+        ],
+      },
+    },
+    PERSON,
+  ],
+};
+---
+<Base
+  title="About Nivedkrishna Thavarayil | Director and Creative Strategist, New York"
+  description="The long version: a YouTube channel in 2011, an agency in twelfth grade, WLDD and Sony Pictures, the New York Film Academy, Thava Studio, 12+ series for Canvas and a software company."
+  ogTitle="About Nivedkrishna Thavarayil, the extended cut"
+  path="/about/"
+  image="/og/about.jpg"
+  imageAlt="Nivedkrishna Thavarayil on set, earpiece in and walkie-talkie on, with the words About, the extended cut"
+  jsonld={ld}
+  page="case"
+>
+  <Fragment set:html={headerHTML} />
+  <main id="top" class="ab">
+    <header class="wrap ab-head">
+      <div class="ab-intro">
+        <a class="sx-back" href="/">Home</a>
+        <p class="cs-kick">About</p>
+        <h1 class="d sx-t ab-t">About me, the extended cut.</h1>
+        <p class="ab-line">Your friendly neighborhood naughty kid your parents warned you not to hang out with.</p>
+        <p class="ab-how">Director and creative strategist in New York. Every story below starts with a cliffhanger. Tap the outlined word to keep going.</p>
+      </div>
+      <figure class="ab-photo">
+        <picture>
+          <source type="image/webp" srcset="/media/about/nived-on-set-600.webp 600w, /media/about/nived-on-set-1000.webp 1000w" sizes="(min-width: 900px) 38vw, 90vw" />
+          <img src="/media/about/nived-on-set-1000.jpg" srcset="/media/about/nived-on-set-600.jpg 600w, /media/about/nived-on-set-1000.jpg 1000w" sizes="(min-width: 900px) 38vw, 90vw" width="1000" height="1250" alt="Nivedkrishna Thavarayil directing on a beach shoot, earpiece in, walkie-talkie on his belt and a crew lanyard round his neck, standing with two crew members" fetchpriority="high" decoding="async" />
+        </picture>
+        <figcaption>Earpiece in, walkie on, sunglasses doing half the directing.</figcaption>
+      </figure>
+    </header>
+
+    <section class="dark ab-band" aria-labelledby="story">
+      <div class="wrap">
+        <div class="ab-bar">
+          <h2 class="ab-h" id="story">The story, one tap at a time</h2>
+          <p class="ab-ctl" id="rvctl" hidden><span class="ab-count" aria-live="polite"><b id="rvn">0</b> of {total} opened</span><button type="button" class="ab-all" id="rvall">Open everything</button><button type="button" class="ab-reset" id="rvreset" hidden>Fold it back</button></p>
+        </div>
+        <div class="ab-bio" id="bio">
+          {bio.map((h) => <p set:html={h} />)}
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap cs-body ab-more">
+      <section class="cs-sec" aria-labelledby="press">
+        <h2 class="cs-h" id="press">Written about in</h2>
+        <ul class="ab-links">{PRESS.map((p) => <li><a href={p[1]} rel="noopener">{p[0]}</a></li>)}</ul>
+      </section>
+      <section class="cs-sec" aria-labelledby="find">
+        <h2 class="cs-h" id="find">Find me on</h2>
+        <ul class="ab-links">{PROFILES.map((p) => <li><a href={p[1]} rel="me noopener">{p[0]}</a></li>)}</ul>
+      </section>
+      <section class="cs-sec" aria-labelledby="see">
+        <h2 class="cs-h" id="see">See the work</h2>
+        <ul class="ab-links">{WORK.map((p) => <li><a href={p[1]}>{p[0]}</a></li>)}</ul>
+      </section>
+      <section class="cs-sec cs-cta" aria-labelledby="start">
+        <h2 class="cs-h" id="start">Say hello</h2>
+        <div>
+          <p class="ww-line">Thirty minutes. Bring the brief, the idea or just the brand.</p>
+          <p class="acts2"><a class="btn solid2" href={CAL}>Book a 30-minute call</a><a class="btn" href="/work-with-me/">Work with me</a></p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="dark endmark sx-end">
+    <p class="wm big" data-fit aria-hidden="true"><span>N<span class="idot">ı</span>vedkrishna</span> <span>Thavarayil</span></p>
+    <div class="wrap endrow"><span>Nivedkrishna Thavarayil, Creative Strategist and Director. New York and Jersey City, 2026.</span><a class="again" href="/#contact">Contact</a></div>
+  </footer>
+  <script>
+    import '../scripts/motion.js';
+  </script>
+</Base>
