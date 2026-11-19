@@ -155,6 +155,20 @@ const ld = {
                   ))}
                 </ul>
               </figure>
+              {ch.aud && (
+                <figure class="cs-chart cs-dist cs-aud">
+                  <figcaption class="cs-ch-t">{ch.aud.title}<small>{ch.aud.sub}</small></figcaption>
+                  <ul>
+                    {ch.aud.rows.map((r) => (
+                      <li>
+                        <span class="lab">{r[0]}</span>
+                        <span class="bar"><i style={`--v:${pct(r[1], ch.aud.rows)}`}></i></span>
+                        <b>{r[1]}%</b>
+                      </li>
+                    ))}
+                  </ul>
+                </figure>
+              )}
             </div>
           )}
           {c.source && <p class="cs-src">{c.source}</p>}
