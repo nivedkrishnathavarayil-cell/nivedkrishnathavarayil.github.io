@@ -675,3 +675,13 @@ html.yt-open{overflow:hidden}
 @media (max-width:560px){.post-gal{grid-template-columns:1fr}}
 .post-gal.wide{grid-template-columns:1fr}
 .post-listen{font:inherit;font-weight:600;color:var(--ink);background:none;border:1.5px solid var(--rule);border-radius:999px;padding:3px 12px 4px;margin-left:4px;cursor:pointer}.post-listen:hover{border-color:var(--ink)}.post-listen[hidden]{display:none}
+.sx-sec{margin-top:clamp(56px,9vh,110px)}
+.sx-stills{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sx-stills figure{margin:0}.sx-stills img{display:block;width:100%;height:auto;border-radius:12px;background:var(--rule)}
+@media (max-width:640px){.sx-stills{grid-template-columns:1fr}}
+.sx-reads{margin-bottom:0}
+.sx-all{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:4px 24px}
+.sx-all li{padding:12px 0;border-top:1px solid var(--rule)}
+.sx-all a{font-weight:700;color:var(--ink);text-decoration:none}.sx-all a:hover{color:var(--red)}
+.sx-all span{display:block;font-size:14px;color:var(--mute);margin-top:2px}
+.post-more{margin-top:clamp(40px,7vh,80px)}.post-more .lib-grid{margin-bottom:0}

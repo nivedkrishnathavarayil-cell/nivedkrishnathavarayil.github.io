@@ -1,0 +1,86 @@
+[
+ {
+  "series": "face-value",
+  "src": "/media/stills/01-fv-eye.jpg",
+  "alt": "Face Value, a Canvas micro-documentary directed by Nivedkrishna Thavarayil: a makeup artist in the mirror lights",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "taser-fight-championship",
+  "src": "/media/stills/02-tfc-mask.jpg",
+  "alt": "Taser Fight Championship, a Canvas thriller directed by Nivedkrishna Thavarayil in Baltimore: a masked fighter in a cowboy hat",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "red-flags",
+  "src": "/media/stills/03-rf-glow.jpg",
+  "alt": "Red Flags, a Canvas romance series with creator Robert Maxwell, directed by Nivedkrishna Thavarayil: a woman in warm light",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "demo-day",
+  "src": "/media/stills/04-dd-bridge.jpg",
+  "alt": "Demo Day, a Canvas startup series directed by Nivedkrishna Thavarayil, produced by Abhinav Singla, shot by Kais Vasaya: a smoke on the bridge at night",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "taser-fight-championship",
+  "src": "/media/stills/05-tfc-splash.jpg",
+  "alt": "Taser Fight Championship, directed by Nivedkrishna Thavarayil: a fighter backlit in the spray",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "dear-nyc",
+  "src": "/media/stills/06-dnyc-mask.jpg",
+  "alt": "Dear NYC, a Canvas romance with Ruhani Sharma, written and directed by Nivedkrishna Thavarayil: lifting the mask on a subway platform",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "face-value",
+  "src": "/media/stills/07-fv-shades.jpg",
+  "alt": "Face Value at New York Fashion Week, directed by Nivedkrishna Thavarayil: a model lowers her sunglasses on the runway",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "red-flags",
+  "src": "/media/stills/08-rf-subway.jpg",
+  "alt": "Red Flags, directed by Nivedkrishna Thavarayil: a look across the subway car",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "face-value",
+  "src": "/media/stills/09-fv-runway.jpg",
+  "alt": "Face Value, directed by Nivedkrishna Thavarayil: the runway at New York Fashion Week",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "demo-day",
+  "src": "/media/stills/10-dd-call.jpg",
+  "alt": "Demo Day, directed by Nivedkrishna Thavarayil: the phone call",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "taser-fight-championship",
+  "src": "/media/stills/11-tfc-fighter.jpg",
+  "alt": "Taser Fight Championship, directed by Nivedkrishna Thavarayil: a fighter's war cry",
+  "w": 960,
+  "h": 402
+ },
+ {
+  "series": "face-value",
+  "src": "/media/stills/12-fv-interview.jpg",
+  "alt": "Face Value, directed by Nivedkrishna Thavarayil with creative director Kamya Mehra: her story, told at night",
+  "w": 960,
+  "h": 402
+ }
+]

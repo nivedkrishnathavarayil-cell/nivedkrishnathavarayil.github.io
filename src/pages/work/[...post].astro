@@ -18,6 +18,13 @@ const md = (t) => esc(t).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a
 const plain = (t) => (Array.isArray(t) ? t.join(' ') : String(t)).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 const first = plain(p.body.find((b) => b[0] === 'p')[1]);
 const ogImg = `/og/work-${p.slug}.jpg?v=3`;
+/* keep reading: pieces that share a series, a topic or a format with this one */
+const links = (x) => new Set((JSON.stringify(x.body).match(/\/series\/[a-z0-9-]+\//g) || []));
+const mine = links(p);
+const more = P.filter((x) => x.slug !== p.slug)
+  .map((x) => ({ x, s: [...links(x)].filter((l) => mine.has(l)).length * 3 + (x.topic === p.topic ? 2 : 0) + (x.format === p.format ? 1 : 0) }))
+  .sort((a, b) => b.s - a.s || b.x.date.localeCompare(a.x.date))
+  .slice(0, 3).map((o) => o.x);
 const share = (id, label, compact = false) => shareHTML(url, `${p.title.replace(/\.$/, '')}. ${p.dek}`, { id, label, compact });
 const description = `${p.title.replace(/\.$/, '')}: ${p.dek.replace(/\.$/, '')}. ${first}`.slice(0, 155).replace(/\s+\S*$/, '') + '...';
 const TEXT = ['p', 'h2', 'quote', 'ul'];
@@ -119,6 +126,22 @@ const ld = {
             <span class="cscard-t">{rel.title}</span>
             <span class="cscard-go">Read the case study</span>
           </a>
+        </aside>
+      )}
+      {more.length > 0 && (
+        <aside class="wrap post-more" aria-labelledby="more-h">
+          <h2 class="cs-h" id="more-h">Keep reading</h2>
+          <ul class="lib-grid">
+            {more.map((x) => (
+              <li><a class={`cscard take${x.cover ? ' has-img' : ''}`} href={`/work/${x.slug}/`} style={`--c:${x.color}`}>
+                {x.cover && <span class="cscard-img" aria-hidden="true"><img src={x.cover.src} alt="" loading="lazy" decoding="async" /></span>}
+                <span class="cscard-b">{FORMAT[x.format]}, {x.topic}</span>
+                <span class="cscard-mid"><span class="cscard-h d">{x.title}</span></span>
+                <span class="cscard-t">{x.dek}</span>
+                <span class="cscard-go">Read it, {x.read.replace(' read', '')}</span>
+              </a></li>
+            ))}
+          </ul>
         </aside>
       )}
       <section class="wrap cs-sec cs-cta post-cta" aria-labelledby="next-step">

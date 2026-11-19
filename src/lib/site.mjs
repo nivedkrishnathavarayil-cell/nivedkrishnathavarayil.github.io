@@ -197,7 +197,7 @@ export const homeLD = (S) => ({
       mainEntity: { '@id': `${SITE}/#person` },
       dateModified: new Date().toISOString().slice(0, 10),
     },
-    { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, publisher: { '@id': `${SITE}/#person` } },
+    { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, alternateName: ['NKT', 'Nived Thavarayil'], publisher: { '@id': `${SITE}/#person` } },
     {
       '@type': 'ItemList',
       name: 'Series directed by Nivedkrishna Thavarayil',

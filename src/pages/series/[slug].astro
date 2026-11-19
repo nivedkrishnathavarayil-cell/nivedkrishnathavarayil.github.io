@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import S from '../../data/series.json';
+import ST from '../../data/stills.json';
+import P from '../../data/posts.json';
 import { headerHTML, seriesLD, SEL, seriesAlt } from '../../lib/site.mjs';
 
 export function getStaticPaths() {
@@ -16,6 +18,11 @@ const title = `${s.t} | ${kind} directed by Nivedkrishna Thavarayil`;
 const description = clip(`${s.t}: ${s.log}`);
 const no = String(i + 1).padStart(2, '0');
 const image = `/og/${s.slug}.jpg`;
+const stills = ST.filter((x) => x.series === s.slug);
+/* every article that links to this series */
+const reads = [...P].filter((p) => JSON.stringify(p.body).includes(`/series/${s.slug}/`)).sort((a, b) => b.date.localeCompare(a.date));
+const FORMAT = { take: 'Take', bts: 'Behind the scenes' };
+const others = S.filter((x) => x.slug !== s.slug);
 ---
 <Base
   title={title}
@@ -59,6 +66,34 @@ const image = `/og/${s.slug}.jpg`;
         )}
       </div>
     </div>
+    {stills.length > 0 && (
+      <section class="wrap sx-sec" aria-labelledby="st-h">
+        <h2 class="cs-h" id="st-h">Stills</h2>
+        <div class="sx-stills">
+          {stills.map((x) => <figure><picture><source type="image/webp" srcset={x.src.replace(/\.jpg$/, '.webp')} /><img src={x.src} alt={x.alt} width={x.w} height={x.h} loading="lazy" decoding="async" /></picture></figure>)}
+        </div>
+      </section>
+    )}
+    {reads.length > 0 && (
+      <section class="wrap sx-sec" aria-labelledby="rd-h">
+        <h2 class="cs-h" id="rd-h">{reads.length > 1 ? 'Read more about it' : 'Read the story'}</h2>
+        <ul class="lib-grid sx-reads">
+          {reads.map((p) => (
+            <li><a class={`cscard take${p.cover ? ' has-img' : ''}`} href={`/work/${p.slug}/`} style={`--c:${p.color}`}>
+              {p.cover && <span class="cscard-img" aria-hidden="true"><img src={p.cover.src} alt="" loading="lazy" decoding="async" /></span>}
+              <span class="cscard-b">{FORMAT[p.format]}, {p.topic}</span>
+              <span class="cscard-mid"><span class="cscard-h d">{p.title}</span></span>
+              <span class="cscard-t">{p.dek}</span>
+              <span class="cscard-go">Read it, {p.read.replace(' read', '')}</span>
+            </a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+    <section class="wrap sx-sec" aria-labelledby="all-h">
+      <h2 class="cs-h" id="all-h">More series I directed</h2>
+      <ul class="sx-all">{others.map((x) => <li><a href={`/series/${x.slug}/`}>{x.t}</a> <span>{x.fmt.split(',')[0]}, {x.city}</span></li>)}</ul>
+    </section>
     <nav class="wrap sx-more" aria-label="More series">
       <a class="sx-pn" href={`/series/${prev.slug}/`} rel="prev"><span>Previous</span><b class="d">{prev.t}</b></a>
       <a class="sx-pn nx" href={`/series/${next.slug}/`} rel="next"><span>Next</span><b class="d">{next.t}</b></a>
