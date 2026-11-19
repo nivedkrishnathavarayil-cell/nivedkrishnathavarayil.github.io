@@ -14,7 +14,14 @@
   "jobTitle": "Creative Strategist and Director",
   "description": "Creative Strategist and Director in New York. Paid and organic social, short-form video, AI video production, brand and influencer marketing, and 12 micro-dramas and short docuseries directed for Canvas.",
   "url": "https://nivedkrishnathavarayil.com/",
-  "image": "https://nivedkrishnathavarayil.com/og/home.jpg",
+  "image": {
+   "@type": "ImageObject",
+   "url": "https://nivedkrishnathavarayil.com/media/about/nived-on-set-1000.jpg",
+   "contentUrl": "https://nivedkrishnathavarayil.com/media/about/nived-on-set-1000.jpg",
+   "width": 1000,
+   "height": 1250,
+   "caption": "Nivedkrishna Thavarayil, creative strategist and director, on set"
+  },
   "worksFor": {
    "@type": "Organization",
    "name": "Canvas",
