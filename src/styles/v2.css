@@ -685,5 +685,57 @@ html.yt-open{overflow:hidden}
 .sx-all a{font-weight:700;color:var(--ink);text-decoration:none}.sx-all a:hover{color:var(--red)}
 .sx-all span{display:block;font-size:14px;color:var(--mute);margin-top:2px}
 .post-more{margin-top:clamp(40px,7vh,80px)}.post-more .lib-grid{margin-bottom:0}
-.post-audio{margin:14px 0 0}.post-audio audio{width:100%;max-width:560px}.post-audio figcaption{font-size:14px;color:var(--mute);margin-top:6px}.post-audio figcaption a{color:inherit}
+/* audio player: a card with a record light that glows while it plays */
+.ap{--p:0%;--h:0%;display:grid;grid-template-columns:60px minmax(0,1fr) auto;grid-template-areas:"play head ctrl" "play seek seek" ". time time" "cap cap cap";column-gap:18px;row-gap:4px;align-items:center;max-width:680px;margin:22px 0 6px;padding:18px 20px 14px;background:var(--card);border:1px solid var(--rule);border-radius:22px;box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 4%,transparent),0 22px 44px -30px color-mix(in srgb,#000 55%,transparent)}
+.ap audio{display:none}
+.ap button{-webkit-tap-highlight-color:transparent}
+.ap-play,.ap-mp{border:0;border-radius:50%;background:var(--ink);color:var(--table);display:grid;place-items:center;cursor:pointer;position:relative;padding:0;transition:transform .18s ease}
+.ap-play{grid-area:play;width:60px;height:60px}
+.ap-play:hover,.ap-mp:hover{transform:scale(1.05)}.ap-play:active,.ap-mp:active{transform:scale(.96)}
+.ap-play svg{width:24px;height:24px}.ap-mp svg{width:18px;height:18px}
+.ap-play .i-pause,.ap-mp .i-pause{display:none}
+.ap.on .ap-play .i-pause,.ap-mini.on .ap-mp .i-pause{display:block}.ap.on .ap-play .i-play,.ap-mini.on .ap-mp .i-play{display:none}
+.ap-play::after{content:"";position:absolute;top:1px;right:1px;width:14px;height:14px;border-radius:50%;background:var(--red);box-shadow:0 0 0 3px var(--card);transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.ap.on .ap-play::after{transform:scale(1);animation:ap-rec 1.8s ease-in-out infinite}
+@keyframes ap-rec{50%{opacity:.35}}
+.ap-head{grid-area:head}
+.ap-t{margin:0;font-family:Anybody,"Arial Narrow",sans-serif;font-weight:800;font-stretch:112%;font-size:20px;line-height:1.1;letter-spacing:-.005em}
+.ap-m{margin:3px 0 0;font-size:14px;line-height:1.3;color:var(--mute);font-variant-numeric:tabular-nums}
+.ap-resume{color:var(--ink);font-weight:600;margin-left:6px}
+.ap-ctrl{grid-area:ctrl;display:flex;align-items:center;gap:2px}
+.ap-ctrl button{min-width:42px;height:42px;padding:0;border-radius:999px;border:1px solid transparent;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer;font:600 14px/1 "Hanken Grotesk",system-ui,sans-serif;font-variant-numeric:tabular-nums;transition:border-color .15s,background .15s}
+.ap-ctrl button svg{width:24px;height:24px}
+.ap-ctrl button:hover{border-color:var(--rule)}
+.ap-ctrl .ap-rate{padding:0 12px;margin-left:6px;border-color:var(--rule)}
+.ap-ctrl .ap-rate:hover{border-color:var(--ink)}
+.ap-seek{grid-area:seek;position:relative;height:48px;margin-top:8px;cursor:pointer;touch-action:none;border-radius:6px}
+.ap-bars{position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) var(--p),transparent var(--p)),linear-gradient(90deg,color-mix(in srgb,var(--ink) 34%,transparent) var(--h),transparent var(--h)),color-mix(in srgb,var(--ink) 17%,transparent);-webkit-mask:var(--wave,linear-gradient(#000,#000)) center/100% 100% no-repeat;mask:var(--wave,linear-gradient(#000,#000)) center/100% 100% no-repeat}
+.ap-seek::after{content:"";position:absolute;top:-2px;bottom:-2px;left:var(--p);width:2px;margin-left:-1px;border-radius:2px;background:var(--red);opacity:0;transition:opacity .2s}
+.ap.on .ap-seek::after,.ap.seen .ap-seek::after{opacity:1}
+.ap-tip{position:absolute;bottom:calc(100% + 6px);left:0;transform:translateX(-50%);padding:3px 8px;border-radius:999px;background:var(--ink);color:var(--table);font:600 12px/1.4 "Hanken Grotesk",system-ui,sans-serif;font-variant-numeric:tabular-nums;pointer-events:none;white-space:nowrap}
+.ap-time{grid-area:time;display:flex;justify-content:space-between;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;margin-top:2px}
+.ap-cap{grid-area:cap;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--mute)}
+.ap-cap a{color:inherit}
+.ap-mini{--p:0%;position:fixed;z-index:70;left:50%;bottom:max(14px,env(safe-area-inset-bottom));width:min(560px,calc(100% - 24px));display:grid;grid-template-columns:44px minmax(0,1fr) auto 40px;align-items:center;gap:12px;padding:7px 8px 7px 7px;border-radius:999px;background:color-mix(in srgb,var(--card) 90%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--rule);box-shadow:0 18px 44px -14px color-mix(in srgb,#000 55%,transparent);transform:translate(-50%,160%);transition:transform .4s cubic-bezier(.2,.7,.1,1);overflow:hidden}
+.ap-mini.show{transform:translate(-50%,0)}
+.ap-mp{width:44px;height:44px}
+.ap-mt{font-weight:600;font-size:14.5px;line-height:1.2;overflow-wrap:anywhere}
+.ap-mtime{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.ap-mx{width:40px;height:40px;border:0;border-radius:50%;background:none;color:var(--mute);display:grid;place-items:center;cursor:pointer;padding:0}
+.ap-mx:hover{color:var(--ink);background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.ap-mx svg{width:20px;height:20px}
+.ap-mbar{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--red) var(--p),transparent var(--p))}
+@media (max-width:600px){
+.ap{grid-template-columns:52px minmax(0,1fr);grid-template-areas:"play head" "seek seek" "time time" "ctrl ctrl" "cap cap";column-gap:14px;padding:16px 16px 12px;border-radius:20px;margin-inline:-4px}
+.ap-play{width:52px;height:52px}
+.ap-t{font-size:18px}
+.ap-seek{height:52px;margin-top:12px}
+.ap-ctrl{justify-content:center;gap:14px;margin-top:6px}
+.ap-ctrl button{min-width:48px;height:48px}
+.ap-ctrl .ap-rate{margin-left:0}
+.ap-cap{text-align:center}
+.ap-mini{grid-template-columns:44px minmax(0,1fr) auto 36px;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){.ap.on .ap-play::after{animation:none}.ap-mini{transition:none}.ap-play,.ap-mp{transition:none}}
+@media print{.ap,.ap-mini{display:none}}
 .sx-stills figure:last-child:nth-child(odd){grid-column:1/-1}

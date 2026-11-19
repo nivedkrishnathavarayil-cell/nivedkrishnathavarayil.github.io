@@ -349,3 +349,87 @@ document.addEventListener('click', async (e) => {
   clearTimeout(cb._t);
   cb._t = setTimeout(() => { if (ok) ok.textContent = ''; }, 2600);
 });
+
+/* audio player: custom controls, waveform seeking, a floating mini bar, lock-screen controls */
+const ap = document.querySelector('.ap');
+if (ap) {
+  const a = ap.querySelector('audio');
+  const q = (s, r = ap) => r.querySelector(s);
+  const play = q('.ap-play'), seek = q('.ap-seek'), tip = q('.ap-tip'), cur = q('.ap-cur'), left = q('.ap-left'), rate = q('.ap-rate'), resume = q('.ap-resume');
+  const mini = document.querySelector('.ap-mini'), mplay = q('.ap-mp', mini), mtime = q('.ap-mtime', mini), mx = q('.ap-mx', mini);
+  const dur0 = +ap.dataset.dur || 0;
+  const D = () => (isFinite(a.duration) && a.duration) || dur0;
+  const fmt = (s) => { s = Math.max(0, Math.floor(s)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
+  const key = `ap:${location.pathname}`;
+  let saved = 0;
+  try { saved = +localStorage.getItem(key) || 0; } catch (e) {}
+  if (saved > 10 && saved < dur0 - 10) { resume.textContent = `Resume at ${fmt(saved)}`; resume.hidden = false; }
+  const paint = () => {
+    const d = D(), t = a.currentTime || 0, pc = `${Math.min(100, (t / d) * 100).toFixed(2)}%`;
+    ap.style.setProperty('--p', pc); mini.style.setProperty('--p', pc);
+    cur.textContent = fmt(t); left.textContent = `-${fmt(Math.ceil(d - t))}`; mtime.textContent = `${fmt(t)} / ${fmt(Math.round(d))}`;
+    seek.setAttribute('aria-valuenow', String(Math.round(t))); seek.setAttribute('aria-valuetext', `${fmt(t)} of ${fmt(Math.round(d))}`);
+  };
+  let inView = true, closed = false;
+  const sync = () => {
+    const show = !inView && !closed && (a.currentTime > 0);
+    mini.classList.toggle('show', show); mini.inert = !show; mini.setAttribute('aria-hidden', String(!show));
+  };
+  const toggle = () => {
+    if (a.paused) {
+      if (saved > 10 && a.currentTime < 1 && saved < D() - 10) a.currentTime = saved;
+      saved = 0; resume.hidden = true; closed = false;
+      a.play().catch(() => {});
+    } else a.pause();
+  };
+  const setState = (on) => {
+    ap.classList.toggle('on', on); mini.classList.toggle('on', on);
+    const label = on ? 'Pause' : 'Play';
+    play.setAttribute('aria-label', label); mplay.setAttribute('aria-label', label);
+    if ('mediaSession' in navigator) navigator.mediaSession.playbackState = on ? 'playing' : 'paused';
+    sync();
+  };
+  play.addEventListener('click', toggle);
+  mplay.addEventListener('click', toggle);
+  mx.addEventListener('click', () => { a.pause(); closed = true; sync(); });
+  a.addEventListener('play', () => { ap.classList.add('seen'); setState(true); });
+  a.addEventListener('pause', () => setState(false));
+  a.addEventListener('loadedmetadata', paint);
+  let lastSave = 0;
+  a.addEventListener('timeupdate', () => {
+    paint(); sync();
+    if (Math.abs(a.currentTime - lastSave) > 5) { lastSave = a.currentTime; try { localStorage.setItem(key, String(a.currentTime)); } catch (e) {} }
+  });
+  a.addEventListener('ended', () => { try { localStorage.removeItem(key); } catch (e) {} a.currentTime = 0; paint(); setState(false); });
+  const frac = (e) => { const r = seek.getBoundingClientRect(); return Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)); };
+  const jump = (t) => { a.currentTime = Math.min(D(), Math.max(0, t)); saved = 0; resume.hidden = true; ap.classList.add('seen'); paint(); sync(); };
+  let drag = false;
+  const hover = (f) => { seek.style.setProperty('--h', `${f * 100}%`); tip.textContent = fmt(f * D()); tip.style.left = `${f * 100}%`; tip.hidden = false; };
+  seek.addEventListener('pointerdown', (e) => { drag = true; seek.setPointerCapture(e.pointerId); const f = frac(e); hover(f); jump(f * D()); });
+  seek.addEventListener('pointermove', (e) => { const f = frac(e); if (e.pointerType === 'mouse' || drag) hover(f); if (drag) jump(f * D()); });
+  const end = () => { drag = false; tip.hidden = true; seek.style.setProperty('--h', '0%'); };
+  seek.addEventListener('pointerup', end); seek.addEventListener('pointercancel', end); seek.addEventListener('pointerleave', () => { if (!drag) end(); });
+  seek.addEventListener('keydown', (e) => {
+    const k = e.key; let t = a.currentTime;
+    if (k === 'ArrowRight' || k === 'ArrowUp') t += 5; else if (k === 'ArrowLeft' || k === 'ArrowDown') t -= 5;
+    else if (k === 'PageUp') t += 30; else if (k === 'PageDown') t -= 30;
+    else if (k === 'Home') t = 0; else if (k === 'End') t = D();
+    else if (k === ' ' || k === 'Enter') { e.preventDefault(); toggle(); return; } else return;
+    e.preventDefault(); jump(t);
+  });
+  ap.querySelectorAll('[data-skip]').forEach((b) => b.addEventListener('click', () => jump(a.currentTime + +b.dataset.skip)));
+  const RATES = [1, 1.25, 1.5, 2, 0.75];
+  rate.addEventListener('click', () => {
+    const r = RATES[(RATES.indexOf(a.playbackRate) + 1) % RATES.length] || 1;
+    a.playbackRate = r; rate.textContent = `${r}x`; rate.setAttribute('aria-label', `Playback speed, ${r} times`);
+  });
+  if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { inView = en.isIntersecting; sync(); }).observe(ap);
+  if ('mediaSession' in navigator && 'MediaMetadata' in window) {
+    navigator.mediaSession.metadata = new MediaMetadata({ title: ap.dataset.title, artist: 'Nivedkrishna Thavarayil', album: 'Unscripted', artwork: [{ src: '/podcast/cover.jpg', sizes: '3000x3000', type: 'image/jpeg' }] });
+    const h = (n, f) => { try { navigator.mediaSession.setActionHandler(n, f); } catch (e) {} };
+    h('play', () => a.play()); h('pause', () => a.pause());
+    h('seekbackward', (d) => jump(a.currentTime - (d.seekOffset || 15))); h('seekforward', (d) => jump(a.currentTime + (d.seekOffset || 15)));
+    h('seekto', (d) => jump(d.seekTime));
+  }
+  paint();
+}
