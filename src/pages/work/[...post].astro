@@ -59,6 +59,7 @@ const ld = {
       publisher: { '@id': PERSON['@id'] },
       mainEntityOfPage: url,
       ...(p.origin ? { sameAs: p.origin[1] } : {}),
+      ...(p.audio ? { audio: { '@type': 'AudioObject', contentUrl: `${SITE}${p.audio.src}`, encodingFormat: 'audio/mpeg', duration: p.audio.dur, name: `${p.title.replace(/\.$/, '')} (audio)` } } : {}),
     },
     {
       '@type': 'BreadcrumbList',
@@ -92,7 +93,8 @@ const ld = {
         <p class="cs-kick">{FORMAT[p.format]}, {p.topic}</p>
         <h1 class="d sx-t cs-t">{p.title}</h1>
         <p class="cs-line">{p.dek}</p>
-        <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>} <button type="button" class="post-listen" id="listen" hidden>Listen to this</button></p>
+        <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>}{!p.audio && <> <button type="button" class="post-listen" id="listen" hidden>Listen to this</button></>}</p>
+        {p.audio && <figure class="post-audio"><audio controls preload="none" src={p.audio.src}></audio><figcaption>Listen: read by Nivedkrishna Thavarayil, {p.audio.label}. Also on the <a href="/podcast.xml">podcast feed</a>.</figcaption></figure>}
         <Fragment set:html={share('share-top', 'Share', true)} />
       </header>
       {p.cover && (
