@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { headerHTML, SITE, PERSON } from '../lib/site.mjs';
+import { FACTS } from '../lib/facts.mjs';
 
 const url = `${SITE}/about/`;
 const CAL = 'https://calendly.com/nivedkrishnathavarayil/30min';
@@ -109,6 +110,12 @@ const ld = {
       },
     },
     PERSON,
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      url,
+      mainEntity: FACTS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
   ],
 };
 ---
@@ -154,6 +161,12 @@ const ld = {
     </section>
 
     <div class="wrap cs-body ab-more">
+      <section class="cs-sec" aria-labelledby="short">
+        <h2 class="cs-h" id="short">The short version</h2>
+        <dl class="ab-facts">
+          {FACTS.map(([q, a]) => (<div><dt>{q}</dt><dd>{a}</dd></div>))}
+        </dl>
+      </section>
       <section class="cs-sec" aria-labelledby="press">
         <h2 class="cs-h" id="press">Written about in</h2>
         <ul class="ab-links">{PRESS.map((p) => <li><a href={p[1]} rel="noopener">{p[0]}</a></li>)}</ul>

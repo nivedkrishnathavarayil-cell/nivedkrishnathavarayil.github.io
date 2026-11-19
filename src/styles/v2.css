@@ -743,3 +743,8 @@ html.yt-open{overflow:hidden}
 .sx-stills figure:last-child:nth-child(odd){grid-column:1/-1}
 
 .cs-pull{grid-column:-2/-1;margin:14px 0 0;padding-left:18px;border-left:3px solid var(--red)}.cs-pull blockquote{margin:0;font-size:clamp(24px,2.6vw,34px);line-height:1.02;text-wrap:balance}.cs-pull figcaption{margin-top:10px;font-size:14px;color:var(--mute)}.cs-pull figcaption b{color:var(--ink);font-weight:600}
+
+/* About: the short version, plain Q&A that people and AI assistants can quote */
+.ab-facts{margin:0;display:grid;gap:22px;max-width:68ch}
+.ab-facts dt{font-weight:700;color:var(--ink);font-size:17px;margin:0 0 6px}
+.ab-facts dd{margin:0;color:var(--ink);line-height:1.6}
