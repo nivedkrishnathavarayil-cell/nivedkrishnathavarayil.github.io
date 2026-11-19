@@ -103,7 +103,7 @@ const ld = {
         <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>}{!p.audio && <> <button type="button" class="post-listen" id="listen" hidden>Listen to this</button></>}</p>
         {p.audio && <>
           <figure class="ap" data-dur={p.audio.secs} data-title={p.title.replace(/\.$/, '')} aria-label="Audio version of this piece, in my voice">
-            <audio preload="metadata" src={p.audio.src}></audio>
+            <audio preload="none" src={p.audio.src}></audio>
             <button type="button" class="ap-play" aria-label="Play">
               <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z" fill="currentColor"/></svg>
               <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1.2" fill="currentColor"/></svg>
@@ -115,7 +115,7 @@ const ld = {
             <div class="ap-ctrl">
               <button type="button" data-skip="-15" aria-label="Back 15 seconds"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6.2 2.8v4.4h4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15.3" text-anchor="middle" font-size="7.2" font-weight="700" fill="currentColor">15</text></svg></button>
               <button type="button" data-skip="15" aria-label="Forward 15 seconds"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M17.8 2.8v4.4h-4.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><text x="12" y="15.3" text-anchor="middle" font-size="7.2" font-weight="700" fill="currentColor">15</text></svg></button>
-              <button type="button" class="ap-rate" aria-label="Playback speed, 1 times">1x</button>
+              <button type="button" class="ap-rate" aria-label="1x playback speed">1x</button>
             </div>
             <div class="ap-seek" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax={p.audio.secs} aria-valuenow="0" aria-valuetext={`0:00 of ${clock(p.audio.secs)}`}>
               <div class="ap-bars" style={p.audio.peaks ? `--wave:${wave(p.audio.peaks)}` : undefined}></div>

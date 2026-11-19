@@ -171,7 +171,7 @@ section[id]{scroll-margin-top:78px}
   .spx,.sp.open .spx{opacity:1;transform:none;width:100%;padding:12px 12px 13px;gap:5px;transition:none}
   .spx b{font-size:clamp(19px,5.6vw,26px);line-height:.95}
   .sp:not(.art) .spx b{font-size:clamp(24px,7.4vw,34px)}
-  .spf{font-size:11.5px;line-height:1.3}
+  .spf{font-size:12px;line-height:1.3}
   .spl,.spg{display:none}
   .sp.art .spm img{filter:none;transform:none}
   .sp.art::after{opacity:1;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,0) 48%)}

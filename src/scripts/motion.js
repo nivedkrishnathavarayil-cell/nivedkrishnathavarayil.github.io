@@ -421,7 +421,7 @@ if (ap) {
   const RATES = [1, 1.25, 1.5, 2, 0.75];
   rate.addEventListener('click', () => {
     const r = RATES[(RATES.indexOf(a.playbackRate) + 1) % RATES.length] || 1;
-    a.playbackRate = r; rate.textContent = `${r}x`; rate.setAttribute('aria-label', `Playback speed, ${r} times`);
+    a.playbackRate = r; rate.textContent = `${r}x`; rate.setAttribute('aria-label', `${r}x playback speed`);
   });
   if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { inView = en.isIntersecting; sync(); }).observe(ap);
   if ('mediaSession' in navigator && 'MediaMetadata' in window) {
