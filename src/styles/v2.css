@@ -614,7 +614,7 @@ html.yt-open{overflow:hidden}
 @media (hover:hover) and (pointer:fine){.cr dd a:hover{text-decoration:underline;text-underline-offset:3px}}
 .steps li span a,.lg .bd a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .cs-txt a,.cs-steps a,.cs-res a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-/* six case studies: two even rows of three on desktop */
+/* the six home case-study cards: two even rows of three on desktop */
 @media (min-width:1061px){
   .cs-rail{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
   .cscard{min-height:330px;padding:20px 20px 20px}
