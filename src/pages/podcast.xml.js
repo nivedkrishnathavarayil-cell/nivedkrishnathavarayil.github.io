@@ -24,7 +24,7 @@ export function GET() {
       <link>${url}</link>
       <guid isPermaLink="false">${url}#audio</guid>
       <pubDate>${new Date(p.audio.published || p.date).toUTCString()}</pubDate>
-      <description>${esc(`${p.dek} ${first} Read it with links and photos: ${url}`)}</description>
+      <description>${esc(`${p.dek} ${first} Read it with links and photos: ${url} Narrated by Nivedkrishna Thavarayil with his own ElevenLabs voice clone.`)}</description>
       <enclosure url="${SITE}${p.audio.src}" length="${p.audio.bytes}" type="audio/mpeg"/>
       <itunes:duration>${p.audio.secs}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
