@@ -1,5 +1,141 @@
 [
  {
+  "slug": "canvas-at-sf-and-la-tech-week",
+  "format": "bts",
+  "topic": "Events",
+  "title": "What happened when we took Canvas to SF and LA Tech Week.",
+  "dek": "Two events in three days, an Oscar-winning filmmaker on the bill, and the trailers for my series in front of both rooms.",
+  "short": "Canvas at SF and LA Tech Week",
+  "date": "2026-11-19",
+  "dateLabel": "November 19, 2026",
+  "read": "2 min read",
+  "origin": null,
+  "color": "#2f2a4a",
+  "related": null,
+  "cover": {
+   "src": "/media/posts/tech-week.jpg",
+   "w": 1600,
+   "h": 900,
+   "alt": "Guests under string lights at The Hybrid Studio, the Canvas and House of 434 event at LA Tech Week 2026, from the after-movie of the trip Nivedkrishna Thavarayil made as Canvas creative director",
+   "cap": "The Hybrid Studio, LA Tech Week, October 12, 2026.",
+   "card": true
+  },
+  "body": [
+   [
+    "p",
+    "In October, Canvas went west for Tech Week: SF Tech Week ran October 5 to 11 and LA Tech Week ran October 12 to 18. I went as Canvas's creative director, with Canvas CEO Abhinav Singla. We hosted two events, went to plenty more, and pitched Canvas at every one."
+   ],
+   [
+    "video",
+    {
+     "src": "/media/posts/tech-week/canvas-sf-tech-week-2026.mp4",
+     "poster": "/media/posts/tech-week/sf-poster.jpg",
+     "w": 960,
+     "h": 720,
+     "dur": "PT39S",
+     "title": "Canvas launch event at SF Tech Week 2026, after-movie",
+     "label": "After-movie of the Canvas launch event at SF Tech Week 2026, with Nivedkrishna Thavarayil as Canvas creative director",
+     "cap": "The Canvas launch party at SF Tech Week, 555 Grant Ave, San Francisco."
+    }
+   ],
+   [
+    "h2",
+    "San Francisco: the Canvas launch party"
+   ],
+   [
+    "p",
+    "On Saturday, October 10, Anwar Events hosted the [Canvas Launch Party: Creators Are the New Studios](https://luma.com/anwar-8t0d) at 555 Grant Ave. Ilias Anwar moderated a panel with Abhinav, House of 434 founder Shilpi Nayak, investor Lane Spurlock and Pinto Labs CTO Xavier Santos. [371 guests](https://luma.com/anwar-8t0d) were on the list. Here's [the event post on Instagram](https://www.instagram.com/p/DeTXeLNtdPr/)."
+   ],
+   [
+    "p",
+    "I played the trailers for the series I directed, and the slate went up in three lanes: fashion, travel and fiction. [The Red Carpet Show](/series/the-red-carpet-show/), our 90-second red carpet interview series with Ilias, was there too."
+   ],
+   [
+    "gallery",
+    [
+     {
+      "src": "/media/posts/tech-week/sf-panel.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "Panel at the Canvas launch party at SF Tech Week 2026, four speakers seated with microphones, from the after-movie of the trip by Canvas creative director Nivedkrishna Thavarayil",
+      "cap": "The panel, moderated by Ilias Anwar."
+     },
+     {
+      "src": "/media/posts/tech-week/sf-crowd.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "Guests applauding at the Canvas launch party at SF Tech Week 2026, from the after-movie of the trip by Canvas creative director Nivedkrishna Thavarayil",
+      "cap": "371 guests on the list."
+     }
+    ]
+   ],
+   [
+    "h2",
+    "Los Angeles: The Hybrid Studio"
+   ],
+   [
+    "p",
+    "Two days later, on Monday, October 12, House of 434 hosted [The Hybrid Studio: From Oscar-Winning Films to AI-Native Studios](https://luma.com/houseof-nelv) at 11520 W Pico Blvd, listed as an a16z event and in [dot.LA's guide to Monday at LA Tech Week](https://dot.la/la-tech-week-monday-2026-2678063292.html). Shilpi Nayak opened. Hemal Trivedi, billed as an Oscar and three-time Emmy-winning filmmaker and co-founder of ZeroInfinity, presented, and so did Abhinav. Then came a fireside on where craft meets AI, and an open Q&A."
+   ],
+   [
+    "p",
+    "Around 300 people came. I played our trailers again, and the conversations after were the good kind: filmmakers, AI filmmakers and investors in one room, all asking what a small team can make now."
+   ],
+   [
+    "video",
+    {
+     "src": "/media/posts/tech-week/canvas-la-tech-week-2026.mp4",
+     "poster": "/media/posts/tech-week/la-poster.jpg",
+     "w": 870,
+     "h": 720,
+     "dur": "PT40S",
+     "title": "The Hybrid Studio, Canvas at LA Tech Week 2026, after-movie",
+     "label": "After-movie of The Hybrid Studio, the Canvas and House of 434 event at LA Tech Week 2026, with Nivedkrishna Thavarayil as Canvas creative director",
+     "cap": "The Hybrid Studio at LA Tech Week, 11520 W Pico Blvd, Los Angeles."
+    }
+   ],
+   [
+    "gallery",
+    [
+     {
+      "src": "/media/posts/tech-week/la-fireside.jpg",
+      "w": 1200,
+      "h": 993,
+      "alt": "Two speakers seated with a microphone in front of a crowd at The Hybrid Studio, LA Tech Week 2026, from the after-movie of the trip by Canvas creative director Nivedkrishna Thavarayil",
+      "cap": "In conversation at The Hybrid Studio."
+     },
+     {
+      "src": "/media/posts/tech-week/la-crowd.jpg",
+      "w": 1200,
+      "h": 993,
+      "alt": "Guests at tables under string lights at The Hybrid Studio, LA Tech Week 2026, from the after-movie of the trip by Canvas creative director Nivedkrishna Thavarayil",
+      "cap": "Around 300 people in the room."
+     }
+    ]
+   ],
+   [
+    "h2",
+    "What the week was really for"
+   ],
+   [
+    "p",
+    "Hosting was the visible part. The rest of the week, Abhinav and I pitched every day, at every event, to investors, filmmakers and AI filmmakers. In between, we shot about four series across both cities, filming while we hosted and pitched."
+   ],
+   [
+    "p",
+    "The pitch fits on a hoodie: [creators are the new studios](https://creatorsarethenewstudios.com). Our slate is the proof. [Face Value](/series/face-value/), [Red Flags](/series/red-flags/), [Taser Fight Championship](/series/taser-fight-championship/), [Dear NYC](/series/dear-nyc/) and [Demo Day](/series/demo-day/) are a few of the 12+ series I've directed for Canvas."
+   ],
+   [
+    "quote",
+    "Creators are the new studios."
+   ],
+   [
+    "p",
+    "[Face Value](/series/face-value/) is already streaming on the Canvas app, with more on the way. If you were in one of those rooms, [say hi](https://www.linkedin.com/in/nivedkrishna)."
+   ]
+  ]
+ },
+ {
   "slug": "fifteen-people-on-one-floor",
   "format": "bts",
   "topic": "Agency life",

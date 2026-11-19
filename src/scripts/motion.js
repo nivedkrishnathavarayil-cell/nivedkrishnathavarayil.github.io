@@ -259,6 +259,40 @@ if (bio) {
   sync();
 }
 
+/* ---------- articles: "Listen to this" reads the piece aloud with the device's own voice ---------- */
+const listen = $('#listen');
+if (listen && 'speechSynthesis' in window) {
+  const synth = window.speechSynthesis;
+  const label = listen.textContent;
+  let queue = [], playing = false;
+  const pickVoice = () => {
+    const vs = synth.getVoices().filter((v) => /^en(-|_)/i.test(v.lang));
+    const pref = [/Ava|Samantha|Aria|Jenny|Natural|Google US English|Daniel/i];
+    return vs.find((v) => pref[0].test(v.name) && /US|GB/i.test(v.lang)) || vs.find((v) => /en-US/i.test(v.lang)) || vs[0];
+  };
+  const textOf = () => {
+    const parts = [$('.cs-t'), $('.cs-line'), ...$$('.post-body > p, .post-body > h2, .post-body > blockquote, .post-body > ul > li')].filter(Boolean).map((e) => e.textContent.trim());
+    return parts.join('. ').replace(/\.\s*\./g, '.').match(/[^.!?]+[.!?]+|\S[^.!?]*$/g) || [];
+  };
+  const stop = () => { synth.cancel(); playing = false; queue = []; listen.textContent = label; listen.setAttribute('aria-pressed', 'false'); };
+  const next = () => {
+    if (!queue.length) { stop(); return; }
+    const u = new SpeechSynthesisUtterance(queue.shift());
+    const v = pickVoice(); if (v) u.voice = v;
+    u.rate = 1.02;
+    u.onend = () => { if (playing) next(); };
+    synth.speak(u);
+  };
+  listen.hidden = false;
+  listen.setAttribute('aria-pressed', 'false');
+  listen.addEventListener('click', () => {
+    if (playing && !synth.paused) { synth.pause(); listen.textContent = 'Resume'; return; }
+    if (playing && synth.paused) { synth.resume(); listen.textContent = 'Pause'; return; }
+    queue = textOf(); playing = true; listen.textContent = 'Pause'; listen.setAttribute('aria-pressed', 'true'); next();
+  });
+  addEventListener('pagehide', stop);
+}
+
 /* ---------- films and reels play here: a link with data-yt (YouTube) or data-ig (an Instagram reel) opens a full-screen player instead of leaving the site ---------- */
 const ytLinks = $$('a[data-yt], a[data-ig]');
 if (ytLinks.length && typeof HTMLDialogElement === 'function') {

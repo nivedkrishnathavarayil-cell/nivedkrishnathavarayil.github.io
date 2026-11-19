@@ -20,7 +20,20 @@ const first = plain(p.body.find((b) => b[0] === 'p')[1]);
 const ogImg = `/og/work-${p.slug}.jpg?v=3`;
 const share = (id, label, compact = false) => shareHTML(url, `${p.title.replace(/\.$/, '')}. ${p.dek}`, { id, label, compact });
 const description = `${p.title.replace(/\.$/, '')}: ${p.dek.replace(/\.$/, '')}. ${first}`.slice(0, 155).replace(/\s+\S*$/, '') + '...';
-const words = p.body.reduce((n, b) => n + plain(b[1]).split(/\s+/).length, 0);
+const TEXT = ['p', 'h2', 'quote', 'ul'];
+const words = p.body.filter((b) => TEXT.includes(b[0])).reduce((n, b) => n + plain(b[1]).split(/\s+/).length, 0);
+/* self-hosted videos in the body get VideoObject data so they can show up in Google video results */
+const videos = p.body.filter((b) => b[0] === 'video').map((b) => ({
+  '@type': 'VideoObject',
+  name: b[1].title,
+  description: plain(b[1].cap),
+  thumbnailUrl: `${SITE}${b[1].poster}`,
+  contentUrl: `${SITE}${b[1].src}`,
+  uploadDate: p.date,
+  duration: b[1].dur,
+  embedUrl: url,
+  creator: { '@id': PERSON['@id'] },
+}));
 const ld = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -48,6 +61,7 @@ const ld = {
         { '@type': 'ListItem', position: 3, name: p.short, item: url },
       ],
     },
+    ...videos,
     PERSON,
   ],
 };
@@ -71,7 +85,7 @@ const ld = {
         <p class="cs-kick">{FORMAT[p.format]}, {p.topic}</p>
         <h1 class="d sx-t cs-t">{p.title}</h1>
         <p class="cs-line">{p.dek}</p>
-        <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>}</p>
+        <p class="post-by">By <a href="/" rel="author">Nivedkrishna Thavarayil</a>. {p.dateLabel}. {p.read}.{p.origin && <> <a href={p.origin[1]}>Also on LinkedIn</a>.</>} <button type="button" class="post-listen" id="listen" hidden>Listen to this</button></p>
         <Fragment set:html={share('share-top', 'Share', true)} />
       </header>
       {p.cover && (
@@ -85,6 +99,8 @@ const ld = {
           t === 'h2' ? <h2 class="post-h">{v}</h2> :
           t === 'quote' ? <blockquote class="post-q d">{v}</blockquote> :
           t === 'ul' ? <ul class="post-ul">{v.map((li) => <li set:html={md(li)} />)}</ul> :
+          t === 'video' ? <figure class="post-video"><video controls playsinline preload="none" poster={v.poster} width={v.w} height={v.h} aria-label={v.label}><source src={v.src} type="video/mp4" /></video><figcaption set:html={md(v.cap)} /></figure> :
+          t === 'gallery' ? <div class="post-gal">{v.map((g) => <figure><picture><source type="image/webp" srcset={g.src.replace(/\.jpg$/, '.webp')} /><img src={g.src} alt={g.alt} width={g.w} height={g.h} loading="lazy" decoding="async" /></picture><figcaption set:html={md(g.cap)} /></figure>)}</div> :
           t === 'reels' ? <ul class="cs-reels post-reels" style={`--n:${Math.min(v.length, 4)}`}>{v.map((r) => <li><a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from ${p.short} by Nivedkrishna Thavarayil`}><picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture><span class="reel-v"><b class="d">{r.v}</b> views</span><span class="vh">Play the reel</span></a><p class="reel-t">{r.t}<span>{r.by}</span></p></li>)}</ul> :
           t === 'yt' ? <p class="post-yt"><a class="watch" href={`https://www.youtube.com/watch?v=${v[0]}`} data-yt={v[0]} data-title={v[1]} data-label={v[2]}>{v[3]}</a></p> :
           <p set:html={md(v)} />
