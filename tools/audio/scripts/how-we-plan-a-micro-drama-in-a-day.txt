@@ -1,0 +1,69 @@
+Hi, I'm Nived, and this is Unscripted.
+
+How we plan a micro drama in a day.
+
+The AI production stack behind more than twelve series.
+
+We've planned shoots the night before and rolled camera the next morning. Cast confirmed, locations locked, call sheet out. Nobody panicked.
+
+That isn't a flex about speed. It's the only way a micro drama works on a startup budget. This year I directed more than twelve short-form series for Canvas, a New York and Mumbai micro drama studio, shot across New York, Boston, Baltimore, San Francisco and Los Angeles. Most were shot in three or four days.
+
+The short version: we plan in Directure AI, we finish in a Claude Code pipeline, and every shoot doubles as ad creative. Here's how each piece works, and what I've learned running it.
+
+Why micro dramas need a different production model
+
+A micro drama episode runs under two minutes. A season is five to ten episodes. The budget is a fraction of a short film's, and the shoot is three or four days.
+
+You can't spend a week in pre-production on a series that shoots in three days. The planning has to move as fast as the shoot.
+
+There's a second constraint. Every Canvas series is creator-led: a creator with a real audience is attached from day one, like Ruhani Sharma , with 1.4 million followers, on Dear NYC or Robert Maxwell , with 1.1 million, on Red Flags. Their calendar is the production calendar. When it moves, everything moves.
+
+Step 1: Plan everything in Directure AI
+
+We plan most of our series in Directure AI, a production planning platform built in New York by Abhinav Singla and his team.
+
+You upload the script and it breaks it down: characters, locations, props, wardrobe and scene requirements. AI Boarding turns scenes into shot cards and suggests how each shot should be made. From there you build shoot days, call sheets and a budget, all connected to the same script.
+
+The real win isn't the breakdown. It's what happens when the script changes. You see right away what a rewrite does to the schedule and the budget, so we rewrite for logistics, not just story. If two scenes can share a location, they do. If a scene needs a fourth shoot day, it gets cut or moved.
+
+Two examples:
+
+Demo Day: 10 episodes at Harvard and around Boston in under four days. On the morning we left New York, our lead actor had to drop out. We recast that morning, rewrote the role in the car on the drive up, and wrote each day's episodes around what we'd already shot. Here's the full story of that shoot.
+
+Face Value: a four-part micro documentary shot inside New York Fashion Week. The world was already there, so we built no sets and spent nothing on production design. Watch Face Value on Canvas.
+
+Step 2: A Claude Code pipeline for post-production
+
+Post is where most short-form budgets quietly die. Ten episodes means ten edits, ten sets of graphics, ten rounds of notes.
+
+I run Claude Code with agents connected to Premiere Pro, Higgsfield and ElevenLabs. It handles the repetitive layers: assembling selects, building animations and infographics, generating AI shots where a live shot isn't possible, and temp voice. One series, Made in the Valley, was produced end to end this way.
+
+The tool isn't the advantage. Everyone can buy the same subscription. The advantage is the training. I've spent months teaching my setup our scripts, our edit rules, our hooks and our revision notes as reusable skills. Each production makes it better at the next one.
+
+One rule we don't break: it can't look like AI. You can usually tell when something was made with a default setup, so we feed it as many references as we can, and every output goes through a human edit.
+
+Step 3: Every shoot becomes ad creative
+
+A series isn't finished when it's uploaded. It's finished when people watch it.
+
+So every shoot also produces marketing:
+
+Snippet ads cut from the strongest few seconds of each episode
+
+Organic vox pops and talking heads filmed on the same days
+
+Fast revisions from performance data: which hook held, which didn't, and new cuts built around the winners
+
+Each show is also packaged for its creator's audience, so it travels on Instagram and YouTube as well as the app.
+
+What AI doesn't do
+
+It doesn't choose the story. It doesn't cast the face that makes you stop scrolling. It doesn't know when a take is true.
+
+What it does is buy back time for those decisions. On a three-day shoot, the hours we save in planning and post are the hours we spend on performance, on the hook, and on the cliffhanger that sells the next episode.
+
+Speed also exposes weak scripts faster. When you can plan a shoot in a day, there's nowhere for a bad idea to hide.
+
+Your turn: what's the one part of production you'd hand to AI first, and the one part you'd never hand over? Tell me in the comments on LinkedIn. I read every comment.
+
+This was Unscripted. The full piece, with photos and links, is on my website. Thanks for listening.

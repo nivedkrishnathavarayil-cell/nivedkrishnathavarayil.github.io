@@ -15,7 +15,7 @@ const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const plain = (t) => (Array.isArray(t) ? t.join(' ') : String(t)).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 
 export function GET() {
-  const eps = P.filter((p) => p.audio).sort((a, b) => b.date.localeCompare(a.date));
+  const eps = P.filter((p) => p.audio).sort((a, b) => (b.audio.ep || 0) - (a.audio.ep || 0) || b.date.localeCompare(a.date));
   const items = eps.map((p) => {
     const url = `${SITE}/work/${p.slug}/`;
     const first = plain(p.body.find((b) => b[0] === 'p')[1]);
@@ -28,7 +28,8 @@ export function GET() {
       <enclosure url="${SITE}${p.audio.src}" length="${p.audio.bytes}" type="audio/mpeg"/>
       <itunes:duration>${p.audio.secs}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
-      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:episodeType>full</itunes:episodeType>${p.audio.ep ? `
+      <itunes:episode>${p.audio.ep}</itunes:episode>` : ''}
     </item>`;
   }).join('\n');
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
