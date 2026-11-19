@@ -171,7 +171,15 @@
     "p",
     "That's the short version. I'll tell the stories behind each shoot in the next few pieces. All my short films are [on the home page](/#films). If you're making something in New York and need a crew, [say hi](https://www.linkedin.com/in/nivedkrishna)."
    ]
-  ]
+  ],
+  "audio": {
+   "src": "/media/audio/how-i-make-films-in-new-york-on-an-indie-budget.mp3",
+   "bytes": 4271808,
+   "secs": 356,
+   "dur": "PT5M56S",
+   "label": "6 min",
+   "published": "2026-11-19T06:00:00-05:00"
+  }
  },
  {
   "slug": "canvas-at-sf-and-la-tech-week",

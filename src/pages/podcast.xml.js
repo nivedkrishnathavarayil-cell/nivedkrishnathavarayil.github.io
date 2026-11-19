@@ -6,7 +6,7 @@ import { SITE } from '../lib/site.mjs';
 const SHOW = {
   title: 'Nivedkrishna Thavarayil, Unscripted',
   author: 'Nivedkrishna Thavarayil',
-  summary: 'A New York creative strategist and director on making films, micro dramas and campaigns that people finish watching. The stories behind every shoot, told by the guy who shot them.',
+  summary: 'A New York creative strategist and director on making films, micro dramas and campaigns that people finish watching. The stories behind every shoot, written by the guy who shot them and narrated with his own ElevenLabs voice clone.',
   cover: `${SITE}/podcast/cover.jpg`,
   email: 'nivedkrishnathavarayil@gmail.com',
   category: ['TV &amp; Film', 'Business'],
@@ -29,7 +29,6 @@ export function GET() {
       <itunes:duration>${p.audio.secs}</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
       <itunes:episodeType>full</itunes:episodeType>
-      ${p.cover ? `<itunes:image href="${SITE}${p.cover.src}"/>` : ''}
     </item>`;
   }).join('\n');
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
