@@ -739,3 +739,5 @@ html.yt-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.ap.on .ap-play::after{animation:none}.ap-mini{transition:none}.ap-play,.ap-mp{transition:none}}
 @media print{.ap,.ap-mini{display:none}}
 .sx-stills figure:last-child:nth-child(odd){grid-column:1/-1}
+
+.cs-pull{grid-column:-2/-1;margin:14px 0 0;padding-left:18px;border-left:3px solid var(--red)}.cs-pull blockquote{margin:0;font-size:clamp(24px,2.6vw,34px);line-height:1.02;text-wrap:balance}.cs-pull figcaption{margin-top:10px;font-size:14px;color:var(--mute)}.cs-pull figcaption b{color:var(--ink);font-weight:600}

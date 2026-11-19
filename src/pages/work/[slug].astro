@@ -106,6 +106,18 @@ const ld = {
           <h2 class="cs-h" id="brief">The brief</h2>
           <div class="cs-txt">{c.brief.map((p) => <p set:html={md(p)} />)}</div>
         </section>
+        {c.story && (
+          <section class="cs-sec" aria-labelledby="story">
+            <h2 class="cs-h" id="story">{c.story.h}</h2>
+            <div class="cs-txt">{c.story.p.map((p) => <p set:html={md(p)} />)}</div>
+            {c.story.q && (
+              <figure class="cs-pull">
+                <blockquote class="d">{c.story.q[0]}</blockquote>
+                <figcaption><b>{c.story.q[1]}</b>, {c.story.q[2]}</figcaption>
+              </figure>
+            )}
+          </section>
+        )}
         <section class="cs-sec" aria-labelledby="idea">
           <h2 class="cs-h" id="idea">The idea</h2>
           <div class="cs-txt cs-big">{c.idea.map((p) => <p set:html={md(p)} />)}</div>
