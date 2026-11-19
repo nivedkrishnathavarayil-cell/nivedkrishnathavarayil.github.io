@@ -31,7 +31,12 @@
   },
   "founder": {
    "@type": "Organization",
+   "@id": "https://nivedkrishnathavarayil.com/#thava-studio",
    "name": "Thava Studio",
+   "description": "Creative studio in New York for restaurants, founders and brands: creative strategy, paid social, short-form video and AI video production.",
+   "url": "https://nivedkrishnathavarayil.com/work-with-me/",
+   "foundingDate": "2025",
+   "areaServed": ["New York City", "New Jersey", "Los Angeles", "San Francisco"],
    "sameAs": "https://www.instagram.com/thava.studio"
   },
   "alumniOf": [
