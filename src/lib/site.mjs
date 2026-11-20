@@ -3,6 +3,13 @@ import raw from '../partials/home.html?raw';
 
 export const SITE = (import.meta.env.SITE || 'https://nivedkrishnathavarayil.com').replace(/\/$/, '');
 export const NAME = 'Nivedkrishna Thavarayil';
+/* where the Unscripted podcast lives; add Apple Podcasts here once it's published */
+export const PODCAST = {
+  name: 'Nivedkrishna Thavarayil, Unscripted',
+  spotify: 'https://open.spotify.com/show/5BVbdPSHlbD08yEf0LWZgl',
+  youtube: 'https://www.youtube.com/playlist?list=PLJGDPbW_pVLU',
+  podcastIndex: 'https://podcastindex.org/podcast/8123029',
+};
 export const ICON = C.icon;
 export const PERSON = JSON.parse(JSON.stringify(C.person).replaceAll('https://nivedkrishnathavarayil.com', SITE));
 
@@ -196,6 +203,15 @@ export const homeLD = (S) => ({
       name: 'Nivedkrishna Thavarayil, Creative Strategist and Director, New York',
       mainEntity: { '@id': `${SITE}/#person` },
       dateModified: new Date().toISOString(),
+    },
+    {
+      '@type': 'PodcastSeries',
+      '@id': `${SITE}/#podcast`,
+      name: PODCAST.name,
+      url: `${SITE}/work/`,
+      webFeed: `${SITE}/podcast.xml`,
+      author: { '@id': `${SITE}/#person` },
+      sameAs: [PODCAST.spotify, PODCAST.youtube, PODCAST.podcastIndex],
     },
     { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, alternateName: ['NKT', 'Nived Thavarayil'], publisher: { '@id': `${SITE}/#person` } },
     {

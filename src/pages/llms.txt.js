@@ -2,7 +2,7 @@ import P from '../data/posts.json';
 import C from '../data/cases.json';
 import S from '../data/series.json';
 import K from '../lib/consts.json';
-import { SITE } from '../lib/site.mjs';
+import { SITE, PODCAST } from '../lib/site.mjs';
 import { FACTS } from '../lib/facts.mjs';
 
 /* /llms.txt (llmstxt.org): a plain Markdown map of the site for AI assistants and answer engines.
@@ -34,7 +34,7 @@ export function GET() {
     `- [About](${SITE}/about/): the full story, press and profiles`,
     `- [Work with me](${SITE}/work-with-me/): services and how to hire`,
     `- [Resume (PDF)](${SITE}/Nivedkrishna-Thavarayil-Resume.pdf)`,
-    `- [Unscripted podcast feed](${SITE}/podcast.xml): every article read in his own voice`,
+    `- Unscripted, his podcast: every article read in his own voice, on [Spotify](${PODCAST.spotify}), [YouTube](${PODCAST.youtube}), [Podcast Index](${PODCAST.podcastIndex}) and the [RSS feed](${SITE}/podcast.xml)`,
     `- [Full text of every article and case study](${SITE}/llms-full.txt)`,
     '',
     '## Profiles',
