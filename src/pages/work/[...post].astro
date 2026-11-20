@@ -178,7 +178,7 @@ const ld = {
           <ul class="lib-grid">
             {more.map((x) => (
               <li><a class={`cscard take${x.cover ? ' has-img' : ''}`} href={`/work/${x.slug}/`} style={`--c:${x.color}`}>
-                {x.cover && <span class="cscard-img" aria-hidden="true"><img src={x.cover.src} alt="" loading="lazy" decoding="async" /></span>}
+                {x.cover && <span class="cscard-img" aria-hidden="true"><img src={x.cover.src} alt={x.cover.alt || ''} loading="lazy" decoding="async" /></span>}
                 <span class="cscard-b">{FORMAT[x.format]}, {x.topic}</span>
                 <span class="cscard-mid"><span class="cscard-h d">{x.title}</span></span>
                 <span class="cscard-t">{x.dek}</span>

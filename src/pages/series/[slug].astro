@@ -80,7 +80,7 @@ const others = S.filter((x) => x.slug !== s.slug);
         <ul class="lib-grid sx-reads">
           {reads.map((p) => (
             <li><a class={`cscard take${p.cover ? ' has-img' : ''}`} href={`/work/${p.slug}/`} style={`--c:${p.color}`}>
-              {p.cover && <span class="cscard-img" aria-hidden="true"><img src={p.cover.src} alt="" loading="lazy" decoding="async" /></span>}
+              {p.cover && <span class="cscard-img" aria-hidden="true"><img src={p.cover.src} alt={p.cover.alt || ''} loading="lazy" decoding="async" /></span>}
               <span class="cscard-b">{FORMAT[p.format]}, {p.topic}</span>
               <span class="cscard-mid"><span class="cscard-h d">{p.title}</span></span>
               <span class="cscard-t">{p.dek}</span>
