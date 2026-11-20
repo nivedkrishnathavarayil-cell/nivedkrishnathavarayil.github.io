@@ -748,3 +748,5 @@ html.yt-open{overflow:hidden}
 .ab-facts{margin:0;display:grid;gap:22px;max-width:68ch}
 .ab-facts dt{font-weight:700;color:var(--ink);font-size:17px;margin:0 0 6px}
 .ab-facts dd{margin:0;color:var(--ink);line-height:1.6}
+
+.reel-t a,.cs-src a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}

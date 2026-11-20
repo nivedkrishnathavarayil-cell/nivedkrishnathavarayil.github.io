@@ -15,6 +15,8 @@ const rel = C.find((c) => c.slug === p.related);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 /* body text may carry [label](https://link) */
 const md = (t) => esc(t).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
+/* plain @handles in reel credits become Instagram links */
+const ig = (t) => md(t).replace(/(^|[\s(])@([A-Za-z0-9._]*[A-Za-z0-9_])/g, '$1<a href="https://www.instagram.com/$2/">@$2</a>');
 const plain = (t) => (Array.isArray(t) ? t.join(' ') : String(t)).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 const first = plain(p.body.find((b) => b[0] === 'p')[1]);
 const ogImg = `/og/work-${p.slug}.jpg?v=3`;
@@ -150,7 +152,7 @@ const ld = {
           t === 'ul' ? <ul class="post-ul">{v.map((li) => <li set:html={md(li)} />)}</ul> :
           t === 'video' ? <figure class="post-video"><video controls playsinline preload="none" poster={v.poster} width={v.w} height={v.h} aria-label={v.label}><source src={v.src} type="video/mp4" /></video><figcaption set:html={md(v.cap)} /></figure> :
           t === 'gallery' ? <div class={v.every((g) => g.w / g.h > 1.8) ? 'post-gal wide' : 'post-gal'}>{v.map((g) => <figure><picture><source type="image/webp" srcset={g.src.replace(/\.jpg$/, '.webp')} /><img src={g.src} alt={g.alt} width={g.w} height={g.h} loading="lazy" decoding="async" /></picture><figcaption set:html={md(g.cap)} /></figure>)}</div> :
-          t === 'reels' ? <ul class="cs-reels post-reels" style={`--n:${Math.min(v.length, 4)}`}>{v.map((r) => <li><a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from ${p.short} by Nivedkrishna Thavarayil`}><picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture><span class="reel-v"><b class="d">{r.v}</b> views</span><span class="vh">Play the reel</span></a><p class="reel-t">{r.t}<span>{r.by}</span></p></li>)}</ul> :
+          t === 'reels' ? <ul class="cs-reels post-reels" style={`--n:${Math.min(v.length, 4)}`}>{v.map((r) => <li><a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from ${p.short} by Nivedkrishna Thavarayil`}><picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture><span class="reel-v"><b class="d">{r.v}</b> views</span><span class="vh">Play the reel</span></a><p class="reel-t">{r.t}<span set:html={ig(r.by)} /></p></li>)}</ul> :
           t === 'yt' ? <p class="post-yt"><a class="watch" href={`https://www.youtube.com/watch?v=${v[0]}`} data-yt={v[0]} data-title={v[1]} data-label={v[2]}>{v[3]}</a></p> :
           <p set:html={md(v)} />
         )}

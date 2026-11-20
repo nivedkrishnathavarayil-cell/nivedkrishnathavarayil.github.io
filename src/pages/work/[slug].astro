@@ -13,6 +13,8 @@ const next = C[(i + 1) % C.length];
 const url = `${SITE}/work/${c.slug}/`;
 const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
+/* plain @handles in reel credits and source lines become Instagram links */
+const ig = (x) => md(x).replace(/(^|[\s(])@([A-Za-z0-9._]*[A-Za-z0-9_])/g, '$1<a href="https://www.instagram.com/$2/">@$2</a>');
 const mentions = (p) => JSON.stringify(p.body).includes(`/work/${c.slug}/`);
 const reads = P.filter((p) => (p.related === c.slug || mentions(p)) && !c.proof.some((x) => x[1].includes(p.slug)));
 const share = (id, label, compact = false) => shareHTML(url, `${c.title} A case study by Nivedkrishna Thavarayil`, { id, label, compact });
@@ -75,7 +77,7 @@ const ld = {
           <span class="cs-cap">{c.statCap}</span>
         </div>
         <dl class="sx-dl cs-dl">
-          <dt>Client</dt><dd>{c.client}</dd>
+          <dt>Client</dt><dd set:html={ig(c.client)} />
           <dt>My role</dt><dd>{c.role}</dd>
           {c.where && <><dt>Where</dt><dd>{c.where}</dd></>}
           {c.when && <><dt>When</dt><dd>{c.when}</dd></>}
@@ -96,7 +98,7 @@ const ld = {
                     <span class="reel-v"><b class="d">{r.v}</b> views</span>
                     <span class="vh">Play the reel</span>
                   </a>
-                  <p class="reel-t">{r.t}<span>{r.by}</span></p>
+                  <p class="reel-t">{r.t}<span set:html={ig(r.by)} /></p>
                 </li>
               ))}
             </ul>
@@ -171,7 +173,7 @@ const ld = {
               )}
             </div>
           )}
-          {c.source && <p class="cs-src">{c.source}</p>}
+          {c.source && <p class="cs-src" set:html={ig(c.source)} />}
         </section>
         {c.quote && (
           <figure class="cs-quote">
