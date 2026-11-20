@@ -110,12 +110,27 @@ document.addEventListener('touchstart',()=>{},{passive:true});
 
 /* ---------- quotes (slides are in the HTML) ---------- */
 {
-const st=$('#qstage'),tabs=$('#qtabs'),tm=$('#qtimer');let qi=0,timer=null,paused=false;const QN=st.querySelectorAll('.qslide').length;
+const st=$('#qstage'),tabs=$('#qtabs');let qi=0,timer=null,paused=false;
+const S=[...st.querySelectorAll('.qslide')],T=[...tabs.querySelectorAll('.qn')],QN=S.length;
 const qc=$('#qcount');
-const show=i=>{qi=(i+QN)%QN;st.querySelectorAll('.qslide').forEach((f,k)=>f.classList.toggle('on',k===qi));tabs.querySelectorAll('.qn').forEach((b,k)=>b.setAttribute('aria-selected',k===qi));qc.textContent=(qi+1)+' of '+QN;restart()};
-const restart=()=>{clearTimeout(timer);tabs.classList.remove('run');void tabs.offsetWidth;if(reduce||paused)return;tabs.classList.add('run');timer=setTimeout(()=>show(qi+1),7000)};
-tabs.addEventListener('click',e=>{const b=e.target.closest('.qn');if(b)show(+b.dataset.i)});
-$('#qprev').addEventListener('click',()=>show(qi-1));$('#qnext').addEventListener('click',()=>show(qi+1));
+/* On phones the names are a sideways row: keep the active one in view, without moving the page */
+const follow=()=>{if(tabs.scrollWidth<=tabs.clientWidth+1)return;const r=T[qi].getBoundingClientRect(),lr=tabs.getBoundingClientRect();tabs.scrollTo({left:tabs.scrollLeft+(r.left-lr.left)-(lr.width-r.width)/2,behavior:reduce?'auto':'smooth'})};
+/* dir 1 = forward (new quote comes in from the right), -1 = back; user = a person asked for it */
+const show=(i,dir,user)=>{const n=(i+QN)%QN;if(n===qi){restart();return}
+  st.style.setProperty('--dx',dir<0?-1:1);
+  S.forEach((s,k)=>{if(k!==qi&&k!==n)s.classList.remove('gone')});
+  const nx=S[n];nx.style.transition='none';nx.classList.remove('gone');getComputedStyle(nx).transform;nx.style.transition='';
+  S[qi].classList.remove('on');S[qi].classList.add('gone');nx.classList.add('on');
+  T[qi].setAttribute('aria-selected','false');T[n].setAttribute('aria-selected','true');
+  qi=n;st.setAttribute('aria-live',user?'polite':'off');qc.textContent=(qi+1)+' of '+QN;follow();restart()};
+const restart=()=>{clearTimeout(timer);tabs.classList.remove('run');void tabs.offsetWidth;if(reduce||paused)return;tabs.classList.add('run');timer=setTimeout(()=>show(qi+1,1,false),7000)};
+tabs.addEventListener('click',e=>{const b=e.target.closest('.qn');if(b){const n=+b.dataset.i;show(n,n>qi?1:-1,true)}});
+$('#qprev').addEventListener('click',()=>show(qi-1,-1,true));$('#qnext').addEventListener('click',()=>show(qi+1,1,true));
+/* swipe the quote sideways on a phone; vertical scrolling is left alone */
+let sx=0,sy=0,sw=false;
+st.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;sw=true},{passive:true});
+st.addEventListener('touchend',e=>{if(!sw)return;sw=false;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.3)show(qi+(dx<0?1:-1),dx<0?1:-1,true)},{passive:true});
+st.addEventListener('touchcancel',()=>{sw=false},{passive:true});
 const box=$('#words');['mouseenter','focusin'].forEach(ev=>box.addEventListener(ev,()=>{paused=true;clearTimeout(timer);tabs.classList.remove('run')}));
 ['mouseleave','focusout'].forEach(ev=>box.addEventListener(ev,()=>{paused=false;restart()}));
 qc.textContent='1 of '+QN;
