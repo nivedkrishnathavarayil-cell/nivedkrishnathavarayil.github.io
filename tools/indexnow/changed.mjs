@@ -5,8 +5,9 @@ import { readFileSync, existsSync } from 'node:fs';
 
 const SITE = (process.env.SITE_URL || 'https://nivedkrishnathavarayil.com').replace(/\/$/, '');
 const EXTRA = ['/llms.txt', '/llms-full.txt', '/podcast.xml'];
-// the only value that changes on every build
-const norm = (s) => s.replace(/"dateModified":"[^"]*"/g, '');
+// ignore what changes without the page's content changing: the build time and the
+// hashed names of shared CSS and JS files (a style tweak renames them on every page)
+const norm = (s) => s.replace(/"dateModified":"[^"]*"/g, '').replace(/\/_astro\/[^"' )]+/g, '/_astro/x');
 
 const locs = (xml) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const index = readFileSync('dist/sitemap-index.xml', 'utf8');
