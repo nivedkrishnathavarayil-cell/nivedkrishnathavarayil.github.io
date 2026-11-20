@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import P from '../data/posts.json';
+import { headerHTML, SITE, PERSON, PODCAST, LISTEN } from '../lib/site.mjs';
+
+/* Unscripted: the show's own page, so search engines and AI assistants can tie every platform to Nived */
+const url = `${SITE}${PODCAST.page}`;
+const eps = P.filter((p) => p.audio).sort((a, b) => (a.audio.ep || 99) - (b.audio.ep || 99));
+const iso = (s) => `PT${Math.floor(s / 60)}M${Math.round(s % 60)}S`;
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': url,
+      url,
+      name: 'Unscripted, the podcast by Nivedkrishna Thavarayil',
+      about: { '@id': `${SITE}/#podcast` },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Unscripted', item: url },
+        ],
+      },
+    },
+    {
+      '@type': 'PodcastSeries',
+      '@id': `${SITE}/#podcast`,
+      name: PODCAST.name,
+      url,
+      webFeed: `${SITE}/podcast.xml`,
+      image: `${SITE}/podcast/cover.jpg`,
+      description: 'A New York creative strategist and director on making films, micro dramas and campaigns that people finish watching, narrated with his own ElevenLabs voice clone.',
+      author: { '@id': `${SITE}/#person` },
+      sameAs: LISTEN.map((l) => l[1]),
+      hasPart: eps.map((p) => ({
+        '@type': 'PodcastEpisode',
+        name: p.title.replace(/\.$/, ''),
+        episodeNumber: p.audio.ep,
+        url: `${SITE}/work/${p.slug}/`,
+        datePublished: (p.audio.published || p.date).slice(0, 10),
+        description: p.dek,
+        timeRequired: iso(p.audio.secs),
+        associatedMedia: { '@type': 'AudioObject', contentUrl: `${SITE}${p.audio.src}`, encodingFormat: 'audio/mpeg', duration: iso(p.audio.secs) },
+        partOfSeries: { '@id': `${SITE}/#podcast` },
+      })),
+    },
+    PERSON,
+  ],
+};
+---
+<Base
+  title="Unscripted, the podcast by Nivedkrishna Thavarayil | Spotify, Apple Podcasts, YouTube"
+  description="Unscripted: a New York creative strategist and director on films, micro dramas and campaigns, in his own voice. Listen on Spotify, Apple Podcasts or YouTube."
+  ogTitle="Unscripted, the podcast by Nivedkrishna Thavarayil"
+  path="/podcast/"
+  jsonld={ld}
+  page="case"
+>
+  <Fragment set:html={headerHTML} />
+  <main id="top" class="cs ww pod">
+    <header class="wrap cs-head">
+      <a class="sx-back" href="/">Home</a>
+      <p class="cs-kick">Podcast</p>
+      <h1 class="d sx-t cs-t">Unscripted.</h1>
+      <p class="cs-line">Every article on this site, read in my own voice: the films, the micro dramas and the campaigns, and what each one taught me. Narrated with my ElevenLabs voice clone.</p>
+      <p class="acts2">{LISTEN.slice(0, 3).map((l, k) => <a class={k === 0 ? 'btn solid2' : 'btn'} href={l[1]}>{l[0]}</a>)}</p>
+      <p class="ww-proof">Also on <a href={PODCAST.podcastIndex}>Podcast Index</a>, which feeds Pocket Casts, Overcast and most other apps, or add the <a href="/podcast.xml">RSS feed</a> to any player.</p>
+    </header>
+    <div class="wrap cs-body">
+      <section class="cs-sec" aria-labelledby="eps">
+        <h2 class="cs-h" id="eps">{eps.length} episodes</h2>
+        <ol class="pod-eps">
+          {eps.map((p) => (
+            <li>
+              <p class="pod-n">Episode {p.audio.ep}, {p.audio.label}</p>
+              <h3 class="pod-t"><a href={`/work/${p.slug}/`}>{p.title.replace(/\.$/, '')}</a></h3>
+              <p class="pod-d">{p.dek}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section class="cs-sec cs-cta" aria-labelledby="start">
+        <h2 class="cs-h" id="start">Want a story on the show?</h2>
+        <div>
+          <p class="ww-line">I talk about the work: strategy, shoots and what actually moved the numbers. If you have a brand or a story worth telling, say hello.</p>
+          <p class="acts2"><a class="btn solid2" href="https://calendly.com/nivedkrishnathavarayil/30min">Book a 30-minute call</a><a class="btn" href="/work-with-me/">Work with me</a></p>
+        </div>
+      </section>
+    </div>
+  </main>
+</Base>

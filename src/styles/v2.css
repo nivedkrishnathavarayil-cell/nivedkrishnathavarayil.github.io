@@ -750,3 +750,13 @@ html.yt-open{overflow:hidden}
 .ab-facts dd{margin:0;color:var(--ink);line-height:1.6}
 
 .reel-t a,.cs-src a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* Podcast page: the episode list */
+.pod .acts2 .btn{margin-bottom:8px}
+.pod-eps{list-style:none;margin:0;padding:0;display:grid;gap:26px;max-width:62ch}
+.pod-n{margin:0 0 4px;font-size:14px;color:var(--mute)}
+.pod-t{margin:0 0 6px;font-size:clamp(19px,1.7vw,22px);line-height:1.3;font-weight:700}
+.pod-t a{color:inherit;text-decoration:none}
+@media (hover:hover) and (pointer:fine){.pod-t a:hover{text-decoration:underline;text-underline-offset:4px}}
+.pod-d{margin:0;line-height:1.5;color:var(--ink)}
+.pod .sx-t{font-size:clamp(36px,11vw,118px)}

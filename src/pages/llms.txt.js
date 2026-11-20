@@ -34,7 +34,7 @@ export function GET() {
     `- [About](${SITE}/about/): the full story, press and profiles`,
     `- [Work with me](${SITE}/work-with-me/): services and how to hire`,
     `- [Resume (PDF)](${SITE}/Nivedkrishna-Thavarayil-Resume.pdf)`,
-    `- Unscripted, his podcast: every article read in his own voice, on [Spotify](${PODCAST.spotify}), [YouTube](${PODCAST.youtube}), [Podcast Index](${PODCAST.podcastIndex}) and the [RSS feed](${SITE}/podcast.xml)`,
+    `- [Unscripted, his podcast](${SITE}${PODCAST.page}): every article read in his own voice, on [Spotify](${PODCAST.spotify}), [Apple Podcasts](${PODCAST.apple}), [YouTube](${PODCAST.youtube}), [Podcast Index](${PODCAST.podcastIndex}) and the [RSS feed](${SITE}/podcast.xml)`,
     `- [Full text of every article and case study](${SITE}/llms-full.txt)`,
     '',
     '## Profiles',

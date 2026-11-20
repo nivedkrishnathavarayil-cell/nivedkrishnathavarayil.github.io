@@ -6,10 +6,19 @@ export const NAME = 'Nivedkrishna Thavarayil';
 /* where the Unscripted podcast lives; add Apple Podcasts here once it's published */
 export const PODCAST = {
   name: 'Nivedkrishna Thavarayil, Unscripted',
+  page: '/podcast/',
   spotify: 'https://open.spotify.com/show/5BVbdPSHlbD08yEf0LWZgl',
+  apple: 'https://podcasts.apple.com/us/podcast/nivedkrishna-thavarayil-unscripted/id6837049334',
   youtube: 'https://www.youtube.com/playlist?list=PLJGDPbW_pVLU',
   podcastIndex: 'https://podcastindex.org/podcast/8123029',
 };
+/* where to listen, in the order people use them */
+export const LISTEN = [
+  ['Spotify', PODCAST.spotify],
+  ['Apple Podcasts', PODCAST.apple],
+  ['YouTube', PODCAST.youtube],
+  ['Podcast Index', PODCAST.podcastIndex],
+];
 export const ICON = C.icon;
 export const PERSON = JSON.parse(JSON.stringify(C.person).replaceAll('https://nivedkrishnathavarayil.com', SITE));
 
@@ -208,10 +217,10 @@ export const homeLD = (S) => ({
       '@type': 'PodcastSeries',
       '@id': `${SITE}/#podcast`,
       name: PODCAST.name,
-      url: `${SITE}/work/`,
+      url: `${SITE}${PODCAST.page}`,
       webFeed: `${SITE}/podcast.xml`,
       author: { '@id': `${SITE}/#person` },
-      sameAs: [PODCAST.spotify, PODCAST.youtube, PODCAST.podcastIndex],
+      sameAs: [PODCAST.spotify, PODCAST.apple, PODCAST.youtube, PODCAST.podcastIndex],
     },
     { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, alternateName: ['NKT', 'Nived Thavarayil'], publisher: { '@id': `${SITE}/#person` } },
     {
