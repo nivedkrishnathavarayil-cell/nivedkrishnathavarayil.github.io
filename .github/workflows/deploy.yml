@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.changed.outputs.urls }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,6 +29,11 @@ jobs:
       - run: npm run build
         env:
           # the live address; Settings > Pages > Custom domain must match
+          SITE_URL: https://nivedkrishnathavarayil.com
+      # which pages differ from the live site, so IndexNow only hears about real changes
+      - id: changed
+        run: echo "urls=$(node tools/indexnow/changed.mjs)" >> "$GITHUB_OUTPUT"
+        env:
           SITE_URL: https://nivedkrishnathavarayil.com
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
@@ -42,3 +49,19 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # tell Bing and the other IndexNow engines about the pages that changed
+  indexnow:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # give the CDN a moment to serve the new pages before engines crawl them
+      - run: sleep 45
+      - run: node tools/indexnow/ping.mjs
+        env:
+          SITE_URL: https://nivedkrishnathavarayil.com
+          CHANGED: ${{ needs.build.outputs.changed }}

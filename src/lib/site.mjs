@@ -195,7 +195,7 @@ export const homeLD = (S) => ({
       url: `${SITE}/`,
       name: 'Nivedkrishna Thavarayil, Creative Strategist and Director, New York',
       mainEntity: { '@id': `${SITE}/#person` },
-      dateModified: new Date().toISOString().slice(0, 10),
+      dateModified: new Date().toISOString(),
     },
     { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, alternateName: ['NKT', 'Nived Thavarayil'], publisher: { '@id': `${SITE}/#person` } },
     {
