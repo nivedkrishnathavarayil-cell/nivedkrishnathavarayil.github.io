@@ -6,21 +6,23 @@ The posting mix behind every brand I've run.
 
 Every brand I've run gets the same posting plan, from film and FMCG campaigns at W.L.D.D. in Bangalore to cafes in New York. I call it hub, hype and hygiene.
 
+It solves the problem every small brand has: posting every day without running out of ideas, and without boring the people who already follow you.
+
 I didn't invent the shape. Google's YouTube playbook for brands split content into hero, hub and hygiene, later renamed hero, hub and help. What I changed is the third H. Hero content is the big tentpole moment, and most brands I work with can't afford one every month. Trends, though, show up every week for free. So my third H is hype.
 
-Hub: what you do, in your own world
+Hub: what you do, in your own world.
 
 Hub is the everyday posting: what the brand makes, what happens inside it, and the people who run it. For a cafe that's the menu, the space and the regulars. For a gym it's the workouts. It also covers anything shot in the brand's own surroundings, so a skit where the waiter plays a character is still hub, because it lives where the brand lives.
 
-Hygiene: why you exist
+Hygiene: why you exist.
 
 Hygiene keeps the mission visible. If a restaurant's promise is authentic Indian food, or authentic halal food, hygiene posts explain it: where the flavours come from, how a dish is made, what makes it the real thing. They're often simple, information-first posts or a talking head, and they're the posts people check before they decide to trust you.
 
-Hype: the trend, moved into your world
+Hype: the trend, moved into your world.
 
 Hype is whatever is trending that week, a sound, a pop culture moment, a dance, rebuilt inside the brand's own setting. It's the fastest way to reach people who don't follow you yet.
 
-The mix
+The mix.
 
 Hub: about half to 60% of posts
 
@@ -30,9 +32,45 @@ Hygiene: 10 to 20%, depending on the brand
 
 The mix matters more than any single post. Post only hype and you run out of trends, and the audience forgets what you sell. I've seen a pet food brand whose page is all office trends, so people think it's an office company. Post only hub and nobody new finds you. Post only hygiene and it reads like a brochure. With a mix, you can post every day without the page getting saturated.
 
-Where I've used it
+How to build a week.
 
-Everywhere: film and OTT launches, FMCG, food and retail pages at W.L.D.D., influencer pages and PR for actors, and through Thava Studio in America, cafes, restaurants and real estate. Three of the case studies show it working:
+This is how I set it up for a new account.
+
+Map the brand's world: the place, the products, the people. Every hub post comes from this list.
+
+Write the mission in one sentence. Every hygiene post explains a piece of it.
+
+Each week, collect the trends you could rebuild inside that world, and drop the ones you can't.
+
+Fill the week by the mix, then shoot hub in batches, since it doesn't go stale.
+
+Once a month, look at the numbers. If reach is flat, add hype. If new followers don't know what you sell, add hub.
+
+A week, as a template.
+
+Seven posts for a cafe, at roughly the mix above:
+
+Monday, hub: the drink of the week, made start to finish.
+
+Tuesday, hype: this week's trending sound, acted out behind the counter.
+
+Wednesday, hub: the people who run the place.
+
+Thursday, hygiene: where the beans come from, and why it matters.
+
+Friday, hub: a regular's order.
+
+Saturday, hype: a pop culture moment, set in the cafe.
+
+Sunday, hub: the space on a busy morning.
+
+That's four hub, two hype and one hygiene. Swap in what your brand has, and keep the ratio.
+
+Short on time? At three posts a week, make it two hub and one hype, and work a hygiene post in every other week.
+
+Where I've used it.
+
+Everywhere: film and OTT launches, FMCG, food and retail pages at W.L.D.D., influencer pages and PR for actors, and through Thava Studio in America, cafes, restaurants and real estate. Four of the case studies show it working:
 
 Fetchy: the plan took YouTube Shorts from 600 to 1,000 views each to above 2,000, and one Short passed 616,000.
 
@@ -40,9 +78,33 @@ Infamous Coconuts: we rebuilt the feed around hub, hype and hygiene, and the typ
 
 Thank You Durex: memes as hooks, with skits and trends built around the product. One reel passed 20.9 million views.
 
-What the research says
+W.L.D.D.'s own Instagram: run as a client page with the office as the cast. In 2022, 8 of 82 reels passed 10,000 views. In my sixteen months, 56 of 100 did.
+
+What the research says.
 
 Two studies back up why hype stays at about 30% and not 100%. A 2023 study in the Journal of Research in Interactive Marketing found that brand memes build the relationship when they're easy to get, feel new and fit the brand, and that sarcasm works against them. Another, in the Journal of Consumer Marketing, found that meme posts read as funnier and earn more likes and shares, but lower engagement on cause-related campaigns. Humour travels, but it has to fit the brand and the moment.
+
+Audiences say the same thing. The 2025 Sprout Social Index, a survey of more than 4,000 consumers in the US, UK, Canada and Australia, found that people want brands to understand the context of cultural moments, not recreate every meme, and a third think it's embarrassing when brands jump on viral trends. That's the case for hype at around 30%, rebuilt inside your own world, instead of chasing every trend.
+
+How to measure each H.
+
+Each H has a different job, so judge each one by a different number. Instagram's Adam Mosseri has said the signals that matter most in ranking are watch time, likes and sends, with likes counting a little more for people who already follow you and sends a little more for people who don't.
+
+Hype is for reach, so watch sends per reach. If nobody sends a trend post, it isn't reaching new people.
+
+Hub is for the people who already follow you, so watch likes per reach and watch time.
+
+Hygiene is for trust, so watch saves, profile visits and the questions people ask in DMs.
+
+Mistakes to avoid.
+
+A trend with no bridge to your world. If you can't set it in your space, with your people or your product, skip it.
+
+Hygiene that sounds like an ad. Explain, don't sell.
+
+Judging the plan one post at a time. Look at the month.
+
+Copying another brand's mix. A new account may need more hype to be found; a known brand may need more hub.
 
 If you post one kind of thing every day, the page gets saturated. Mix the three and you can keep posting.
 

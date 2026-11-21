@@ -8,7 +8,7 @@
   "short": "Films in New York on an indie budget",
   "date": "2026-11-19",
   "dateLabel": "November 19, 2026",
-  "read": "5 min read",
+  "read": "7 min read",
   "origin": null,
   "color": "#1d3a52",
   "related": null,
@@ -132,6 +132,10 @@
     "On permits: the city's film office says you generally don't need one if you're shooting with a handheld camera or a camera on a tripod, with hand-held gear, and you aren't taking over city property or using vehicles, prop weapons, stunts or actors in police uniforms. [Check the rules](https://www.nyc.gov/site/mome/permits/when-permit-required.page) before you shoot. The subway belongs to the MTA, which has [its own filming rules](https://www.mta.info/doing-business-with-us/filming)."
    ],
    [
+    "p",
+    "If you do need one, the permit itself is free. The [Film Office](https://www.nyc.gov/site/mome/permits/when-permit-required.page) says its permits come with free police assistance, free parking privileges and access to most exterior locations at no charge. You'll need a [certificate of insurance](https://www.nyc.gov/site/mome/permits/permit-step1.page) before you apply, so plan for that cost."
+   ],
+   [
     "h2",
     "Pick stories your budget can carry"
    ],
@@ -156,12 +160,47 @@
     "And the micro drama business runs on the same math. A 100-page micro drama script can be shot in about a week, against a month for a feature ([Los Angeles Times](https://www.aol.com/news/hollywoods-romance-micro-dramas-heating-100000961.html)), and whole seasons have been made for $50,000 to $250,000 with affordable, often non-union casts ([Final Draft](https://www.finaldraft.com/blog/what-are-verticals-and-micro-dramas)). Ours are shorter, and we lean even harder on the family."
    ],
    [
+    "p",
+    "If your actors are in the union, that doesn't have to end the conversation. SAG-AFTRA's [Micro-Budget Project Agreement](https://sagaftra.org/how-can-i-work-indie-films) covers live-action projects budgeted at $20,000 or less per picture, or per episode for a series, from shorts and features to web series. The union says the sign-up is quick enough to do [right before you start shooting](https://sagaftra.org/micro-brings-big-changes-indie-filmmaking-and-content-creation). Read the terms first: the project has to be shot in the US, and it limits where the film can be shown, to festivals, classrooms and free ad-supported platforms."
+   ],
+   [
     "h2",
     "Feed your crew"
    ],
    [
     "p",
     "Be kind to everyone on set, and feed them. Real food, not only pizza. People remember how you treated them, and they'll come back any day you call."
+   ],
+   [
+    "h2",
+    "A checklist for your first no-budget shoot"
+   ],
+   [
+    "ul",
+    [
+     "Write for what you can get. List the free places you have, a friend's apartment, a street, a park, and write the scenes into them.",
+     "Fill the crew sheet with names before you post a casting call: DP, AD, sound, actors, editor, colorist. Friends first, then their friends.",
+     "Check the [city's permit rules](https://www.nyc.gov/site/mome/permits/when-permit-required.page), and [the MTA's](https://www.mta.info/doing-business-with-us/filming) if the scene goes underground.",
+     "If an actor is in SAG-AFTRA, read the [Micro-Budget agreement](https://sagaftra.org/how-can-i-work-indie-films) before you cast.",
+     "Put someone on sound, even a friend with a recorder.",
+     "Get a signed release from everyone on camera and from every location you use.",
+     "Budget the food before anything else.",
+     "Line up the edit before the shoot, so the footage doesn't sit on a drive."
+    ]
+   ],
+   [
+    "h2",
+    "Mistakes to avoid"
+   ],
+   [
+    "ul",
+    [
+     "Writing the expensive version first and hoping the money shows up. Write the version you can shoot this month.",
+     "Treating friends as free labor. They're collaborators: credit them properly, feed them, and show them the cut first.",
+     "Waiting until you feel ready to message people. The cold DM you don't send is the crew you don't have.",
+     "Shooting somewhere you're not allowed. Ten minutes with the rules can save a shoot day.",
+     "Only meeting people when you need something. Go to the meetups when you have nothing to shoot."
+    ]
    ],
    [
     "quote",
@@ -313,7 +352,7 @@
   "short": "Canvas at SF and LA Tech Week",
   "date": "2026-11-19",
   "dateLabel": "November 19, 2026",
-  "read": "2 min read",
+  "read": "6 min read",
   "origin": null,
   "color": "#2f2a4a",
   "related": null,
@@ -329,6 +368,10 @@
    [
     "p",
     "In October, Canvas went west for Tech Week: SF Tech Week ran October 5 to 11 and LA Tech Week ran October 12 to 18. I went as Canvas's creative director, with Canvas CEO Abhinav Singla. We hosted two events, went to plenty more, and pitched Canvas at every one."
+   ],
+   [
+    "p",
+    "This is what the week looked like, why a micro drama studio belongs at a tech week at all, and what I'd tell any small team about pitching one slate to rooms that want different things."
    ],
    [
     "video",
@@ -446,6 +489,18 @@
    ],
    [
     "h2",
+    "Why micro dramas belong at a tech week"
+   ],
+   [
+    "p",
+    "Micro dramas are a phone business before they're a film business. Sensor Tower counted [$2.98 billion in in-app revenue](https://www.marketingdive.com/news/microdrama-apps-stand-out-on-mobile-heres-what-the-numbers-say/812610/) for micro and short drama apps in 2025, up 115% on the year before, and time spent in those apps grew by 5.78 billion hours. In the first quarter of 2025, [the US alone brought in 49%](https://sensortower.com/blog/state-of-short-drama-apps-2025) of global revenue. And those apps sent [68% of their US ad spending to social networks](https://www.emarketer.com/content/microdramas-bank-on-social-ads-drive-growth) from January to September 2025, which tells you where audiences get found."
+   ],
+   [
+    "p",
+    "The creator side is just as big. Goldman Sachs Research estimated the creator economy at $250 billion in 2023 and projected [$480 billion by 2027](https://goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027). Canvas sits where the two meet: series built around creators who already have an audience, made for the phone. That's a tech story as much as a film story, so we took it to the rooms where the tech money and the AI tools are."
+   ],
+   [
+    "h2",
     "What the week was really for"
    ],
    [
@@ -455,6 +510,63 @@
    [
     "p",
     "The pitch fits on a hoodie: [creators are the new studios](https://creatorsarethenewstudios.com). Our slate is the proof. [Face Value](/series/face-value/), [Red Flags](/series/red-flags/), [Taser Fight Championship](/series/taser-fight-championship/), [Dear NYC](/series/dear-nyc/) and [Demo Day](/series/demo-day/) are a few of the 12+ series I've directed for Canvas."
+   ],
+   [
+    "h2",
+    "How to pitch one slate to two different rooms"
+   ],
+   [
+    "ul",
+    [
+     "Host, don't just attend. We partnered with hosts who already had the room: Anwar Events in San Francisco and House of 434 in Los Angeles. Their lists brought the people; we brought the work.",
+     "Show the work, not a deck. I played the trailers in both rooms. A two-minute episode explains the format faster than any slide.",
+     "Sort the slate into lanes. In SF it went up in four: fashion, travel, fiction and non-fiction, so everyone could find the one that was theirs.",
+     "Change the door, not the house. San Francisco was billed as Creators Are the New Studios. Los Angeles was The Hybrid Studio, about Oscar-winning craft meeting AI-native studios. Same series, a different way in.",
+     "Pitch every day. Hosting took two nights. Every other day was pitching at whatever event we were at.",
+     "Make something while you're there. We shot about four series across both cities, and came home with an after-movie for each event."
+    ]
+   ],
+   [
+    "h2",
+    "Cutting for a loud room"
+   ],
+   [
+    "p",
+    "Every Canvas episode is under two minutes and built on hooks and cliffhangers, and a trailer for a loud room needs the same build. Open on the hook, so the first seconds earn the next ones. Put the creator on screen early, because their face is the reason a stranger already cares. Close on a question, not a logo. In a room full of conversations, nobody waits for a slow build."
+   ],
+   [
+    "p",
+    "The after-movies work on the same clock. Each one runs about 40 seconds, and they do the job the event can't do on its own: keep working after everyone goes home."
+   ],
+   [
+    "h2",
+    "A checklist for a small team at a big tech week"
+   ],
+   [
+    "ul",
+    [
+     "Pick two or three events your audience already goes to, and find a host who already has the room.",
+     "Cut trailers that still work with the sound off. Event rooms are loud.",
+     "Write one line that fits on a hoodie. Ours: creators are the new studios.",
+     "Make a one-page slate: every title, its creator and its lane.",
+     "Bring a camera, even a small crew. The after-movie keeps working long after the week ends.",
+     "Book meetings before you land. Calendars fill up fast during the week.",
+     "Follow up within two days, with the trailer link in the first line."
+    ]
+   ],
+   [
+    "h2",
+    "Mistakes to avoid"
+   ],
+   [
+    "ul",
+    [
+     "Bringing a deck and no footage.",
+     "Giving every room the same pitch. Keep the slate, change the way in.",
+     "Spending the whole week at panels and none of it shooting.",
+     "Treating the event as the finish line. The follow-up is the work.",
+     "Forgetting to photograph your own team. The pictures of you in the room are the ones you'll use for months."
+    ]
    ],
    [
     "quote",
@@ -606,7 +718,7 @@
   "short": "WLDD, from one floor",
   "date": "2026-11-17",
   "dateLabel": "November 17, 2026",
-  "read": "4 min read",
+  "read": "6 min read",
   "origin": null,
   "color": "#4b2a7a",
   "related": "wldd-instagram",
@@ -697,6 +809,86 @@
    [
     "p",
     "That floor taught me three things I still use at [Thava Studio](https://www.instagram.com/thava.studio) in New York. Write it so people want to send it to a friend. Put it where the audience already is, not where you wish they were. And ship it while people are still talking about the thing it's about."
+   ],
+   [
+    "h2",
+    "Rule one: write it so people want to send it"
+   ],
+   [
+    "p",
+    "The test I use: before anything goes out, name the friend you'd send it to. If you can't, it isn't ready."
+   ],
+   [
+    "p",
+    "Most sends come with a short message attached: this is so you, this is us, remember this? Write for that message. In my experience, a post that gives someone a reason to send it to one specific friend travels further than one that's merely good."
+   ],
+   [
+    "p",
+    "The platforms now measure exactly this. Instagram's head, Adam Mosseri, has said the [three signals that matter most in ranking](https://www.socialmediatoday.com/news/instagram-shares-algorithm-2025/738034/) are watch time, likes and sends, and that sends matter a little more for reaching people who don't follow you yet. The research on why people share goes back further. Jonah Berger and Katherine Milkman studied three months of New York Times articles and found that [positive content was shared more than negative](https://faculty.wharton.upenn.edu/wp-content/uploads/2011/11/Virality.pdf), and that content stirring high-arousal feelings like awe, anger or anxiety spread further, while content that made people sad spread less."
+   ],
+   [
+    "h2",
+    "Rule two: put it where the audience already is"
+   ],
+   [
+    "p",
+    "WLDD didn't wait for people to find a brand's page. It worked with hundreds of meme pages, so one idea could land everywhere on the same day. Sometimes that meant building a new home for the content altogether, as you'll see below."
+   ],
+   [
+    "p",
+    "For a brand today, that means asking where your people already spend their evenings: a creator's page, a meme page, a group chat, a community. Go there with something worth sending."
+   ],
+   [
+    "h2",
+    "Rule three: ship it while people are still talking"
+   ],
+   [
+    "p",
+    "A joke about last week's news is a joke nobody sends. A small team has the edge here, because fewer people need to say yes. On that top floor, the distance between an idea and a post was a few desks."
+   ],
+   [
+    "p",
+    "Speed only works with taste, though. The 2025 [Sprout Social Index](https://sproutsocial.com/insights/press/the-days-of-trend-chasing-are-over-new-research-from-sprout-social-reveals-a-third-of-consumers-think-jumping-on-viral-trends-is-embarrassing-for-brands/), a survey of 4,044 consumers in the US, UK, Canada and Australia, found that a third of them think it's embarrassing when brands jump on viral trends. Fast and off-brand is worse than late."
+   ],
+   [
+    "h2",
+    "What the rules looked like in practice"
+   ],
+   [
+    "ul",
+    [
+     "Write it to be sent: for [The Pope's Exorcist](/work/the-popes-exorcist/), we put a possessed woman in a movie theater as the trailer played. It was built to be filmed and passed on, and it reached millions of people across India.",
+     "Go where the audience already is: [Thank You Durex](/work/thank-you-durex/) was a fan page we built so the memes had a home of their own, instead of running on Durex India's premium page. One reel passed 20.9 million views.",
+     "Ship it while it's live: on [WLDD's own Instagram](/work/wldd-instagram/) we turned agency news, festivals and events into reels, about one every five days, and wrote every caption to be sent to a friend. In 2022, 8 of 82 reels passed 10,000 views. In my sixteen months, 56 of 100 did."
+    ]
+   ],
+   [
+    "h2",
+    "A checklist before you post"
+   ],
+   [
+    "ul",
+    [
+     "Can you name the friend you'd send it to?",
+     "Does it land in the first second, without the caption?",
+     "Does the brand belong in the joke, or was it stuck on at the end?",
+     "Is the moment still alive? If people have stopped talking about it, skip it.",
+     "Is it going where the audience already is, not only on your own page?"
+    ]
+   ],
+   [
+    "h2",
+    "Mistakes to avoid"
+   ],
+   [
+    "ul",
+    [
+     "Making an ad and calling it a meme. People can tell, and they don't send ads.",
+     "Chasing every trend. Take only the ones you can move into your brand's world.",
+     "Counting likes and ignoring sends. Likes say people enjoyed it; sends say it will travel.",
+     "Letting approvals kill the timing. Agree on taste up front, so the decision on the day is quick.",
+     "Posting only on your own page and calling it distribution."
+    ]
    ],
    [
     "p",
@@ -1364,6 +1556,10 @@
    ],
    [
     "p",
+    "It solves the problem every small brand has: posting every day without running out of ideas, and without boring the people who already follow you."
+   ],
+   [
+    "p",
     "I didn't invent the shape. Google's YouTube playbook for brands split content into hero, hub and hygiene, later renamed [hero, hub and help](https://thinkwithgoogle.com/marketing-strategies/video/build-a-content-plan). What I changed is the third H. Hero content is the big tentpole moment, and most brands I work with can't afford one every month. Trends, though, show up every week for free. So my third H is hype."
    ],
    [
@@ -1408,18 +1604,65 @@
    ],
    [
     "h2",
+    "How to build a week"
+   ],
+   [
+    "p",
+    "This is how I set it up for a new account."
+   ],
+   [
+    "ul",
+    [
+     "Map the brand's world: the place, the products, the people. Every hub post comes from this list.",
+     "Write the mission in one sentence. Every hygiene post explains a piece of it.",
+     "Each week, collect the trends you could rebuild inside that world, and drop the ones you can't.",
+     "Fill the week by the mix, then shoot hub in batches, since it doesn't go stale.",
+     "Once a month, look at the numbers. If reach is flat, add hype. If new followers don't know what you sell, add hub."
+    ]
+   ],
+   [
+    "h2",
+    "A week, as a template"
+   ],
+   [
+    "p",
+    "Seven posts for a cafe, at roughly the mix above:"
+   ],
+   [
+    "ul",
+    [
+     "Monday, hub: the drink of the week, made start to finish.",
+     "Tuesday, hype: this week's trending sound, acted out behind the counter.",
+     "Wednesday, hub: the people who run the place.",
+     "Thursday, hygiene: where the beans come from, and why it matters.",
+     "Friday, hub: a regular's order.",
+     "Saturday, hype: a pop culture moment, set in the cafe.",
+     "Sunday, hub: the space on a busy morning."
+    ]
+   ],
+   [
+    "p",
+    "That's four hub, two hype and one hygiene. Swap in what your brand has, and keep the ratio."
+   ],
+   [
+    "p",
+    "Short on time? At three posts a week, make it two hub and one hype, and work a hygiene post in every other week."
+   ],
+   [
+    "h2",
     "Where I've used it"
    ],
    [
     "p",
-    "Everywhere: film and OTT launches, FMCG, food and retail pages at WLDD, influencer pages and PR for actors, and through Thava Studio in America, cafes, restaurants and real estate. Three of the case studies show it working:"
+    "Everywhere: film and OTT launches, FMCG, food and retail pages at WLDD, influencer pages and PR for actors, and through Thava Studio in America, cafes, restaurants and real estate. Four of the case studies show it working:"
    ],
    [
     "ul",
     [
      "[Fetchy](/work/fetchy/): the plan took YouTube Shorts from 600 to 1,000 views each to above 2,000, and one Short passed 616,000.",
      "[Infamous Coconuts](/work/infamous-coconuts/): we rebuilt the feed around hub, hype and hygiene, and the typical reel went from about 5,000 views to 98,000.",
-     "[Thank You Durex](/work/thank-you-durex/): memes as hooks, with skits and trends built around the product. One reel passed 20.9 million views."
+     "[Thank You Durex](/work/thank-you-durex/): memes as hooks, with skits and trends built around the product. One reel passed 20.9 million views.",
+     "[WLDD's own Instagram](/work/wldd-instagram/): run as a client page with the office as the cast. In 2022, 8 of 82 reels passed 10,000 views. In my sixteen months, 56 of 100 did."
     ]
    ],
    [
@@ -1431,11 +1674,44 @@
     "Two studies back up why hype stays at about 30% and not 100%. A 2023 study in the Journal of Research in Interactive Marketing found that brand memes build the relationship when they're easy to get, feel new and fit the brand, and that sarcasm works against them ([read the study](https://emerald.com/insight/content/doi/10.1108/JRIM-01-2023-0029/full/html)). Another, in the Journal of Consumer Marketing, found that meme posts read as funnier and earn more likes and shares, but lower engagement on cause-related campaigns ([read the study](https://www.emerald.com/jcm/article/doi/10.1108/JCM-09-2024-7221/1253616/Brand-posts-with-memes-on-social-media-perceived)). Humour travels, but it has to fit the brand and the moment."
    ],
    [
+    "p",
+    "Audiences say the same thing. The 2025 [Sprout Social Index](https://sproutsocial.com/insights/index/), a survey of more than 4,000 consumers in the US, UK, Canada and Australia, found that people want brands to understand the context of cultural moments, not recreate every meme, and [a third think it's embarrassing](https://sproutsocial.com/insights/press/the-days-of-trend-chasing-are-over-new-research-from-sprout-social-reveals-a-third-of-consumers-think-jumping-on-viral-trends-is-embarrassing-for-brands/) when brands jump on viral trends. That's the case for hype at around 30%, rebuilt inside your own world, instead of chasing every trend."
+   ],
+   [
+    "h2",
+    "How to measure each H"
+   ],
+   [
+    "p",
+    "Each H has a different job, so judge each one by a different number. Instagram's Adam Mosseri has said the [signals that matter most in ranking](https://www.socialmediatoday.com/news/instagram-shares-algorithm-2025/738034/) are watch time, likes and sends, with likes counting a little more for people who already follow you and sends a little more for people who don't."
+   ],
+   [
+    "ul",
+    [
+     "Hype is for reach, so watch sends per reach. If nobody sends a trend post, it isn't reaching new people.",
+     "Hub is for the people who already follow you, so watch likes per reach and watch time.",
+     "Hygiene is for trust, so watch saves, profile visits and the questions people ask in DMs."
+    ]
+   ],
+   [
+    "h2",
+    "Mistakes to avoid"
+   ],
+   [
+    "ul",
+    [
+     "A trend with no bridge to your world. If you can't set it in your space, with your people or your product, skip it.",
+     "Hygiene that sounds like an ad. Explain, don't sell.",
+     "Judging the plan one post at a time. Look at the month.",
+     "Copying another brand's mix. A new account may need more hype to be found; a known brand may need more hub."
+    ]
+   ],
+   [
     "quote",
     "If you post one kind of thing every day, the page gets saturated. Mix the three and you can keep posting."
    ]
   ],
-  "read": "3 min read",
+  "read": "6 min read",
   "audio": {
    "src": "/media/audio/hub-hype-and-hygiene.mp3",
    "bytes": 2711958,
