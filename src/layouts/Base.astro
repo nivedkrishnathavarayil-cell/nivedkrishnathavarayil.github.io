@@ -32,6 +32,8 @@ const {
 } = Astro.props;
 const url = new URL(path, SITE).href;
 const img = image.startsWith('http') ? image : SITE + image;
+/* share cards from tools/og are always 1200x630 JPEGs; declaring the size lets LinkedIn and others render the first share without fetching it */
+const ogCard = /\/og\/[^?]+\.jpg(\?|$)/.test(img);
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +59,9 @@ const img = image.startsWith('http') ? image : SITE + image;
 <meta property="og:description" content={description}>
 <meta property="og:url" content={url}>
 <meta property="og:image" content={img}>
+{ogCard && <meta property="og:image:type" content="image/jpeg">}
+{ogCard && <meta property="og:image:width" content="1200">}
+{ogCard && <meta property="og:image:height" content="630">}
 <meta property="og:image:alt" content={imageAlt}>
 <meta property="og:locale" content="en_US">
 {type === 'profile' && <meta property="profile:first_name" content="Nivedkrishna">}
