@@ -8,7 +8,7 @@
   "short": "Films in New York on an indie budget",
   "date": "2026-11-19",
   "dateLabel": "November 19, 2026",
-  "read": "7 min read",
+  "read": "6 min read",
   "origin": null,
   "color": "#1d3a52",
   "related": null,
@@ -205,6 +205,19 @@
    [
     "quote",
     "My budget was never money. It was people."
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**How much does a short film cost to make in New York?** Less than you think if your budget is people. [The Last Pizza](https://www.youtube.com/watch?v=3YfriOGVA4w) was shot on New York rooftops for $50, and [Frames of Silence](https://www.youtube.com/watch?v=w4IGrik_Qho) cost $696.",
+     "**Do you need a permit to film in New York City?** It depends on the shoot. Check the city's [rules on when a permit is required](https://www.nyc.gov/site/mome/permits/when-permit-required.page) before you roll.",
+     "**Can you cast SAG-AFTRA actors on a tiny budget?** Often, yes. SAG-AFTRA's [Micro-Budget Project Agreement](https://sagaftra.org/how-can-i-work-indie-films) covers live-action projects budgeted at $20,000 or less.",
+     "**How do you find a crew with no budget?** Start with friends and classmates, send the cold DMs, go to meetups when you have nothing to shoot, and feed everyone."
+    ]
    ],
    [
     "p",
@@ -831,7 +844,7 @@
   "short": "WLDD, from one floor",
   "date": "2026-11-17",
   "dateLabel": "November 17, 2026",
-  "read": "6 min read",
+  "read": "5 min read",
   "origin": null,
   "color": "#4b2a7a",
   "related": "wldd-instagram",
@@ -1001,6 +1014,18 @@
      "Counting likes and ignoring sends. Likes say people enjoyed it; sends say it will travel.",
      "Letting approvals kill the timing. Agree on taste up front, so the decision on the day is quick.",
      "Posting only on your own page and calling it distribution."
+    ]
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is WLDD?** Wubba Lubba Dub Dub, a Bengaluru meme marketing agency founded in 2018 by Arihant Jain, Jaidev Kesti and Vivekanand Kilari. It has since bought ScoopWhoop, a majority stake in the sneaker brand 7-10 and the creative studio Imagined.",
+     "**What is meme marketing?** Brand communication written in the internet's own formats and humour, spread through meme pages and creators so it travels like content rather than an ad.",
+     "**What did I do at WLDD?** I joined in January 2023 as a junior brand strategist, became a creative strategist two months later, closed Sony Pictures as the agency's first international client and ran the agency's own Instagram until I left in 2024."
     ]
    ],
    [
@@ -1801,6 +1826,19 @@
    ],
    [
     "h2",
+    "The short version"
+   ],
+   [
+    "ul",
+    [
+     "**Hub,** about half to 60% of posts: what you do, in your own world. It keeps the people who already follow you.",
+     "**Hype,** around 30%: the week's trend, rebuilt in your setting. It finds new people.",
+     "**Hygiene,** 10 to 20%: why you exist. It earns trust.",
+     "**Judge each H by its own number:** sends for hype, likes and watch time for hub, saves and DMs for hygiene."
+    ]
+   ],
+   [
+    "h2",
     "Hub: what you do, in your own world"
    ],
    [
@@ -1946,6 +1984,18 @@
    [
     "quote",
     "If you post one kind of thing every day, the page gets saturated. Mix the three and you can keep posting."
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is hub, hype and hygiene?** A posting mix for social media: hub is your everyday content, hype is trends rebuilt in your world, and hygiene explains why you exist. It adapts Google's hero, hub and hygiene model for YouTube.",
+     "**How often should a small brand post?** As often as you can keep up. At seven posts a week, try four hub, two hype and one hygiene. At three, make it two hub and one hype, with a hygiene post every other week.",
+     "**Should brands jump on every trend?** No. Take only the trends you can rebuild inside your own world, and keep hype to about a third of your posts."
+    ]
    ]
   ],
   "read": "6 min read",
@@ -2113,8 +2163,21 @@
     "That isn't a flex about speed. It's the only way a micro drama works on a startup budget. This year I directed [12+ short-form series](/#series) for [Canvas](https://creatorsarethenewstudios.com/), a New York and Mumbai micro drama studio, shot across New York, Boston, Baltimore, San Francisco and Los Angeles. Most were shot in three or four days."
    ],
    [
+    "h2",
+    "The short version"
+   ],
+   [
+    "ul",
+    [
+     "**Plan in Directure AI.** Script in; breakdown, shot cards, shoot days, call sheets and budget out, all linked to the same script.",
+     "**Finish in a Claude Code pipeline** connected to Premiere Pro, Higgsfield and ElevenLabs, trained on our own rules.",
+     "**Every shoot doubles as ad creative:** snippet ads, vox pops and fast recuts from performance data.",
+     "**AI buys back time.** People still choose the story, the face and the take."
+    ]
+   ],
+   [
     "p",
-    "The short version: we plan in Directure AI, we finish in a Claude Code pipeline, and every shoot doubles as ad creative. Here's how each piece works, and what I've learned running it."
+    "Here's how each piece works, and what I've learned running it."
    ],
    [
     "h2",
@@ -2133,6 +2196,10 @@
     "There's a second constraint. Every Canvas series is creator-led: a creator with a real audience is attached from day one, like Ruhani Sharma (1.4M followers) on [Dear NYC](/series/dear-nyc/) or Robert Maxwell (1.1M) on [Red Flags](/series/red-flags/). Their calendar is the production calendar. When it moves, everything moves."
    ],
    [
+    "p",
+    "The format is worth the squeeze. Sensor Tower counted [$2.98 billion in in-app revenue](https://www.marketingdive.com/news/microdrama-apps-stand-out-on-mobile-heres-what-the-numbers-say/812610/) for micro and short drama apps in 2025, up 115% on the year before, and in the first quarter of 2025 [the US alone brought in 49%](https://sensortower.com/blog/state-of-short-drama-apps-2025) of it. The audience is on the phone, and it's growing faster than any production schedule."
+   ],
+   [
     "h2",
     "Step 1: Plan everything in Directure AI"
    ],
@@ -2147,6 +2214,10 @@
    [
     "p",
     "The real win isn't the breakdown. It's what happens when the script changes. You see right away what a rewrite does to the schedule and the budget, so we rewrite for logistics, not just story. If two scenes can share a location, they do. If a scene needs a fourth shoot day, it gets cut or moved."
+   ],
+   [
+    "p",
+    "When the plan breaks anyway, the script should already know what to do. On Demo Day, every scene heading listed a primary location and pre-approved backups, so losing a location never meant a rewrite."
    ],
    [
     "p",
@@ -2169,7 +2240,7 @@
    ],
    [
     "p",
-    "I run Claude Code with agents connected to Premiere Pro, Higgsfield and ElevenLabs. It handles the repetitive layers: assembling selects, building animations and infographics, generating AI shots where a live shot isn't possible, and temp voice. One series, Made in the Valley, was produced end to end this way."
+    "I run [Claude Code](https://claude.com/product/claude-code) with agents connected to [Premiere Pro](https://www.adobe.com/products/premiere.html), [Higgsfield](https://higgsfield.ai/) and [ElevenLabs](https://elevenlabs.io/). It handles the repetitive layers: assembling selects, building animations and infographics, generating AI shots where a live shot isn't possible, and temp voice. One series, Made in the Valley, was produced end to end this way."
    ],
    [
     "p",
@@ -2220,11 +2291,53 @@
     "Speed also exposes weak scripts faster. When you can plan a shoot in a day, there's nowhere for a bad idea to hide."
    ],
    [
+    "h2",
+    "A one-day planning checklist"
+   ],
+   [
+    "ul",
+    [
+     "**Lock the creator's dates first.** Everything else is built around them.",
+     "**Upload the script, then check the breakdown by hand.** The tool is fast, not infallible.",
+     "**Rewrite for logistics.** Merge scenes that can share a location, and cut or move anything that needs an extra day.",
+     "**Give every scene a backup location.**",
+     "**Build shoot days, then the call sheet,** from the same plan, so a change in one updates the other.",
+     "**Schedule the marketing shots on the same days:** the snippet moments, vox pops and talking heads.",
+     "**Set up the edit before the shoot,** with your hooks, graphics rules and revision notes ready."
+    ]
+   ],
+   [
+    "h2",
+    "Mistakes to avoid"
+   ],
+   [
+    "ul",
+    [
+     "Spending a week in pre-production on a three-day shoot.",
+     "Treating the creator's calendar as flexible. It's the production calendar.",
+     "Letting AI output go out without a human edit.",
+     "Finishing the series and only then thinking about how people will find it."
+    ]
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is a micro drama?** A scripted series made for the phone, with episodes of a minute or two that each end on a hook. A season is usually five to ten episodes.",
+     "**What is Directure AI?** A production planning platform built in New York by Abhinav Singla and his team. It breaks a script into characters, locations, props and wardrobe, turns scenes into shot cards, and builds shoot days, call sheets and budgets from the same script.",
+     "**How do you use AI in production without it looking like AI?** Use it for the repetitive layers, feed it as many references as you can, and put every output through a human edit.",
+     "**How long does a micro drama take to shoot?** Most of the 12+ series I've directed for Canvas were shot in three or four days."
+    ]
+   ],
+   [
     "p",
     "Your turn: what's the one part of production you'd hand to AI first, and the one part you'd never hand over? [Tell me in the comments on LinkedIn](https://www.linkedin.com/pulse/how-we-plan-micro-drama-day-ai-production-stack-12-thavarayil-zkpte/). I read every comment."
    ]
   ],
-  "read": "4 min read",
+  "read": "5 min read",
   "audio": {
    "src": "/media/audio/how-we-plan-a-micro-drama-in-a-day.mp3",
    "bytes": 3542979,
