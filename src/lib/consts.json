@@ -29,21 +29,55 @@
    "name": "Canvas",
    "url": "https://www.canvasott.com"
   },
-  "founder": {
-   "@type": "Organization",
-   "@id": "https://nivedkrishnathavarayil.com/#thava-studio",
-   "name": "Thava Studio",
-   "description": "Creative studio in New York for restaurants, founders and brands: creative strategy, paid social, short-form video and AI video production.",
-   "url": "https://nivedkrishnathavarayil.com/work-with-me/",
-   "foundingDate": "2025",
-   "areaServed": [
-    "New York City",
-    "New Jersey",
-    "Los Angeles",
-    "San Francisco"
-   ],
-   "sameAs": "https://www.instagram.com/thava.studio"
-  },
+  "founder": [
+   {
+    "@type": "Organization",
+    "@id": "https://nivedkrishnathavarayil.com/#thava-studio",
+    "name": "Thava Studio",
+    "description": "Creative studio in New York for restaurants, founders and brands: creative strategy, paid social, short-form video and AI video production.",
+    "url": "https://nivedkrishnathavarayil.com/work-with-me/",
+    "foundingDate": "2025",
+    "areaServed": [
+     "New York City",
+     "New Jersey",
+     "Los Angeles",
+     "San Francisco"
+    ],
+    "sameAs": "https://www.instagram.com/thava.studio"
+   },
+   {
+    "@type": "Organization",
+    "@id": "https://nivedkrishnathavarayil.com/#growvior",
+    "name": "Growvior Software",
+    "legalName": "Growvior Software Private Limited",
+    "url": "https://growvior.com/",
+    "logo": "https://nivedkrishnathavarayil.com/press/growvior-logo-for-light-backgrounds.png",
+    "foundingDate": "2025-07-08",
+    "description": "Software and AI product company from Kochi and Bangalore, India, with clients in New York: AI products, SaaS platforms, websites and mobile apps, including Mockits AI. Accepted into the Google for Startups Cloud Program in 2026.",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Kochi",
+     "addressRegion": "Kerala",
+     "addressCountry": "IN"
+    },
+    "founder": [
+     {
+      "@id": "https://nivedkrishnathavarayil.com/#person"
+     },
+     {
+      "@type": "Person",
+      "name": "Agrajh AK",
+      "sameAs": "https://www.linkedin.com/in/agrajh-ak/"
+     }
+    ],
+    "sameAs": [
+     "https://www.instagram.com/growvior/",
+     "https://www.threads.com/@growvior",
+     "https://clutch.co/profile/growior-software-private",
+     "https://startups.startupmission.in/startups/0eey2"
+    ]
+   }
+  ],
   "alumniOf": [
    {
     "@type": "CollegeOrUniversity",

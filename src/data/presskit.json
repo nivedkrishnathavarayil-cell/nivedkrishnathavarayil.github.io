@@ -42,6 +42,10 @@
    "Thava Studio, 20+ brands grown"
   ],
   [
+   "Co-founded",
+   "[Growvior Software](https://growvior.com), a software and AI product company in Kochi and Bangalore with clients in New York, incorporated July 8, 2025. Accepted into the [Google for Startups Cloud Program](https://www.instagram.com/growvior/p/DVLRPeVDsg1/), announced February 2026"
+  ],
+  [
    "Trained at",
    "New York Film Academy, one-year filmmaking conservatory in directing (Dean's List). Christ University, Bangalore, BBA (Honours) in Marketing and Advertising"
   ],
@@ -136,6 +140,24 @@
    "view": "/press/view-thava-studio-dark.png",
    "vw": 800,
    "vh": 382
+  },
+  {
+   "name": "Growvior Software",
+   "use": "light",
+   "png": "/press/growvior-logo-for-light-backgrounds.png",
+   "view": "/press/view-growvior-light.png",
+   "vw": 600,
+   "vh": 558,
+   "note": "Co-founded"
+  },
+  {
+   "name": "Growvior Software",
+   "use": "dark",
+   "png": "/press/growvior-logo-for-dark-backgrounds.png",
+   "view": "/press/view-growvior-dark.png",
+   "vw": 600,
+   "vh": 558,
+   "note": "Co-founded"
   }
  ],
  "zip": "/press/nivedkrishna-thavarayil-press-kit.zip"
