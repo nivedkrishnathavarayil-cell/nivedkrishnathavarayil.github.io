@@ -20,6 +20,28 @@ lines = ['NIVEDKRISHNA THAVARAYIL, PRESS KIT', f'{SITE}/press/', '']
 lines += ['BIOS', '']
 for b in K['bios']:
     lines += [f"{b['label']} ({len(b['text'].split())} words)", '', b['text'], '']
+SERIES = json.load(open(REPO + 'src/data/series.json'))
+FILMS = json.load(open(REPO + 'src/data/films.json'))
+CASES = json.load(open(REPO + 'src/data/cases.json'))
+POSTS = json.load(open(REPO + 'src/data/posts.json'))
+fill = lambda t: t.replace('{series}', str(len(SERIES))).replace('{eps}', str(sum(1 for x in POSTS if x.get('audio'))))
+lines += ['WHAT I DO', '']
+for k, v in K['disciplines']:
+    lines.append(f'{k}: {plain(fill(v))}')
+lines += ['', 'RECOGNITION', '']
+for t, h in K['honors'] + [[f"{f['name']}: {t}", h] for f in FILMS for t, h in f['honors']]:
+    lines.append(t + (f' ({h})' if h else ''))
+lines += ['', 'SERIES FOR CANVAS', '']
+for x in SERIES:
+    lines.append(f"{x['t']}: {x['fmt']}. {x['role']}. {x['city']}. {SITE}/series/{x['slug']}/")
+lines += ['', 'FILMS', '']
+for f in FILMS:
+    meta = ', '.join(str(v) for v in [f['genre'], f['year'], f"{f['mins']} min"] if v)
+    lines.append(f"{f['name']} ({meta}): {f['role']}" + (f", directed by {f['director']}" if f.get('director') else '') + f". https://www.youtube.com/watch?v={f['yt']}")
+lines += ['', 'CAMPAIGNS', '']
+for c in CASES:
+    lines.append(f"{c['brand']}: {c['stat']} {c['statCap']}. {SITE}/work/{c['slug']}/")
+lines += ['']
 lines += ['FAST FACTS', '']
 for k, v in K['facts']:
     lines.append(f'{k}: {plain(v)}')

@@ -1,0 +1,138 @@
+[
+ {
+  "name": "Frames of Silence",
+  "genre": "Psychological drama",
+  "year": "2025",
+  "mins": 10,
+  "role": "Writer, director and editor",
+  "description": "An aspiring actress is pulled into a celebrated director's games, where art and mentorship blur into manipulation.",
+  "img": "frames_of_silence_239.jpg",
+  "yt": "w4IGrik_Qho",
+  "imdb": "tt43522685",
+  "cast": [],
+  "note": "Made at the New York Film Academy for $696. On the festival circuit.",
+  "honors": []
+ },
+ {
+  "name": "Love Is Stronger Than Hate",
+  "genre": "Drama",
+  "year": "2025",
+  "mins": 10,
+  "role": "Director of photography",
+  "director": "Yoey Garfield",
+  "description": "Two best friends drift apart when one of them finds Holocaust artifacts that belonged to her great-grandmother and grows deeper in her faith.",
+  "img": "listh_still.jpg",
+  "yt": "VQRsfpHgC38",
+  "imdb": "tt38273553",
+  "cast": [
+   "Mia Blackman",
+   "Cassie Miller"
+  ],
+  "note": "Written and directed by Yoey Garfield.",
+  "honors": [
+   [
+    "Winner, Best Costume Design, Follow Your Heart Film Festival, Miami 2026",
+    "https://www.followourheart.com/winners-2026-miami"
+   ],
+   [
+    "Nominee, Best Drama Short, The North Film Festival NYC 2026",
+    "https://www.thenorthfilmfestnyc.com/nominations2026"
+   ],
+   [
+    "Nominee, Best Student Story, Long Island International Film Expo 2026",
+    "https://www.cognacscornermagazine.com/long-island-international-film-expo"
+   ],
+   [
+    "Finalist, Best Student Film, New York International Film Awards, October 2025",
+    "https://newyorkinternationalfilmawards.com/wp-content/uploads/sites/10/2025/11/WINNERS-NYIFA-October-2025A.pdf"
+   ]
+  ]
+ },
+ {
+  "name": "Unspoken Distance",
+  "genre": "Drama",
+  "year": "2024",
+  "mins": 2,
+  "role": "Writer, director and editor",
+  "description": "A young couple sit in their dim living room, heavy with everything neither of them will say. A montage short.",
+  "img": "unspoken_distance_239.jpg",
+  "yt": "EcSJKrXuJfM",
+  "imdb": "tt35963429",
+  "cast": [
+   "Bevin Reddy",
+   "Alina Mukhametvaleeva"
+  ],
+  "note": "A montage exercise at the New York Film Academy, shot in New Jersey on a Sony FS5.",
+  "honors": [
+   [
+    "Official Selection, First-Time Filmmaker Sessions Volume 13, Lift-Off",
+    "https://filmfreeway.com/Lift-Off-First-Time-Online-Sessions"
+   ],
+   [
+    "Official Selection, First-Time Filmmaker Sessions Volume 12, Lift-Off",
+    "https://filmfreeway.com/First-TimeFilmmakerSessions"
+   ]
+  ]
+ },
+ {
+  "name": "The Last Pizza",
+  "genre": "Survival thriller",
+  "year": "2024",
+  "mins": 8,
+  "role": "Writer, director and editor",
+  "description": "On his last delivery of the night, a pizza guy gets trapped on a freezing Manhattan rooftop with a dying phone and nothing but the order.",
+  "img": "lastpizza_239.jpg",
+  "yt": "3YfriOGVA4w",
+  "imdb": "tt35961624",
+  "cast": [
+   "Nathan Flores",
+   "Chris",
+   "Yi Chan"
+  ],
+  "note": "Shot on New York rooftops for $50.",
+  "honors": [
+   [
+    "Official Selection, First-Time Sessions Volume 11, Lift-Off",
+    "https://filmfreeway.com/FirstTimeFilmmakerSessionsByLiftOff"
+   ],
+   [
+    "Official Selection, Filmmaker Sessions Volume 11, Lift-Off",
+    "https://filmfreeway.com/sessionsbyliftoffglobalnetwork"
+   ]
+  ]
+ },
+ {
+  "name": "Agent X",
+  "genre": "Thriller",
+  "year": null,
+  "mins": 3,
+  "role": "Conceived and directed",
+  "description": "An agent offers a prisoner serving a life sentence a second chance, if he signs his life over as the agent's hitman. An interrogation scene shot on RED Komodo.",
+  "img": "agent_x_239.jpg",
+  "yt": "GSIja5IH9eo",
+  "imdb": null,
+  "cast": [
+   "Dillon Cain",
+   "Nathan Flores"
+  ],
+  "note": "Shot on RED Komodo on a studio set built as a cell, at a New York Film Academy production workshop.",
+  "honors": []
+ },
+ {
+  "name": "Before We Leave",
+  "genre": "Drama",
+  "year": null,
+  "mins": 2,
+  "role": "Director",
+  "description": "Two people on a park bench and almost nothing said: a Chekhovian short built from two or three words of dialogue.",
+  "img": "before_we_leave_239.jpg",
+  "yt": "vTM1-v4kuSQ",
+  "imdb": null,
+  "cast": [
+   "Nathan Flores",
+   "Giulia Mate"
+  ],
+  "note": "Shot in one day at the New York Film Academy, with a skeleton crew and no budget.",
+  "honors": []
+ }
+]

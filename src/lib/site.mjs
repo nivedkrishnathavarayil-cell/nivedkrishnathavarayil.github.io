@@ -1,4 +1,5 @@
 import C from './consts.json';
+import FILMS from '../data/films.json';
 import raw from '../partials/home.html?raw';
 
 export const SITE = (import.meta.env.SITE || 'https://nivedkrishnathavarayil.com').replace(/\/$/, '');
@@ -249,34 +250,28 @@ export const homeLD = (S) => ({
       name: 'Series directed by Nivedkrishna Thavarayil',
       itemListElement: S.map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/series/${s.slug}/`, name: s.t })),
     },
-    ...[
-      ['Frames of Silence', 'Psychological drama', '2025', "An aspiring actress is pulled into a celebrated director's games, where art and mentorship blur into manipulation.", 'frames_of_silence_239.jpg', 'w4IGrik_Qho', 'tt43522685', []],
-      ['Unspoken Distance', 'Drama', '2024', 'A young couple sit in their dim living room, heavy with everything neither of them will say. A montage short.', 'unspoken_distance_239.jpg', 'EcSJKrXuJfM', 'tt35963429', ['Bevin Reddy', 'Alina Mukhametvaleeva']],
-      ['The Last Pizza', 'Survival thriller', '2024', 'On his last delivery of the night, a pizza guy gets trapped on a freezing Manhattan rooftop with a dying phone and nothing but the order.', 'lastpizza_239.jpg', '3YfriOGVA4w', 'tt35961624', ['Nathan Flores', 'Chris', 'Yi Chan']],
-      ['Agent X', 'Thriller', null, 'An agent offers a prisoner serving a life sentence a second chance, if he signs his life over as the agent\'s hitman. An interrogation scene shot on RED Komodo.', 'agent_x_239.jpg', 'GSIja5IH9eo', null, ['Dillon Cain', 'Nathan Flores']],
-      ['Before We Leave', 'Drama', null, 'Two people on a park bench and almost nothing said: a Chekhovian short built from two or three words of dialogue.', 'before_we_leave_239.jpg', 'vTM1-v4kuSQ', null, ['Nathan Flores', 'Giulia Mate']],
-    ].map(([name, genre, year, description, img, yt, imdb, cast]) => ({
+    ...FILMS.filter((f) => !f.director).map((f) => ({
       '@type': 'Movie',
-      name,
-      description,
-      genre,
+      name: f.name,
+      description: f.description,
+      genre: f.genre,
       director: { '@id': `${SITE}/#person` },
-      ...(year ? { dateCreated: year } : {}),
-      image: `${SITE}/media/${img}`,
-      ...(cast.length ? { actor: cast.map((n) => ({ '@type': 'Person', name: n })) } : {}),
-      sameAs: [`https://www.youtube.com/watch?v=${yt}`, ...(imdb ? [`https://www.imdb.com/title/${imdb}/`] : [])],
+      ...(f.year ? { dateCreated: f.year } : {}),
+      image: `${SITE}/media/${f.img}`,
+      ...(f.cast.length ? { actor: f.cast.map((n) => ({ '@type': 'Person', name: n })) } : {}),
+      sameAs: [`https://www.youtube.com/watch?v=${f.yt}`, ...(f.imdb ? [`https://www.imdb.com/title/${f.imdb}/`] : [])],
     })),
-    {
+    ...FILMS.filter((f) => f.director).map((f) => ({
       '@type': 'Movie',
-      name: 'Love Is Stronger Than Hate',
-      genre: 'Drama',
-      dateCreated: '2025',
-      director: { '@type': 'Person', name: 'Yoey Garfield' },
+      name: f.name,
+      genre: f.genre,
+      dateCreated: f.year,
+      director: { '@type': 'Person', name: f.director },
       contributor: { '@id': `${SITE}/#person` },
-      actor: ['Mia Blackman', 'Cassie Miller'].map((n) => ({ '@type': 'Person', name: n })),
-      image: `${SITE}/media/listh_still.jpg`,
-      sameAs: ['https://www.youtube.com/watch?v=VQRsfpHgC38', 'https://www.imdb.com/title/tt38273553/'],
-    },
+      actor: f.cast.map((n) => ({ '@type': 'Person', name: n })),
+      image: `${SITE}/media/${f.img}`,
+      sameAs: [`https://www.youtube.com/watch?v=${f.yt}`, `https://www.imdb.com/title/${f.imdb}/`],
+    })),
   ],
 });
 

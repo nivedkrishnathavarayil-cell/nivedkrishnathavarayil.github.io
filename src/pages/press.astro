@@ -4,7 +4,11 @@ import Base from '../layouts/Base.astro';
 import K from '../data/presskit.json';
 import PRESS from '../data/press.json';
 import STILLS from '../data/stills.json';
-import { headerHTML, SITE, PERSON, pressHTML, esc } from '../lib/site.mjs';
+import SERIES from '../data/series.json';
+import FILMS from '../data/films.json';
+import CASES from '../data/cases.json';
+import POSTS from '../data/posts.json';
+import { headerHTML, homeBody, SITE, PERSON, BRANDS, pressHTML, esc } from '../lib/site.mjs';
 
 /* The press kit: bios, facts, photos and logos a writer can lift straight into a story,
    plus every piece of coverage. One data file (src/data/presskit.json) feeds this page
@@ -23,7 +27,20 @@ const words = (t: string) => t.split(/\s+/).filter(Boolean).length;
 const stills = K.stills.map((s) => ({ ...s, ...STILLS.find((x) => x.src === s.src) }));
 const BIOS = Object.fromEntries(K.bios.map((b) => [b.id, b.text]));
 const coverage = PRESS.filter((p) => p.kind !== 'own');
-const JUMP = [['coverage', 'Coverage'], ['photos', 'Photos'], ['stills', 'Stills'], ['bios', 'Bios'], ['facts', 'Fast facts'], ['logos', 'Logos'], ['contact', 'Contact']];
+const JUMP = [['what', 'What I do'], ['coverage', 'Coverage'], ['honors', 'Recognition'], ['work', 'Work'], ['photos', 'Photos'], ['bios', 'Bios'], ['facts', 'Fast facts'], ['clients', 'Clients'], ['timeline', 'Timeline'], ['logos', 'Logos'], ['contact', 'Contact']];
+const eps = POSTS.filter((p) => p.audio).length;
+const fill = (t: string) => t.replace('{series}', String(SERIES.length)).replace('{eps}', String(eps));
+const honors = [
+  ...K.honors,
+  ...FILMS.flatMap((f) => f.honors.map(([t, h]) => [`${f.name}: ${t}`, h])),
+];
+const yt = (id: string) => `https://www.youtube.com/watch?v=${id}`;
+/* the timeline on the home page, reused so the two never disagree */
+const TL = [...(homeBody.match(/<ol class="steps" id="tl">([\s\S]*?)<\/ol>/)?.[1] || '').matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((m) => {
+  const parts = [...m[1].matchAll(/<(?:span|b)[^>]*>([\s\S]*?)<\/(?:span|b)>/g)].map((x) => x[1]);
+  return { y: parts[0], t: parts[1], d: m[1].replace(/^[\s\S]*?<\/b>/, '').replace(/^\s*<span[^>]*>|<\/span>\s*$/g, '') };
+});
+const brandHref = (h: string) => (h.startsWith('#') ? `/${h}` : h);
 
 const license = `${url}#use`;
 const ld = {
@@ -102,9 +119,55 @@ const ld = {
       <nav class="pk-jump" aria-label="On this page">{JUMP.map(([id, t]) => <a class="share-b" href={`#${id}`}>{t}</a>)}</nav>
     </header>
     <div class="wrap cs-body">
+      <section class="cs-sec" id="what" aria-labelledby="pk-what">
+        <h2 class="cs-h" id="pk-what">What I do</h2>
+        <dl class="pk-roles">
+          {K.disciplines.map(([k, v]) => (
+            <>
+              <dt>{k}</dt>
+              <dd set:html={md(fill(v))} />
+            </>
+          ))}
+        </dl>
+      </section>
+
       <section class="cs-sec" id="coverage" aria-labelledby="pk-cov">
         <h2 class="cs-h" id="pk-cov">Coverage</h2>
         <div class="press pk-press" set:html={pressHTML(PRESS)} />
+      </section>
+
+      <section class="cs-sec" id="honors" aria-labelledby="pk-hon">
+        <h2 class="cs-h" id="pk-hon">Recognition</h2>
+        <ul class="pk-list pk-honors">
+          {honors.map(([t, h]) => <li>{h ? <a href={h}>{t}</a> : t}</li>)}
+        </ul>
+      </section>
+
+      <section class="cs-sec" id="work" aria-labelledby="pk-work">
+        <h2 class="cs-h" id="pk-work">Selected work</h2>
+        <div class="pk-work">
+          <h3 class="pk-sub">Series for Canvas, {SERIES.length}</h3>
+          <ul class="pk-list pk-rows">
+            {SERIES.map((s) => (
+              <li><a href={`/series/${s.slug}/`}>{s.t}</a><span>{s.fmt}. {s.role}. {s.city}.{s.live ? ' Streaming now.' : ''}</span></li>
+            ))}
+          </ul>
+          <h3 class="pk-sub">Films, {FILMS.length}</h3>
+          <ul class="pk-list pk-rows">
+            {FILMS.map((f) => (
+              <li>
+                <a href={yt(f.yt)}>{f.name}</a>
+                <span>{[f.genre, f.year, `${f.mins} min`].filter(Boolean).join(', ')}. {f.role}{f.director ? `, directed by ${f.director}` : ''}.{f.imdb && <> <a class="pk-imdb" href={`https://www.imdb.com/title/${f.imdb}/`}>IMDb</a></>}</span>
+              </li>
+            ))}
+          </ul>
+          <h3 class="pk-sub">Campaigns, {CASES.length} case studies</h3>
+          <ul class="pk-list pk-rows">
+            {CASES.map((c) => (
+              <li><a href={`/work/${c.slug}/`}>{c.brand}</a><span><b>{c.stat}</b> {c.statCap}. {c.title}</span></li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section class="cs-sec" id="photos" aria-labelledby="pk-ph">
@@ -178,6 +241,20 @@ const ld = {
             </>
           ))}
         </dl>
+      </section>
+
+      <section class="cs-sec" id="clients" aria-labelledby="pk-cl">
+        <h2 class="cs-h" id="pk-cl">Clients and collaborators</h2>
+        <ul class="pk-brands">
+          {BRANDS.map(([n, k, h]) => <li>{h ? <a href={brandHref(h)}>{n}</a> : n}<span>{k}</span></li>)}
+        </ul>
+      </section>
+
+      <section class="cs-sec" id="timeline" aria-labelledby="pk-tl">
+        <h2 class="cs-h" id="pk-tl">Timeline</h2>
+        <ol class="pk-tl">
+          {TL.map((x) => <li><span class="pk-y">{x.y}</span><b>{x.t}</b><span set:html={x.d} /></li>)}
+        </ol>
       </section>
 
       <section class="cs-sec" id="logos" aria-labelledby="pk-logos">

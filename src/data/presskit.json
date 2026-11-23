@@ -3,17 +3,17 @@
   {
    "id": "line",
    "label": "One line",
-   "text": "Nivedkrishna Thavarayil is a creative strategist and director in New York. He directs short-form series for Canvas and runs Thava Studio, where the hook, the shoot, the cut and the paid push come from one desk."
+   "text": "Nivedkrishna Thavarayil is a multidisciplinary director and creative strategist in New York. He directs short-form series for Canvas, runs the creative studio Thava Studio and co-founded the software company Growvior."
   },
   {
    "id": "short",
    "label": "Short",
-   "text": "Nivedkrishna Thavarayil is a creative strategist and director based in New York. He has directed more than twelve short-form series for Canvas, including Face Value, Red Flags and Dear NYC, and runs Thava Studio, which has grown more than twenty brands. He has also worked on more than fifty campaigns for brands including Sony Pictures India, Netflix India and Zomato, among them The Pope's Exorcist cinema stunt covered by Hindustan Times, India Today and The Indian Express."
+   "text": "Nivedkrishna Thavarayil is a multidisciplinary director and creative strategist based in New York. He has directed more than twelve short-form series for Canvas, including Face Value, Red Flags and Dear NYC. He runs the creative studio Thava Studio, which has grown more than twenty brands, and co-founded the software company Growvior. He has also worked on more than fifty campaigns for brands including Sony Pictures India, Netflix India and Zomato, among them The Pope's Exorcist cinema stunt covered by Hindustan Times, India Today and The Indian Express."
   },
   {
    "id": "long",
    "label": "Long",
-   "text": "Nivedkrishna Thavarayil is a creative strategist and director based in New York and New Jersey. He builds campaigns people stop scrolling for, organic and paid, then directs the series that keep them watching.\n\nHe has directed more than twelve short-form series for Canvas, including Face Value, a micro-documentary about a makeup artist's road to New York Fashion Week, along with Red Flags, Dear NYC, Taser Fight Championship and Demo Day, shot across New York, Boston, Baltimore, San Francisco and Los Angeles. Through Thava Studio he has grown more than twenty brands, from restaurants to creators. His relaunch for director Abi Varghese's Infamous Coconuts drew 19.2 million views across 76 reels with no paid spend.\n\nBefore New York, he worked in creative strategy at the meme marketing agency WLDD in Bangalore, where his work included The Pope's Exorcist cinema stunt for Sony Pictures India and Thank You Durex. He trained in directing at the New York Film Academy's one-year filmmaking conservatory, where he made the Dean's List. He plans shoots in Directure AI and produces with a Claude Code pipeline connected to Premiere Pro, Higgsfield and ElevenLabs, and every output still goes through a human edit."
+   "text": "Nivedkrishna Thavarayil is a creative strategist and director based in New York and New Jersey. He builds campaigns people stop scrolling for, organic and paid, then directs the series that keep them watching.\n\nHe has directed more than twelve short-form series for Canvas, including Face Value, a micro-documentary about a makeup artist's road to New York Fashion Week, along with Red Flags, Dear NYC, Taser Fight Championship and Demo Day, shot across New York, Boston, Baltimore, San Francisco and Los Angeles. Through Thava Studio he has grown more than twenty brands, from restaurants to creators. His relaunch for director Abi Varghese's Infamous Coconuts drew 19.2 million views across 76 reels with no paid spend.\n\nBefore New York, he worked in creative strategy at the meme marketing agency WLDD in Bangalore, where his work included The Pope's Exorcist cinema stunt for Sony Pictures India and Thank You Durex. He trained in directing at the New York Film Academy's one-year filmmaking conservatory, where he made the Dean's List. He plans shoots in Directure AI and produces with a Claude Code pipeline connected to Premiere Pro, Higgsfield and ElevenLabs, and every output still goes through a human edit.\n\nAround all of that, he co-founded Growvior Software, a software and AI product company accepted into the Google for Startups Cloud Program. He hosts Unscripted, a podcast narrated in his own voice clone. He was director of photography on Love Is Stronger Than Hate, winner of Best Costume Design at the Follow Your Heart Film Festival in Miami. And he runs @f24foster, a community of more than 7,000 film lovers."
   }
  ],
  "facts": [
@@ -160,5 +160,57 @@
    "note": "Co-founded"
   }
  ],
- "zip": "/press/nivedkrishna-thavarayil-press-kit.zip"
+ "zip": "/press/nivedkrishna-thavarayil-press-kit.zip",
+ "disciplines": [
+  [
+   "Director",
+   "{series}+ short-form series for [Canvas](https://www.canvasott.com), micro dramas and micro-documentaries shot in New York, Boston, Baltimore, San Francisco and Los Angeles. Before that, 20+ short films at the New York Film Academy."
+  ],
+  [
+   "Creative strategist",
+   "50+ campaigns at [WLDD](/work/fifteen-people-on-one-floor/) for Sony Pictures India, Netflix India, Prime Video and Zomato, including [The Pope's Exorcist](/work/the-popes-exorcist/) cinema stunt. Organic and paid social, creator partnerships and performance creative."
+  ],
+  [
+   "Writer",
+   "Wrote and directed [Dear NYC](/series/dear-nyc/) and the shorts [Frames of Silence](https://www.youtube.com/watch?v=w4IGrik_Qho), [The Last Pizza](https://www.youtube.com/watch?v=3YfriOGVA4w) and [Unspoken Distance](https://www.youtube.com/watch?v=EcSJKrXuJfM)."
+  ],
+  [
+   "Editor and cinematographer",
+   "Edits his own films. Director of photography on [Love Is Stronger Than Hate](https://www.youtube.com/watch?v=VQRsfpHgC38), winner of Best Costume Design at the Follow Your Heart Film Festival, Miami 2026. Shoots client content himself, like the [Frangos](/work/frangos-world-cup/) dishes, on his own Sony."
+  ],
+  [
+   "Studio founder",
+   "Runs Thava Studio in New York: 20+ brands grown, from [Brick Lane Curry House](/work/brick-lane-phaal/) and [Frangos Peri-Peri](/work/frangos-world-cup/) to the comedy studio [Infamous Coconuts](/work/infamous-coconuts/) and the AI app [Fetchy](/work/fetchy/)."
+  ],
+  [
+   "Software co-founder",
+   "Co-founded [Growvior Software](https://growvior.com) with [Agrajh AK](https://www.linkedin.com/in/agrajh-ak/) in 2025: AI products, SaaS platforms and apps, including Mockits AI. Accepted into the [Google for Startups Cloud Program](https://www.instagram.com/growvior/p/DVLRPeVDsg1/)."
+  ],
+  [
+   "AI video producer",
+   "Plans shoots in [Directure AI](https://directureai.com) and runs a Claude Code pipeline wired into Premiere Pro, Higgsfield and ElevenLabs. Every output still goes through a human edit. Read [how a micro drama gets planned in a day](/work/how-we-plan-a-micro-drama-in-a-day/)."
+  ],
+  [
+   "Podcast host",
+   "[Unscripted](/podcast/): {eps} episodes, every article on this site read in his own ElevenLabs voice clone, on Spotify, Apple Podcasts and YouTube."
+  ],
+  [
+   "Film community",
+   "Runs [@f24foster](https://www.instagram.com/f24foster/), a community of 7,000+ film lovers. Reviews films on [Letterboxd](https://letterboxd.com/nivedkrishna/) and shoots street photography around New York."
+  ]
+ ],
+ "honors": [
+  [
+   "Dean's List, New York Film Academy, 2025",
+   null
+  ],
+  [
+   "Listed #2 of five in Peekwire's \"5 Short-Form Video Studios worth knowing in New York\", 2026",
+   "https://peekwire.com/article/5-short-form-video-studios-worth-knowing-new-york"
+  ],
+  [
+   "Growvior Software accepted into the Google for Startups Cloud Program, 2026",
+   "https://www.instagram.com/growvior/p/DVLRPeVDsg1/"
+  ]
+ ]
 }
