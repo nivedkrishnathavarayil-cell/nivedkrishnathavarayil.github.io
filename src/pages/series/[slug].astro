@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import S from '../../data/series.json';
 import ST from '../../data/stills.json';
 import P from '../../data/posts.json';
-import { headerHTML, seriesLD, SEL, seriesAlt } from '../../lib/site.mjs';
+import { headerHTML, seriesLD, SEL, seriesAlt, metaClip } from '../../lib/site.mjs';
 
 export function getStaticPaths() {
   return S.map((s, i) => ({ params: { slug: s.slug }, props: { i } }));
@@ -13,9 +13,8 @@ const s = S[i];
 const prev = S[(i - 1 + S.length) % S.length];
 const next = S[(i + 1) % S.length];
 const kind = s.fmt.split(',')[0];
-const clip = (t, n = 156) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '') + '...');
 const title = `${s.t} | ${kind} directed by Nivedkrishna Thavarayil`;
-const description = clip(`${s.t}: ${s.log}`);
+const description = metaClip(`${s.t}: ${s.log}`);
 const no = String(i + 1).padStart(2, '0');
 const image = `/og/${s.slug}.jpg`;
 const stills = ST.filter((x) => x.series === s.slug);

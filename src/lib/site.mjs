@@ -22,6 +22,16 @@ export const LISTEN = [
 export const ICON = C.icon;
 export const PERSON = JSON.parse(JSON.stringify(C.person).replaceAll('https://nivedkrishnathavarayil.com', SITE));
 
+/* search descriptions: end on the last full sentence that fits, else on a whole word */
+export const metaClip = (t, n = 156, min = 60) => {
+  t = String(t).replace(/\s+/g, ' ').trim();
+  if (t.length <= n) return t;
+  const re = /[.!?]["')\u201d]?(?= [A-Z0-9"\u201c$])/g;
+  let end = -1;
+  for (let m; (m = re.exec(t)) && m.index + m[0].length <= n; ) end = m.index + m[0].length;
+  if (end >= min) return t.slice(0, end);
+  return t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '') + '...';
+};
 export const esc = (s = '') =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 

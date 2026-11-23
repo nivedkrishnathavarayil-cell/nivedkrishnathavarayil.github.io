@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import P from '../../data/posts.json';
 import C from '../../data/cases.json';
-import { headerHTML, SITE, PERSON, shareHTML, PODCAST } from '../../lib/site.mjs';
+import { headerHTML, SITE, PERSON, shareHTML, PODCAST, metaClip } from '../../lib/site.mjs';
 
 /* takes and behind-the-scenes pieces share /work/<slug>/ with the case studies */
 export function getStaticPaths() {
@@ -28,7 +28,8 @@ const more = P.filter((x) => x.slug !== p.slug)
   .sort((a, b) => b.s - a.s || b.x.date.localeCompare(a.x.date))
   .slice(0, 3).map((o) => o.x);
 const share = (id, label, compact = false) => shareHTML(url, `${p.title.replace(/\.$/, '')}. ${p.dek}`, { id, label, compact });
-const description = `${p.title.replace(/\.$/, '')}: ${p.dek.replace(/\.$/, '')}. ${first}`.slice(0, 155).replace(/\s+\S*$/, '') + '...';
+const lead = metaClip(`${p.title.replace(/\.$/, '')}: ${p.dek.replace(/\.$/, '')}. ${first}`);
+const description = lead.endsWith('...') ? metaClip(`${p.dek.replace(/\.$/, '')}. ${first}`) : lead;
 const TEXT = ['p', 'h2', 'quote', 'ul'];
 /* audio player: clock time and a waveform mask drawn from precomputed peaks */
 const clock = (sec) => `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, '0')}`;

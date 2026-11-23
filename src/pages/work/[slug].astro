@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import C from '../../data/cases.json';
 import P from '../../data/posts.json';
-import { headerHTML, SEL, SITE, PERSON, shareHTML } from '../../lib/site.mjs';
+import { headerHTML, SEL, SITE, PERSON, shareHTML, metaClip } from '../../lib/site.mjs';
 
 export function getStaticPaths() {
   return C.map((c, i) => ({ params: { slug: c.slug }, props: { i } }));
@@ -21,9 +21,8 @@ const share = (id, label, compact = false) => shareHTML(url, `${c.title} A case 
 const fmt = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${Math.round(n / 1e3)}K` : `${n}`);
 const ch = c.chart;
 const pct = (v, rows) => `${((v / Math.max(...rows.map((r) => r[1]))) * 100).toFixed(2)}%`;
-const clip = (t, n = 156) => (t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)).replace(/[,.;:]$/, '') + '...');
 const title = `${c.short} case study | Nivedkrishna Thavarayil, Creative Strategist`;
-const description = clip(`${c.title} ${c.stat} ${c.statCap}. ${c.line}`);
+const description = metaClip(`${c.title} ${c.stat} ${c.statCap}. ${c.line}`);
 const ld = {
   '@context': 'https://schema.org',
   '@graph': [
