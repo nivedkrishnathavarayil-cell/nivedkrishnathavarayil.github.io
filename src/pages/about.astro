@@ -56,6 +56,7 @@ const total = n;
 const plain = BIO.map((b) => b.replace(/\{\{([^|]*)\|/g, '$1').replace(/\}\}/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1'));
 
 const PRESS = [
+  ['Peekwire', 'https://peekwire.com/article/5-short-form-video-studios-worth-knowing-new-york'],
   ['Outlook India', 'https://www.outlookindia.com/hub4business/nivedkrishna-thavarayil-and-the-creative-collaboration-that-went-beyond-conventional-marketing'],
   ['NY Weekly', 'https://nyweekly.com/business/behind-the-mentalist-how-a-nyc-video-producer-is-building-michael-samens-brand-from-the-streets-to-fox-5/'],
   ['DNA', 'https://www.dnaindia.com/insights/report-how-one-spontaneous-outreach-opened-doors-for-collaborative-filmmaking-3218319'],
@@ -170,7 +171,10 @@ const ld = {
       </section>
       <section class="cs-sec" aria-labelledby="press">
         <h2 class="cs-h" id="press">Written about in</h2>
-        <ul class="ab-links">{PRESS.map((p) => <li><a href={p[1]} rel="noopener">{p[0]}</a></li>)}</ul>
+        <div>
+          <ul class="ab-links">{PRESS.map((p) => <li><a href={p[1]} rel="noopener">{p[0]}</a></li>)}</ul>
+          <p class="pk-link">Bios, photos and logos are in the <a href="/press/">press kit</a>.</p>
+        </div>
       </section>
       <section class="cs-sec" aria-labelledby="find">
         <h2 class="cs-h" id="find">Find me on</h2>

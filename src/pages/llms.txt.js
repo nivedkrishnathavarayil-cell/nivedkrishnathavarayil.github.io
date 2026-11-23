@@ -1,6 +1,7 @@
 import P from '../data/posts.json';
 import C from '../data/cases.json';
 import S from '../data/series.json';
+import PRESS from '../data/press.json';
 import K from '../lib/consts.json';
 import { SITE, PODCAST } from '../lib/site.mjs';
 import { FACTS } from '../lib/facts.mjs';
@@ -30,8 +31,12 @@ export function GET() {
     '## Series he directed for Canvas',
     ...S.map((s) => `- [${s.t}](${SITE}/series/${s.slug}/): ${s.fmt}. Role: ${s.role}.`),
     '',
+    '## Press coverage',
+    ...PRESS.filter((x) => x.kind !== 'own').map((x) => `- [${x.outlet}: ${x.title}](${x.url}), ${x.date}${x.note ? ` (${x.note})` : ''}`),
+    '',
     '## More',
     `- [About](${SITE}/about/): the full story, press and profiles`,
+    `- [Press kit](${SITE}/press/): bios, fast facts, photos and logos, free to use with credit`,
     `- [Work with me](${SITE}/work-with-me/): services and how to hire`,
     `- [Resume (PDF)](${SITE}/Nivedkrishna-Thavarayil-Resume.pdf)`,
     `- [Unscripted, his podcast](${SITE}${PODCAST.page}): every article read in his own voice, on [Spotify](${PODCAST.spotify}), [Apple Podcasts](${PODCAST.apple}), [YouTube](${PODCAST.youtube}), [Podcast Index](${PODCAST.podcastIndex}) and the [RSS feed](${SITE}/podcast.xml)`,

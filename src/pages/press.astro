@@ -1,0 +1,240 @@
+---
+import fs from 'node:fs';
+import Base from '../layouts/Base.astro';
+import K from '../data/presskit.json';
+import PRESS from '../data/press.json';
+import STILLS from '../data/stills.json';
+import { headerHTML, SITE, PERSON, pressHTML, esc } from '../lib/site.mjs';
+
+/* The press kit: bios, facts, photos and logos a writer can lift straight into a story,
+   plus every piece of coverage. One data file (src/data/presskit.json) feeds this page
+   and the zip that tools/press/build_zip.py builds from it. */
+const url = `${SITE}/press/`;
+const EMAIL = 'nivedkrishnathavarayil@gmail.com';
+const CAL = 'https://calendly.com/nivedkrishnathavarayil/30min';
+
+const size = (src: string) => {
+  const b = fs.statSync(`public${src}`).size;
+  return b >= 1e6 ? `${(b / 1048576).toFixed(1)} MB` : `${Math.round(b / 1024)} KB`;
+};
+const md = (t: string) =>
+  esc(t).replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m: string, a: string, h: string) => `<a href="${h}">${a}</a>`);
+const words = (t: string) => t.split(/\s+/).filter(Boolean).length;
+const stills = K.stills.map((s) => ({ ...s, ...STILLS.find((x) => x.src === s.src) }));
+const BIOS = Object.fromEntries(K.bios.map((b) => [b.id, b.text]));
+const coverage = PRESS.filter((p) => p.kind !== 'own');
+const JUMP = [['coverage', 'Coverage'], ['photos', 'Photos'], ['stills', 'Stills'], ['bios', 'Bios'], ['facts', 'Fast facts'], ['logos', 'Logos'], ['contact', 'Contact']];
+
+const license = `${url}#use`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': url,
+      url,
+      name: 'Press kit: Nivedkrishna Thavarayil',
+      description: 'Bios, fast facts, photos, logos and coverage for Nivedkrishna Thavarayil, creative strategist and director in New York.',
+      about: { '@id': `${SITE}/#person` },
+      primaryImageOfPage: { '@id': `${SITE}${K.photos[0].src}` },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: 'Press kit', item: url },
+        ],
+      },
+    },
+    ...K.photos.map((p) => ({
+      '@type': 'ImageObject',
+      '@id': `${SITE}${p.src}`,
+      contentUrl: `${SITE}${p.src}`,
+      url: `${SITE}${p.src}`,
+      width: p.w,
+      height: p.h,
+      caption: p.cap,
+      description: p.alt,
+      creditText: p.credit,
+      about: { '@id': `${SITE}/#person` },
+      license,
+      acquireLicensePage: `${url}#contact`,
+    })),
+    ...stills.map((s) => ({
+      '@type': 'ImageObject',
+      contentUrl: `${SITE}${s.src}`,
+      url: `${SITE}${s.src}`,
+      width: s.w,
+      height: s.h,
+      caption: s.alt,
+      creditText: 'Canvas',
+      license,
+      acquireLicensePage: `${url}#contact`,
+    })),
+    {
+      '@type': 'ItemList',
+      name: 'Coverage of Nivedkrishna Thavarayil',
+      numberOfItems: coverage.length,
+      itemListElement: coverage.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: p.url, name: `${p.outlet}: ${p.title}` })),
+    },
+    PERSON,
+  ],
+};
+---
+<Base
+  title="Press kit: Nivedkrishna Thavarayil, Creative Strategist and Director, New York"
+  description="Press kit for Nivedkrishna Thavarayil, New York creative strategist and director: bios, fast facts, photos and logos to download, and all his press coverage."
+  ogTitle="Press kit: Nivedkrishna Thavarayil"
+  image="/og/press.jpg"
+  imageAlt="Press kit for Nivedkrishna Thavarayil: bios, photos, logos and coverage. Shown beside a photo of him directing on a beach shoot."
+  path="/press/"
+  jsonld={ld}
+  page="case"
+>
+  <Fragment set:html={headerHTML} />
+  <main id="top" class="cs pk">
+    <header class="wrap cs-head">
+      <a class="sx-back" href="/">Home</a>
+      <p class="cs-kick">Press</p>
+      <h1 class="d sx-t cs-t">Press kit.</h1>
+      <p class="cs-line">Bios, photos and logos for a story about my work, and everything already written about it. Free to use with the credits listed.</p>
+      <p class="acts2"><a class="btn solid2" href={K.zip} download>Download the press kit, {size(K.zip)}</a><a class="btn" href={`mailto:${EMAIL}?subject=Press%20request`}>Email me</a></p>
+      <p class="ww-proof">The ZIP has both photos, four series stills, the logos, and every bio as plain text.</p>
+      <nav class="pk-jump" aria-label="On this page">{JUMP.map(([id, t]) => <a class="share-b" href={`#${id}`}>{t}</a>)}</nav>
+    </header>
+    <div class="wrap cs-body">
+      <section class="cs-sec" id="coverage" aria-labelledby="pk-cov">
+        <h2 class="cs-h" id="pk-cov">Coverage</h2>
+        <div class="press pk-press" set:html={pressHTML(PRESS)} />
+      </section>
+
+      <section class="cs-sec" id="photos" aria-labelledby="pk-ph">
+        <h2 class="cs-h" id="pk-ph">Photos</h2>
+        <div class="pk-photos">
+          {K.photos.map((p) => (
+            <figure class="pk-fig">
+              <a class="pk-img" href={p.src}>
+                <picture>
+                  <source type="image/webp" srcset={p.viewWebp} />
+                  <img src={p.view} width={p.vw} height={p.vh} alt={p.alt} loading="lazy" decoding="async" />
+                </picture>
+              </a>
+              <figcaption>
+                <p class="pk-cap">{p.cap}</p>
+                <p class="pk-cr">Credit: {p.credit}</p>
+                <a class="share-b pk-dl" href={p.src} download>Download JPG, {p.w} × {p.h}, {size(p.src)}</a>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section class="cs-sec" id="stills" aria-labelledby="pk-st">
+        <h2 class="cs-h" id="pk-st">Series stills</h2>
+        <div>
+          <div class="pk-stills">
+            {stills.map((s) => (
+              <figure class="pk-fig">
+                <a class="pk-img" href={`/series/${s.series}/`}>
+                  <picture>
+                    <source type="image/webp" srcset={s.src.replace(/\.jpg$/, '.webp')} />
+                    <img src={s.src} width={s.w} height={s.h} alt={s.alt} loading="lazy" decoding="async" />
+                  </picture>
+                </a>
+                <figcaption>
+                  <p class="pk-cap">{s.title}</p>
+                  <p class="pk-cr">Credit: Canvas</p>
+                  <a class="share-b pk-dl" href={s.src} download={`${s.series}.jpg`}>Download JPG, {s.w} × {s.h}</a>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p class="pk-note">Larger frames are available on request.</p>
+        </div>
+      </section>
+
+      <section class="cs-sec" id="bios" aria-labelledby="pk-bios">
+        <h2 class="cs-h" id="pk-bios">Bios</h2>
+        <div class="pk-bios">
+          {K.bios.map((b) => (
+            <article class="pk-bio">
+              <div class="pk-bio-top">
+                <h3>{b.label}, {words(b.text)} words</h3>
+                <button type="button" class="share-b pk-copy" data-bio={b.id} data-label={b.label}>Copy</button>
+              </div>
+              {b.text.split('\n\n').map((t) => <p>{t}</p>)}
+            </article>
+          ))}
+          <p class="vh" id="pk-status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="cs-sec" id="facts" aria-labelledby="pk-facts">
+        <h2 class="cs-h" id="pk-facts">Fast facts</h2>
+        <dl class="pk-facts">
+          {K.facts.map(([k, v]) => (
+            <>
+              <dt>{k}</dt>
+              <dd set:html={md(v)} />
+            </>
+          ))}
+        </dl>
+      </section>
+
+      <section class="cs-sec" id="logos" aria-labelledby="pk-logos">
+        <h2 class="cs-h" id="pk-logos">Logos</h2>
+        <ul class="pk-logos">
+          {K.logos.map((l) => (
+            <li class={`pk-logo on-${l.use}`}>
+              <div class="pk-tile"><img src={l.view} alt={`${l.name} logo, for ${l.use} backgrounds`} loading="lazy" decoding="async" width={l.vw} height={l.vh} /></div>
+              <p class="pk-cap">{l.name}, for {l.use} backgrounds</p>
+              <p class="pk-links">{l.svg && <a class="share-b" href={l.svg} download>SVG</a>}<a class="share-b" href={l.png} download>PNG</a></p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="cs-sec" id="use" aria-labelledby="pk-use">
+        <h2 class="cs-h" id="pk-use">Using these</h2>
+        <div>
+          <p class="ww-line">Free to use in editorial coverage of me, Thava Studio and the Canvas series I directed. Credit each photo as listed.</p>
+          <p class="ww-proof">Please don't crop into, recolor or redraw the logos. For commercial use, ask first.</p>
+        </div>
+      </section>
+
+      <section class="cs-sec cs-cta" id="contact" aria-labelledby="pk-contact">
+        <h2 class="cs-h" id="pk-contact">Contact</h2>
+        <div>
+          <p class="ww-line">For interviews, quotes, a podcast spot or larger stills, email <a class="pk-mail" href={`mailto:${EMAIL}?subject=Press%20request`}>{EMAIL}</a>.</p>
+          <p class="acts2"><a class="btn solid2" href={`mailto:${EMAIL}?subject=Press%20request`}>Email me</a><a class="btn" href={CAL}>Book a 30-minute call</a><a class="btn" href="https://www.linkedin.com/in/nivedkrishna">LinkedIn</a></p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="dark endmark sx-end">
+    <p class="wm big" data-fit aria-hidden="true"><span>N<span class="idot">ı</span>vedkrishna</span> <span>Thavarayil</span></p>
+    <div class="wrap endrow"><span>Nivedkrishna Thavarayil, Creative Strategist and Director. New York and Jersey City, 2026.</span><a class="again" href="/#contact">Contact</a></div>
+  </footer>
+  <script is:inline define:vars={{ BIOS }}>
+    const st = document.getElementById('pk-status');
+    document.querySelectorAll('.pk-copy').forEach((b) => {
+      b.addEventListener('click', async () => {
+        const t = BIOS[b.dataset.bio];
+        let ok = false;
+        try { await navigator.clipboard.writeText(t); ok = true; } catch (e) {
+          const ta = document.createElement('textarea');
+          ta.value = t; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.append(ta); ta.select();
+          try { ok = document.execCommand('copy'); } catch (e2) {}
+          ta.remove();
+        }
+        b.textContent = ok ? 'Copied' : 'Select and copy';
+        st.textContent = ok ? `${b.dataset.label} bio copied` : '';
+        clearTimeout(b._t);
+        b._t = setTimeout(() => { b.textContent = 'Copy'; }, 2200);
+      });
+    });
+  </script>
+  <script>
+    import '../scripts/motion.js';
+  </script>
+</Base>

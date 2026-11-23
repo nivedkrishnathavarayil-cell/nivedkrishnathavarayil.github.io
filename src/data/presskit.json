@@ -1,0 +1,142 @@
+{
+ "bios": [
+  {
+   "id": "line",
+   "label": "One line",
+   "text": "Nivedkrishna Thavarayil is a creative strategist and director in New York. He directs short-form series for Canvas and runs Thava Studio, where the hook, the shoot, the cut and the paid push come from one desk."
+  },
+  {
+   "id": "short",
+   "label": "Short",
+   "text": "Nivedkrishna Thavarayil is a creative strategist and director based in New York. He has directed more than twelve short-form series for Canvas, including Face Value, Red Flags and Dear NYC, and runs Thava Studio, which has grown more than twenty brands. He has also worked on more than fifty campaigns for brands including Sony Pictures India, Netflix India and Zomato, among them The Pope's Exorcist cinema stunt covered by Hindustan Times, India Today and The Indian Express."
+  },
+  {
+   "id": "long",
+   "label": "Long",
+   "text": "Nivedkrishna Thavarayil is a creative strategist and director based in New York and New Jersey. He builds campaigns people stop scrolling for, organic and paid, then directs the series that keep them watching.\n\nHe has directed more than twelve short-form series for Canvas, including Face Value, a micro-documentary about a makeup artist's road to New York Fashion Week, along with Red Flags, Dear NYC, Taser Fight Championship and Demo Day, shot across New York, Boston, Baltimore, San Francisco and Los Angeles. Through Thava Studio he has grown more than twenty brands, from restaurants to creators. His relaunch for director Abi Varghese's Infamous Coconuts drew 19.2 million views across 76 reels with no paid spend.\n\nBefore New York, he worked in creative strategy at the meme marketing agency WLDD in Bangalore, where his work included The Pope's Exorcist cinema stunt for Sony Pictures India and Thank You Durex. He trained in directing at the New York Film Academy's one-year filmmaking conservatory, where he made the Dean's List. He plans shoots in Directure AI and produces with a Claude Code pipeline connected to Premiere Pro, Higgsfield and ElevenLabs, and every output still goes through a human edit."
+  }
+ ],
+ "facts": [
+  [
+   "Name",
+   "Nivedkrishna Thavarayil, also written Nived Thavarayil"
+  ],
+  [
+   "Based in",
+   "New York and New Jersey"
+  ],
+  [
+   "Work",
+   "Creative strategy for organic and paid social, short-form series, AI video production, brand and influencer marketing"
+  ],
+  [
+   "Directed",
+   "12+ series for [Canvas](https://www.canvasott.com), including [Face Value](/series/face-value/), [Red Flags](/series/red-flags/) and [Dear NYC](/series/dear-nyc/)"
+  ],
+  [
+   "Campaigns",
+   "50+, for Sony Pictures India, Netflix India, Zomato and more, including [The Pope's Exorcist](/work/the-popes-exorcist/) and [Thank You Durex](/work/thank-you-durex/)"
+  ],
+  [
+   "Studio",
+   "Thava Studio, 20+ brands grown"
+  ],
+  [
+   "Trained at",
+   "New York Film Academy, one-year filmmaking conservatory in directing (Dean's List). Christ University, Bangalore, BBA (Honours) in Marketing and Advertising"
+  ],
+  [
+   "Podcast",
+   "[Unscripted](/podcast/), on Spotify, Apple Podcasts and YouTube"
+  ],
+  [
+   "Online",
+   "[LinkedIn](https://www.linkedin.com/in/nivedkrishna), [Instagram](https://www.instagram.com/tvedukr_12), [Thava Studio on Instagram](https://www.instagram.com/thava.studio), [IMDb](https://www.imdb.com/name/nm16824024/)"
+  ]
+ ],
+ "photos": [
+  {
+   "src": "/press/nivedkrishna-thavarayil-on-set.jpg",
+   "view": "/press/view-on-set-800.jpg",
+   "viewWebp": "/press/view-on-set-800.webp",
+   "w": 1717,
+   "h": 2576,
+   "cap": "Directing on a beach shoot: earpiece in, walkie-talkie on his belt.",
+   "alt": "Nivedkrishna Thavarayil directing on a beach shoot, earpiece in, walkie-talkie on his belt and a crew lanyard round his neck, standing with two crew members",
+   "credit": "Courtesy of Nivedkrishna Thavarayil",
+   "vw": 800,
+   "vh": 1200
+  },
+  {
+   "src": "/press/nivedkrishna-thavarayil-sf-tech-week-2026.jpg",
+   "view": "/press/view-sf-tech-week-1200.jpg",
+   "viewWebp": "/press/view-sf-tech-week-1200.webp",
+   "w": 2400,
+   "h": 1800,
+   "cap": "At the Canvas launch party, SF Tech Week, San Francisco, October 10, 2026. Left, in the Canvas t-shirt.",
+   "alt": "Nivedkrishna Thavarayil, left, in a black Canvas t-shirt, talking with a guest at the Canvas launch party at SF Tech Week 2026",
+   "credit": "Still from the Canvas after-movie, courtesy of Canvas",
+   "vw": 1200,
+   "vh": 900
+  }
+ ],
+ "stills": [
+  {
+   "src": "/media/stills/09-fv-runway.jpg",
+   "series": "face-value",
+   "title": "Face Value"
+  },
+  {
+   "src": "/media/stills/03-rf-glow.jpg",
+   "series": "red-flags",
+   "title": "Red Flags"
+  },
+  {
+   "src": "/media/stills/06-dnyc-mask.jpg",
+   "series": "dear-nyc",
+   "title": "Dear NYC"
+  },
+  {
+   "src": "/media/stills/02-tfc-mask.jpg",
+   "series": "taser-fight-championship",
+   "title": "Taser Fight Championship"
+  }
+ ],
+ "logos": [
+  {
+   "name": "NKT monogram",
+   "use": "light",
+   "svg": "/press/nkt-monogram-for-light-backgrounds.svg",
+   "png": "/press/nkt-monogram-for-light-backgrounds.png",
+   "view": "/press/nkt-monogram-for-light-backgrounds.svg",
+   "vw": 400,
+   "vh": 221
+  },
+  {
+   "name": "NKT monogram",
+   "use": "dark",
+   "svg": "/press/nkt-monogram-for-dark-backgrounds.svg",
+   "png": "/press/nkt-monogram-for-dark-backgrounds.png",
+   "view": "/press/nkt-monogram-for-dark-backgrounds.svg",
+   "vw": 400,
+   "vh": 221
+  },
+  {
+   "name": "Thava Studio",
+   "use": "light",
+   "png": "/press/thava-studio-logo-for-light-backgrounds.png",
+   "view": "/press/view-thava-studio-light.png",
+   "vw": 800,
+   "vh": 382
+  },
+  {
+   "name": "Thava Studio",
+   "use": "dark",
+   "png": "/press/thava-studio-logo-for-dark-backgrounds.png",
+   "view": "/press/view-thava-studio-dark.png",
+   "vw": 800,
+   "vh": 382
+  }
+ ],
+ "zip": "/press/nivedkrishna-thavarayil-press-kit.zip"
+}

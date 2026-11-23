@@ -39,6 +39,16 @@ export const esc = (s = '') =>
 export const SEL = `<span class="sel"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="${C.LOOP}"/></svg></span>`;
 export const SELW = `<span class="sel"><svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="${C.WIDE}"/></svg></span>`;
 
+/* Press coverage: one list (src/data/press.json) feeds the home Press section and /press/ */
+const h = (t = '') => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+export const pressHTML = (list) =>
+  list
+    .map(
+      (p) =>
+        `<a class="pr" href="${h(p.url)}"><span class="o">${h(p.outlet)}${SEL}</span><span class="h">${h(p.title)}${p.note ? `<small>${h(p.note)}</small>` : ''}</span><span class="dt">${h(p.date)}</span></a>`,
+    )
+    .join('');
+
 /* ---------- home markup, split around the new sections ---------- */
 const body = raw.replace(/^[\s\S]*?<body[^>]*>\s*/, '').replace(/<div class="scrim"[\s\S]*$/, '');
 export const homeBody = body;
@@ -49,7 +59,8 @@ export const headerHTML = (() => {
   return m[0]
     .replace('class="hd"', 'class="hd ink"')
     .replace(/href="#top"/g, 'href="/"')
-    .replace(/href="#/g, 'href="/#');
+    .replace(/href="#/g, 'href="/#')
+    .replace('href="/#press"', 'href="/press/"');
 })();
 
 /* ---------- 1. statement that reads itself as you scroll ---------- */

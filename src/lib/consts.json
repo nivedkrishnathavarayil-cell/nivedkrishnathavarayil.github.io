@@ -36,7 +36,12 @@
    "description": "Creative studio in New York for restaurants, founders and brands: creative strategy, paid social, short-form video and AI video production.",
    "url": "https://nivedkrishnathavarayil.com/work-with-me/",
    "foundingDate": "2025",
-   "areaServed": ["New York City", "New Jersey", "Los Angeles", "San Francisco"],
+   "areaServed": [
+    "New York City",
+    "New Jersey",
+    "Los Angeles",
+    "San Francisco"
+   ],
    "sameAs": "https://www.instagram.com/thava.studio"
   },
   "alumniOf": [
@@ -148,6 +153,21 @@
  "LOOP": "M14,58 C8,26 62,8 112,9 C164,10 196,28 193,54 C190,80 140,94 92,92 C40,90 6,76 9,52 C11,38 34,22 70,15",
  "WIDE": "M100,6 C160,4 197,22 196,50 C195,80 150,95 100,94 C46,93 4,80 4,50 C4,21 45,8 96,6 C122,5 142,8 160,13",
  "press": [
+  {
+   "@type": "Article",
+   "headline": "5 Short-Form Video Studios worth knowing in New York",
+   "url": "https://peekwire.com/article/5-short-form-video-studios-worth-knowing-new-york",
+   "datePublished": "2026-11-23",
+   "author": {
+    "@type": "Person",
+    "name": "Alex Volkmann"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Peekwire",
+    "url": "https://peekwire.com/"
+   }
+  },
   {
    "@type": "NewsArticle",
    "headline": "Nived Krishna, strategic filmmaker: an interview with Nitya Mehrotra",

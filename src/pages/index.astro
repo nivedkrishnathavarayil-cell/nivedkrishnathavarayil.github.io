@@ -1,13 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 import S from '../data/series.json';
-import { homeBody, statementHTML, brandsHTML, shelfHTML, homeLD, casesHTML } from '../lib/site.mjs';
+import PRESS from '../data/press.json';
+import { homeBody, statementHTML, brandsHTML, shelfHTML, homeLD, casesHTML, pressHTML } from '../lib/site.mjs';
 
 const html = homeBody
   .replace('<!--STATEMENT-->', statementHTML)
   .replace('<!--BRANDS-->', brandsHTML)
   .replace('<!--CASES-->', casesHTML)
-  .replace('<!--SHELF-->', shelfHTML(S));
+  .replace('<!--SHELF-->', shelfHTML(S))
+  .replace('<!--PRESS-->', pressHTML(PRESS));
 ---
 <Base
   title="Nivedkrishna Thavarayil | Creative Strategist and Director, New York"
