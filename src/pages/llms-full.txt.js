@@ -21,7 +21,7 @@ export function GET() {
     out.push(`## Case study: ${c.brand}. ${c.title}`, `URL: ${SITE}/work/${c.slug}/`, `Headline result: ${c.stat} ${c.statCap}.`, '');
     if (c.client) out.push(`Client: ${c.client}. Role: ${c.role}.`, '');
     for (const k of ['brief', 'idea']) if (c[k]) out.push(...c[k].map(plain), '');
-    if (c.story) out.push(`### ${c.story.h}`, ...c.story.p.map(plain), '');
+    for (const st of [...(Array.isArray(c.story) ? c.story : c.story ? [c.story] : []), ...(c.after || [])]) out.push(`### ${st.h}`, ...(st.p || []).map(plain), ...(st.ul || []).map((x) => `- ${plain(x)}`), '');
     if (c.how) out.push('### How', ...c.how.map((x) => `- ${plain(x)}`), '');
     if (c.result) out.push('### What happened', ...c.result.map((x) => `- ${plain(x)}`), '');
     if (c.source) out.push(c.source, '');

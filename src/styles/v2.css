@@ -831,3 +831,8 @@ html.yt-open{overflow:hidden}
 .pk-tl span:last-child{color:var(--mute)}
 .pk-honors a,.pk-brands a,.pk-rows a{text-decoration-color:color-mix(in srgb,currentColor 30%,transparent)}
 @media (hover:hover){.pk-honors a:hover,.pk-brands a:hover,.pk-rows a:hover{text-decoration-color:currentColor}}
+.cs-list{margin:0 0 1em;padding-left:1.15em;max-width:62ch;display:grid;gap:10px;font-size:clamp(17px,1.4vw,19px);line-height:1.55}
+.cs-list:last-child{margin-bottom:0}
+.cs-list li::marker{color:var(--red)}
+.cs-list a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.cs-txt p+.cs-list{margin-top:-.2em}

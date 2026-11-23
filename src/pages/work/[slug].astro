@@ -13,6 +13,16 @@ const next = C[(i + 1) % C.length];
 const url = `${SITE}/work/${c.slug}/`;
 const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+/* long-form sections: c.story (one or several, before the idea) and c.after (after the results),
+   each { h, p: [paragraphs], ul: [list items], q: [quote, name, role] } */
+const stories = Array.isArray(c.story) ? c.story : c.story ? [c.story] : [];
+const secHTML = (st, id) =>
+  `<section class="cs-sec" aria-labelledby="${id}"><h2 class="cs-h" id="${id}">${esc(st.h)}</h2><div class="cs-txt">` +
+  (st.p || []).map((x) => `<p>${md(x)}</p>`).join('') +
+  (st.ul ? `<ul class="cs-list">${st.ul.map((x) => `<li>${md(x)}</li>`).join('')}</ul>` : '') +
+  `</div>` +
+  (st.q ? `<figure class="cs-pull"><blockquote class="d">${esc(st.q[0])}</blockquote><figcaption><b>${esc(st.q[1])}</b>, ${esc(st.q[2])}</figcaption></figure>` : '') +
+  `</section>`;
 /* plain @handles in reel credits and source lines become Instagram links */
 const ig = (x) => md(x).replace(/(^|[\s(])@([A-Za-z0-9._]*[A-Za-z0-9_])/g, '$1<a href="https://www.instagram.com/$2/">@$2</a>');
 const mentions = (p) => JSON.stringify(p.body).includes(`/work/${c.slug}/`);
@@ -92,8 +102,8 @@ const ld = {
             <ul class="cs-reels" style={`--n:${Math.min(c.reels.length, 4)}`}>
               {c.reels.map((r) => (
                 <li>
-                  <a class="reel" href={`https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from the ${c.short} case study by Nivedkrishna Thavarayil`}>
-                    <picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture>
+                  <a class="reel" href={r.yt ? `https://www.youtube.com/shorts/${r.yt}` : `https://www.instagram.com/reel/${r.ig}/`} data-ig={r.ig} data-yt={r.yt} data-title={`${r.t}, ${r.v} views`} data-label={`${r.t}, from the ${c.short} case study by Nivedkrishna Thavarayil`}>
+                    {r.yt ? <img src={`https://i.ytimg.com/vi/${r.yt}/oardefault.jpg`} onerror={`this.onerror=null;this.src="https://i.ytimg.com/vi/${r.yt}/hqdefault.jpg"`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /> : <picture><source type="image/webp" srcset={`/media/reels/${r.ig}.webp`} /><img src={`/media/reels/${r.ig}.jpg`} alt={r.alt} width="360" height="640" loading="lazy" decoding="async" /></picture>}
                     <span class="reel-v"><b class="d">{r.v}</b> views</span>
                     <span class="vh">Play the reel</span>
                   </a>
@@ -107,18 +117,7 @@ const ld = {
           <h2 class="cs-h" id="brief">The brief</h2>
           <div class="cs-txt">{c.brief.map((p) => <p set:html={md(p)} />)}</div>
         </section>
-        {c.story && (
-          <section class="cs-sec" aria-labelledby="story">
-            <h2 class="cs-h" id="story">{c.story.h}</h2>
-            <div class="cs-txt">{c.story.p.map((p) => <p set:html={md(p)} />)}</div>
-            {c.story.q && (
-              <figure class="cs-pull">
-                <blockquote class="d">{c.story.q[0]}</blockquote>
-                <figcaption><b>{c.story.q[1]}</b>, {c.story.q[2]}</figcaption>
-              </figure>
-            )}
-          </section>
-        )}
+        {stories.map((st, k) => <Fragment set:html={secHTML(st, `story${k ? k + 1 : ''}`)} />)}
         <section class="cs-sec" aria-labelledby="idea">
           <h2 class="cs-h" id="idea">The idea</h2>
           <div class="cs-txt cs-big">{c.idea.map((p) => <p set:html={md(p)} />)}</div>
@@ -174,6 +173,7 @@ const ld = {
           )}
           {c.source && <p class="cs-src" set:html={ig(c.source)} />}
         </section>
+        {(c.after || []).map((st, k) => <Fragment set:html={secHTML(st, `more${k + 1}`)} />)}
         {c.quote && (
           <figure class="cs-quote">
             <blockquote>{c.quote[0]}</blockquote>
