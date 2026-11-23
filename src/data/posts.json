@@ -1427,7 +1427,7 @@
   "format": "bts",
   "topic": "Film",
   "title": "Why I broke the 180-degree rule.",
-  "dek": "One cell, one light, and a camera that switches sides when the power does.",
+  "dek": "One cell, one light, and a camera that switches sides when the power does. How and when to break the rule on purpose.",
   "short": "Breaking the 180",
   "date": "2026-11-17",
   "dateLabel": "November 17, 2026",
@@ -1445,7 +1445,7 @@
   "body": [
    [
     "p",
-    "At the New York Film Academy, the production workshop is where you get a real studio, a crew and a dolly, and one scene to prove you can run a set. I built a prison cell."
+    "At the [New York Film Academy](https://www.nyfa.edu/), the production workshop is where you get a real studio, a crew and a dolly, and one scene to prove you can run a set. I built a prison cell."
    ],
    [
     "p",
@@ -1462,6 +1462,19 @@
    ],
    [
     "h2",
+    "The short version"
+   ],
+   [
+    "ul",
+    [
+     "**The rule:** keep the camera on one side of the line between two characters, so the audience always knows who's where.",
+     "**The break:** in Agent X the camera crosses that line once, at the moment the prisoner says yes.",
+     "**The reason:** when the power in the room flips, the picture should flip with it.",
+     "**The kit:** a RED Komodo, one overhead light, dolly track on both sides of the table, a small crew and no budget."
+    ]
+   ],
+   [
+    "h2",
     "One cell, one light"
    ],
    [
@@ -1470,7 +1483,7 @@
    ],
    [
     "p",
-    "Yoey Garfield shot it on a RED Komodo. Dillon Cain and Nathan Flores played the two men."
+    "Yoey Garfield shot it on a [RED Komodo](https://www.red.com/komodo-6k), a compact 6K cinema camera. Dillon Cain played the agent and Nathan Flores the prisoner. Yoey and I swap seats: on his film [Love Is Stronger Than Hate](https://www.imdb.com/title/tt38273553/), I was his director of photography."
    ],
    [
     "h2",
@@ -1490,7 +1503,7 @@
    ],
    [
     "p",
-    "Film school teaches the 180-degree rule early. Draw an imaginary line between two characters and keep the camera on one side of it, so the audience never loses track of who's where. Cross it, and the cut feels wrong."
+    "Film school teaches the [180-degree rule](https://en.wikipedia.org/wiki/180-degree_rule) early. Draw an imaginary line between two characters and keep the camera on one side of it, so the audience never loses track of who's where. Cross it, and the cut feels wrong."
    ],
    [
     "p",
@@ -1505,11 +1518,59 @@
     "The camera crosses the line at the exact moment he does."
    ],
    [
+    "h2",
+    "Kubrick crossed it first"
+   ],
+   [
     "p",
-    "Crew: assistant director Yi Chan (Ethan), gaffer Yamira, grip Nicolas, sound Cito, first AC Jeff, second AC Ramon. More of my films are in the [short films section](/#films)."
+    "I'm not the first director to do this on purpose. In [The Shining](https://en.wikipedia.org/wiki/The_Shining_%28film%29), when Jack Torrance meets the ghost of Delbert Grady in the hotel bathroom, Stanley Kubrick cuts to the other side of the line and the two men seem to swap places. [No Film School's breakdown](https://nofilmschool.com/2017/05/when-to-break-180-degree-rule) reads it as a jarring cut that deepens the unease of the scene, and cinematographer David Mullen ASC [describes it](https://blog.frame.io/2016/08/01/180-degree-rule-and-when-to-break-it/) as wide shots \"from both directions, a 180-degree flip, crossing the line.\""
+   ],
+   [
+    "p",
+    "Kubrick broke the rule because Jack's grip on reality was breaking. I broke it because the power in the room was changing hands. Different reasons, same tool: the cut feels wrong, and the audience feels it before they can explain it."
+   ],
+   [
+    "h2",
+    "How to break the 180-degree rule on purpose"
+   ],
+   [
+    "ul",
+    [
+     "**Establish the line first.** The audience has to learn the geography before they can feel it change. In Agent X the camera holds one side for most of the scene.",
+     "**Cross on a story beat, not a whim.** Find the one moment the scene turns. Ours is the prisoner's yes.",
+     "**Cross once.** One break reads as a choice. Three read as a mistake.",
+     "**Build the set for it.** We laid dolly track on both sides of the table, so the camera had somewhere to go when the power flipped.",
+     "**Know your two ways across.** Move the camera over the line on screen, with a dolly or a character walking, and the audience travels with you. Cut straight across, and they feel the jolt. Pick the one the moment needs.",
+     "**Defend it in one sentence.** Mine: the camera crosses the line at the exact moment he does. If you can't say yours, keep the rule."
+    ]
+   ],
+   [
+    "h2",
+    "What people noticed"
+   ],
+   [
+    "p",
+    "The scene went up on [YouTube](https://www.youtube.com/watch?v=GSIja5IH9eo) in September 2025. One of the comments under it is about the performance, not the camera: \"Nathan's acting as the prisoner makes the tension feel so real.\" That's the effect I was after. You feel the shift in the room without noticing the cut that caused it."
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is the 180-degree rule?** A filmmaking guideline: draw an imaginary line between two characters and keep every camera on one side of it, so their left-right positions stay the same from shot to shot.",
+     "**Is breaking it a mistake?** Only when it's an accident. Broken on purpose, it unsettles the audience, which is why directors save it for hallucinations, betrayals and shifts in power.",
+     "**What is Agent X?** A three-minute interrogation scene I conceived and directed at a New York Film Academy production workshop, shot on a RED Komodo by Yoey Garfield, with Dillon Cain and Nathan Flores.",
+     "**Where can I watch it?** On [YouTube](https://www.youtube.com/watch?v=GSIja5IH9eo), or with my other shorts in the [films section](/#films)."
+    ]
+   ],
+   [
+    "p",
+    "Crew: director of photography Yoey Garfield, assistant director Yi Chan (Ethan), gaffer Yamira, grip Nicolas, sound Cito, first AC Jeff, second AC Ramon. Nathan and Ethan are also in [The Last Pizza](https://www.youtube.com/watch?v=3YfriOGVA4w), and how we work as a crew is in [How I make films in New York on an indie budget](/work/how-i-make-films-in-new-york-on-an-indie-budget/)."
    ]
   ],
-  "read": "2 min read",
+  "read": "5 min read",
   "audio": {
    "src": "/media/audio/why-i-broke-the-180-degree-rule.mp3",
    "bytes": 1953686,
@@ -2238,7 +2299,7 @@
   "format": "bts",
   "topic": "Film",
   "title": "Ten episodes at Harvard in under four days.",
-  "dek": "And no lead actor on the morning we left.",
+  "dek": "And no lead actor on the morning we left. What a four-day series teaches you about planning, casting and writing from the footage.",
   "short": "Demo Day, behind the scenes",
   "date": "2026-08-19",
   "dateLabel": "August 19, 2026",
@@ -2267,6 +2328,39 @@
    [
     "p",
     "We had a baseline idea and three days to shoot it."
+   ],
+   [
+    "h2",
+    "The short version"
+   ],
+   [
+    "ul",
+    [
+     "**What:** [Demo Day](/series/demo-day/), a ten-episode startup web series shot guerrilla style around Harvard.",
+     "**How fast:** under four days of 17-hour shoots, each episode written around what we'd shot the day before.",
+     "**What went wrong:** our lead actor dropped out the morning we left, and we missed the real pitch.",
+     "**What saved it:** an actor who said yes in one phone call, a crew who did every job, and a script built to bend."
+    ]
+   ],
+   [
+    "h2",
+    "The script we drove up with"
+   ],
+   [
+    "p",
+    "By the time we left, the baseline idea had become a master script with the working title The Problem Statement: ten episodes, each with a one-line hook written above it. Episode two: \"Four hours by hand. Thirty seconds by machine.\" Episode eight: \"He's deleting a $29 subscription. It was never about the $29.\""
+   ],
+   [
+    "p",
+    "It was written to survive a shoot like this. Every scene heading listed a primary location and pre-approved backups, so a bench we couldn't use never meant a rewrite. Every text message on screen was tagged with how to shoot it, mostly as real screen recordings. The laptops ran the real Directure, so we needed no motion graphics. The only other voice in the story, a first customer called Marcus, was written to be performed live on a real phone call from off camera, so the reactions would be real."
+   ],
+   [
+    "p",
+    "It even had a running gesture between the two founders, a four-beat handshake called the checkmark: clasp, hold, draw a checkmark in the air, knuckle tap. It came back seven times, fumbled in episode two and finally finished after the pitch in episode ten."
+   ],
+   [
+    "p",
+    "What it couldn't plan for was losing half its cast. Every role lived inside the two founders, which made the series cheap to shoot and fragile to cast."
    ],
    [
     "h2",
@@ -2301,15 +2395,51 @@
     "Everyone did a bit of everything. Abhinav was acting and producing, Kais Vasaya was shooting as director of photography, and at different points all of us were writing, art directing, or just throwing out ideas because that's what the day needed."
    ],
    [
+    "h2",
+    "What a four-day series teaches you"
+   ],
+   [
+    "ul",
+    [
+     "**Write the alternates into the script.** A primary location and a backup or two in every scene heading turns a decision on the day into seconds, not a meeting.",
+     "**Shoot what can't be repeated first.** Our first day was built around the real event, because it only happens once. When we missed it, staging it in an empty auditorium the next day was the fix.",
+     "**Keep the cast tiny, but know your second call.** Two leads made the shoot cheap. It also meant one unanswered phone nearly ended it.",
+     "**Give every episode a one-line hook.** If you can't write the hook, the episode isn't ready. On a phone, the hook is the episode.",
+     "**Put the real product on screen.** A screen recording of a real tool is faster than motion graphics and more convincing.",
+     "**Plant a motif early and pay it off late.** One repeated gesture, spaced across the season, gives a short series an ending that feels earned.",
+     "**When the plan breaks, write from the footage.** Each day's rushes became the next day's outline. That's how we finished the season."
+    ]
+   ],
+   [
     "quote",
     "Ten episodes, no real plan, and honestly one of the best things I've made this year."
+   ],
+   [
+    "h2",
+    "The people who made it"
+   ],
+   [
+    "p",
+    "Abhinav Singla produced and starred. Kais Vasaya was director of photography. Chewie stepped in on a few hours' notice and played a role rewritten for her in the car. I directed, and like everyone else I wrote, art directed and threw out ideas wherever the day needed them."
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is Demo Day?** A ten-episode startup web series directed by Nivedkrishna Thavarayil, about two roommate founders building an AI filmmaking tool, shot around Harvard in under four days in August 2026.",
+     "**What is Directure AI?** Abhinav Singla's AI production planning tool. It plays itself in the series.",
+     "**How do you shoot a series in four days?** Plan alternates for every scene, keep the cast small, shoot the moments you can't repeat first and write each day from the last day's footage."
+    ]
    ],
    [
     "p",
     "This is the shoot I think about when people ask how we plan a series so fast. [Here's the system we use now](/work/how-we-plan-a-micro-drama-in-a-day/), and [here's the series page for Demo Day](/series/demo-day/)."
    ]
   ],
-  "read": "2 min read",
+  "read": "4 min read",
   "audio": {
    "src": "/media/audio/ten-episodes-at-harvard-in-under-four-days.mp3",
    "bytes": 1640541,
@@ -2717,7 +2847,7 @@
   "format": "take",
   "topic": "Creators",
   "title": "Your product doesn't need an ad. It needs a format.",
-  "dek": "What a famous curry taught me about creators with no budget.",
+  "dek": "What a famous curry taught me about creators with no budget, and a checklist for finding your own format.",
   "short": "Formats beat ads",
   "date": "2026-11-17",
   "dateLabel": "November 17, 2026",
@@ -2735,7 +2865,7 @@
   "body": [
    [
     "p",
-    "Brick Lane Curry House has a dish with a reputation. Its phaal is the curry Adam Richman took on in Man v. Food, and people still walk in asking for it by name. That's the kind of story most brands would pay for. What the restaurant didn't have was a budget for paid creators."
+    "Brick Lane Curry House has a dish with a reputation. Its phaal is the curry Adam Richman took on in [Man v. Food](https://en.wikipedia.org/wiki/Man_v._Food) in 2009, the one Hot Ones host Sean Evans fed to Rhett & Link in a [2017 special at the restaurant](https://thetvdb.com/series/hot-ones/episodes/6050164), and one [Time Out](https://timeout.com/newyork/restaurants/spiciest-dishes-in-nyc) still lists among the spiciest dishes in New York. People walk in asking for it by name. That's the kind of story most brands would pay for. What the restaurant didn't have was a budget for paid creators."
    ],
    [
     "p",
@@ -2743,11 +2873,24 @@
    ],
    [
     "h2",
+    "The short version"
+   ],
+   [
+    "ul",
+    [
+     "**An ad** asks for attention once. **A format** earns it every week, because people know the shape and want to see who's next.",
+     "**The phaal challenge** already had a villain, a stake and a reaction, so we ran it as a recurring show on the restaurant's own channels.",
+     "**Creators came in as contestants,** not paid billboards. One collaboration reached 1.47 million views with no paid creators.",
+     "**Your format** is probably the thing customers already repeat about you without being asked."
+    ]
+   ],
+   [
+    "h2",
     "The villain has a backstory"
    ],
    [
     "p",
-    "The phaal started as the least interesting dish on the menu. Chef Satinder Sharma, who opened Brick Lane on East 6th Street in 2002, decided that if he was going to make something spicy, he'd do it justice. Habaneros first, then Scotch bonnets, bhut jolokia and the Carolina Reaper, bought straight from Ed Currie, the grower who bred it."
+    "The phaal started as the least interesting dish on the menu. Chef Satinder Sharma, who opened Brick Lane on East 6th Street in 2002, decided that if he was going to make something spicy, he'd do it justice. Habaneros first, then Scotch bonnets, bhut jolokia and the [Carolina Reaper](https://en.wikipedia.org/wiki/Carolina_Reaper), bought straight from [Ed Currie](https://en.wikipedia.org/wiki/Ed_Currie), the grower who bred it. The Reaper held the Guinness record for the world's hottest chili for a decade."
    ],
    [
     "p",
@@ -2764,6 +2907,18 @@
    [
     "p",
     "So we turned the challenge into a recurring content property on the restaurant's own channels. One phaal reel, a collaboration with [First We Feast](https://www.instagram.com/reel/DDfpOyOvk33/), reached 1.47 million views."
+   ],
+   [
+    "h2",
+    "The best format in food is a challenge"
+   ],
+   [
+    "p",
+    "Look at the most famous food show on YouTube. [Hot Ones](https://en.wikipedia.org/wiki/Hot_Ones), made by First We Feast since 2015, is one setup repeated hundreds of times: ten wings, each hotter than the last, and a celebrity answering questions while they burn. The guest changes every week. The shape never does. When Ed Currie unveiled Pepper X, the pepper that took the Reaper's record, he did it [on Hot Ones](https://www.npr.org/2023/10/17/1206450553/worlds-hottest-pepper-guinness-record-pepper-x)."
+   ],
+   [
+    "p",
+    "That's the audience the phaal belongs to. So when our reel went out as a collaboration with First We Feast, it didn't land in their feed as an ad. It looked like the next episode of something they already watch."
    ],
    [
     "h2",
@@ -2790,11 +2945,54 @@
     "Then give it a shape that repeats. The same setup, the same stakes, a new face every time. Run it on your own channels so you own it, and invite creators in as guests so their audiences meet you inside a story instead of an ad break."
    ],
    [
+    "h2",
+    "A format checklist"
+   ],
+   [
+    "ul",
+    [
+     "**A known hero or villain.** The phaal, the hardest question, the impossible build.",
+     "**A clear stake.** Finish it or don't. Get it right or don't.",
+     "**A reaction at the end.** The payoff people wait for and send to a friend.",
+     "**A new face every time.** Guests keep it fresh, and the shape keeps it familiar.",
+     "**A home you own.** Post on your own channels and as a collaboration, so every guest's audience lands on yours."
+    ]
+   ],
+   [
+    "h2",
+    "Mistakes to avoid"
+   ],
+   [
+    "ul",
+    [
+     "Paying creators to hold the product up to the camera.",
+     "Changing the shape every week, so nobody learns what to expect.",
+     "Letting the guest post alone. A collaboration post reaches both audiences at once.",
+     "Hiding the backstory. The story behind the product is the hook."
+    ]
+   ],
+   [
     "quote",
     "If your product has a famous story, it doesn't need an ad. It needs a format."
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is a content format?** A repeatable setup with the same shape every time, such as a challenge, a series or a ritual, where only the guest or the subject changes.",
+     "**Can a restaurant grow on social media without paying creators?** Yes, if it gives creators something they want to make. Brick Lane's phaal challenge reached 1.47 million views on one reel with zero paid creators.",
+     "**What is phaal?** A curry built to be as hot as possible. Brick Lane's is made with some of the world's hottest peppers and became famous through Man v. Food."
+    ]
+   ],
+   [
+    "p",
+    "The full story, with the numbers and the chef in his own words, is in the [Brick Lane Curry House case study](/work/brick-lane-phaal/)."
    ]
   ],
-  "read": "2 min read",
+  "read": "4 min read",
   "audio": {
    "src": "/media/audio/your-product-needs-a-format-not-an-ad.mp3",
    "bytes": 2084108,
