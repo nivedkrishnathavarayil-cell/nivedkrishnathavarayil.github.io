@@ -4,86 +4,308 @@
     "keywords": "Nivedkrishna Thavarayil, tvedukr_12, creative strategy, filmmaking, micro dramas, short-form video, social media marketing, New York"
   },
   "follow": [
-    ["Website", "https://nivedkrishnathavarayil.com/"],
-    ["Instagram @tvedukr_12", "https://www.instagram.com/tvedukr_12"],
-    ["Thava Studio @thava.studio", "https://www.instagram.com/thava.studio"],
-    ["LinkedIn", "https://www.linkedin.com/in/nivedkrishna"],
-    ["YouTube", "https://www.youtube.com/@nivedkrishnathavarayil5851"],
-    ["TikTok @t_nivedk", "https://www.tiktok.com/@t_nivedk"],
-    ["IMDb", "https://www.imdb.com/name/nm16824024/"],
-    ["Letterboxd", "https://letterboxd.com/nivedkrishna/"]
+    [
+      "Website",
+      "https://nivedkrishnathavarayil.com/"
+    ],
+    [
+      "Instagram @tvedukr_12",
+      "https://www.instagram.com/tvedukr_12"
+    ],
+    [
+      "Thava Studio @thava.studio",
+      "https://www.instagram.com/thava.studio"
+    ],
+    [
+      "LinkedIn",
+      "https://www.linkedin.com/in/nivedkrishna"
+    ],
+    [
+      "YouTube",
+      "https://www.youtube.com/@nivedkrishnathavarayil5851"
+    ],
+    [
+      "TikTok @t_nivedk",
+      "https://www.tiktok.com/@t_nivedk"
+    ],
+    [
+      "IMDb",
+      "https://www.imdb.com/name/nm16824024/"
+    ],
+    [
+      "Letterboxd",
+      "https://letterboxd.com/nivedkrishna/"
+    ]
   ],
-  "commonTags": ["Nivedkrishna Thavarayil", "tvedukr_12", "Nived Thavarayil", "Unscripted podcast", "creative strategist New York", "director New York"],
+  "commonTags": [
+    "Nivedkrishna Thavarayil",
+    "tvedukr_12",
+    "Nived Thavarayil",
+    "Unscripted podcast",
+    "creative strategist New York",
+    "director New York"
+  ],
   "episodes": {
     "how-i-make-films-in-new-york-on-an-indie-budget": {
       "yt": "GE5sYUmOWYo",
       "intro": "How to make films in New York on an indie budget, from director Nivedkrishna Thavarayil: the New York Film Academy, jugaad, cold DMs, the city as a free set, and the micro dramas he now directs for Canvas. Practical no-budget filmmaking advice, with a checklist for your first shoot and the mistakes to avoid.",
-      "tags": ["indie filmmaking", "low budget filmmaking", "no budget filmmaking", "filmmaking in New York", "New York Film Academy", "NYFA", "jugaad", "micro dramas", "short film tips", "guerrilla filmmaking"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#IndieFilmmaking"],
+      "tags": [
+        "indie filmmaking",
+        "low budget filmmaking",
+        "no budget filmmaking",
+        "filmmaking in New York",
+        "New York Film Academy",
+        "NYFA",
+        "jugaad",
+        "micro dramas",
+        "short film tips",
+        "guerrilla filmmaking"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#IndieFilmmaking"
+      ],
       "links": []
     },
     "ten-episodes-at-harvard-in-under-four-days": {
       "yt": "6zaL30HB_mQ",
       "intro": "Behind the scenes of Demo Day, a 10-episode web series shot at Harvard in under four days and directed by Nivedkrishna Thavarayil for Canvas. Two roommate founders, a real Harvard pitch as the finale, and no lead actor on the morning the crew left.",
-      "tags": ["Demo Day web series", "Harvard", "behind the scenes", "micro drama", "web series production", "Canvas", "Directure AI", "how to shoot a web series", "short form series"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#BehindTheScenes"],
-      "links": [["Directure AI", "https://directureai.com/"]]
+      "tags": [
+        "Demo Day web series",
+        "Harvard",
+        "behind the scenes",
+        "micro drama",
+        "web series production",
+        "Canvas",
+        "Directure AI",
+        "how to shoot a web series",
+        "short form series"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#BehindTheScenes"
+      ],
+      "links": [
+        [
+          "Directure AI",
+          "https://directureai.com/"
+        ]
+      ]
     },
     "how-we-plan-a-micro-drama-in-a-day": {
       "yt": "StvATIlv6nc",
       "intro": "How Nivedkrishna Thavarayil plans a micro drama in a day: the AI production stack behind the 12+ short-form series he directed for Canvas across New York, Boston, Baltimore, San Francisco and Los Angeles. Planning in Directure AI, a Claude Code post-production pipeline, turning every shoot into ad creative, and what AI doesn't do.",
-      "tags": ["micro drama", "how to make a micro drama", "AI filmmaking", "AI video production", "Directure AI", "Claude Code", "vertical drama", "short form series", "Canvas", "film production workflow"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#MicroDrama"],
-      "links": [["Directure AI", "https://directureai.com/"]]
+      "tags": [
+        "micro drama",
+        "how to make a micro drama",
+        "AI filmmaking",
+        "AI video production",
+        "Directure AI",
+        "Claude Code",
+        "vertical drama",
+        "short form series",
+        "Canvas",
+        "film production workflow"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#MicroDrama"
+      ],
+      "links": [
+        [
+          "Directure AI",
+          "https://directureai.com/"
+        ]
+      ]
     },
     "why-i-broke-the-180-degree-rule": {
       "yt": "jCRGuoC4uQ0",
       "intro": "Director Nivedkrishna Thavarayil on breaking the 180-degree rule in Agent X, his prison-cell interrogation scene at the New York Film Academy: one cell, one light, dolly track on both sides of the table, and a camera that switches sides when the power does. A short lesson in blocking and film grammar.",
-      "tags": ["180 degree rule", "film grammar", "blocking", "cinematography", "Agent X", "New York Film Academy", "directing tips", "interrogation scene", "dolly shot", "film school"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#Filmmaking"],
-      "links": [["Watch the Agent X scene on YouTube", "https://www.youtube.com/watch?v=GSIja5IH9eo"]]
+      "tags": [
+        "180 degree rule",
+        "film grammar",
+        "blocking",
+        "cinematography",
+        "Agent X",
+        "New York Film Academy",
+        "directing tips",
+        "interrogation scene",
+        "dolly shot",
+        "film school"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#Filmmaking"
+      ],
+      "links": [
+        [
+          "Watch the Agent X scene on YouTube",
+          "https://www.youtube.com/watch?v=GSIja5IH9eo"
+        ]
+      ]
     },
     "canvas-at-sf-and-la-tech-week": {
       "yt": "wqibh__GYIQ",
-      "intro": "What happened when Canvas went to SF Tech Week and LA Tech Week in October 2026: a launch party in San Francisco, The Hybrid Studio in Los Angeles, an Oscar-winning filmmaker on the bill, and the trailers for the micro dramas Nivedkrishna Thavarayil directed. How to pitch one slate to two different rooms, with a checklist for small teams.",
-      "tags": ["SF Tech Week", "LA Tech Week", "Canvas", "micro dramas", "The Hybrid Studio", "Creators Are the New Studios", "how to pitch", "startup events", "tech week 2026"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#MicroDrama"],
-      "links": [["The Canvas launch party post on Instagram", "https://www.instagram.com/p/DeTXeLNtdPr/"]]
+      "intro": "What happened when Canvas went to SF Tech Week and LA Tech Week in October 2026: the Canvas launch party in San Francisco, The Hybrid Studio in Los Angeles, Oscar-winning editor Hemal Trivedi on stage, and the trailers for the micro dramas Nivedkrishna Thavarayil directed. What two rooms taught him about pitching stories to tech, with a checklist for small teams.",
+      "tags": [
+        "SF Tech Week",
+        "LA Tech Week",
+        "Canvas",
+        "micro dramas",
+        "The Hybrid Studio",
+        "a16z",
+        "Hemal Trivedi",
+        "pitching to tech",
+        "startup events",
+        "tech week 2026"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#MicroDrama"
+      ],
+      "links": [
+        [
+          "The Canvas launch party post on Instagram",
+          "https://www.instagram.com/p/DeTXeLNtdPr/"
+        ]
+      ]
     },
     "fifteen-people-on-one-floor": {
       "yt": "6nhuM_9va0Y",
       "intro": "Nivedkrishna Thavarayil joined WLDD in Bangalore in January 2023, when the meme marketing agency was about fifteen people on one floor. What he made there, what a meme agency's early team taught him, three rules for content people want to share, and how WLDD went on to own ScoopWhoop.",
-      "tags": ["WLDD", "meme marketing", "ScoopWhoop", "agency life", "Bangalore", "viral content", "social media marketing India", "creative strategist", "meme pages"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#MemeMarketing"],
+      "tags": [
+        "WLDD",
+        "meme marketing",
+        "ScoopWhoop",
+        "agency life",
+        "Bangalore",
+        "viral content",
+        "social media marketing India",
+        "creative strategist",
+        "meme pages"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#MemeMarketing"
+      ],
       "links": []
     },
     "what-the-popes-exorcist-taught-me-about-virality": {
       "yt": "JjRZOjHSkO0",
       "intro": "How a possession in a packed Indian cinema made The Pope's Exorcist go viral: Nivedkrishna Thavarayil on the Sony Pictures India campaign he worked on as a creative strategist at WLDD in 2023, covered by Hindustan Times and The Indian Express. Five lessons on virality, cultural fluency, memes and speed, and why most brands get it wrong.",
-      "tags": ["The Pope's Exorcist", "Sony Pictures India", "viral marketing", "movie marketing", "virality", "meme marketing", "WLDD", "guerrilla marketing", "film promotion"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#ViralMarketing"],
-      "links": [["The Pope's Exorcist case study", "/work/the-popes-exorcist/"], ["Hindustan Times", "https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html"], ["The Indian Express", "https://indianexpress.com/article/trending/trending-in-india/possessed-woman-growls-at-moviegoers-as-the-popes-exorcist-trailer-plays-in-theatre-8545834/"]]
+      "tags": [
+        "The Pope's Exorcist",
+        "Sony Pictures India",
+        "viral marketing",
+        "movie marketing",
+        "virality",
+        "meme marketing",
+        "WLDD",
+        "guerrilla marketing",
+        "film promotion"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#ViralMarketing"
+      ],
+      "links": [
+        [
+          "The Pope's Exorcist case study",
+          "/work/the-popes-exorcist/"
+        ],
+        [
+          "Hindustan Times",
+          "https://www.hindustantimes.com/trending/woman-scares-people-in-theatre-as-the-pope-s-exorcist-trailer-plays-on-screen-101680956103411.html"
+        ],
+        [
+          "The Indian Express",
+          "https://indianexpress.com/article/trending/trending-in-india/possessed-woman-growls-at-moviegoers-as-the-popes-exorcist-trailer-plays-in-theatre-8545834/"
+        ]
+      ]
     },
     "hub-hype-and-hygiene": {
       "yt": "2O_cHeoCLr4",
       "intro": "Hub, hype and hygiene is the posting mix Nivedkrishna Thavarayil uses for every brand he runs, from film and FMCG campaigns at WLDD to cafes in New York. How to plan a week of social media posts without running out of ideas, a weekly template, how to measure each H, and the mistakes to avoid.",
-      "tags": ["hub hype hygiene", "content strategy", "content pillars", "social media content plan", "content calendar", "posting strategy", "small business marketing", "Instagram strategy", "social media marketing"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#ContentStrategy"],
+      "tags": [
+        "hub hype hygiene",
+        "content strategy",
+        "content pillars",
+        "social media content plan",
+        "content calendar",
+        "posting strategy",
+        "small business marketing",
+        "Instagram strategy",
+        "social media marketing"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#ContentStrategy"
+      ],
       "links": []
     },
     "your-product-needs-a-format-not-an-ad": {
       "yt": "HdvXqFyfCh0",
       "intro": "Your product doesn't need an ad. It needs a format. Nivedkrishna Thavarayil on how Brick Lane Curry House turned its famous phaal, the curry Adam Richman took on in Man v. Food, into a creator challenge with no budget for paid creators. How to find your own format and treat creators as contestants, not billboards.",
-      "tags": ["Brick Lane Curry House", "phaal", "Man v Food", "creator marketing", "influencer marketing", "content format", "restaurant marketing", "zero budget marketing", "creator collaborations"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#CreatorMarketing"],
-      "links": [["Brick Lane's phaal case study", "/work/brick-lane-phaal/"]]
+      "tags": [
+        "Brick Lane Curry House",
+        "phaal",
+        "Man v Food",
+        "creator marketing",
+        "influencer marketing",
+        "content format",
+        "restaurant marketing",
+        "zero budget marketing",
+        "creator collaborations"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#CreatorMarketing"
+      ],
+      "links": [
+        [
+          "Brick Lane's phaal case study",
+          "/work/brick-lane-phaal/"
+        ]
+      ]
     },
     "the-only-sales-strategy-i-have-ever-used": {
       "yt": "DU8AePPPIRc",
       "intro": "Growvior, the software company Nivedkrishna Thavarayil co-founded with Agrajh AK, closed a $10,000 client without cold email, ads or a sales deck. The only sales strategy he has ever used: tell people what you do, pitch everything, and let your online presence pitch for you.",
-      "tags": ["Growvior", "sales strategy", "founder sales", "how to get clients", "agency growth", "networking", "personal brand", "startup sales", "word of mouth"],
-      "hashtags": ["#Unscripted", "#NivedkrishnaThavarayil", "#Founders"],
-      "links": [["Growvior", "https://growvior.com/"], ["Agrajh AK on LinkedIn", "https://www.linkedin.com/in/agrajh-ak/"]]
+      "tags": [
+        "Growvior",
+        "sales strategy",
+        "founder sales",
+        "how to get clients",
+        "agency growth",
+        "networking",
+        "personal brand",
+        "startup sales",
+        "word of mouth"
+      ],
+      "hashtags": [
+        "#Unscripted",
+        "#NivedkrishnaThavarayil",
+        "#Founders"
+      ],
+      "links": [
+        [
+          "Growvior",
+          "https://growvior.com/"
+        ],
+        [
+          "Agrajh AK on LinkedIn",
+          "https://www.linkedin.com/in/agrajh-ak/"
+        ]
+      ]
     }
   }
 }
