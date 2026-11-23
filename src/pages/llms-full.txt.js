@@ -5,7 +5,7 @@ import { SITE } from '../lib/site.mjs';
 import { FACTS } from '../lib/facts.mjs';
 
 /* /llms-full.txt: the full text of every article and case study as Markdown, for AI assistants that read a whole site at once. */
-const plain = (t) => String(t || '').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, a, u) => `${a} (${u.startsWith('/') ? SITE + u : u})`);
+const plain = (t) => String(t || '').replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, a, u) => `${a} (${u.startsWith('/') ? SITE + u : u})`);
 const block = (b) => {
   const [k, v] = b;
   if (k === 'p') return plain(v);

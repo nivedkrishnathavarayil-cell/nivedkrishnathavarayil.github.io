@@ -348,12 +348,15 @@
   "format": "bts",
   "topic": "Events",
   "title": "What happened when we took Canvas to SF and LA Tech Week.",
-  "dek": "Two events in three days, an Oscar-winning filmmaker on the bill, and the trailers for my series in front of both rooms.",
+  "dek": "Two events in three days, an Oscar-winning editor on the bill, 371 names on one guest list, and the trailers for my series in front of both rooms.",
   "short": "Canvas at SF and LA Tech Week",
   "date": "2026-11-19",
   "dateLabel": "November 19, 2026",
-  "read": "6 min read",
-  "origin": null,
+  "read": "10 min read",
+  "origin": [
+   "Also on LinkedIn",
+   "https://www.linkedin.com/pulse/two-coasts-rooms-one-slate-taking-canvas-sf-la-tech-week-thavarayil-ijhrc/"
+  ],
   "color": "#2f2a4a",
   "related": null,
   "cover": {
@@ -367,11 +370,25 @@
   "body": [
    [
     "p",
-    "In October, Canvas went west for Tech Week: SF Tech Week ran October 5 to 11 and LA Tech Week ran October 12 to 18. I went as Canvas's creative director, with Canvas CEO Abhinav Singla. We hosted two events, went to plenty more, and pitched Canvas at every one."
+    "In October, Canvas went west. [Abhinav Singla](https://www.instagram.com/abhinav_singla/), our CEO, and I spent four or five days between San Francisco and Los Angeles for [SF Tech Week](https://www.tech-week.com/calendar) (October 5 to 11) and LA Tech Week (October 12 to 18), the decentralized tech conference [presented by a16z](https://www.tech-week.com/deep-tech). We hosted two events, went to plenty more, pitched Canvas every single day and still shot about four series in between."
    ],
    [
     "p",
-    "This is what the week looked like, why a micro drama studio belongs at a tech week at all, and what I'd tell any small team about pitching one slate to rooms that want different things."
+    "I went as Canvas's creative director, with the trailers for the series I directed. This is what the week looked like from my side of the camera, who was in each room, what they said, and what it taught me about pitching stories to a room full of tech people."
+   ],
+   [
+    "h2",
+    "The short version"
+   ],
+   [
+    "ul",
+    [
+     "**San Francisco:** Saturday, October 10, 1 to 4pm, at 555 Grant Ave, hosted by [Anwar Events](https://luma.com/anwar-8t0d). 371 people on the guest list.",
+     "**Los Angeles:** Monday, October 12, 5 to 8pm, at 11520 W Pico Blvd, hosted by [House of 434](https://houseof434.com/) and listed as an a16z event. About 300 people came.",
+     "**On stage:** Ilias Anwar, Abhinav Singla, Ben Woollams and Xavier Santos in SF. Shilpi Nayak, Oscar-winning editor Hemal Trivedi and Abhinav in LA.",
+     "**On screen:** the trailers for our slate, including [Red Flags](/series/red-flags/), which premiered to both rooms.",
+     "**In the can:** two after-movies and about four series, including [Young Founders](/series/young-founders/) and [Hacker Room](/series/hacker-room/) in San Francisco and [LA Artists](/series/la-artists/) in Los Angeles."
+    ]
    ],
    [
     "video",
@@ -388,15 +405,19 @@
    ],
    [
     "h2",
-    "San Francisco: the Canvas launch party"
+    "San Francisco: investing in media IP, with Anwar Events"
    ],
    [
     "p",
-    "On Saturday, October 10, Anwar Events hosted the [Canvas Launch Party: Creators Are the New Studios](https://luma.com/anwar-8t0d) at 555 Grant Ave. Ilias Anwar moderated a panel with Abhinav, Ben Woollams of TrueRights and Pinto Labs CTO Xavier Santos. [371 guests](https://luma.com/anwar-8t0d) were on the list. Here's [the event post on Instagram](https://www.instagram.com/p/DeTXeLNtdPr/)."
+    "\"Time to show San Francisco what we've been building,\" Abhinav says to camera in the first second of our after-movie. On Saturday, October 10, [Ilias Anwar](https://www.linkedin.com/in/iliasanwar) and [Anwar Events](https://luma.com/anwarevents), his community of 70,000 founders, investors and creators, hosted our launch party at 555 Grant Ave. On Luma it was billed as [Canvas: Investing in content, IP, and storytelling](https://luma.com/anwar-8t0d), and 371 people were on the guest list."
    ],
    [
     "p",
-    "I played the trailers for the series I directed, and the slate went up in four lanes: fashion, travel, fiction and non-fiction. [The Red Carpet Show](/series/the-red-carpet-show/), our 90-second red carpet interview series with Ilias, was there too."
+    "Ilias is the CEO of [Anwar Media](https://www.anwarmedia.com/), which produces events and brand partnerships for tech companies including SpaceX and RedNote, and he moderated the panel. Next to him: Abhinav; [Ben Woollams](https://advertisingweek.com/ben-woollams-ceo-and-founder-truerights/), founder and CEO of TrueRights, a platform that helps talent license their content and likeness; and Xavier Santos, CTO of [Pinto Labs](https://pintolabs.ai/), a San Francisco team building AI-native consumer apps, backed by Caffeinated Capital and Electric Capital. The host list also included Charles Legard, Lane Spurlock, Saketh Gunda and [Shilpi Nayak](https://x.com/shilpinayak), who would host us again in Los Angeles two days later."
+   ],
+   [
+    "p",
+    "On stage, Abhinav walked the room through the slate in four lanes: fashion, travel, fiction and non-fiction. His words in the after-movie: \"so many different possibilities of short-form shows across genres.\" Then the trailers did the talking. [The Red Carpet Show](/series/the-red-carpet-show/), the 90-second red carpet interview series I direct with Ilias as host, was filming interviews with guests."
    ],
    [
     "gallery",
@@ -433,15 +454,42 @@
    ],
    [
     "h2",
-    "Los Angeles: The Hybrid Studio"
+    "Los Angeles: The Hybrid Studio, an a16z night with House of 434"
    ],
    [
     "p",
-    "Two days later, on Monday, October 12, House of 434 hosted [The Hybrid Studio: From Oscar-Winning Films to AI-Native Studios](https://luma.com/houseof-nelv) at 11520 W Pico Blvd, listed as an a16z event and in [dot.LA's guide to Monday at LA Tech Week](https://dot.la/la-tech-week-monday-2026-2678063292.html). Shilpi Nayak opened. [Hemal Trivedi](https://en.wikipedia.org/wiki/Hemal_Trivedi), co-founder of ZeroInfinity, presented, and so did Abhinav. Hemal edited Saving Face, the documentary that won the Oscar for Best Documentary Short, and won an Emmy for that edit. Then she and Abhinav sat down for a panel on where craft meets AI, with an investor in the AI video company Higgsfield, and the night closed with an open Q&A."
+    "\"Presenting Canvas in Los Angeles\" is the first line of the second after-movie. Two days later, on Monday, October 12, House of 434 hosted [The Hybrid Studio: From Oscar-Winning Films to AI-Native Studios](https://luma.com/houseof-nelv) at 11520 W Pico Blvd, with Canvas, Anwar Media, Ugly Talk and Jetzy as partners. It was an a16z event on the [LA Tech Week calendar](https://www.tech-week.com/calendar/la/events/the-hybrid-studio-from-oscar-winning-films-to-ai-native-studios-ff5fa56b-f457-4580-81fd-c353cbbdaf1a), and [dot.LA put it in its guide](https://dot.la/la-tech-week-monday-2026-2678063292.html) to Monday at LA Tech Week."
    ],
    [
     "p",
-    "Around 300 people came. I played our trailers again, and the conversations after were the good kind: filmmakers, AI filmmakers and investors in one room, all asking what a small team can make now."
+    "Shilpi Nayak opened the night. She founded [House of 434](https://houseof434.com/) and 434 VC, an early-stage fund for frontier technology, after leading engineering teams at Google and building a YC-backed startup. Then came two talks. [Hemal Trivedi](https://www.imdb.com/name/nm2578458/) presented From Oscar-Winning Filmmaking to ZeroInfinity, the company she co-founded. She edited [Saving Face](https://en.wikipedia.org/wiki/Saving_Face_%282012_film%29), which won the Oscar for Best Documentary Short, won an Emmy for that edit, and the night billed her as an AMPAS voting member and a Columbia Journalism professor. Abhinav presented Creators Are the New Studios."
+   ],
+   [
+    "p",
+    "Then the two sat down for a fireside on where craft meets AI, joined on stage by an investor in the AI video company [Higgsfield](https://higgsfield.ai/). The questions on the program are the ones every filmmaker I know is asking: where AI genuinely improves the creative process and where it falls short, whether small teams can now make what used to take a studio, and how short-form IP, distribution and ownership will change. The night closed with questions from the room."
+   ],
+   [
+    "gallery",
+    [
+     {
+      "src": "/media/posts/tech-week/la-screening.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "A Canvas series trailer playing on the big screen to a seated crowd at The Hybrid Studio, LA Tech Week 2026, from the after-movie by Canvas creative director Nivedkrishna Thavarayil",
+      "cap": "Our trailer on the big screen at The Hybrid Studio."
+     },
+     {
+      "src": "/media/posts/tech-week/la-room.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "The full room seated under string lights for the talks at The Hybrid Studio, LA Tech Week 2026, around 300 people",
+      "cap": "Around 300 people, seated for the talks."
+     }
+    ]
+   ],
+   [
+    "p",
+    "Our trailers played on the big screen again. The trailer for [Red Flags](/series/red-flags/), the New York romance series I directed with creator Robert Maxwell, premiered to both rooms, and I recut it for launch from what those audiences told us."
    ],
    [
     "video",
@@ -472,19 +520,75 @@
     "gallery",
     [
      {
+      "src": "/media/posts/tech-week/la-nived.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "Nivedkrishna Thavarayil, Canvas creative director, in a Creators Are the New Studios hoodie talking with a guest at The Hybrid Studio, LA Tech Week 2026, with Canvas CEO Abhinav Singla on the left",
+      "cap": "That's me in the middle, talking with a guest, with Abhinav on the left."
+     },
+     {
       "src": "/media/posts/tech-week/la-fireside.jpg",
       "w": 1200,
       "h": 900,
       "alt": "Canvas CEO Abhinav Singla, right, smiling on stage in a Creators Are the New Studios hoodie during the panel at The Hybrid Studio, LA Tech Week 2026, from the Canvas after-movie by creative director Nivedkrishna Thavarayil",
       "cap": "Abhinav Singla, right, mid-conversation at The Hybrid Studio."
-     },
+     }
+    ]
+   ],
+   [
+    "gallery",
+    [
      {
       "src": "/media/posts/tech-week/la-crowd.jpg",
       "w": 1200,
       "h": 900,
       "alt": "House of 434 founder Shilpi Nayak speaking to guests at tables under string lights at The Hybrid Studio, LA Tech Week 2026, from the after-movie of the trip by Canvas creative director Nivedkrishna Thavarayil",
       "cap": "Shilpi Nayak, who opened the night. Around 300 people in the room."
+     },
+     {
+      "src": "/media/posts/tech-week/la-golden.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "Guests talking on the patio under string lights at The Hybrid Studio, the House of 434 and Canvas event at LA Tech Week 2026",
+      "cap": "The patio at golden hour, before the talks."
      }
+    ]
+   ],
+   [
+    "gallery",
+    [
+     {
+      "src": "/media/posts/tech-week/la-qa.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "A guest asking a question into a microphone during the audience Q&A at The Hybrid Studio, LA Tech Week 2026",
+      "cap": "The night closed with questions from the room."
+     },
+     {
+      "src": "/media/posts/tech-week/la-embrace.jpg",
+      "w": 1200,
+      "h": 900,
+      "alt": "Canvas CEO Abhinav Singla, back to camera in a #CreatorsAreTheNewStudios hoodie, hugging a guest in a beret at The Hybrid Studio, LA Tech Week 2026",
+      "cap": "Abhinav greeting a guest in LA."
+     }
+    ]
+   ],
+   [
+    "h2",
+    "Two rooms, two doors"
+   ],
+   [
+    "p",
+    "The slate was the same in both cities. The way in wasn't, and seeing the two side by side is the most useful thing I brought home."
+   ],
+   [
+    "ul",
+    [
+     "**The billing.** San Francisco: investing in content, IP and storytelling. Los Angeles: Oscar-winning films meet AI-native studios.",
+     "**The host.** San Francisco: a founder and investor community of 70,000. Los Angeles: a curated house for AI builders and investors, on a16z's calendar.",
+     "**The room.** San Francisco leaned investors, founders and creators. Los Angeles leaned filmmakers, AI founders and the investors who back them.",
+     "**Our angle.** San Francisco heard Canvas as infrastructure for media IP. Los Angeles heard it as proof that a small team can make studio-grade work.",
+     "**What landed.** In both rooms, the trailer did more than any slide. People asked about the shows first and the business second."
     ]
    ],
    [
@@ -497,33 +601,21 @@
    ],
    [
     "p",
-    "The creator side is just as big. Goldman Sachs Research estimated the creator economy at $250 billion in 2023 and projected [$480 billion by 2027](https://goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027). Canvas sits where the two meet: series built around creators who already have an audience, made for the phone. That's a tech story as much as a film story, so we took it to the rooms where the tech money and the AI tools are."
+    "The creator side is just as big. Goldman Sachs Research estimated the creator economy at $250 billion in 2023 and projected [$480 billion by 2027](https://goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027). [Tech Week's own site](https://www.tech-week.com/deep-tech) puts its attendance at more than 100,000 people across its cities. Canvas sits where the two meet: series built around creators who already have an audience, made for the phone. That's a tech story as much as a film story, so we took it to the rooms where the tech money and the AI tools are."
    ],
    [
     "h2",
-    "What the week was really for"
-   ],
-   [
-    "p",
-    "Hosting was the visible part. The rest of the week, Abhinav and I pitched every day, at every event, to investors, filmmakers and AI filmmakers. In between, we shot about four series across both cities, filming while we hosted and pitched. We also spent a couple of hours talking film with director [Jeremiah S. Chechik](https://en.wikipedia.org/wiki/Jeremiah_S._Chechik), who made [National Lampoon's Christmas Vacation](https://en.wikipedia.org/wiki/National_Lampoon%27s_Christmas_Vacation) and [Benny & Joon](https://en.wikipedia.org/wiki/Benny_%26_Joon)."
-   ],
-   [
-    "p",
-    "The pitch fits on a hoodie: [creators are the new studios](https://creatorsarethenewstudios.com). Our slate is the proof. [Face Value](/series/face-value/), [Red Flags](/series/red-flags/), [Taser Fight Championship](/series/taser-fight-championship/), [Dear NYC](/series/dear-nyc/) and [Demo Day](/series/demo-day/) are a few of the 12+ series I've directed for Canvas."
-   ],
-   [
-    "h2",
-    "How to pitch one slate to two different rooms"
+    "What two rooms taught me about pitching stories to tech"
    ],
    [
     "ul",
     [
-     "Host, don't just attend. We partnered with hosts who already had the room: Anwar Events in San Francisco and House of 434 in Los Angeles. Their lists brought the people; we brought the work.",
-     "Show the work, not a deck. I played the trailers in both rooms. A two-minute episode explains the format faster than any slide.",
-     "Sort the slate into lanes. In SF it went up in four: fashion, travel, fiction and non-fiction, so everyone could find the one that was theirs.",
-     "Change the door, not the house. San Francisco was billed as Creators Are the New Studios. Los Angeles was The Hybrid Studio, about Oscar-winning craft meeting AI-native studios. Same series, a different way in.",
-     "Pitch every day. Hosting took two nights. Every other day was pitching at whatever event we were at.",
-     "Make something while you're there. We shot about four series across both cities, and came home with an after-movie for each event."
+     "**Lead with the trailer, not the deck.** A deck tells a room what a show could be. A trailer shows it before anyone has time to check their phone. I'd take one good trailer over nine slides about the market, every time.",
+     "**Your positioning should fit on a hoodie.** Ours is [creators are the new studios](https://creatorsarethenewstudios.com). It's on the hoodie, on the posters and in the title of Abhinav's talk. If a line can't survive being printed on merch, it's too long.",
+     "**Same slate, different room.** San Francisco's program was about investing in media and IP. Los Angeles was about where AI meets craft. It's the same muscle I use on brand work: one product, many audiences, and each one needs its own door.",
+     "**Shoot while you pitch.** Between events we shot about four series across both cities. One trip gave us the after-movies, every photo on this page and new episodes for the slate.",
+     "**Host, don't just attend.** We partnered with hosts who already had the room: Anwar Events in San Francisco and House of 434 in Los Angeles. Their lists brought the people; we brought the work.",
+     "**Pitch every day.** Hosting took two nights. Every other day was pitching at whatever event we were at."
     ]
    ],
    [
@@ -536,7 +628,7 @@
    ],
    [
     "p",
-    "The after-movies work on the same clock. Each one runs about 40 seconds, and they do the job the event can't do on its own: keep working after everyone goes home."
+    "The after-movies work on the same clock. Each one runs about 40 seconds and opens on one spoken line from Abhinav before the music takes over: a promise in San Francisco, a presentation in Los Angeles. They do the job the event can't do on its own: keep working after everyone goes home."
    ],
    [
     "h2",
@@ -569,12 +661,33 @@
     ]
    ],
    [
+    "h2",
+    "The people we met"
+   ],
+   [
+    "p",
+    "We pitched to investors, filmmakers and AI filmmakers every day, and met investors including Taylor Rothchild and Ankur from [OnlyExit](https://onlyexit.pages.dev/), the Seattle hacker house and founder community. We also spent a couple of hours at director [Jeremiah S. Chechik](https://www.imdb.com/name/nm0154819/)'s home in Venice, talking film. Two or three hours with the director of [National Lampoon's Christmas Vacation](https://en.wikipedia.org/wiki/National_Lampoon%27s_Christmas_Vacation) and [Benny & Joon](https://en.wikipedia.org/wiki/Benny_%26_Joon) is not a bad way to spend part of Tech Week."
+   ],
+   [
+    "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is Tech Week?** A decentralized tech conference presented by a16z: thousands of separate events hosted by startups, companies and VCs across a city in one week. In 2026 it ran in [Boston, New York, San Francisco and Los Angeles](https://intercom.help/tech-week-by-a16z/en/articles/14171298-what-are-the-dates-for-tech-week-2026).",
+     "**What is Canvas?** A streaming app for short series and, in its own words, infrastructure for building media IP, founded by Abhinav Singla. Its line: creators are the new studios.",
+     "**What is a micro drama?** A scripted series made for the phone, with episodes of a minute or two, each ending on a hook. Every Canvas episode I've directed runs under two minutes.",
+     "**What did Canvas show?** Trailers for the slate, sorted into fashion, travel, fiction and non-fiction, including [Face Value](/series/face-value/), [Red Flags](/series/red-flags/), [Taser Fight Championship](/series/taser-fight-championship/), [Dear NYC](/series/dear-nyc/) and [Demo Day](/series/demo-day/)."
+    ]
+   ],
+   [
     "quote",
     "Creators are the new studios."
    ],
    [
     "p",
-    "[Face Value](/series/face-value/) is already streaming on the Canvas app, with more on the way. If you were in one of those rooms, [say hi](https://www.linkedin.com/in/nivedkrishna)."
+    "[Face Value](/series/face-value/) is already streaming on the Canvas app, and the rest of the slate is on the way. See [all 12+ series I've directed for Canvas](/#series), my [case studies and takes](/work/), or how to [work with me](/work-with-me/). If you were in either room, [say hi](https://www.linkedin.com/in/nivedkrishna)."
    ]
   ],
   "audio": {

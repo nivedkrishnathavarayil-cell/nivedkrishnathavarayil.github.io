@@ -14,10 +14,10 @@ const FORMAT = { take: 'Take', bts: 'Behind the scenes' };
 const rel = C.find((c) => c.slug === p.related);
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 /* body text may carry [label](https://link) */
-const md = (t) => esc(t).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
+const md = (t) => esc(t).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 /* plain @handles in reel credits become Instagram links */
 const ig = (t) => md(t).replace(/(^|[\s(])@([A-Za-z0-9._]*[A-Za-z0-9_])/g, '$1<a href="https://www.instagram.com/$2/">@$2</a>');
-const plain = (t) => (Array.isArray(t) ? t.join(' ') : String(t)).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+const plain = (t) => (Array.isArray(t) ? t.join(' ') : String(t)).replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 const first = plain(p.body.find((b) => b[0] === 'p')[1]);
 const ogImg = `/og/work-${p.slug}.jpg?v=3`;
 /* keep reading: pieces that share a series, a topic or a format with this one */

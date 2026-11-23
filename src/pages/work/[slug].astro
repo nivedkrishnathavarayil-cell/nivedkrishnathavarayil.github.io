@@ -12,7 +12,7 @@ const c = C[i];
 const next = C[(i + 1) % C.length];
 const url = `${SITE}/work/${c.slug}/`;
 const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>');
+const md = (x) => esc(x).replace(/\[([^\]]+)\]\(((?:https?:|\/)[^)\s]*)\)/g, '<a href="$2">$1</a>').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 /* plain @handles in reel credits and source lines become Instagram links */
 const ig = (x) => md(x).replace(/(^|[\s(])@([A-Za-z0-9._]*[A-Za-z0-9_])/g, '$1<a href="https://www.instagram.com/$2/">@$2</a>');
 const mentions = (p) => JSON.stringify(p.body).includes(`/work/${c.slug}/`);
