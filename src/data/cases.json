@@ -1,5 +1,145 @@
 [
  {
+  "slug": "stories-in-earth",
+  "brand": "Stories in Earth",
+  "short": "Stories in Earth",
+  "title": "We grew a Malayalam page from zero with a system built in Claude.",
+  "line": "A brand-new faceless Instagram page, in a niche language, run day to day by AI we trained.",
+  "stat": "5,842",
+  "statCap": "Instagram followers in 20 days, from zero",
+  "statW": "100%",
+  "color": "#1d5c63",
+  "client": "Stories in Earth, [@stories.in.earth](https://www.instagram.com/stories.in.earth/) on Instagram (our own page)",
+  "role": "Co-founder, strategist and system builder, with Agrajh AK",
+  "where": "Built in New York, for a Malayalam audience",
+  "when": "November 4, 2026 to now, still posting",
+  "channels": "Instagram Reels, built to run on TikTok and YouTube Shorts too",
+  "brief": [
+   "Brands want more content on more platforms with the same team. My co-founder Agrajh AK and I wanted to know how far a small, AI-run system could take a page that started with nothing.",
+   "So we set it a hard test: a brand-new page with no history and no followers, in Malayalam, the language of Kerala. A niche audience, and a hard language to get right."
+  ],
+  "idea": [
+   "Run a faceless page like a format, not a feed: one repeatable shape that every reel follows, made by a system that does the daily work.",
+   "The shape has three beats: something every Malayali has at home, one fact they never knew about it, and a twist at the end so they stay to the last second."
+  ],
+  "how": [
+   "Built the whole pipeline in Claude, with a skill we trained for each job: finding topics that already work in the niche, writing the script, animating it and writing the caption.",
+   "Animated every reel as a 3D scene in code: objects, rooms, light and Malayalam type, with no people on screen.",
+   "Narrated every reel in Agrajh's voice, cloned with [ElevenLabs](https://elevenlabs.io/).",
+   "Let the system write the caption, with the hook up front, and handle the posting. Instagram labels the reels as AI content, and we keep it that way."
+  ],
+  "result": [
+   "5,842 followers on November 24, 2026, twenty days after the first reel. About 5,000 of them came in the first week.",
+   "2,095,734 views and 1,522,275 viewers in the last 30 days, with 99.3% of the views from people who didn't follow the page.",
+   "The fourth reel, [Cyanide in kappa?](https://www.instagram.com/reel/Dfbq2ckSnge/), passed 1.6 million views and about 57,000 likes.",
+   "218,322 interactions from 103,866 accounts in 30 days."
+  ],
+  "chart": {
+   "compare": {
+    "title": "The top five reels, by views",
+    "rows": [
+     [
+      "Cyanide in kappa?",
+      1600000,
+      "Nov 7",
+      "1.6M"
+     ],
+     [
+      "The code on your gold",
+      115000,
+      "Nov 10",
+      "115K"
+     ],
+     [
+      "Kochi was born in a flood",
+      102000,
+      "Nov 9",
+      "102K"
+     ],
+     [
+      "Water in a coconut",
+      79200,
+      "Nov 5",
+      "79.2K"
+     ],
+     [
+      "A needle inside chembu?",
+      41500,
+      "Nov 7",
+      "41.5K"
+     ]
+    ],
+    "rank": true
+   },
+   "aud": {
+    "title": "Who watched",
+    "sub": "Share of 2,095,734 views in the last 30 days",
+    "rows": [
+     [
+      "People who didn't follow the page",
+      99.3
+     ],
+     [
+      "Followers",
+      0.7
+     ]
+    ]
+   }
+  },
+  "lesson": "A niche isn't small when the format is sharp. Something people own, one fact they never knew and a twist at the end reached 1.5 million strangers.",
+  "source": "Source: Instagram Insights for @stories.in.earth, last 30 days as of November 24, 2026. Followers and likes from the public page the same day; post dates from each reel's link.",
+  "proof": [
+   [
+    "Stories in Earth on Instagram",
+    "https://www.instagram.com/stories.in.earth/"
+   ],
+   [
+    "Cyanide in kappa?, 1.6 million views",
+    "https://www.instagram.com/reel/Dfbq2ckSnge/"
+   ],
+   [
+    "The code on your gold",
+    "https://www.instagram.com/reel/DfjaiWxSyDM/"
+   ],
+   [
+    "Kochi was born in a flood",
+    "https://www.instagram.com/reel/DfgzxRZScqu/"
+   ]
+  ],
+  "proofH": "See it on Instagram",
+  "reels": [
+   {
+    "ig": "Dfbq2ckSnge",
+    "v": "1.6M",
+    "t": "Cyanide in kappa?",
+    "by": "@stories.in.earth, November 7, 2026",
+    "alt": "Stories in Earth reel 'Cyanide in kappa?' by Nivedkrishna Thavarayil and Agrajh AK: 3D cassava roots on red earth under a coconut palm, Malayalam title, 1.6 million views"
+   },
+   {
+    "ig": "DfjaiWxSyDM",
+    "v": "115K",
+    "t": "The code on your gold",
+    "by": "@stories.in.earth, November 10, 2026",
+    "alt": "Stories in Earth reel about the HUID hallmark code on gold jewellery: a 3D gold chain and the three hallmark marks, Malayalam title, 115,000 views"
+   },
+   {
+    "ig": "DfgzxRZScqu",
+    "v": "102K",
+    "t": "Kochi was born in a flood",
+    "by": "@stories.in.earth, November 9, 2026",
+    "alt": "Stories in Earth reel on how a flood in 1341 made the port of Kochi: an aerial map of the Kerala coast with a Malayalam title, 102,000 views"
+   },
+   {
+    "ig": "DfWwGuuy2kk",
+    "v": "79.2K",
+    "t": "How did water get into the coconut?",
+    "by": "@stories.in.earth, November 5, 2026",
+    "alt": "Stories in Earth reel 'How did water get into the coconut?': a 3D green coconut above a tree stump on grass, Malayalam title, 79,200 views"
+   }
+  ],
+  "reelsH": "Watch the top four"
+ },
+ {
   "slug": "the-popes-exorcist",
   "brand": "Sony Pictures India",
   "short": "The Pope's Exorcist",

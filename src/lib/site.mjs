@@ -136,7 +136,7 @@ import POSTS from '../data/posts.json';
 export const casesHTML = `
 <section class="band cases" id="cases" aria-labelledby="cases-h">
   <div class="wrap">
-    <h2 class="d" id="cases-h">Six campaigns, start to finish.</h2>
+    <h2 class="d" id="cases-h">Seven campaigns, start to finish.</h2>
     <p class="lede">The brief, the idea, how it was made and what it did. Open any one for the whole story.</p>
     <ul class="cs-rail">${CASES.filter((c) => c.home !== false).map((c) => `<li><a class="cscard" href="/work/${c.slug}/" style="--c:${c.color}"><span class="cscard-b">${esc(c.brand)}</span><span class="cscard-mid"><span class="cscard-n d">${esc(c.stat)}</span><span class="cscard-c">${esc(c.statCap)}</span></span><span class="cscard-t">${esc(c.title)}</span><span class="cscard-go">Read the case study</span></a></li>`).join('')}</ul>
     <div class="cs-next"><a class="btn" href="/work/">See all work</a>${(() => {

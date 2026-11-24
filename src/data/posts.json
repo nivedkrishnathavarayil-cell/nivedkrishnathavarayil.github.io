@@ -1,5 +1,235 @@
 [
  {
+  "slug": "how-we-grew-a-malayalam-page-from-zero",
+  "format": "bts",
+  "topic": "AI content systems",
+  "title": "We grew a Malayalam Instagram page from zero to 5,842 followers in 20 days.",
+  "dek": "No face, no camera, no studio: a page run day to day by a system we built in Claude, and the format that made strangers stay.",
+  "short": "Stories in Earth, from zero",
+  "date": "2026-11-24",
+  "dateLabel": "November 24, 2026",
+  "read": "5 min read",
+  "origin": null,
+  "color": "#1d5c63",
+  "related": "stories-in-earth",
+  "cover": {
+   "src": "/media/posts/stories-in-earth.jpg",
+   "w": 1600,
+   "h": 900,
+   "alt": "Stories in Earth by Nivedkrishna Thavarayil and Agrajh AK: 0 to 5,842 Instagram followers in 20 days, with six of the page's 3D Malayalam explainer reels at 1.6M, 115K, 102K, 79.2K and 41.5K views",
+   "cap": "Six of the twelve reels on [@stories.in.earth](https://www.instagram.com/stories.in.earth/), November 2026.",
+   "card": true
+  },
+  "body": [
+   [
+    "p",
+    "On November 4, 2026, my co-founder Agrajh AK and I posted the first reel on a brand-new Instagram page, [Stories in Earth](https://www.instagram.com/stories.in.earth/). Twenty days later it had 5,842 followers. In its last 30 days, Instagram counted 2,095,734 views, and 99.3% of them came from people who didn't follow the page."
+   ],
+   [
+    "p",
+    "There's no face on camera, no studio and no shoot. Every reel is planned, written, animated and voiced by a system we built in Claude, in Malayalam, the language of Kerala: a niche audience, and a hard language to get right."
+   ],
+   [
+    "p",
+    "This is the full breakdown: the system, the one format every reel follows, all twelve reels with their numbers, what didn't work, and how the same system works for a brand. The short version is in [the case study](/work/stories-in-earth/)."
+   ],
+   [
+    "gallery",
+    [
+     {
+      "src": "/media/posts/stories-in-earth/receipts.jpg",
+      "w": 1080,
+      "h": 1350,
+      "alt": "Instagram Insights for Stories in Earth, last 30 days as of November 24, 2026: 2,095,734 views with 99.3% from non-followers, 1,522,275 viewers, 218,322 interactions from 103,866 accounts engaged, and 5,840 total followers",
+      "cap": "Instagram Insights, last 30 days, as of November 24, 2026."
+     },
+     {
+      "src": "/media/posts/stories-in-earth/hook-card.jpg",
+      "w": 1080,
+      "h": 1350,
+      "alt": "Stories in Earth case study card by Nivedkrishna Thavarayil: 0 to 5,842 followers in 20 days, 2.1 million views, 1.6 million on the fourth reel, 99.3% of views from non-followers, with the top five reels",
+      "cap": "The page at 20 days."
+     }
+    ]
+   ],
+   [
+    "h2",
+    "The question"
+   ],
+   [
+    "p",
+    "Every brand I've worked with wants more content on more platforms with the same team. Agrajh and I wanted to know how far a small system could take a page that started from nothing, if people designed the strategy and the system did the daily work."
+   ],
+   [
+    "p",
+    "So we set it a hard test: a page with no history and no followers, in a language most brand content never reaches."
+   ],
+   [
+    "h2",
+    "The system"
+   ],
+   [
+    "p",
+    "Everything runs in Claude, with a skill we trained for each job a content team does:"
+   ],
+   [
+    "ul",
+    [
+     "Find: it looks at reels in the niche that are beating their own account's usual numbers, and works out why they worked.",
+     "Write: it writes each script like a person talking, with the hook in the first second and a twist saved for the end.",
+     "Animate: every reel is a 3D scene built in code, with objects, rooms, light and Malayalam type, and no people on screen.",
+     "Voice: every reel is narrated in Agrajh's voice, cloned with [ElevenLabs](https://elevenlabs.io/).",
+     "Post: it writes the caption, with the hook up front, and handles the posting."
+    ]
+   ],
+   [
+    "p",
+    "Instagram labels the reels as AI content, and we keep it that way. Nobody watching is being fooled; they stay because the story is good."
+   ],
+   [
+    "h2",
+    "The format"
+   ],
+   [
+    "p",
+    "The tools make a reel. The format is what made people stay. Every reel follows the same three beats:"
+   ],
+   [
+    "ul",
+    [
+     "Something every Malayali has at home or knows by heart: kappa, a coconut, the code on their gold, the port in Kochi.",
+     "One fact about it they never knew.",
+     "A twist at the end, so they watch to the last second. Most captions say it outright: അവസാനം ഒരു ട്വിസ്റ്റ്, a twist at the end."
+    ]
+   ],
+   [
+    "p",
+    "The fourth reel shows the whole format in two words: കപ്പയിൽ സയനൈഡ്? Cyanide in kappa? Kappa, or cassava, is a staple in Kerala kitchens. The reel explains why well-cooked kappa is safe, the kitchen habit that makes it so, and ends on a twist about a maharaja. [It passed 1.6 million views](https://www.instagram.com/reel/Dfbq2ckSnge/) and about 57,000 likes."
+   ],
+   [
+    "p",
+    "It's the same idea I wrote about in [your product needs a format, not an ad](/work/your-product-needs-a-format-not-an-ad/): give people a shape they recognise, then pay it off every time."
+   ],
+   [
+    "reels",
+    [
+     {
+      "ig": "Dfbq2ckSnge",
+      "v": "1.6M",
+      "t": "Cyanide in kappa?",
+      "by": "@stories.in.earth, November 7, 2026",
+      "alt": "Stories in Earth reel 'Cyanide in kappa?' by Nivedkrishna Thavarayil and Agrajh AK: 3D cassava roots on red earth under a coconut palm, Malayalam title, 1.6 million views"
+     },
+     {
+      "ig": "DfjaiWxSyDM",
+      "v": "115K",
+      "t": "The code on your gold",
+      "by": "@stories.in.earth, November 10, 2026",
+      "alt": "Stories in Earth reel about the HUID hallmark code on gold jewellery: a 3D gold chain and the three hallmark marks, Malayalam title, 115,000 views"
+     },
+     {
+      "ig": "DfgzxRZScqu",
+      "v": "102K",
+      "t": "Kochi was born in a flood",
+      "by": "@stories.in.earth, November 9, 2026",
+      "alt": "Stories in Earth reel on how a flood in 1341 made the port of Kochi: an aerial map of the Kerala coast with a Malayalam title, 102,000 views"
+     },
+     {
+      "ig": "DfWwGuuy2kk",
+      "v": "79.2K",
+      "t": "How did water get into the coconut?",
+      "by": "@stories.in.earth, November 5, 2026",
+      "alt": "Stories in Earth reel 'How did water get into the coconut?': a 3D green coconut above a tree stump on grass, Malayalam title, 79,200 views"
+     }
+    ]
+   ],
+   [
+    "h2",
+    "All twelve reels"
+   ],
+   [
+    "p",
+    "Every reel so far, in order. Views are from Instagram Insights for the top five; likes are from each reel's page on November 24, 2026."
+   ],
+   [
+    "ul",
+    [
+     "Nov 4: [What if the Western Ghats vanished overnight?](https://www.instagram.com/reel/DfUXWF2yxta/) 426 likes.",
+     "Nov 5: [Kanyakumari to Assam on one train](https://www.instagram.com/reel/DfWXPhAyzZS/), the Vivek Express. 637 likes.",
+     "Nov 5: [How did water get into the coconut?](https://www.instagram.com/reel/DfWwGuuy2kk/) 79.2K views, 1,521 likes.",
+     "Nov 7: [Cyanide in kappa?](https://www.instagram.com/reel/Dfbq2ckSnge/) 1.6M views, about 57,000 likes and 260 comments.",
+     "Nov 7: [A needle inside chembu?](https://www.instagram.com/reel/Dfd8v_VppSk/) 41.5K views, 882 likes.",
+     "Nov 9: [Kochi was born in a flood, in 1341](https://www.instagram.com/reel/DfgzxRZScqu/). 102K views, 3,945 likes.",
+     "Nov 10: [Have you seen this code on your gold?](https://www.instagram.com/reel/DfjaiWxSyDM/), the HUID hallmark. 115K views, 1,677 likes.",
+     "Nov 12: [The treasure hidden in Kollam's black sand](https://www.instagram.com/reel/Dfo-XrsSc4c/). 253 likes.",
+     "Nov 14: [A paddy field below the sea: Kuttanad](https://www.instagram.com/reel/DfuNIR8yQcT/). 78 likes.",
+     "Nov 17: [Anu couldn't make it home for her mother's 60th](https://www.instagram.com/reel/Df1T2T2SlcZ/), part 1 of a three-part story. 28 likes.",
+     "Nov 22: [Why shops never sell cashews in the shell](https://www.instagram.com/reel/DgCIh7Fyd2I/). 51 likes.",
+     "Nov 24: [Why Sabarimala aravana doesn't spoil](https://www.instagram.com/reel/DgIxLttyyRg/), posted the day of this count. 18 likes."
+    ]
+   ],
+   [
+    "h2",
+    "What the numbers say"
+   ],
+   [
+    "ul",
+    [
+     "Things people own beat places on a map. Four of the top five are about food or things at home: kappa, gold, a coconut and chembu. The fifth, Kochi's birth in a flood, is about a city everyone knows. The map-led reels, the Western Ghats and the train, drew far fewer likes.",
+     "A hidden danger in something safe is the strongest hook we've found so far. Cyanide in kappa and a needle in chembu turn a familiar food into a question you have to answer.",
+     "Strangers do the work. 99.3% of views and 68.9% of interactions came from people who didn't follow the page. For a new page, the reel is the ad.",
+     "Fiction didn't travel. The one story reel, part 1 of a three-part tale, drew 28 likes, the fewest of any reel at least a week old.",
+     "Growth came in a burst. About 5,000 followers arrived in the first week, around the kappa reel, and the reels since have drawn fewer likes. The next job is a second hit, not more of the same."
+    ]
+   ],
+   [
+    "h2",
+    "What a person still decides"
+   ],
+   [
+    "p",
+    "The system does the daily work. The choices that made it work were human: the language, the niche, the three-beat format, the voice and the rules the system follows."
+   ],
+   [
+    "p",
+    "I'm a filmmaker first, and I don't make my films this way. But on an explainer page, where the idea and the format carry the reel, a system like this lets a small team keep a pace that used to take a whole studio."
+   ],
+   [
+    "h2",
+    "The same system, for a brand"
+   ],
+   [
+    "p",
+    "We built it on Instagram, but nothing in it is tied to one platform or one language. The same system can run TikTok and YouTube Shorts, and other languages too."
+   ],
+   [
+    "p",
+    "It fits any brand with more to explain than it has time to film: FMCG and consumer brands, food brands and restaurant chains, AI and tech products. We're building it now for [Levin Reji](https://www.instagram.com/realtorlevin/), a real estate agent working across New York and Philadelphia, with reels narrated in his own cloned voice."
+   ],
+   [
+    "p",
+    "If you want one for your brand, [book a 30-minute call](https://calendly.com/nivedkrishnathavarayil/30min) or see [how I work with brands](/work-with-me/)."
+   ],
+   [
+    "h2",
+    "Credits"
+   ],
+   [
+    "ul",
+    [
+     "Strategy, format and system: Nivedkrishna Thavarayil and Agrajh AK.",
+     "Voice: Agrajh AK, cloned with ElevenLabs.",
+     "Built with Claude and ElevenLabs.",
+     "Page: [@stories.in.earth](https://www.instagram.com/stories.in.earth/), still posting, so these numbers will grow."
+    ]
+   ],
+   [
+    "p",
+    "Numbers: Instagram Insights for @stories.in.earth, last 30 days as of November 24, 2026. Followers and likes from the public page the same day; post dates from each reel's link."
+   ]
+  ]
+ },
+ {
   "slug": "how-i-make-films-in-new-york-on-an-indie-budget",
   "format": "take",
   "topic": "Indie filmmaking",

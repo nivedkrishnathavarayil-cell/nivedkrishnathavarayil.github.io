@@ -135,14 +135,15 @@ const ld = {
                 <figcaption class="cs-ch-t">{ch.compare.title}</figcaption>
                 <ul>
                   {ch.compare.rows.map((r, k) => (
-                    <li class={k ? 'now' : 'was'}>
+                    <li class={ch.compare.rank || k ? 'now' : 'was'}>
                       <span class="lab">{r[0]}<small>{r[2]}</small></span>
                       <span class="bar"><i style={`--v:${pct(r[1], ch.compare.rows)}`}></i></span>
-                      <b>{fmt(r[1])} views</b>
+                      <b>{r[3] || fmt(r[1])} views</b>
                     </li>
                   ))}
                 </ul>
               </figure>
+              {ch.dist && (
               <figure class="cs-chart cs-dist">
                 <figcaption class="cs-ch-t">{ch.dist.title}<small>{ch.dist.sub}</small></figcaption>
                 <ul>
@@ -155,6 +156,7 @@ const ld = {
                   ))}
                 </ul>
               </figure>
+              )}
               {ch.aud && (
                 <figure class="cs-chart cs-dist cs-aud">
                   <figcaption class="cs-ch-t">{ch.aud.title}<small>{ch.aud.sub}</small></figcaption>
