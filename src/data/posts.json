@@ -65,6 +65,10 @@
     "So we set it a hard test: a page with no history and no followers, in a language most brand content never reaches."
    ],
    [
+    "p",
+    "Honestly, it didn't start as a test. The page began as a playful way to promote one of our own AI products, a tool that turns a script into a narrated stickman video. Within days the audience made it something else: people followed for the stories, not the product, so we let the page become its own thing and turned it into the test above."
+   ],
+   [
     "h2",
     "The system"
    ],
@@ -78,7 +82,7 @@
      "Find: it looks at reels in the niche that are beating their own account's usual numbers, and works out why they worked.",
      "Write: it writes each script like a person talking, with the hook in the first second and a twist saved for the end.",
      "Animate: every reel is a 3D scene built in code, with objects, rooms, light and Malayalam type, and no people on screen.",
-     "Voice: every reel is narrated in Agrajh's voice, cloned with [ElevenLabs](https://elevenlabs.io/).",
+     "Voice: Agrajh gave his voice once to build a clone with [ElevenLabs](https://elevenlabs.io/voice-cloning). Every reel is narrated by that clone, and he hasn't recorded a single reel himself.",
      "Post: it writes the caption, with the hook up front, and handles the posting."
     ]
    ],
