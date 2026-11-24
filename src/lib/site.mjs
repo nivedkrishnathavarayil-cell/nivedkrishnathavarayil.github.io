@@ -210,7 +210,7 @@ export const seriesLD = (s, i) => ({
       director: { '@id': `${SITE}/#person` },
       productionCompany: { '@type': 'Organization', name: 'Canvas', url: 'https://www.canvasott.com' },
       locationCreated: { '@type': 'Place', name: s.city },
-      ...(s.link ? { sameAs: s.link[1] } : {}),
+      ...(s.link || s.wd ? { sameAs: [...(s.link ? [s.link[1]] : []), ...(s.wd ? [`https://www.wikidata.org/wiki/${s.wd}`] : [])] } : {}),
     },
     {
       '@type': 'BreadcrumbList',
