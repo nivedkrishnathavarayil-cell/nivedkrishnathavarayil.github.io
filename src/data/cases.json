@@ -23,10 +23,10 @@
    "The shape has three beats: something every Malayali has at home, one fact they never knew about it, and a twist at the end so they stay to the last second."
   ],
   "how": [
-   "Built the whole pipeline in Claude, with a skill we trained for each job: finding topics that already work in the niche, writing the script, animating it and writing the caption.",
+   "Built the whole pipeline in [Claude](https://claude.ai/) and [Claude Code](https://claude.com/product/claude-code), with a skill we trained for each job: finding topics that already work in the niche, writing the script, animating it and writing the caption.",
    "Animated every reel as a 3D scene in code: objects, rooms, light and Malayalam type, with no people on screen.",
-   "Narrated every reel in Agrajh's voice, cloned with [ElevenLabs](https://elevenlabs.io/).",
-   "Let the system write the caption, with the hook up front, and handle the posting. Instagram labels the reels as AI content, and we keep it that way."
+   "Narrated every reel in Agrajh's voice, cloned with [ElevenLabs voice cloning](https://elevenlabs.io/voice-cloning), so the page sounds like one person.",
+   "Let the system write the caption, with the hook up front, and handle the posting. Instagram [labels the reels as AI content](https://help.instagram.com/761121959519495), and we keep it that way."
   ],
   "result": [
    "5,842 followers on November 24, 2026, twenty days after the first reel. About 5,000 of them came in the first week.",
@@ -108,6 +108,14 @@
    [
     "The LinkedIn post",
     "https://www.linkedin.com/feed/update/urn:li:activity:7531129044550070272/"
+   ],
+   [
+    "Agrajh AK on LinkedIn",
+    "https://www.linkedin.com/in/agrajh-ak/"
+   ],
+   [
+    "The full write-up, with all twelve reels",
+    "/work/how-we-grew-a-malayalam-page-from-zero/"
    ]
   ],
   "proofH": "See it on Instagram and LinkedIn",
@@ -154,6 +162,32 @@
   ],
   "after": [
    {
+    "h": "Why strangers saw it",
+    "p": [
+     "99.3% of the views came from people who didn't follow the page. That's how Reels is built: Instagram's head, Adam Mosseri, explains in [Instagram Ranking Explained](https://about.instagram.com/blog/announcements/instagram-ranking-explained) that each part of the app runs its own ranking, and that Reels, like Explore, mostly shows people accounts they don't already follow.",
+     "So a brand-new page isn't starting from zero reach. It's starting from zero trust. Every reel has to earn a stranger's attention in the first second and keep it to the last, which is exactly what the three-beat format is for."
+    ]
+   },
+   {
+    "h": "The facts behind the reels",
+    "p": [
+     "Every reel is a small lesson about something Malayalis already know. These are the facts behind them, with sources, so anyone can check the work."
+    ],
+    "ul": [
+     "**Cyanide in kappa?** Raw cassava carries cyanogenic glycosides, mainly linamarin, that release cyanide when the root is cut. Peeling, soaking and cooking bring it down to safe levels, which is why the way Kerala cooks kappa matters ([FAO](https://www.fao.org/3/t0207e/T0207E08.htm)).",
+     "**The code on your gold.** Since July 1, 2021, every hallmarked gold piece in India carries a six-digit HUID, the Hallmark Unique Identification, and it can be checked in the BIS Care app ([Bureau of Indian Standards](https://www.bis.gov.in/hallmarking-overview/hallmarking-faqs/hallmarking-faq)).",
+     "**Kochi was born in a flood.** A great flood of the Periyar in 1341 silted up the old port of Muziris and opened the natural harbour at Kochi ([Kochi](https://en.wikipedia.org/wiki/Kochi)).",
+     "**Water in a coconut.** Coconut water is the fruit's liquid endosperm, which slowly turns into the white flesh as the nut matures ([Coconut water](https://en.wikipedia.org/wiki/Coconut_water)).",
+     "**A needle inside chembu?** The itch from raw taro comes from microscopic needle-shaped crystals of calcium oxalate called [raphides](https://en.wikipedia.org/wiki/Raphide).",
+     "**A paddy field below the sea.** Kuttanad farms rice 1.2 to 3 metres below sea level, and the FAO has listed it as a [Globally Important Agricultural Heritage System](https://www.fao.org/giahs/giahs-around-the-world/india-kuttanad-farming-system/en) since 2013.",
+     "**Kanyakumari to Assam on one train.** The [Dibrugarh–Kanyakumari Vivek Express](https://en.wikipedia.org/wiki/Dibrugarh%E2%80%93Kanyakumari_Vivek_Express) crosses India from its southern tip to Assam.",
+     "**What if the Western Ghats vanished?** The range is a [UNESCO World Heritage Site](https://whc.unesco.org/en/list/1342) and shapes Kerala's monsoon, rivers and forests.",
+     "**Kollam's black sand.** The beaches around [Chavara in Kollam](https://en.wikipedia.org/wiki/Chavara) hold mineral sands rich in ilmenite, rutile, zircon and monazite.",
+     "**Cashews in the shell.** The [cashew](https://en.wikipedia.org/wiki/Cashew) shell holds a caustic oil that can burn skin, so nuts are roasted and shelled before they reach a shop.",
+     "**Sabarimala aravana.** The prasadam keeps because it's made with very little moisture; in 2026, tins dried too far to stretch shelf life [turned hard](https://www.onmanorama.com/news/kerala/2026/01/08/sabarimala-aravana-production-jaggery-issue.html)."
+    ]
+   },
+   {
     "h": "What any brand can take from this",
     "ul": [
      "**Pick a format before a feed.** Three beats every time: something people own, one fact they never knew, a twist at the end.",
@@ -163,6 +197,15 @@
      "**Keep the AI label on.** People stay for the story, not the trick.",
      "**Plan the second hit.** One reel can make a page's first week. The work after that is finding the next one.",
      "**Use the same system anywhere.** It's built to run on TikTok and YouTube Shorts and in other languages, for FMCG, food brands and chains, tech products and real estate. We're building it now for [Levin Reji](https://www.instagram.com/realtorlevin/)."
+    ]
+   },
+   {
+    "h": "Quick answers",
+    "ul": [
+     "**What is Stories in Earth?** A faceless Malayalam explainer page on Instagram, [@stories.in.earth](https://www.instagram.com/stories.in.earth/), started on November 4, 2026 by Nivedkrishna Thavarayil and [Agrajh AK](https://www.linkedin.com/in/agrajh-ak/), the co-founders of [Growvior](https://growvior.com/).",
+     "**How fast did it grow?** From zero to 5,842 followers in 20 days, with 2,095,734 views in its last 30 days and one reel at 1.6 million views.",
+     "**Is it made with AI?** Yes. Scripts, 3D animation, captions and posting run on a system built in Claude, and the narration is Agrajh's voice cloned with ElevenLabs. People chose the niche, the format and the rules, and Instagram's AI label stays on.",
+     "**Can a brand get the same system?** Yes. It works on Instagram, TikTok and YouTube Shorts, in English or a regional language, for FMCG, food brands and chains, tech products and real estate. [Book a 30-minute call](https://calendly.com/nivedkrishnathavarayil/30min)."
     ]
    }
   ]

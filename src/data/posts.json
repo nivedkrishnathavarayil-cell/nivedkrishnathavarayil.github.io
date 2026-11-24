@@ -8,7 +8,7 @@
   "short": "Stories in Earth, from zero",
   "date": "2026-11-24",
   "dateLabel": "November 24, 2026",
-  "read": "5 min read",
+  "read": "6 min read",
   "origin": null,
   "color": "#1d5c63",
   "related": "stories-in-earth",
@@ -70,7 +70,7 @@
    ],
    [
     "p",
-    "Everything runs in Claude, with a skill we trained for each job a content team does:"
+    "Everything runs in [Claude](https://claude.ai/) and [Claude Code](https://claude.com/product/claude-code), with a skill we trained for each job a content team does:"
    ],
    [
     "ul",
@@ -84,7 +84,7 @@
    ],
    [
     "p",
-    "Instagram labels the reels as AI content, and we keep it that way. Nobody watching is being fooled; they stay because the story is good."
+    "Instagram [labels the reels as AI content](https://help.instagram.com/761121959519495), and we keep it that way. Nobody watching is being fooled; they stay because the story is good."
    ],
    [
     "h2",
@@ -154,19 +154,27 @@
    [
     "ul",
     [
-     "Nov 4: [What if the Western Ghats vanished overnight?](https://www.instagram.com/reel/DfUXWF2yxta/) 426 likes.",
-     "Nov 5: [Kanyakumari to Assam on one train](https://www.instagram.com/reel/DfWXPhAyzZS/), the Vivek Express. 637 likes.",
-     "Nov 5: [How did water get into the coconut?](https://www.instagram.com/reel/DfWwGuuy2kk/) 79.2K views, 1,521 likes.",
-     "Nov 7: [Cyanide in kappa?](https://www.instagram.com/reel/Dfbq2ckSnge/) 1.6M views, about 57,000 likes and 260 comments.",
-     "Nov 7: [A needle inside chembu?](https://www.instagram.com/reel/Dfd8v_VppSk/) 41.5K views, 882 likes.",
-     "Nov 9: [Kochi was born in a flood, in 1341](https://www.instagram.com/reel/DfgzxRZScqu/). 102K views, 3,945 likes.",
-     "Nov 10: [Have you seen this code on your gold?](https://www.instagram.com/reel/DfjaiWxSyDM/), the HUID hallmark. 115K views, 1,677 likes.",
-     "Nov 12: [The treasure hidden in Kollam's black sand](https://www.instagram.com/reel/Dfo-XrsSc4c/). 253 likes.",
-     "Nov 14: [A paddy field below the sea: Kuttanad](https://www.instagram.com/reel/DfuNIR8yQcT/). 78 likes.",
+     "Nov 4: [What if the Western Ghats vanished overnight?](https://www.instagram.com/reel/DfUXWF2yxta/) 426 likes. The range is a [UNESCO World Heritage Site](https://whc.unesco.org/en/list/1342).",
+     "Nov 5: [Kanyakumari to Assam on one train](https://www.instagram.com/reel/DfWXPhAyzZS/), the Vivek Express. 637 likes. ([About the train](https://en.wikipedia.org/wiki/Dibrugarh%E2%80%93Kanyakumari_Vivek_Express).)",
+     "Nov 5: [How did water get into the coconut?](https://www.instagram.com/reel/DfWwGuuy2kk/) 79.2K views, 1,521 likes. Coconut water is the fruit's [liquid endosperm](https://en.wikipedia.org/wiki/Coconut_water).",
+     "Nov 7: [Cyanide in kappa?](https://www.instagram.com/reel/Dfbq2ckSnge/) 1.6M views, about 57,000 likes and 260 comments. Why cooking matters: [FAO on cassava's cyanogenic glycosides](https://www.fao.org/3/t0207e/T0207E08.htm).",
+     "Nov 7: [A needle inside chembu?](https://www.instagram.com/reel/Dfd8v_VppSk/) 41.5K views, 882 likes. The \"needles\" are calcium oxalate [raphides](https://en.wikipedia.org/wiki/Raphide).",
+     "Nov 9: [Kochi was born in a flood, in 1341](https://www.instagram.com/reel/DfgzxRZScqu/). 102K views, 3,945 likes. ([Kochi's history](https://en.wikipedia.org/wiki/Kochi).)",
+     "Nov 10: [Have you seen this code on your gold?](https://www.instagram.com/reel/DfjaiWxSyDM/), the HUID hallmark. 115K views, 1,677 likes. ([BIS on HUID](https://www.bis.gov.in/hallmarking-overview/hallmarking-faqs/hallmarking-faq).)",
+     "Nov 12: [The treasure hidden in Kollam's black sand](https://www.instagram.com/reel/Dfo-XrsSc4c/). 253 likes. ([The mineral sands of Chavara](https://en.wikipedia.org/wiki/Chavara).)",
+     "Nov 14: [A paddy field below the sea: Kuttanad](https://www.instagram.com/reel/DfuNIR8yQcT/). 78 likes. Kuttanad is an [FAO heritage farming system](https://www.fao.org/giahs/giahs-around-the-world/india-kuttanad-farming-system/en).",
      "Nov 17: [Anu couldn't make it home for her mother's 60th](https://www.instagram.com/reel/Df1T2T2SlcZ/), part 1 of a three-part story. 28 likes.",
-     "Nov 22: [Why shops never sell cashews in the shell](https://www.instagram.com/reel/DgCIh7Fyd2I/). 51 likes.",
-     "Nov 24: [Why Sabarimala aravana doesn't spoil](https://www.instagram.com/reel/DgIxLttyyRg/), posted the day of this count. 18 likes."
+     "Nov 22: [Why shops never sell cashews in the shell](https://www.instagram.com/reel/DgCIh7Fyd2I/). 51 likes. The [cashew](https://en.wikipedia.org/wiki/Cashew) shell holds a caustic oil.",
+     "Nov 24: [Why Sabarimala aravana doesn't spoil](https://www.instagram.com/reel/DgIxLttyyRg/), posted the day of this count. 18 likes. Aravana keeps because it holds very little moisture ([Onmanorama](https://www.onmanorama.com/news/kerala/2026/01/08/sabarimala-aravana-production-jaggery-issue.html))."
     ]
+   ],
+   [
+    "h2",
+    "Why strangers saw it"
+   ],
+   [
+    "p",
+    "99.3% of the views came from people who didn't follow the page, and that's how Reels works. In [Instagram Ranking Explained](https://about.instagram.com/blog/announcements/instagram-ranking-explained), Instagram's head Adam Mosseri explains that each part of the app ranks content its own way, and that Reels, like Explore, mostly shows people accounts they don't follow yet. A new page doesn't start with zero reach. It starts with zero trust, and every reel has to earn it from a stranger."
    ],
    [
     "h2",
@@ -212,13 +220,26 @@
    ],
    [
     "h2",
+    "Quick answers"
+   ],
+   [
+    "ul",
+    [
+     "**What is Stories in Earth?** A faceless Malayalam explainer page on Instagram, [@stories.in.earth](https://www.instagram.com/stories.in.earth/), started on November 4, 2026 by Nivedkrishna Thavarayil and [Agrajh AK](https://www.linkedin.com/in/agrajh-ak/).",
+     "**How do you grow a new Instagram page fast?** Pick one niche, one repeatable format and one voice, post every day, and write every reel for a stranger, because Reels shows new pages mostly to people who don't follow them.",
+     "**Can AI content do well on Instagram?** It can when the idea is good and the label stays on. Here, people chose the niche, format and rules, and the system did the daily work.",
+     "**What is a faceless page?** A page where nobody appears on camera; the story is told with visuals, type and a narrator's voice."
+    ]
+   ],
+   [
+    "h2",
     "Credits"
    ],
    [
     "ul",
     [
-     "Strategy, format and system: Nivedkrishna Thavarayil and Agrajh AK.",
-     "Voice: Agrajh AK, cloned with ElevenLabs.",
+     "Strategy, format and system: Nivedkrishna Thavarayil and [Agrajh AK](https://www.linkedin.com/in/agrajh-ak/), co-founders of [Growvior](https://growvior.com/).",
+     "Voice: Agrajh AK, cloned with [ElevenLabs](https://elevenlabs.io/voice-cloning).",
      "Built with Claude and ElevenLabs.",
      "Page: [@stories.in.earth](https://www.instagram.com/stories.in.earth/), still posting, so these numbers will grow."
     ]
