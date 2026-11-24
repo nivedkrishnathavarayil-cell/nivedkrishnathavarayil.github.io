@@ -12,6 +12,7 @@ export const PODCAST = {
   apple: 'https://podcasts.apple.com/us/podcast/nivedkrishna-thavarayil-unscripted/id6837049334',
   youtube: 'https://www.youtube.com/playlist?list=PLJGDPbW_pVLU',
   podcastIndex: 'https://podcastindex.org/podcast/8123029',
+  wikidata: 'https://www.wikidata.org/wiki/Q142278389',
 };
 /* where to listen, in the order people use them */
 export const LISTEN = [
@@ -242,7 +243,7 @@ export const homeLD = (S) => ({
       url: `${SITE}${PODCAST.page}`,
       webFeed: `${SITE}/podcast.xml`,
       author: { '@id': `${SITE}/#person` },
-      sameAs: [PODCAST.spotify, PODCAST.apple, PODCAST.youtube, PODCAST.podcastIndex],
+      sameAs: [PODCAST.spotify, PODCAST.apple, PODCAST.youtube, PODCAST.podcastIndex, PODCAST.wikidata],
     },
     { '@type': 'WebSite', '@id': `${SITE}/#site`, url: `${SITE}/`, name: NAME, alternateName: ['NKT', 'Nived Thavarayil'], publisher: { '@id': `${SITE}/#person` } },
     {
@@ -259,7 +260,7 @@ export const homeLD = (S) => ({
       ...(f.year ? { dateCreated: f.year } : {}),
       image: `${SITE}/media/${f.img}`,
       ...(f.cast.length ? { actor: f.cast.map((n) => ({ '@type': 'Person', name: n })) } : {}),
-      sameAs: [`https://www.youtube.com/watch?v=${f.yt}`, ...(f.imdb ? [`https://www.imdb.com/title/${f.imdb}/`] : [])],
+      sameAs: [`https://www.youtube.com/watch?v=${f.yt}`, ...(f.imdb ? [`https://www.imdb.com/title/${f.imdb}/`] : []), ...(f.wd ? [`https://www.wikidata.org/wiki/${f.wd}`] : [])],
     })),
     ...FILMS.filter((f) => f.director).map((f) => ({
       '@type': 'Movie',
@@ -270,7 +271,7 @@ export const homeLD = (S) => ({
       contributor: { '@id': `${SITE}/#person` },
       actor: f.cast.map((n) => ({ '@type': 'Person', name: n })),
       image: `${SITE}/media/${f.img}`,
-      sameAs: [`https://www.youtube.com/watch?v=${f.yt}`, `https://www.imdb.com/title/${f.imdb}/`],
+      sameAs: [`https://www.youtube.com/watch?v=${f.yt}`, `https://www.imdb.com/title/${f.imdb}/`, ...(f.wd ? [`https://www.wikidata.org/wiki/${f.wd}`] : [])],
     })),
   ],
 });

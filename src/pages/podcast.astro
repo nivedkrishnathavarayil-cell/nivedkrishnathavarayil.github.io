@@ -34,7 +34,7 @@ const ld = {
       image: `${SITE}/podcast/cover.jpg`,
       description: 'A New York creative strategist and director on making films, micro dramas and campaigns that people finish watching, narrated with his own ElevenLabs voice clone.',
       author: { '@id': `${SITE}/#person` },
-      sameAs: LISTEN.map((l) => l[1]),
+      sameAs: [...LISTEN.map((l) => l[1]), PODCAST.wikidata],
       hasPart: eps.map((p) => ({
         '@type': 'PodcastEpisode',
         name: p.title.replace(/\.$/, ''),
