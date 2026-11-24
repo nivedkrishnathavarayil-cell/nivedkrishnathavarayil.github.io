@@ -137,7 +137,31 @@
     "alt": "Stories in Earth reel 'How did water get into the coconut?': a 3D green coconut above a tree stump on grass, Malayalam title, 79,200 views"
    }
   ],
-  "reelsH": "Watch the top four"
+  "reelsH": "Watch the top four",
+  "story": [
+   {
+    "h": "How the page started",
+    "p": [
+     "Agrajh AK and I co-founded Growvior together. Stories in Earth was our test: a page of our own, where we could run the whole system end to end without a client's brand on the line. Agrajh lent the voice, so every reel is narrated by a clone of his, made with ElevenLabs.",
+     "The first reel went up on November 4, 2026, asking what would happen to Kerala if the Western Ghats vanished overnight. Three days later the fourth reel, [Cyanide in kappa?](https://www.instagram.com/reel/Dfbq2ckSnge/), took off: 1.6 million views, about 57,000 likes and 260 comments. Most of the page's followers arrived in the week around it.",
+     "The full breakdown, with all twelve reels and what each one did, is in [the write-up](/work/how-we-grew-a-malayalam-page-from-zero/)."
+    ]
+   }
+  ],
+  "after": [
+   {
+    "h": "What any brand can take from this",
+    "ul": [
+     "**Pick a format before a feed.** Three beats every time: something people own, one fact they never knew, a twist at the end.",
+     "**Start at home.** On this page, food and things in the house beat places on a map.",
+     "**Find the hidden danger.** A risk inside something safe made the biggest hook.",
+     "**Write for strangers.** 99.3% of the views came from people who didn't follow the page, so every reel has to work for someone seeing it first.",
+     "**Keep the AI label on.** People stay for the story, not the trick.",
+     "**Plan the second hit.** One reel can make a page's first week. The work after that is finding the next one.",
+     "**Use the same system anywhere.** It's built to run on TikTok and YouTube Shorts and in other languages, for FMCG, food brands and chains, tech products and real estate. We're building it now for [Levin Reji](https://www.instagram.com/realtorlevin/)."
+    ]
+   }
+  ]
  },
  {
   "slug": "the-popes-exorcist",
