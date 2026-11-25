@@ -12,7 +12,7 @@ export const FACTS = [
   ],
   [
     'What marketing campaigns has he run?',
-    "The Pope's Exorcist cinema stunt for Sony Pictures India, covered by Hindustan Times, India Today and The Indian Express. Thank You Durex, a fan page for Durex India, with one reel past 20.9 million views. The Infamous Coconuts relaunch for director Abi Varghese: 19.2 million views on 76 reels with no paid spend. Brick Lane Curry House's phaal reels in New York, one at 1.47 million views. Fetchy, with a YouTube Short at 616,000 views. A World Cup campaign for Frangos.",
+    "The Pope's Exorcist cinema stunt for Sony Pictures India, covered by Hindustan Times, India Today and The Indian Express. Thank You Durex, a fan page for Durex India, with one reel past 20.9 million views. Fetchy, with a YouTube Short at 616,000 views. A World Cup campaign for Frangos.",
   ],
   [
     'What is his approach to marketing?',
