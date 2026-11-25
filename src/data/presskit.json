@@ -114,6 +114,7 @@
   {
    "name": "NKT monogram",
    "use": "light",
+   "alt": "NKT monogram logo of Nivedkrishna Thavarayil, for light backgrounds",
    "svg": "/press/nkt-monogram-for-light-backgrounds.svg",
    "png": "/press/nkt-monogram-for-light-backgrounds.png",
    "view": "/press/nkt-monogram-for-light-backgrounds.svg",
@@ -123,6 +124,7 @@
   {
    "name": "NKT monogram",
    "use": "dark",
+   "alt": "NKT monogram logo of Nivedkrishna Thavarayil, for dark backgrounds",
    "svg": "/press/nkt-monogram-for-dark-backgrounds.svg",
    "png": "/press/nkt-monogram-for-dark-backgrounds.png",
    "view": "/press/nkt-monogram-for-dark-backgrounds.svg",
@@ -148,6 +150,7 @@
   {
    "name": "Growvior Software",
    "use": "light",
+   "alt": "Growvior Software logo, the company co-founded by Nivedkrishna Thavarayil, for light backgrounds",
    "png": "/press/growvior-logo-for-light-backgrounds.png",
    "view": "/press/view-growvior-light.png",
    "vw": 600,
@@ -157,6 +160,7 @@
   {
    "name": "Growvior Software",
    "use": "dark",
+   "alt": "Growvior Software logo, the company co-founded by Nivedkrishna Thavarayil, for dark backgrounds",
    "png": "/press/growvior-logo-for-dark-backgrounds.png",
    "view": "/press/view-growvior-dark.png",
    "vw": 600,

@@ -262,7 +262,7 @@ const ld = {
         <ul class="pk-logos">
           {K.logos.map((l) => (
             <li class={`pk-logo on-${l.use}`}>
-              <div class="pk-tile"><img src={l.view} alt={`${l.name} logo, for ${l.use} backgrounds`} loading="lazy" decoding="async" width={l.vw} height={l.vh} /></div>
+              <div class="pk-tile"><img src={l.view} alt={l.alt ?? `${l.name} logo, for ${l.use} backgrounds`} loading="lazy" decoding="async" width={l.vw} height={l.vh} /></div>
               <p class="pk-cap">{l.name}{l.note ? ` (${l.note.toLowerCase()})` : ''}, for {l.use} backgrounds</p>
               <p class="pk-links">{l.svg && <a class="share-b" href={l.svg} download>SVG</a>}<a class="share-b" href={l.png} download>PNG</a></p>
             </li>
