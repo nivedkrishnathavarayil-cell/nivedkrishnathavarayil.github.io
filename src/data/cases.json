@@ -106,6 +106,10 @@
     "https://www.instagram.com/reel/DfgzxRZScqu/"
    ],
    [
+    "Levin Reji's Vice City reel",
+    "https://www.instagram.com/reel/DgAX9UPhQzR/"
+   ],
+   [
     "The LinkedIn post",
     "https://www.linkedin.com/feed/update/urn:li:activity:7531129044550070272/"
    ],
@@ -198,6 +202,24 @@
      "**Keep the AI label on.** People stay for the story, not the trick.",
      "**Plan the second hit.** One reel can make a page's first week. The work after that is finding the next one.",
      "**Take it beyond one page.** We only run it on Instagram, but every reel is vertical, so the same system could post to TikTok and YouTube Shorts too, in other languages, for FMCG, food brands and chains, tech products and real estate. We're building it now for [Levin Reji](https://www.instagram.com/realtorlevin/)."
+    ]
+   },
+   {
+    "h": "The same system, built for a client",
+    "p": [
+     "The first client build is for [Levin Reji](https://www.instagram.com/realtorlevin/), a real estate agent with eXp Realty in Pennsylvania. GTA 6 launched on Thursday, November 19, 2026, and the whole internet was talking about Vice City, the game's version of Miami. Two days later, Levin's page posted a reel asking what a house costs in the real Vice City.",
+     "It answers with real numbers. The typical single-family house in Miami-Dade sold for $706,000 in October ([Miami Realtors, via Newsweek](https://www.newsweek.com/miami-home-sales-plunge-but-rebound-could-be-on-the-way-12732781)), and the typical Philadelphia home sold for about $279,000 from July to September ([Redfin](https://www.redfin.com/city/15502/PA/Philadelphia/housing-market)), so one Miami house costs more than two Philly homes. The twist is for his own audience: Philadelphia homeowners get a real-life cheat code, the [Homestead Exemption](https://www.phila.gov/services/property-lots-housing/get-the-homestead-exemption/), worth up to $1,399 a year off their Real Estate Tax, with a December 1 deadline.",
+     "It follows this page's explainer format and runs on the same toolkit. Claude drafted the script, checked every number and built the animation, and the voice is Levin's own, cloned in ElevenLabs from recordings he sent. His compliance rules travel with every reel: eXp Realty's name and phone at the same size as his, his Pennsylvania license line, and a note that the reel isn't affiliated with Rockstar Games.",
+     "It's the hype piece in the hub, hype and hygiene plan I pitched Levin in February, and his page is early. By November 26 the reel had passed 1,600 views on an account with 549 followers."
+    ],
+    "reels": [
+     {
+      "ig": "DgAX9UPhQzR",
+      "v": "1.6K",
+      "t": "A house in the real Vice City",
+      "by": "@realtorlevin, November 21, 2026",
+      "alt": "Levin Reji's GTA 6 reel by Nivedkrishna Thavarayil: an illustrated pink Miami house between palm trees at sunset with a neon $???,??? price sign, titled What does a house in the real Vice City cost? GTA 6 is out. Miami vs Philly"
+     }
     ]
    },
    {
