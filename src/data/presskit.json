@@ -134,6 +134,7 @@
   {
    "name": "Thava Studio",
    "use": "light",
+   "alt": "Thava Studio logo, the creative studio run by Nivedkrishna Thavarayil, for light backgrounds",
    "png": "/press/thava-studio-logo-for-light-backgrounds.png",
    "view": "/press/view-thava-studio-light.png",
    "vw": 800,
@@ -142,6 +143,7 @@
   {
    "name": "Thava Studio",
    "use": "dark",
+   "alt": "Thava Studio logo, the creative studio run by Nivedkrishna Thavarayil, for dark backgrounds",
    "png": "/press/thava-studio-logo-for-dark-backgrounds.png",
    "view": "/press/view-thava-studio-dark.png",
    "vw": 800,
