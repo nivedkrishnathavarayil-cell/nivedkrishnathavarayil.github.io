@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import P from '../../data/posts.json';
 import C from '../../data/cases.json';
-import { headerHTML, SITE, PERSON, shareHTML, PODCAST, metaClip } from '../../lib/site.mjs';
+import { headerHTML, SITE, PERSON, shareHTML, PODCAST, metaClip, nyDay } from '../../lib/site.mjs';
 
 /* takes and behind-the-scenes pieces share /work/<slug>/ with the case studies */
 export function getStaticPaths() {
@@ -46,7 +46,7 @@ const videos = p.body.filter((b) => b[0] === 'video').map((b) => ({
   description: plain(b[1].cap),
   thumbnailUrl: `${SITE}${b[1].poster}`,
   contentUrl: `${SITE}${b[1].src}`,
-  uploadDate: p.date,
+  uploadDate: nyDay(p.date),
   duration: b[1].dur,
   embedUrl: url,
   creator: { '@id': PERSON['@id'] },

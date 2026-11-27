@@ -24,6 +24,17 @@ export const LISTEN = [
 export const ICON = C.icon;
 export const PERSON = JSON.parse(JSON.stringify(C.person).replaceAll('https://nivedkrishnathavarayil.com', SITE));
 
+/* Google wants video dates as a full datetime with a timezone: a plain YYYY-MM-DD
+   becomes the start of that day in New York (EDT or EST), so the date itself never moves */
+export const nyDay = (d) => {
+  d = String(d);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+  const tz = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', timeZoneName: 'longOffset' })
+    .formatToParts(new Date(`${d}T05:00:00Z`))
+    .find((x) => x.type === 'timeZoneName').value.replace('GMT', '');
+  return `${d}T00:00:00${tz || '+00:00'}`;
+};
+
 /* search descriptions: end on the last full sentence that fits, else on a whole word */
 export const metaClip = (t, n = 156, min = 60) => {
   t = String(t).replace(/\s+/g, ' ').trim();
@@ -203,7 +214,7 @@ export const seriesLD = (s, i) => ({
               description: s.log,
               thumbnailUrl: SITE + (s.poster || '/og/home.jpg'),
               contentUrl: SITE + s.vid,
-              uploadDate: '2026-10-10',
+              uploadDate: nyDay('2026-10-10'),
             },
           }
         : {}),
